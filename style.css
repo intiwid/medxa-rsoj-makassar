@@ -1,0 +1,211 @@
+@charset "utf-8";
+/* CSS Document */
+
+#header {
+  background-image: url(gambar/header-neuro-imaging.jpg);
+  height:200px;
+  margin: -50px 133px 0px 133px;
+  width:auto;
+}
+
+#content1 {
+  background-color: #009966;
+  margin: -23px 133px 0px 133px;
+}
+
+
+
+
+#footer {
+background-color: white;
+margin: 0px 133px 0px 133px;
+
+}
+
+#footer ul li {
+  input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  
+}
+
+}
+
+#footer2{
+background-image: url(image/cont-tail.png);
+margin: 10px 10px 10px 10px;
+
+}
+#tab1 {
+background-color: #f5f5dc;
+width: 100%;
+}
+
+#tab2 {
+
+  background-color: #009966;
+}
+#center {
+  text-align:center;
+  padding-top:75px;
+}
+
+ #menubar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+#menu li {
+  float: left;
+   margin: 0px -3px 0px -3px;
+}
+
+#menu li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#menu li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+
+  
+  #menubar
+{ width:auto;
+ margin: -22px 133px 0px 133px;
+  height: 72px;
+  padding: 0;
+  
+} 
+
+
+
+#content {
+  background-image:url(image/cont-tail.png);  
+}
+
+
+
+.active {
+  background-color: #009966;
+}
+
+.button {
+  background-color: #009966; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #009966;
+}
+
+.button1:hover {
+  background-color: #009966;
+  color: white;
+}
+
+.button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #009966;
+}
+
+.button:hover {
+  background-color: #009966;
+  color: white;
+}
+
+input[type=text]:focus{
+background-color: lightgreen;
+
+}
+
+select, textarea:focus{
+background-color: lightgreen;
+}
+
+input[type=radio]:focus{
+background-color: lightgreen;
+}
+
+
+/*---ADMINISTRATOR CSS----*/
+
+.header-adm {
+  background-color: #009966;
+  margin: -40px 133px 0px 133px;
+  width: auto;
+  text-align: center;
+}
+
+.content-adm {
+  background-color: green;
+  margin: -15px 133px 0px 133px;
+}
+.content1-adm {
+  background-color: cyan;
+  margin: -15px 133px 0px 133px;
+}
+
+.content1-adm ul {
+  float: left;
+  margin-right: 100px;
+}
+
+
+/*----------INPUT ADMINSTRATOR----------*/
+
+.form_adm input[type=text] {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form_adm input[type=submit] {
+  width: 18.5%;
+  background-color: #009966;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+
+.form_adm input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.form_adm {
+  margin: -15px 133px 0px 133px;
+
+}

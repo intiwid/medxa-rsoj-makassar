@@ -1,0 +1,787 @@
+v
+main{
+  border: 3px double #347C98;
+  margin:auto;
+  text-align:center;
+  max-width:900px;
+  min-width:300px;
+  width:90%;
+  margin-bottom:1em;
+  background-color:white;
+}
+
+/* .searchpatient {
+  float: left;
+  margin: 10px 10px 10px 10px;
+  display:inline-block; 
+}
+
+.searchform {
+  margin: 0px 250px 0px 190px;
+  background-color: #494B4D;
+  width: 65%;
+  border-left: solid 3px #ee7423;
+  color: #fff;
+
+} */
+
+#title{
+  color: #EE7423;
+  margin-bottom: 15px;
+}
+
+
+.work-1 input[type=text]{
+  width: 49%;
+} 
+
+
+
+ .regist input[type=text], select, textarea{
+  width: 100%;
+  padding: 5px 25px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #999;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  color: #898989;
+}
+
+.regist input[type=time]{
+   width: 100%;
+  padding: 5px 25px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid #999;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none; 
+}
+
+ .regist input[type=time]:focus {
+  border: 1px solid #1e92c1;
+  background-color: #ececec;
+  color: #666262;
+}
+
+
+ .regist2 input[type=text], select, textarea{
+  width: 100%;
+  padding: 5px 25px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #999;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+ .wrap-search input[type=text]{
+  width: 49%;
+  padding: 5px 25px;
+  margin: 2px 0;
+  display: inline-block;
+  border: 2px solid #999;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+ .wrap-search input[type=text]:focus {
+  border: 1px solid #1e92c1;
+  background-color: #ececec;
+  color: #666262;
+}
+
+ .wrap-search1 input[type=text]{
+  width: 100%;
+  padding: 5px 25px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #999;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+ .wrap-search1 input[type=text]:focus {
+  border: 1px solid #1e92c1;
+  background-color: #ececec;
+  color: #666262;
+}
+
+.wrap-search1{
+  padding: 3px;
+  /*height: 39px;*/
+}
+
+.wrap-search2{
+  padding: 3px;
+  height: 39px;
+}
+
+ .regist input[type=number]{
+  width: 100%;
+  padding: 5px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+.regist input[type=date]{
+  width: 100%;
+  padding: 5px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+ .regist input[type=text]:focus {
+  border: 1px solid #1e92c1;
+  background-color: #ececec;
+  color: #666262;
+}
+
+ .regist2 input[type=text]:focus {
+  border: 1px solid #1e92c1;
+  background-color: #ececec;
+  color: #666262;
+}
+
+
+
+.search-input-reg{
+  width: 100%;
+  padding: 5px 25px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+ .search-input-reg:focus {
+  border: 1px solid #1e92c1;
+  background-color: #ececec;
+  color: #666262;
+}
+
+.search-input-workload{
+  width: 49%;
+  padding: 5px 25px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+ .search-input-workload:focus {
+  border: 1px solid #1e92c1;
+  background-color: #ececec;
+  color: #666262;
+}
+
+
+ .regist select:focus {
+  border: 1px solid #1e92c1;
+  background-color: #ececec;
+  color: #666262;
+}
+ .regist textarea:focus {
+  border: 1px solid #1e92c1;
+  background-color: #ececec;
+  color: #666262;
+}
+ .regist input[type=number]:focus {
+  border: 1px solid #1e92c1;
+  background-color: #ececec;
+  color: #666262;
+}
+ 
+ .regist input[type=date]:focus {
+  border: 1px solid #1e92c1;
+  background-color: #ececec;
+  color: #666262;
+}
+
+
+.selectdate{
+  text-align: left;
+}
+
+#title{
+  margin-top:1em;
+ text-align:center;
+}
+.horizontalSpacing{
+/*  border:3px solid black;  */
+  margin:10px;
+  color:#454545;
+}
+.leftColumn{
+/*   border:3px solid red; */
+  width:29%;
+  display:inline-block;
+  text-align:right;
+  padding-right:15px;
+}
+.rightColumn{
+/*     border:3px solid purple; */
+  width:60%;
+  display:inline-block;
+}
+
+input{
+  width:100%;
+}
+input[type="radio"]{
+  width:auto;
+}
+input[type="checkbox"]{
+  width:auto;
+
+}
+input[type="submit"]{
+  width:auto;
+  margin:10px;
+
+}
+#textarea1{
+    width:250px;
+  height:60px;
+}
+#textarea2{
+  width:100%;
+  height:5em;
+}
+
+
+/* radio button */
+
+
+
+/* radio button */
+
+
+
+@media screen and (max-width: 520px) {
+  main{
+    width:90%;
+  }
+  .leftColumn{
+    width:90%;
+    text-align:left;
+  }
+  .rightColumn{
+    width:90%;
+  }
+  .searchpatient{
+    width: 20%;
+  }
+  .searchform{
+    width: 40%;
+  }
+
+}
+
+
+/*BUTTON*/
+
+.button1{
+  color:#fff;
+  background:transparent;
+  border-width:2px;
+  border-style: solid;
+  border-color: #fff;
+  position:relative;
+  margin:1em;
+  display:inline-block;
+  padding:0.5em 1em;
+  transition:all 0.3s ease-in-out;
+  text-align:center;
+}
+
+.button1:before, .button1:after {
+  content:'';
+  display:block;
+  position:absolute;
+  border-color:#454545;
+  box-sizing:border-box;
+  border-style:solid;
+  width:1em;
+  height:1em;
+  transition:all 0.3s ease-in-out;
+
+}
+
+.button1:before {
+  top:-6px;
+  left:-6px;
+  border-width:2px 0 0 2px;
+  z-index:5;
+}
+
+.button1:after {
+  bottom:-6px;
+  right:-6px;
+  border-width:0 2px 2px 0;
+}
+
+.button1:hover:before, .button1:hover:after {
+  width:calc(100% + 12px);
+  height:calc(100% + 12px);
+  border-color:#ee7423
+}
+
+.button1:hover {
+  color:#fff;
+  background-color:#ee7423;
+  border-color:#ee7423
+}
+  
+/*BUTTON*/
+
+.regist {
+    background-color: #f5f5f5;
+    padding: 5px;
+    border: 3px solid #1382ae;
+    padding: 10px;
+    /* margin-top: 50px; */
+    /*box-shadow: #ee7423 3px 3px;*/
+}
+
+.regist label{
+  color:  #292929;
+}
+
+.regist2{
+  background-color: #44a08d;
+  padding: 5px;
+  border: 3px solid #1b785a;
+  margin-top: 25px;
+  margin-bottom: 100px;
+}
+
+.regist2 label{
+  color:  #fff;
+}
+
+
+.jenis-kel label{
+  color: #fff;
+}
+
+
+.btn-order1 {
+  background-color: #54bd95; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.btn-order1:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.btn-order1 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn-order1 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.btn-order1:hover span {
+  padding-right: 25px;
+}
+
+.btn-order1:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.radio-admin {
+  /*display: block;*/
+  position: relative;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-bottom: 0px;
+  cursor: pointer;
+  font-size: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio-admin input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #cacaca;
+  border-radius: 50%;
+}
+
+
+
+/* On mouse-over, add a grey background color */
+.radio-admin:hover input ~ .checkmark {
+  background-color: #a6a6a6;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-admin input:checked ~ .checkmark {
+  background-color: #e63232;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-admin input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-admin .checkmark:after {
+  top: 7px;
+  left: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+}
+
+
+
+
+.wrap-search input[type=date]{
+  width: 100%;
+  padding: 2px 25px;
+  margin: 2px 0;
+  display: inline-block;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  color: #8f8989;
+}
+ .wrap-search input[type=date]:focus {
+  border: 1px solid #1e92c1;
+  background-color: #ececec;
+  color: #666262;
+}
+
+
+.chart1{
+  background-color: #fcfcfc;
+}
+
+
+/*
+.wrap-search1 label {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      padding-left: 25px; 
+      margin-right: 10px; 
+  }
+  
+.wrap-search1 label:before {  
+      content: "";
+      width: 15px;
+      height: 15px;
+      position: absolute;  
+      left: 0;
+  }
+
+.wrap-search1 input[type=checkbox] {  
+      display: none;  
+  }
+  
+.wrap-search1 label:before {
+    background: url('http://i36.photobucket.com/albums/e22/lilsq3/checkbox_small.png') left center no-repeat;
+    margin-top: 2px;
+  }
+  
+.wrap-search1 input[type=checkbox]:checked + label:before {  
+      background: url('http://i36.photobucket.com/albums/e22/lilsq3/checkbox_selected_small.png') left center no-repeat;  
+  } */
+
+  .c1 {
+  /*display: block;*/
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 23px;
+  cursor: pointer;
+  /*font-size: 22px;*/
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.c1 input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+}
+
+/* On mouse-over, add a grey background color */
+.c1:hover input ~ .checkmark1 {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.c1 input:checked ~ .checkmark1 {
+  background-color: #85CBB3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark1:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.c1 input:checked ~ .checkmark1:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.c1 .checkmark1:after {
+  left: 7px;
+  top: 1px;
+  width: 7px;
+  height: 14px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
+
+.c2 {
+  /*display: block;*/
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  /*font-size: 22px;*/
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.c2 input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #eceaea;
+}
+
+/* On mouse-over, add a grey background color */
+.c2:hover input ~ .checkmark2 {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.c2 input:checked ~ .checkmark2 {
+  background-color: #85CBB3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark2:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.c2 input:checked ~ .checkmark2:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.c2 .checkmark2:after {
+  left: 4px;
+top: 0px;
+width: 7px;
+height: 14px;
+border: solid
+#fffafa;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
+
+/*--------------------------------------------------------------*/
+/* Create a custom radio button */
+.checkmarkN {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 70px;
+  background-color: #cacaca;
+}
+
+
+
+/* On mouse-over, add a grey background color */
+.radio-admin:hover input ~ .checkmarkN {
+  background-color: #a6a6a6;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-admin input:checked ~ .checkmark-male {
+  background-color: #1e92c1;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark-male:after {
+  content: "Male";
+  position: absolute;
+  display: none;
+  color: #fff;
+  text-align: center;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-admin input:checked ~ .checkmark-female {
+  background-color: #1e92c1;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark-female:after {
+  content: "Female";
+  position: absolute;
+  display: none;
+  color: #fff;
+  text-align: center;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-admin input:checked ~ .checkmark-other {
+  background-color: #1e92c1;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark-other:after {
+  content: "Other";
+  position: absolute;
+  display: none;
+  color: #fff;
+  text-align: center;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-admin input:checked ~ .checkmarkN:after {
+  display: block;
+}
+
+
+
+
+
+
+
+.select-regist{
+  border-radius: 4px 0px 0px 4px;
+background-color: #85cbb3;
+color: #fff;
+/*border: solid 1px #adadad;*/
+}
+

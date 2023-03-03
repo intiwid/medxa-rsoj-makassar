@@ -1,0 +1,545 @@
+
+main{
+  border: 3px double #347C98;
+  margin:auto;
+  text-align:center;
+  max-width:900px;
+  min-width:300px;
+  width:90%;
+  margin-bottom:1em;
+  background-color:white;
+}
+
+.searchpatient {
+  float: left;
+  margin: 10px 10px 10px 10px;
+  display:inline-block; 
+}
+
+.searchform {
+  margin: 0px 250px 0px 190px;
+  /* background-color: #494B4D; */
+  width: 65%;
+  border-left: solid 3px #ee7423;
+  color: #fff;
+
+}
+
+#title{
+  color: #EE7423;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.form-dokter{
+  margin-left: 35px;
+
+}
+.input_adm{
+  margin-left: 35px;
+}
+
+  input[type=text], select{
+  width: 49%;
+  padding: 10px 25px;
+  margin: 3px 2px;
+  display: inline-block;
+  border: 1px solid #cecccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.form-update-workload input[type=text], input[type=number], select{
+  width: 100%;
+  padding: 5px 25px;
+  margin: 3px 0;
+  display: inline-block;
+  border: 3px solid #8a8a8a;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+
+
+ input[type=number]{
+  width: 100%;
+  padding: 5px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+ input[type=text]:focus {
+  border: 1px solid #24ade3;
+  background-color: #fff;
+  
+}
+ select:focus {
+  border: 3px solid #ede6e6;
+  background-color: #ee7423;
+  color: #fff;
+}
+ input[type=number]:focus {
+  border: 3px solid #ede6e6;
+  background-color: #ee7423;
+  color: #fff;
+}
+
+
+.wrap-search input[type=text]{
+  width: 49%;
+  padding: 5px 25px;
+  margin: 2px 0;
+  display: inline-block;
+  border: 2px solid #999;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+ .wrap-search input[type=text]:focus {
+  border: 1px solid #1e92c1;
+  background-color: #ececec;
+  color: #666262;
+}
+
+ .wrap-search1 input[type=text]{
+  width: 100%;
+  padding: 5px 25px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #999;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+ .wrap-search1 input[type=text]:focus {
+  border: 1px solid #1e92c1;
+  background-color: #ececec;
+  color: #666262;
+}
+
+.wrap-search1{
+  padding: 3px;
+  /*height: 39px;*/
+}
+
+.wrap-search2{
+  padding: 3px;
+  height: 39px;
+}
+
+.selectdate{
+  text-align: left;
+}
+
+#title{
+  margin-top:1em;
+ text-align:center;
+}
+.horizontalSpacing{
+/*  border:3px solid black;  */
+  margin:10px;
+  color:#454545;
+}
+.leftColumn{
+/*   border:3px solid red; */
+  width:29%;
+  display:inline-block;
+  text-align:right;
+  padding-right:15px;
+}
+.rightColumn{
+/*     border:3px solid purple; */
+  width:60%;
+  display:inline-block;
+}
+
+input{
+  width:100%;
+}
+input[type="radio"]{
+  width:auto;
+}
+input[type="checkbox"]{
+  width:auto;
+
+}
+input[type="submit"]{
+  width:auto;
+  margin:10px;
+
+
+}
+#textarea1{
+    width:250px;
+  height:60px;
+}
+#textarea2{
+  width:100%;
+  height:5em;
+}
+
+
+/* radio button */
+
+
+
+/* radio button */
+
+
+
+@media screen and (max-width: 520px) {
+  main{
+    width:90%;
+  }
+  .leftColumn{
+    width:90%;
+    text-align:left;
+  }
+  .rightColumn{
+    width:90%;
+  }
+  .searchpatient{
+    width: 20%;
+  }
+  .searchform{
+    width: 40%;
+  }
+
+}
+
+
+/*BUTTON*/
+.button1{
+  color:#454545;
+  background:transparent;
+  border-width:2px;  
+  border-style: solid;
+  border-color: #666262;
+  position:relative;
+  margin: 0em;
+  display: inline-block;
+  padding: 0.2em 1em;
+  transition:all 0.3s ease-in-out;
+  text-align:center;
+}
+
+.button1:before, .button1:after {
+  content:'';
+  display:block;
+  position:absolute;
+  border-color:#454545;
+  box-sizing:border-box;
+  border-style:solid;
+  width:1em;
+  height:1em;
+  transition:all 0.3s ease-in-out;
+
+}
+
+.button1:before {
+  top:-6px;
+  left:-6px;
+  border-width:2px 0 0 2px;
+  z-index:5;
+}
+
+.button1:after {
+  bottom:-6px;
+  right:-6px;
+  border-width:0 2px 2px 0;
+}
+
+.button1:hover:before, .button1:hover:after {
+  width:calc(100% + 12px);
+  height:calc(100% + 12px);
+  border-color:#ee7423
+}
+
+.button1:hover {
+  color:#fff;
+  background-color:#ee7423;
+  border-color:#ee7423
+}
+  
+
+
+
+  .button-search-template{
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    margin: 11px 0px 0px -27px;
+  }
+/*BUTTON*/
+
+
+.table-view{
+  margin-left: 1px;
+}
+
+.td1{
+  width: 790px;
+  color: #40a789;
+}
+
+.td1 a{
+  color: #000;
+  text-decoration: none;
+}
+
+.td1 a:hover{
+  color: #ee7234;
+}
+
+.td2{
+  width: 27px;
+  padding-left: 3px;
+}
+
+#mytemplate{
+  text-align: center;
+  text-decoration: none;
+}
+
+.textarea-worklist{
+  width: 100%;
+  height: 200px;
+  background-color: #fff;
+  padding: 5px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.textarea-worklist:hover{
+  border: 1px solid #24ade3;
+  color: #7d7d7d;
+}
+
+
+.input-text-date{
+
+}
+
+
+
+
+/* --------------------clock------------ */
+
+
+.box {
+  background:#FFF;
+  border-radius:5px;
+  display:inline-block;
+  margin:6em 0 2em;
+  padding:0 5px 0px;
+  position: absolute;
+  top: 73%;
+  left: 92%;
+  float: left;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+  position: fixed;
+}
+
+.date #daymonth {
+  color:#454545;
+  font-size:15px;
+  padding:5px 0;
+}
+.date #year {
+  color:#ee7423;
+  font-size: 15px;
+}
+
+.clock {
+  background-color: #ee7423;
+  border: 0.6em solid white;
+  border-radius: 100%;
+  height: 4em;
+  margin-top:-50%;
+  position: relative;
+  width: 4em;
+}
+.clock span {
+  background: white;
+  bottom: 50%;
+  display: block;
+  left: 50%;
+  position: absolute;
+  transform-origin: bottom center;
+}
+.clock .hours {
+  height: 30%;
+  width: 0.2em;
+}
+.clock .minutes {
+  height: 45%;
+  width: 0.2em;
+}
+/* --------loading---------------- */
+
+.form-update-workload1{
+  border: 1px solid #24ade3;
+  padding: 15px;
+  height: auto;
+  background-color: #fffdf5;
+}
+
+.form-update-workload li{
+  list-style:none;
+}
+
+.radio-admin {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 0px;
+  cursor: pointer;
+  font-size: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio-admin input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio-admin:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-admin input:checked ~ .checkmark {
+  background-color: #85cbb3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-admin input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-admin .checkmark:after {
+  top: 7px;
+  left: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+}
+
+.c2 {
+  /*display: block;*/
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  /*font-size: 22px;*/
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.c2 input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+}
+
+/* On mouse-over, add a grey background color */
+.c2:hover input ~ .checkmark2 {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.c2 input:checked ~ .checkmark2 {
+  background-color: #9CC8B9;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark2:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.c2 input:checked ~ .checkmark2:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.c2 .checkmark2:after {
+  left: 4px;
+top: 0px;
+width: 7px;
+height: 14px;
+border: solid
+#fffafa;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

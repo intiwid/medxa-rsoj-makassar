@@ -1,0 +1,820 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+background: linear-gradient(to right, #fff, #eef2f3, #fff);
+font-family: 'Oswald', sans-serif;
+
+}
+#header {
+  /*background-image: url(gambar/header-neuro-imaging.jpg);*/
+  height:100px;
+  margin: -50px 133px 0px 133px;
+  width:auto;
+  padding-top:75px;
+}
+
+
+.logo{
+  height: 55px;
+  width: 245px;
+  margin: -17px -5px 0px -100px;
+  float: left;
+  border-right: 2px solid #EE7423 ;
+}
+
+.logo1 {
+  height: 40px;
+  width: 185px;
+  margin: -10px 0px 0px 0px;
+
+}
+
+.logo2 {
+  height: 85px;
+  width: 155px;
+  margin: -70px -85px 0px 0px;
+}
+.mainheader {
+  width: 101%;
+  height: 180px;
+/*  background: linear-gradient(to right, #093637, #44a08d, #093637);*/
+/*background-color: #fff;*/
+  background-image: url('../../gambar/header-neuro-imaging2.jpg');
+  border-bottom: 5px solid #EE7423;
+  margin-left: -5px;
+  opacity: 1;
+}
+.text1{
+  color: white;
+}
+
+
+/* #menubar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}*/
+
+
+
+.content {
+  background-color: red;
+}
+
+#menu li {
+  float: left;
+   margin: 0px -3px 0px -3px;
+}
+
+#menu li a {
+  display: block;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#menu li a:hover:not(.active) {
+  background-color: #fff;
+  color: #EE7423;
+  transition: 250ms;
+}
+
+/*-------------form new dokter---------*/
+.new-dokter-form input[type=text], select {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/*.new-dokter-form input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.new-dokter-form input[type=submit]:hover {
+  background-color: #45a049;
+}*/
+
+.new-dokter-form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/*-------form new dokter------------*/
+
+.active {
+  background-color: #red;
+}
+
+.active {
+  background-color: #009966;
+}
+
+.button {
+  background-color: #009966; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #009966;
+}
+
+.button1:hover {
+  background-color: #009966;
+  color: white;
+}
+
+.button:hover {
+  background-color: #17504C;
+  color: white;
+}
+
+/*.button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #009966;
+}*/
+
+
+
+
+
+/*input[type=text]:focus{
+background-color: lightgreen;
+
+}
+
+select, textarea:focus{
+background-color: lightgreen;
+}
+
+input[type=radio]:focus{
+background-color: lightgreen;
+}*/
+
+/*--------------REGISTRATION------------------*/
+ #menubar ul {
+  list-style-type: none;
+  margin: -50px 0px 0px 30px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ee7423;
+  box-shadow: 0px -2px 0px 0px white;
+  align-items: center;
+  border-radius: 6px;
+  width: 95%;
+}
+
+#content1{
+  background-color: #f2f2f2;
+  margin: 5px 133px 0px 133px;
+  box-shadow: 0 3px 14px 0 rgba(0,0,0,.2);
+  width: 80%;
+}
+
+#footer2{
+  /*background-color: #f2f2f2;*/
+  margin: 10px 133px 0px 133px;
+  height: 500px;
+}
+
+/*.regist{
+  background-color: blue;
+  margin: 0px 90px 0px 90px;
+}*/
+
+/*----------*/
+.hrregist {
+    height: 3px;
+    width: 80%;
+    margin-left: 130px;
+    border: none;
+    background: rgba(43,31,55,.1);
+    display: inline-block;
+}
+
+.hrregist2 {
+    height: 3px;
+    width: 102%;
+    border: none;
+    background: rgba(43,31,55,.1);
+    display: inline-block;
+}
+/*-----------*/
+.regist {
+  /*border-radius: 5px;*/
+  margin: 20px -20px 0px 0px;
+  background-color: #f2f2f2;
+  padding: 5px;
+  height: 800px;
+}
+
+.regist1{
+  float: left;
+/*  background-color: #494B4D;*/
+  color: #494B4D;
+  width: 350px;
+  margin-left: 10px;
+
+}
+.regist2{
+/*background-color: #494B4D;*/
+  margin: -19px 10px 24px 440px;
+  color: #494B4D;
+  /*float: left;*/
+   /*margin: 0px 680px 100px 30px;*/
+}
+
+/*-----*/
+input[type=text], textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+ input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+ input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+
+/*-------*/
+
+.textsearchpasien {
+  margin: 24px 0px 0px 130px;
+  color: #ee7423;
+}
+.textsearchnewpasien{
+  margin-bottom: 0px;
+  color: #ee7423;
+}
+
+/*--------------END OF REGISTRATION----------------*/
+
+/*---ADMINISTRATOR CSS----*/
+
+.header-adm {
+  background-color: #449f8d;
+  color: white;
+  margin: -10px 133px 0px 290px;
+  width: 50%;
+  height: 40px;
+  text-align: center;
+  border-bottom: 5px solid #EE7423;
+}
+
+.content-adm {
+  background-color: green;
+  margin: 15px 133px 0px 133px;
+}
+.content1-adm {
+  background-color: cyan;
+  margin: -15px 50px 0px 240px;
+}
+
+.content1-adm ul {
+  float: left;
+  margin-right: 100px;
+
+}
+
+/*-----------**--------*/
+.content1-adm ul {
+  list-style-type: none;
+   float: left;
+  margin-right: 100px;
+  /*margin: 0;*/
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+.content1-adm li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+.content1-adm li a:hover {
+  background-color: #555;
+  color: white;
+}
+/*------**-----------*/
+
+/*----------INPUT ADMINSTRATOR----------*/
+
+.form_adm input[type=text] {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form_adm input[type=submit] {
+  width: 18.5%;
+  background-color: #009966;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+
+.form_adm input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.form_adm {
+  margin: -15px 133px 0px 133px;
+
+}
+
+/*---------------------TABLE----------------*/
+table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+  border: 1px solid #fff;
+  padding: 5px;
+}
+
+table tr:nth-child(even){background-color: #d8d8d8;}
+
+table tr:hover {background-color: #7fcbbb;}
+
+table th {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: left;
+  background-color: #44a08d;
+  color: white;
+}
+/*---------------------TABLE----------------*/
+.regist1 select {
+  width: 25%;
+}
+
+
+h1 {
+  color: #ee7423;
+}
+
+
+/*-------------button--------------------*/
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #44a08d;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 5px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+
+}
+
+
+.button a{
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/*--------BUTTON VIEW----------------*/
+.button_view {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #44a08d;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 5px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+
+}
+
+
+.button_view a{
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.button_view span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button_view span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button_view:hover span {
+  padding-right: 25px;
+}
+
+.button_view:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/*------------BUTTON VIEW------------------*/
+
+
+/*---------radio----------*/
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+/*.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}*/
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #EE7423;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+/*---------radio----------*/
+/*----------------------button---------------------*/
+
+
+/*---------------SEARCH PATIENT-----------------*/
+.searchpatient {
+  float: left;
+  margin: 10px 10px 10px 10px
+  ; 
+}
+
+.searchform {
+  margin: 0px 250px 0px 170px;
+background-color: #494B4D;
+  width: 83%;
+  color: #fff;
+}
+
+.searchform label {
+  margin-left: 18px;
+
+}
+
+ .tablesearch {
+  margin: -5px 285px 0px 170px;
+ }
+ .searchform input[type=text] {
+  width: 80%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 10px;
+  background-color: white;
+  background-image: url('../../image/searchicon.png');
+  background-position: 5px 3px; 
+  background-repeat: no-repeat;
+  padding: 10px 20px 7px 40px;
+  margin-left: 15px;
+}
+
+.buttonsearch {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #ee7423;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 12px;
+  padding: 15px;
+  width: 130px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.buttonsearch span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.buttonsearch span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.buttonsearch:hover span {
+  padding-right: 25px;
+}
+
+.buttonsearch:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/*---------------SEARCH PATIENT-----------------*/
+
+/*-----SELECT-----------------*/
+
+.regist1 select {
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 2px 3px 3px 0px;
+    margin-top: 5px;
+    font: inherit;
+    line-height: 1.2;
+    background: #f8f8f8;
+    -webkit-appearance:none;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 5px;
+    }
+    @media screen and (-webkit-min-device-pixel-ratio:0) { 
+
+.regist1 select {
+            padding-right:30px;    
+        }
+    }
+    
+    /* Since we removed the default focus styles, we have to add our own */
+
+.regist1 select:focus {
+        -webkit-box-shadow: 0 0 0px 1px #ee7423;
+        /*-moz-box-shadow: 0 0 3px 1px #c00;*/
+        /*box-shadow: 0 0 3px 1px #c00;*/
+    }
+    
+    /* Select arrow styling */
+
+/*.regist1 select:after {
+    content: "▼";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 60%;
+    line-height: 30px;
+    padding: 0 7px;
+    background: #bbb;
+    color: white;
+    pointer-events:none;
+    -webkit-border-radius: 0 6px 6px 0;
+    -moz-border-radius: 0 6px 6px 0;
+    border-radius: 0 6px 6px 0;
+    }*/
+    
+.no-pointer-events .regist1:after {
+        content: none;
+    }
+
+/*-------------------SELECT------*/
+
+/*------------FORM ORDER--------------*/
+.table-pasien {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 40%;
+  float: left;
+  margin-left: 15px;
+}
+
+.table-pasien td, .table-pasien th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table-pasien tr:nth-child(even){background-color: #f2f2f2;}
+
+.table-pasien tr:hover {background-color: #ddd;}
+
+.table-pasien th {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+/*--------*/
+.input-tambahan input[type=date], input[type=time], select {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+.input-tambahan {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 55%;
+  height: 380%;
+  margin: 40px 0px -300px 635px;
+}
+
+.informasi-tambahan {
+  color: #ee7423;
+  margin: 5px 0px -10px 0px;
+}
+/*-----------END FORM ORDER--------------*/
+
+/*Table search*/
+.table-search {
+  /*position: absolute;*/
+  top: 50%;
+  left: 50%;
+  /*transform: translate(-50%, -50%);*/
+}
+
+.table-search table {
+  width: 800px;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.table-search th td {
+  padding: 15px;
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+.table-search th {
+  text-align: left;
+}
+
+.table-search thead {
+  th {
+    background-color: #55608f;
+  }
+}
+
+.table-search tbody {
+  tr {
+    &:hover {
+      background-color: rgba(255,255,255,0.3);
+    }
+  }
+td {
+    position: relative;
+    &:hover {
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -9999px;
+        bottom: -9999px;
+        background-color: rgba(255,255,255,0.2);
+        z-index: -1;
+      }
+    }
+  }
+}
+/*end of table search*/

@@ -1,0 +1,233 @@
+
+main{
+  border: 3px double #347C98;
+  margin:auto;
+  text-align:center;
+  max-width:900px;
+  min-width:300px;
+  width:90%;
+  margin-bottom:1em;
+  background-color:white;
+}
+
+.searchpatient {
+  float: left;
+  margin: 10px 10px 10px 10px;
+  display:inline-block; 
+}
+
+.searchform {
+  margin: 0px 250px 0px 190px;
+  /* background-color: #494B4D; */
+  width: 65%;
+  border-left: solid 3px #ee7423;
+  color: #fff;
+
+}
+
+#title{
+  color: #EE7423;
+  margin-bottom: 15px;
+}
+
+ input[type=text], select, textarea{
+  width: 100%;
+  padding: 5px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+ input[type=number]{
+  width: 100%;
+  padding: 5px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+input[type=date]{
+  width: 100%;
+  padding: 5px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+ input[type=text]:focus {
+  border: 3px solid #ede6e6;
+  background-color: #ee7423;
+  color: #fff;
+}
+ select:focus {
+  border: 3px solid #ede6e6;
+  background-color: #ee7423;
+  color: #fff;
+}
+ textarea:focus {
+  border: 3px solid #ede6e6;
+  background-color: #ee7423;
+  color: #fff;
+}
+ input[type=number]:focus {
+  border: 3px solid #ede6e6;
+  background-color: #ee7423;
+  color: #fff;
+}
+ 
+ input[type=date]:focus {
+  border: 3px solid #ede6e6;
+  background-color: #ee7423;
+  color: #fff;
+}
+
+
+.selectdate{
+  text-align: left;
+}
+
+#title{
+  margin-top:1em;
+ text-align:center;
+}
+.horizontalSpacing{
+/*  border:3px solid black;  */
+  margin:10px;
+  color:#454545;
+}
+.leftColumn{
+/*   border:3px solid red; */
+  width:29%;
+  display:inline-block;
+  text-align:right;
+  padding-right:15px;
+}
+.rightColumn{
+/*     border:3px solid purple; */
+  width:60%;
+  display:inline-block;
+}
+
+input{
+  width:100%;
+}
+input[type="radio"]{
+  width:auto;
+}
+input[type="checkbox"]{
+  width:auto;
+
+}
+input[type="submit"]{
+  width:auto;
+  margin:10px;
+
+}
+#textarea1{
+    width:250px;
+  height:60px;
+}
+#textarea2{
+  width:100%;
+  height:5em;
+}
+
+
+/* radio button */
+
+
+
+/* radio button */
+
+
+
+@media screen and (max-width: 520px) {
+  main{
+    width:90%;
+  }
+  .leftColumn{
+    width:90%;
+    text-align:left;
+  }
+  .rightColumn{
+    width:90%;
+  }
+  .searchpatient{
+    width: 20%;
+  }
+  .searchform{
+    width: 40%;
+  }
+
+}
+
+
+/*BUTTON*/
+
+.button1{
+  color:#454545;
+  background:transparent;
+  border-width:2px;
+  border-style: solid;
+  border-color: #454545;
+  position:relative;
+  margin:1em;
+  display:inline-block;
+  padding:0.5em 1em;
+  transition:all 0.3s ease-in-out;
+  text-align:center;
+}
+
+.button1:before, .button1:after {
+  content:'';
+  display:block;
+  position:absolute;
+  border-color:#454545;
+  box-sizing:border-box;
+  border-style:solid;
+  width:1em;
+  height:1em;
+  transition:all 0.3s ease-in-out;
+
+}
+
+.button1:before {
+  top:-6px;
+  left:-6px;
+  border-width:2px 0 0 2px;
+  z-index:5;
+}
+
+.button1:after {
+  bottom:-6px;
+  right:-6px;
+  border-width:0 2px 2px 0;
+}
+
+.button1:hover:before, .button1:hover:after {
+  width:calc(100% + 12px);
+  height:calc(100% + 12px);
+  border-color:#ee7423
+}
+
+.button1:hover {
+  color:#fff;
+  background-color:#ee7423;
+  border-color:#ee7423
+}
+  
+/*BUTTON*/
