@@ -24,7 +24,7 @@ if ($_SESSION['level'] == "radiographer") {
 				<div id="content1">
 					<div class="body">
 
-					<div class="container cont-regist">
+					<div class="container-fluid cont-regist">
 								<form method="post" id="registration">
 									<div>
 										<h4><?= $lang['regist_new_patient'] ?></h4>
