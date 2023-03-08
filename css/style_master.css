@@ -222,13 +222,13 @@ a {
 }
 
 .btn-info.dropdown-toggle {
-  background-color: #1f69b7 !important;
+  background-color: #377d71 !important;
   box-shadow: none;
   border-radius: 5px;
   padding: 6px;
 }
 .btn-info.dropdown-toggle:focus, .btn-info.dropdown-toggle:hover {
-  background-color: #11569d !important;
+  background-color: #2d695f !important;
   color: #fff;
 }
 
@@ -971,11 +971,11 @@ canvas {
 }
 
 .left-information {
-  border: 1px solid #d2c8c8;
+  /* border: 1px solid #d2c8c8; */
   padding: 10px 10px 88px 10px;
   /* margin-bottom: 20px; */
   border-radius: 5px;
-  background: #ececec;
+  background: #fff;
   height: 100%;
   margin-bottom: 30px;
 }
@@ -3823,7 +3823,7 @@ table.dataTable > thead .sorting::before, table.dataTable > thead .sorting::afte
 
 
   .cont-regist h4 {
-    color: #064588;
+    color: #2a645a;
 }
 
 .input-regist input,
