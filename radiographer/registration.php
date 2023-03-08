@@ -10,11 +10,6 @@ if ($_SESSION['level'] == "radiographer") {
 	<head>
 		<title>Registration | Radiographer</title>
 		<?php include('head.php'); ?>
-		<style>
-			.footerindex {
-				position: fixed;
-			}
-		</style>
 	</head>
 
 	<body>
@@ -24,85 +19,91 @@ if ($_SESSION['level'] == "radiographer") {
 				<div id="content1">
 					<div class="body">
 
-					<div class="container-fluid cont-regist">
-								<form method="post" id="registration">
-									<div>
-										<h4><?= $lang['regist_new_patient'] ?></h4>
-									</div>
-									<div class="row">
-										<div class="col-half">
-											<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="mrn" id="mrn" placeholder="<?= $lang['input_mrn'] ?>" required />
-												<div class="input-icon"><i class="fas fa-notes-medical"></i></div>
-											</div>
-										</div>
-										<div class="col-half">
-											<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="name" id="name" placeholder="<?= $lang['name'] ?>" required />
-												<div class="input-icon"><i class="fa fa-user"></i></div>
-											</div>
-										</div>
-										
-
-									</div>
-									<div class="row">
-										<div class="col-half">
-											<h4><?= $lang['birth_date'] ?></h4>
-											<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="birth_date" id="birth_date" placeholder="<?= $lang['input_birth_date'] ?>" autocomplete="off" required />
-												<div class="input-icon"><i class="far fa-calendar-plus"></i></div>
-											</div>
-										</div>
-										<div class="col-half">
-											<h4>Gender</h4>
-											<div class="input-group input-group-regist input-regist input-regist-gender"><input id="gender-male" type="radio" name="sex" value="M" required /><label for="gender-male"><?= $lang['male'] ?></label><input id="gender-female" type="radio" name="sex" value="F" required /><label for="gender-female"><?= $lang['female'] ?></label><input id="gender-other" type="radio" name="sex" value="O" required /><label for="gender-other"><?= $lang['other'] ?></label></div>
+						<div class="container-fluid cont-regist" style="margin-bottom: 50px;">
+							<form method="post" id="registration">
+								<div>
+									<h4><?= $lang['regist_new_patient'] ?></h4>
+								</div>
+								<div class="row">
+									<div class="col-half">
+										<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="mrn" id="mrn" placeholder="<?= $lang['input_mrn'] ?>" required />
+											<div class="input-icon"><i class="fas fa-notes-medical"></i></div>
 										</div>
 									</div>
-									<hr>
+									<div class="col-half">
+										<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="name" id="name" placeholder="<?= $lang['name'] ?>" required />
+											<div class="input-icon"><i class="fa fa-user"></i></div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-half">
+										<h4><?= $lang['birth_date'] ?></h4>
+										<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="birth_date" id="birth_date" placeholder="<?= $lang['input_birth_date'] ?>" autocomplete="off" required />
+											<div class="input-icon"><i class="far fa-calendar-plus"></i></div>
+										</div>
+									</div>
+									<div class="col-half">
+										<h4>Gender</h4>
+										<div class="input-group input-group-regist input-regist input-regist-gender"><input id="gender-male" type="radio" name="sex" value="M" required /><label for="gender-male"><?= $lang['male'] ?></label><input id="gender-female" type="radio" name="sex" value="F" required /><label for="gender-female"><?= $lang['female'] ?></label><input id="gender-other" type="radio" name="sex" value="O" required /><label for="gender-other"><?= $lang['other'] ?></label></div>
+									</div>
+								</div>
+								<hr>
+								
+									<h4>Information Details</h4>
 									<div class="row">
-										<h4>Information Details</h4>
-										<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="weight" id="weight" placeholder="<?= $lang['input_weight'] ?>" />
+										<div class="col-half">
+											<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="weight" id="weight" placeholder="<?= $lang['input_weight'] ?>" />
 											<div class="input-icon"><i class="fas fa-weight"></i></div>
+											</div>
 										</div>
-										<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="address" id="address" placeholder="<?= $lang['input_address'] ?>" />
+										<div class="col-half">
+											<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="address" id="address" placeholder="<?= $lang['input_address'] ?>" />
 											<div class="input-icon"><i class="fas fa-address-card"></i></div>
+											</div>
 										</div>
-										
-										<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="note" id="note" placeholder="<?= $lang['input_note'] ?>" />
-											<div class="input-icon"><i class="fas fa-sticky-note"></i></div>
+									</div>
+								
+									
+									<div class="row">
+										<div class="col-half">
+											<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="note" id="note" placeholder="<?= $lang['input_note'] ?>" />
+												<div class="input-icon"><i class="fas fa-sticky-note"></i></div>
+											</div>
 										</div>
-										<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="email" id="email" placeholder="<?= $lang['input_email'] ?>" />
-											<div class="input-icon"><i class="fas fa-at"></i></div>
+										<div class="col-half">
+											<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="email" id="email" placeholder="<?= $lang['input_email'] ?>" />
+												<div class="input-icon"><i class="fas fa-at"></i></div>
+											</div>
 										</div>
-										<!-- <h4><?= $lang['no_telp'] ?></h4> -->
+									</div>
+									
+								<div class="row">
+									<div class="input-group input-group-regist input-regist"><select name="kodearea">
+											<option value="+62"> +62 | Indonesia</option>
+											<option value="+60">+60 | Malaysia</option>
+											<option value="+95">+95 | Myanmar</option>
+											<option value="+673">+673 | Brunei Darussalam</option>
+											<option value="+855">+855 | Kamboja</option>
+											<option value="+856">+856 | Laos</option>
+											<option value="+670">+670 | Timor Leste</option>
+											<option value="+65">+65 | Singapura</option>
+											<option value="+66">+66 | Thailand</option>
+											<option value="+63">+63 | Filipina</option>
+									</div>
+									<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="phone" id="phone" placeholder="<?= $lang['input_telp'] ?>" style="width: 70%;" />
+									</div>
 
 
-										<div class="input-group input-group-regist input-regist"><select name="kodearea">
-												<option value="+62"> +62 | Indonesia</option>
-												<option value="+60">+60 | Malaysia</option>
-												<option value="+95">+95 | Myanmar</option>
-												<option value="+673">+673 | Brunei Darussalam</option>
-												<option value="+855">+855 | Kamboja</option>
-												<option value="+856">+856 | Laos</option>
-												<option value="+670">+670 | Timor Leste</option>
-												<option value="+65">+65 | Singapura</option>
-												<option value="+66">+66 | Thailand</option>
-												<option value="+63">+63 | Filipina</option>
-										</div>
-										<div class="input-group input-group-regist input-regist input-group-icon"><input type="text" name="phone" id="phone" placeholder="<?= $lang['input_telp'] ?>" style="width: 70%;" />
-										</div>
 
+									<div style="width: 100%;"><button class="btn btn-pink-ms btn-expertise waves-effect waves-light" type="submit" name="submit" style="float: right; color:#fff;"><span><b><?= $lang['add_data'] ?></b></span></button></div>
+								</div>
+							</form>
+						</div>
 
-
-										<div style="width: 100%;"><button class="btn btn-pink-ms btn-expertise waves-effect waves-light" type="submit" name="submit" style="float: right; color:#fff;"><span><b><?= $lang['add_data'] ?></b></span></button></div>
-								</form>
-							</div>
-
-					</div>
-
-					<div>
-						<div class="container-fluid" style="margin-bottom: 100px;">
-							<div class="head-title" style="width: 365px;">
-								<h3 class="textsearchnewpasien2">List Patient</h3>
-							</div>
-							<div class="row left-information">
+						<div class="container-fluid cont-regist" style="margin-bottom: 100px;">
+							<div class=" ">
+							<h3 class="textsearchnewpasien2">List Patient</h3>
 								<div class="table-view col-md-12 table-box" style="overflow-x: scroll;">
 									<table class="table-dicom table-paginate" border="1" cellpadding="8" cellspacing="0" style="margin-top: 3px;">
 										<thead>
@@ -165,7 +166,7 @@ if ($_SESSION['level'] == "radiographer") {
 												<td><?= defaultValue($row['note']) ?></td>
 												<td><?= defaultValueDateTime($row['created_at']) ?></td>
 												<td width="150">
-													<a href="registration-live.php?pk=<?= $row['pk']; ?>" class="btn-worklist" value="Create Order" style="color: #ececec;"><?= $lang['create_order'] ?>
+													<a href="registration-live.php?pk=<?= $row['pk']; ?>" class="btn btn-sm btn-pink-ms" value="Create Order" style="color: #ececec;"><?= $lang['create_order'] ?>
 												</td>
 											</tr>
 											<?php $i++; ?>
@@ -174,15 +175,12 @@ if ($_SESSION['level'] == "radiographer") {
 								</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- <div class="footerindex">
-			<div class="">
-				<?php include('footer-itw.php'); ?>
-			</div>
-		</div> -->
+		
 		<?php include('script-footer.php'); ?>
 		<script type="text/javascript" src="js/jquery.datetimepicker.full.js"></script>
 		<link rel="stylesheet" type="text/css" media="screen" href="css/jquery.datetimepicker.min.css">
