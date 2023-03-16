@@ -269,7 +269,7 @@ if ($_SESSION['level'] == "radiographer") {
 
 
                               <!-- kontras alergi -->
-                              <label style="font-weight: bold;" for="contrast_allergies"><b><?= $lang['contrast_allergy'] ?></b></label><br>
+                              <!-- <label style="font-weight: bold;" for="contrast_allergies"><b><?= $lang['contrast_allergy'] ?></b></label><br>
                               <label class="radio-admin">
                                 <input type="radio" name="contrast_allergies" id="contrast_allergies" value="0"> <?= $lang['no'] ?>
                                 <span class="checkmark"></span>
@@ -277,9 +277,21 @@ if ($_SESSION['level'] == "radiographer") {
                               <label class="radio-admin">
                                 <input type="radio" name="contrast_allergies" id="contrast_allergies" value="1"> <?= $lang['yes'] ?>
                                 <span class="checkmark"></span>
-                              </label><br><br>
+                              </label><br><br> -->
+
+                              <div class="container-fluid">
+                                <label><b><?= $lang['contrast_allergy'] ?></b></label><br>
+                                <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px;">
+                                  <div class="input-group input-group-regist input-regist input-regist-gender">
+                                    <input type="radio" name="contrast_allergies" value="0" id="contrast_allergies0" checked="checked" required /><label for="contrast_allergies0"><?= $lang['no'] ?></label>
+                                    <input type="radio" name="contrast_allergies" value="1" id="contrast_allergies1" required /><label for="contrast_allergies1"><?= $lang['yes'] ?></label>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- End of kontras alergi -->
+
                               <!-- prioritas -->
-                              <label style="font-weight: bold;" for="priority"><b><?= $lang['priority'] ?></b></label><br>
+                              <!-- <label style="font-weight: bold;" for="priority"><b><?= $lang['priority'] ?></b></label><br>
                               <label class="radio-admin">
                                 <input type="radio" name="priority" id="priority" value="normal"> Normal
                                 <span class="checkmark"></span>
@@ -288,15 +300,30 @@ if ($_SESSION['level'] == "radiographer") {
                                 <input type="radio" name="priority" id="priority" value="cito"> Cito
                                 <span class="checkmark"></span>
                               </label>
-                              <br><br>
+                              <br><br> -->
+
+                              <div class="container-fluid">
+                                <label><b><?= $lang['priority'] ?></b></label><br>
+                                <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px;">
+                                  <div class="input-group input-group-regist input-regist input-regist-gender">
+                                    <input type="radio" name="priority" value="normal" id="priority0" checked="checked" required /><label for="priority0">Normal</label>
+                                    <input type="radio" name="priority" value="cito" id="priority1" required /><label for="priority1">Cito</label>
+                                  </div>
+                                </div>
+                              </div>
+
+                               <!-- End of prioritas -->
+
                               <!-- special needs -->
-                              <label style="font-weight: bold;" for="spc_needs"><b><?= $lang['spc_needs'] ?></b></label><br>
-                              <textarea rows="4" cols="50" type="text" name="spc_needs" id="spc_needs" style="width: 315; height: 90px;"></textarea><br><br>
+                              <div class="container-fluid">
+                                <label style="font-weight: bold;" for="spc_needs"><b><?= $lang['spc_needs'] ?></b></label><br>
+                                <textarea rows="4" cols="50" type="text" name="spc_needs" id="spc_needs" style="width: 315; height: 90px;"></textarea><br><br>
+                              </div>
                               <!-- from order -->
                               <input type="hidden" name="fromorder" id="fromorder" value="RIS">
                               <!-- create time -->
                               <input type="hidden" name="create_time" id="create_time" value="<?= date('Y-m-d H:i:s'); ?>">
-                              <button class="btn btn-info btn-lg" type="submit" id="submit" name="submit" style="border-radius: 5px; box-shadow:none">
+                              <button class="btn btn-lg waves-effect waves-light" type="submit" id="submit" name="submit" style="border-radius: 5px; box-shadow:none; background-color:#9f015d; color: #fff;">
                                 <span class="spinner-grow spinner-grow-sm loading" role="status" aria-hidden="true"></span>
                                 <p class="loading" style="display:inline;">Loading...</p>
                                 <p class="ubah" style="display:inline;">Order</p>

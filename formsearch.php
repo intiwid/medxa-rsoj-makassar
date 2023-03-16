@@ -22,20 +22,24 @@ $date2 = date('d-m-Y 23:59');
                     </div>
                 </label>
                 <div class="wrap-search">
-                    <!-- <div class="note5"><label>Search by Modality</label></div> -->
-                    <?php
-                    $sql = mysqli_query(
-                        $conn_pacsio,
-                        "SELECT mods_in_study FROM study GROUP BY mods_in_study LIMIT 30"
-                    );
-                    while ($row = mysqli_fetch_assoc($sql)) { ?>
-                        <tr>
-                            <td><label class="c1"><input class="common_selector cbox search-input-workload" type="checkbox" id="checkbox" name="mods_in_study[]" value="<?= $row['mods_in_study']; ?>" checked><span class="checkmark1"></span></td>
-                            <td><?= $row['mods_in_study']; ?></label></td>
-                        </tr>
-                    <?php } ?>
+                    <div class="container">
+                        <ul class="ks-cboxtags">
+                            <!-- <div class="note5"><label>Search by Modality</label></div> -->
+                            <?php
+                            $sql = mysqli_query(
+                                $conn_pacsio,
+                                "SELECT mods_in_study FROM study GROUP BY mods_in_study LIMIT 30"
+                            );
+                            while ($row = mysqli_fetch_assoc($sql)) { ?>
+                                <li><label><input class="common_selector cbox checkbox4" type="checkbox" id="checkbox" name="mods_in_study[]" value="<?= $row['mods_in_study']; ?>" checked><span><?= $row['mods_in_study']; ?></span></label></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+
+                    
                 </div>
             </div>
+
             <div style="padding: 0px;" s class="col-lg-5 input-name">
                 <label class="work-1"><?= $lang['search_patient'] ?></label><br>
                 <div class="wrap-search">
