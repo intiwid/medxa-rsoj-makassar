@@ -585,7 +585,7 @@ table.dataTable tbody td {
 }
 
 .btn-worklist {
-  background-color: #348C6E;
+  background-color: #9f015d;
   color: #fff;
   display: inline-block;
   border-width: 1px;
@@ -601,7 +601,7 @@ table.dataTable tbody td {
 }
 
 .btn-worklist:hover {
-  background-color: #529b82;
+  background-color: #8a0352;
   color: #fff;
   box-shadow: none;
 }
@@ -631,12 +631,12 @@ table.dataTable tbody td {
 
 
 .search-workload {
-  background-color: #f2f2f2;
+  background-color: #fff;
   color: #4d4d4d;
   /* border: 4px solid #e6e6e6; */
   margin-bottom: 8px;
   border-radius: 6px;
-  border-bottom: 1px solid #d5d5d5;
+  /* border-bottom: 1px solid #d5d5d5; */
 }
 
 .note5 {
@@ -1360,14 +1360,14 @@ select {
 
 .btn-inti2 {
   margin: 1px;
-  padding: 2px 3px;
+  padding: 3px 3px;
   width: 25px;
   /*margin-right: 3px;*/
   /* color: #fff; */
   /*margin-bottom: 5px;*/
   font-size: 12px;
   height: 25px;
-  border-top: solid 1px #d0d0d0;
+  /* border-top: solid 1px #d0d0d0; */
   box-shadow: none;
 }
 
@@ -4064,79 +4064,78 @@ table.dataTable > thead .sorting::before, table.dataTable > thead .sorting::afte
 
 
 .ks-cboxtags {
-    list-style: none;
-    /* padding: 20px; */
+  list-style: none;
+  /* padding: 20px; */
 }
 
 .ks-cboxtags li {
-    display: inline;
+  display: inline;
 }
 
 .ks-cboxtags li span {
-    display: inline-block;
-    background-color: rgba(255, 255, 255, .9);
-    border: 2px solid rgba(139, 139, 139, .3);
-    color: #adadad;
-    border-radius: 10px;
-    white-space: nowrap;
-    margin: 3px 0px;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    transition: all .2s;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, .9);
+  border: 2px solid rgba(139, 139, 139, .3);
+  color: #adadad;
+  border-radius: 10px;
+  white-space: nowrap;
+  margin: 3px 0px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all .2s;
 }
 
 .ks-cboxtags li span {
-    padding: 8px 12px;
-    cursor: pointer;
+  padding: 8px 12px;
+  cursor: pointer;
 }
 
 .ks-cboxtags li span::before {
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    font-size: 12px;
-    padding: 2px 6px 2px 2px;
-    content: "\f068";
-    transition: transform .3s ease-in-out;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 12px;
+  padding: 2px 6px 2px 2px;
+  content: "\f068";
+  transition: transform .3s ease-in-out;
 }
 
 .ks-cboxtags li input[type="checkbox"]:checked+span::before {
-    content: "\f00c";
-    transform: rotate(-360deg);
-    transition: transform .3s ease-in-out;
+  content: "\f00c";
+  transform: rotate(-360deg);
+  transition: transform .3s ease-in-out;
 }
 
 .ks-cboxtags li input[type="checkbox"]:checked+span {
-    border: 2px solid #fff;
-    background-color: #1f69b7;
-    color: #fff;
-    transition: all .2s;
+  border: 2px solid #fff;
+  background-color: #377d71;
+  color: #fff;
+  transition: all .2s;
 }
 
 .ks-cboxtags li input[type="checkbox"] {
-    display: absolute;
+  display: absolute;
 }
 
 .ks-cboxtags li input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
+  position: absolute;
+  opacity: 0;
 }
 
 .ks-cboxtags li input[type="checkbox"]:focus+span {
-    border: 1px solid #377d71;
+  border: 1px solid #377d71;
 }
 
-.card-body i,
-.card-body h4 {
-    color: #2a412f;
+.card-body i, .card-body h4{
+  color: #2a412f;
 }
 
 .table-dicom tbody tr.highlight td {
