@@ -217,7 +217,7 @@ Contact us at (Office) +62-21-4532648</p>",
 	// END OF CHART
 
 	//  LOGIN
-	"welcome_intiwid" => "Welcome to INTIWID RISPACS",
+	"welcome_Multimed" => "Welcome to Multimed RISPACS",
 	"contact_us" => "Contact US",
 	"login" => "Login",
 

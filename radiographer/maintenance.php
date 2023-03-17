@@ -62,7 +62,7 @@ if ($_SESSION['level'] == "radiographer") {
             <div class="main-tenance">
                 JADWAL MAINTENANCE :<b> <?php echo date("d M Y", strtotime($date_maintenance)); ?></b>
                 <p><br>
-                    BERIKUT ADALAH TATA CARA UNTUK MAINTENANCE SERVER INTIWID RISPACS <br>
+                    BERIKUT ADALAH TATA CARA UNTUK MAINTENANCE SERVER Multimed RISPACS <br>
                     1. CLOSE CMD PACS<br>
                     2. CLOSE CMD MPPS<br>
                     3. CLOSE TOMCAT<br>

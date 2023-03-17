@@ -130,7 +130,7 @@ $workload = mysqli_query($conn, "SELECT * FROM xray_recyclebin ORDER BY pk DESC"
           </td>
           <td>
             <a style="text-decoration:none;" class="" href="../radiology/pdf/testpdf5.php?uid=<?= $row1['uid']; ?>" target="_blank">
-              <span class="btn red lighten-1 btn-intiwid1"><i class="fas fa-file-pdf" data-toggle="tooltip" title="PDF"></i></span>
+              <span class="btn red lighten-1 btn-Multimed1"><i class="fas fa-file-pdf" data-toggle="tooltip" title="PDF"></i></span>
             </a>
 
             <!-- <a style="font-size: 10px;" class="" type="button" data-toggle="modal" data-target="#myModal"> -->

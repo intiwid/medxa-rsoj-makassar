@@ -985,7 +985,7 @@ canvas {
 .footerindex {
   height: 30px;
   line-height: 10px;
-  background: #1ea9e4;
+  background: #2a645a;
   color: #fff;
   /* position: fixed; */
 
@@ -3292,6 +3292,7 @@ font-size: large;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
+  text-align: center;
 }
 
 .dashboard-home2 {
@@ -3303,16 +3304,16 @@ font-size: large;
 }
 
 .feb-button {
-  background-color: #1f69b7;
-  width: 100%;
-  height: 86vh;
-  color: #fff;
+  background-color: #fff;
+  /* width: 100%; */
+  /* height: 86vh; */
+  color: #2c6a60;
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
 
@@ -3325,13 +3326,13 @@ font-size: large;
 
 .site-title {
   font-size: 30px;
-  color: rgb(221, 221, 221);
+  color: #537973;
   margin-bottom: -7px;
 }
 
 .site-slogan {
   font-size: 22px;
-  color: rgb(223, 223, 223);
+  color: #537973;
 }
 
 /*---------------------------------*/
@@ -3382,8 +3383,8 @@ button:focus {
 
 .more {
   position: relative;
-  top: 30px;
-  left: 18%;
+  top: 49px;
+  left: 7%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
@@ -4332,6 +4333,61 @@ table.dataTable > thead .sorting::before, table.dataTable > thead .sorting::afte
   color: #9f015d;
 }
 
+
+.settings-card{
+  background: white;
+  border-radius: 5px;
+  padding: 0;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #377d71;
+  border-radius: 0;
+  font-size: 20px;
+}
+
+.nav-pills .nav-item a{
+  font-size: 20px;
+  color: #377d71;
+}
+
+.settings-card .tab-content{
+  height: 100vh;
+}
+
+.btn-en {
+  background: url(../image/Flag_britanian.png) no-repeat;
+  color: #000;
+}
+
+.btn-id {
+  background: url(../image/Flag_indo.png) no-repeat;
+  color: #c1c1c1;
+}
+
+.btn-en,
+.btn-id {
+
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  padding: 30px 40px;
+  font-size: 23px;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid #d9d9d9;
+  border-radius: 5px;
+}
+
+.input-regist .select-dokrad option{
+  background-color: #f9f9f9; 
+  color:#747474;
+}
+
+.btn-group .btn{
+  padding-top: 5px;
+}
 
   
   @media (max-width: 960px) {

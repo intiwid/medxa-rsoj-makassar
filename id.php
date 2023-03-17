@@ -215,7 +215,7 @@ Hubungi kami di (Kantor) + 62-21-4532648 </p>",
 	// END OF CHART
 
 	//  LOGIN
-	"welcome_intiwid" => "Selamat Datang di INTIWID RISPACS",
+	"welcome_Multimed" => "Selamat Datang di Multimed RISPACS",
 	"contact_us" => "Hubungi Kami",
 	"login" => "Masuk",
 

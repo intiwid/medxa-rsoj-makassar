@@ -181,7 +181,7 @@ if (!($_SESSION['username'] = $data['username'])) {
     </div>
     <!-- <div class="footerindex">
 
-      <center><b>Developed by Intiwid Medical System</b></center>
+      <center><b>Developed by Multimed Medical System</b></center>
 
     </div> -->
 

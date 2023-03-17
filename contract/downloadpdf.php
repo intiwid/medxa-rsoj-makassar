@@ -241,7 +241,7 @@ if ($_SESSION['level'] == "radiographer") {
                                 <div><img src="../icon-menubar/new_icon/excel.png"></div>
                                 <div class="heading">FILE BACK UP REPORT</div>
                                 <div class="site-title">Your Report Files</div>
-                                <div class="site-slogan"><a style="color: #e37979; font-weight: bold;" href="index.php">INTIWID</a> Backup</div>
+                                <div class="site-slogan"><a style="color: #e37979; font-weight: bold;" href="index.php">Multimed</a> Backup</div>
                             </div>
                         </div>
                     </div>

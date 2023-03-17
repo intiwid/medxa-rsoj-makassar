@@ -37,7 +37,7 @@ if ($_SESSION['level'] == "radiographer") {
                   <div><img src="../icon-menubar/new_icon/send.png"></div>
                   <div class="heading">DICOM SEND</div>
                   <div class="site-title">Upload Your Dicom Files</div>
-                  <div class="site-slogan">With <a style="color: #e37979; font-weight: bold;" href="index.php">INTIWID</a> Dicom Send</div>
+                  <div class="site-slogan">With <a style="color: #e37979; font-weight: bold;" href="index.php">Multimed</a> Dicom Send</div>
                 </div>
               </div>
             </div>

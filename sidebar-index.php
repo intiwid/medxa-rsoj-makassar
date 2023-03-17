@@ -376,7 +376,7 @@
                 <li><a href="report.php"><?= $lang['download_excel'] ?></a></li>
                 <li><a href="uploadexcel.php"><?= $lang['backup_excel'] ?></a></li>
                 <li><a href="downloadexcel.php">Storage Excel</a></li>
-                <li><a href="chart1.php"><?= $lang['chart'] ?></a></li>
+                <li><a href="chart.php"><?= $lang['chart'] ?></a></li>
             </ul>
         </li>
         <!-- <li id="storage1">

@@ -245,7 +245,7 @@ if (!$idpdf && $_SESSION['level'] == "superadmin") {
                                 <div><img src="../icon-menubar/new_icon/excel.png"></div>
                                 <div class="heading">UPLOAD FILE REPORT</div>
                                 <div class="site-title">Back Up Your Report Files</div>
-                                <div class="site-slogan">With <a style="color: #e37979; font-weight: bold;" href="index.php">INTIWID</a> Backup</div>
+                                <div class="site-slogan">With <a style="color: #e37979; font-weight: bold;" href="index.php">Multimed</a> Backup</div>
                             </div>
                         </div>
                     </div>

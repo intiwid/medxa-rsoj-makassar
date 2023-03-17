@@ -77,38 +77,46 @@ if (isset($_POST["save_lanjutkan"])) {
 ?>
 <div class="row">
     <div id="content1">
-        <div class="col-12" style="padding: 0;">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                    <li class="breadcrumb-item active">
-                        New Template
-                    </li>
-                </ol>
-            </nav>
-        </div>
+       
         <div class="container">
             <div class="about-inti back-search" style="padding: 10px;">
-                <h1><?= $lang['create_template'] ?></h1>
+            
                 <form action="" method="post">
-                    <input class="form-control" type="text" name="title" placeholder="<?= $lang['insert_tittle'] ?>.." style="width: 100%; margin-bottom: 7px;" required>
-                    <textarea class="ckeditor" name="fill" style="width: 100%; height: 250px;" id="ckeditor" required></textarea>
-                    <?php if ($level == 'radiology') { ?>
-                        <input type="hidden" name="username" value="<?= $_SESSION['username'] ?>">
-                    <?php } else { ?>
-                        <select name="username">
-                            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                                <option value="<?= $row['username']; ?>"><?= $row['dokrad_name'] . ' ' . $row['dokrad_lastname']; ?></option>
-                            <?php } ?>
-                        </select>
-                    <?php } ?>
-                    <br>
-                    <button class="btn-worklist" type="submit" name="submit"><?= $lang['save_template'] ?></button>
-                    <?php
-                    if ($level == 'superadmin') { ?>
-                        <button class="btn-worklist" type="submit" name="save_lanjutkan">Save Dan Lanjutkan</button>
-                    <?php } ?>
-                    <a href="view_template.php" class="btn btn-worklist3 waves-effect waves-light" style="box-shadow: none; font-size: 11px;">View Template</a>
+                    <div class="row" style="margin: 0;">
+                        <div class="col-half">
+                            <div class="input-group input-group-regist input-regist input-group-icon">
+                                <input class="form-control" type="text" name="title" placeholder="<?= $lang['insert_tittle'] ?>.." style="width: 100%; margin-bottom: 7px;" required>
+                                <div class="input-icon"><i class="fa-solid fa-newspaper"></i></div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-half">
+                            <div class="input-group input-group-regist input-regist input-group-icon">
+                                <?php if ($level == 'radiology') { ?>
+                                    <input type="hidden" name="username" value="<?= $_SESSION['username'] ?>">
+                                <?php } else { ?>
+                                    <select name="username" class="select-dokrad" style="width: 100%; background-color: #f9f9f9; color:#747474;">
+                                        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                                            <option value="<?= $row['username']; ?>"><?= $row['dokrad_name'] . ' ' . $row['dokrad_lastname']; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                <?php } ?>
+                                <div class="input-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="justify-content: center; display: flex;">
+                        <textarea class="ckeditor" name="fill" style="width: 100%; height: 250px;" id="ckeditor" required></textarea><br>
+                    </div>
+                        
+                        <button class="btn-worklist" type="submit" name="submit"><?= $lang['save_template'] ?></button>
+                        <?php
+                        if ($level == 'superadmin') { ?>
+                            <button class="btn-worklist" type="submit" name="save_lanjutkan">Save Dan Lanjutkan</button>
+                        <?php } ?>
+                        <a href="view_template.php" class="btn btn-worklist3 waves-effect waves-light" style="box-shadow: none; font-size: 11px;">View Template</a>
+                    
                 </form>
             </div>
         </div>

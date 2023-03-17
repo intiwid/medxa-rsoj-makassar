@@ -108,7 +108,7 @@ if (!($_SESSION['username'] = $data['username'])) {
 
   <body>
 
-    <marquee class="marquee1"><?= $lang['welcome_intiwid'] ?> V.1.12</marquee>
+    <marquee class="marquee1"><?= $lang['welcome_Multimed'] ?> V.1.12</marquee>
 
     <div class="sdsd container">
       <div class="row">
@@ -120,7 +120,7 @@ if (!($_SESSION['username'] = $data['username'])) {
             <i class="fas fa-tags"></i>&nbsp;
             Description
           </h3>
-          <p><b>Panduan Penggunaan Intiwid RisPacs.</b></p>
+          <p><b>Panduan Penggunaan Multimed RisPacs.</b></p>
           <p>Download Panduan lengkap <a href="read-more/manual-book.docx">Di sini</a></p>
           <h3 class="ui horizontal divider header">
             <i class="fas fa-chart-bar"></i>&nbsp;

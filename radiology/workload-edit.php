@@ -281,7 +281,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 										<?php $i++;
 										} ?>
 									</div>
-									<!-- intiwid viewer -->
+									<!-- Multimed viewer -->
 									<div class="data-patient">
 										<div class="content2-adm li-adm">
 											<h4 style="margin: 0px;">Viewer</h4>

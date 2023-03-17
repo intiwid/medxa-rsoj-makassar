@@ -14,7 +14,7 @@ if ($_SESSION['level'] == "radiographer") {
         <?php include('head.php'); ?>
         <style>
             body {
-                background-color: #1f69b7;
+                background-color: #377d71;
             }
         </style>
     </head>
@@ -32,7 +32,7 @@ if ($_SESSION['level'] == "radiographer") {
                                     <div><img src="../icon-menubar/new_icon/excel.png"></div>
                                     <div class="heading">FILE BACK UP REPORT</div>
                                     <div class="site-title">Your Report Files</div>
-                                    <div class="site-slogan"><a style="color: #85cbb3; font-weight: bold;" href="index.php">INTIWID</a> Backup</div>
+                                    <div class="site-slogan"><a style="color: #85cbb3; font-weight: bold;" href="index.php">Multimed</a> Backup</div>
                                 </div>
                             </div>
                         </div>
@@ -93,11 +93,7 @@ if ($_SESSION['level'] == "radiographer") {
             </div>
         </div>
 
-        <div class="footerindex">
-            <div class="">
-                <?php include('footer-itw.php'); ?>
-            </div>
-        </div>
+       
 
         <?php include('script-footer.php'); ?>
         <script>
