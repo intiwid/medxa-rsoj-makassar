@@ -18,7 +18,7 @@ CKEDITOR.editorConfig = function (config) {
 
   config.uiColor = "#f1f1f1";
   config.height = 482;
-  config.width = "18.5cm";
+  config.width = "100%";
 
   // The toolbar groups arrangement, optimized for two toolbar rows.
   config.toolbarGroups = [

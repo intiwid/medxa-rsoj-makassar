@@ -206,7 +206,7 @@ body {
   width: auto;
   overflow-x: scroll;
   white-space: nowrap;
-  /*  scrollbar-color: #1f69b7 #cbcccb; 
+  /*  scrollbar-color: #377d71 #cbcccb; 
   scrollbar-width: thin;*/
 }
 
@@ -294,7 +294,7 @@ table.table-dicom tbody tr {
   padding-bottom: 5px;
   text-align: left;
   background: #fff;
-  color: #1f69b7;
+  color: #377d71;
   text-align: center;
   /* font-weight: bold; */
   border-bottom: 1px solid #d0d0d0;
@@ -322,7 +322,7 @@ table.table-dicom tbody tr {
 
 .table-box1 {
   background-color: whitesmoke;
-  border-top: 5px solid#1f69b7;
+  border-top: 5px solid#377d71;
   margin-top: 10px;
   padding: 5px 75px;
 }
@@ -459,7 +459,7 @@ table.dataTable tbody td {
 
 .nav-fostrap li:hover a {
   background: #ecebeb;
-  color: #1f69b7 !important;
+  color: #377d71 !important;
   border-radius: 12px;
 }
 
@@ -676,7 +676,7 @@ table.dataTable tbody td {
 }
 
 .reg-1 {
-  background-color: #1f69b7;
+  background-color: #377d71;
   width: 100%;
   color: #fff;
   padding-left: 5px;
@@ -692,7 +692,7 @@ table.dataTable tbody td {
 }*/
 
 .border-reg {
-  border-right: 3px solid #1f69b7;
+  border-right: 3px solid #377d71;
 }
 
 .wrap-search {
@@ -733,7 +733,7 @@ table.dataTable tbody td {
 .work-1 {
   background-color: #fff;
   width: 100%;
-  color: #1f69b7;
+  color: #377d71;
   padding: 1px 5px 5px 3px;
   font-weight: bold;
   border-bottom: 1px solid #d0d0d0;
@@ -800,7 +800,7 @@ table.dataTable tbody td {
 
 .btn-worklist3 {
   background-color: #fff;
-  color: #1f69b7;
+  color: #377d71;
   display: inline-block;
   border-width: 1px;
   border-style: solid;
@@ -946,7 +946,7 @@ canvas {
 }
 
 .label-font {
-  background-color: #1f69b7;
+  background-color: #377d71;
   /* width: 40%; */
   /* padding: 5px; */
   color: #fff;
@@ -1190,7 +1190,7 @@ select {
 
 .hr-home {
   height: 5px;
-  background-color: #1f69b7;
+  background-color: #377d71;
 }
 
 
@@ -1275,7 +1275,7 @@ select {
 
 .search-workload5 {
   background-color: #116d93;
-  color: #1f69b7;
+  color: #377d71;
   border: 4px solid #116d93;
   margin-bottom: 25px;
   height: 210px;
@@ -1297,7 +1297,7 @@ select {
 }
 
 .report-input2 {
-  border-right: 3px solid #1f69b7;
+  border-right: 3px solid #377d71;
   height: 50px;
 }
 
@@ -1408,7 +1408,7 @@ select {
 
 .hr-home2 {
   height: 5px;
-  background-color: #1f69b7;
+  background-color: #377d71;
   margin: 0px;
 }
 
@@ -1655,12 +1655,12 @@ select {
 
 
 #menu a.active {
-  background-color: #1f69b7;
+  background-color: #377d71;
   color: #fff;
 }
 
 #menu a:hover {
-  background-color: #1f69b7;
+  background-color: #377d71;
   color: #fff;
 }
 
@@ -1787,7 +1787,7 @@ label.file1:after {
 }
 
 .textsearchnewpasien2 {
-  color: #1f69b7;
+  color: #377d71;
   /* background: #fff; */
   /* margin: 7px 0px 0px 0px; */
   padding: 1px 5px 11px 5px;
@@ -1831,7 +1831,7 @@ label.file1:after {
 
 .table-dicom thead th,
 .table-dicom thead td {
-  /* border-bottom: 3px solid #1f69b7; */
+  /* border-bottom: 3px solid #377d71; */
 }
 
 /* table.dataTable thead th,
@@ -2186,7 +2186,7 @@ input[type="submit"] {
 }
 
 .template-save1 {
-  background-color:#15519d;
+  background-color:#2a6258;
   height: 30px;
   width: 100%;
   /* margin-left: 7px; */
@@ -2612,7 +2612,7 @@ input[type="submit"] {
 
 /* When the radio button is checked, add a blue background */
 .radio-admin input:checked~.checkmark-male {
-  background-color: #1f69b7;
+  background-color: #377d71;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -2626,7 +2626,7 @@ input[type="submit"] {
 
 /* When the radio button is checked, add a blue background */
 .radio-admin input:checked~.checkmark-female {
-  background-color: #1f69b7;
+  background-color: #377d71;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -2640,7 +2640,7 @@ input[type="submit"] {
 
 /* When the radio button is checked, add a blue background */
 .radio-admin input:checked~.checkmark-other {
-  background-color: #1f69b7;
+  background-color: #377d71;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -2884,7 +2884,7 @@ input[type="submit"] {
 
   0%,
   49% {
-    background-color: #1f69b7;
+    background-color: #377d71;
     /* border: 3px solid #e50000; */
   }
 
@@ -2904,8 +2904,8 @@ input[type="submit"] {
 }
 
 .div-left {
-  min-height: 764px;
-  background: #1f69b7;
+  min-height: 700px;
+  background: #377d71;
   /* margin-top: 0px; */
   border-radius: 3px;
   padding: 5px;
@@ -2949,7 +2949,7 @@ input[type="submit"] {
 
 .info-patient {
   /* margin: 10px 10px 10px 5px; */
-  border: 2px solid #1f69b7;
+  border: 2px solid #377d71;
 }
 
 .info-patient2 {
@@ -2982,7 +2982,7 @@ input[type="submit"] {
   width: 100%;
   border-radius: 6px;
   padding: 5px;
-  border: 2px solid #1f69b7;
+  border: 2px solid #377d71;
   overflow: auto;
   height: 275px;
 }
@@ -2990,7 +2990,7 @@ input[type="submit"] {
 .data-patient {
   color: #484848;
   background-color: #fcfcfc;
-  border: 2px solid #1f69b7;
+  border: 2px solid #377d71;
   border-radius: 5px;
   padding: 5px;
 }
@@ -3087,7 +3087,7 @@ input[type="submit"] {
 }
 
 .buttons1 a.button8.delete1:hover {
-  background: #1f69b7;
+  background: #377d71;
   color: #fff;
   box-shadow: none;
 }
@@ -3109,11 +3109,11 @@ input[type="submit"] {
   padding: 10px;
   border-radius: 5px;
   /* margin: 10px 10px 10px 5px; */
-  border: 2px solid #1f69b7;
+  border: 2px solid #377d71;
 }
 
 .div-mid {
-  background: #1f69b7;
+  background: #377d71;
   padding: 0px 5px 0px 5px;
   border-radius: 3px;
   min-height: 764px;
@@ -3126,7 +3126,7 @@ input[type="submit"] {
 }
 
 .textarea-ckeditor {
-  border: 2px solid #1f69b7;
+  border: 2px solid #377d71;
   width: 100%;
   justify-content: center;
   display: flex;
@@ -3162,7 +3162,7 @@ input[type="submit"] {
 
 .div-right {
   min-height: 757px;
-  background: #1f69b7;
+  background: #377d71;
   /* margin: 0px 10px 20px 10px; */
   border-radius: 3px;
   padding: 10px;
@@ -3213,7 +3213,7 @@ input[type="submit"] {
 
 
 .infopatientworklist>tbody>tr:nth-of-type(2n+1) {
-  color: #1f69b7;
+  color: #377d71;
 }
 
 
@@ -3464,7 +3464,7 @@ button:focus {
   font-family: verdana;
   font-size: 12px;
   font-weight: 200;
-  background-color: #1f69b7;
+  background-color: #377d71;
   position: fixed;
   top: 0px;
   width: 250px;
@@ -3473,7 +3473,7 @@ button:focus {
   border-right: 2px solid #1ea9e4;
   }
   .nav-side-menu .brand {
-  background-color: #1f69b7;
+  background-color: #377d71;
   line-height: 50px;
   display: block;
   text-align: center;
@@ -3518,10 +3518,10 @@ button:focus {
   }
   .nav-side-menu ul .sub-menu1 li,
   .nav-side-menu li .sub-menu1 li {
-  background-color: #1f69b7;
+  background-color: #377d71;
   border: none;
   line-height: 28px;
-  /* border-bottom: 1px solid #1f69b7; */
+  /* border-bottom: 1px solid #377d71; */
   margin: 0 22px;
   padding: 1px 19px;
   }
@@ -3603,7 +3603,7 @@ button:focus {
 .disokin{
   height: 125%;
   width: 100%;
-  background: #1f69b7;
+  background: #377d71;
   position: absolute;
   z-index: 900;
 }
@@ -3732,7 +3732,7 @@ table.dataTable > thead .sorting::before, table.dataTable > thead .sorting::afte
 
 .pagination .page-item.active .page-link {
   color: #fff;
-  background-color: #1f69b7;
+  background-color: #377d71;
   border-radius: .125rem;
   margin-bottom: 7px;
   border-top: 1px solid #868686;

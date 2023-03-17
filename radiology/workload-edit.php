@@ -126,7 +126,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 	</style>
 
 	<body>
-		<?php include('sidebar.php');
+		<?php include('../sidebar-index.php');
 		require '../modal.php'; ?>
 		<div class="container-fluid" id="main">
 			<div class="row">

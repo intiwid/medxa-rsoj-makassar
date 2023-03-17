@@ -4,7 +4,7 @@ $lang = array(
 	"pricing" => "Pricing",
 	"about_us" => "About Us",
 	"about" => "About",
-	"about_content" => " <p>PT. Intimedika Puspa Indah is the leading medical devices distributor for pharmaceutical and healthcare institutions. The devices we provide are used in many fields, including  pharmaceutical laboratory, medicine, midwifery, nursing, physiotherapy, clinical laboratories. <br><br>
+	"about_content" => " <p>  is the leading medical devices distributor for pharmaceutical and healthcare institutions. The devices we provide are used in many fields, including  pharmaceutical laboratory, medicine, midwifery, nursing, physiotherapy, clinical laboratories. <br><br>
 		We serve mainly Indonesian customers either directly or through (future) online transactions. We believe that excellent service is a combination of the quality of goods we provide, affordable prices of goods along with maintenance and excellent consulting services that you can trust. With our established experience and happy costumers, we are delighted to provide the solution of your medical devices needs. <br><br>
 		Kindly use this website as a reference of our company, the products we have for your medical devices needs, and the information on several devices from our healthcare manufacturing partners. If you’re interested in getting certain products that is not found on our website, do not hesitate to contact our costumer service. We would be glad to help! <br><br>
 		We hope that our strong commitment to provide best quality and affordable goods can help meet your needs.<br><br>
