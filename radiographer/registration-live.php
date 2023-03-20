@@ -67,7 +67,7 @@ if ($_SESSION['level'] == "radiographer") {
                             <?php } ?>
                           </select>
                         </div> -->
-                        
+
 
                         <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px;">
                           <h4><?= $lang['referral_physician'] ?></h4>
@@ -108,7 +108,7 @@ if ($_SESSION['level'] == "radiographer") {
                           <?php
                           $query_department = mysqli_query($conn, "SELECT * FROM xray_department");
                           while ($department = mysqli_fetch_array($query_department)) { ?>
-                            <input name="depid" id="<?= $department['depid']; ?>" type="radio" value="<?= $department['depid']; ?>" required /><label for="<?= $department['depid']; ?>"><?= $department['name_dep']; ?></label>
+                            <input name="dep_id" id="<?= $department['dep_id'] . '|' . $department['name_dep']; ?>" type="radio" value="<?= $department['dep_id']; ?>" required /><label for="<?= $department['dep_id']; ?>"><?= $department['name_dep']; ?></label>
                           <?php } ?>
                         </div>
                       </div>
@@ -158,7 +158,7 @@ if ($_SESSION['level'] == "radiographer") {
                         </div>
                       </div>
 
-                      
+
 
                       <!-- Radiographer -->
                       <!-- <label>Select Radiographer :</label><br>
@@ -193,14 +193,14 @@ if ($_SESSION['level'] == "radiographer") {
                           <option value="<?= $dokter_radiologi['dokradid'] . '|' . $dokter_radiologi['dokrad_name']; ?>"><?= $dokter_radiologi['dokrad_name'] . ' ' . $dokter_radiologi['dokrad_lastname']; ?></option>
                         <?php } ?>
                       </select><br> -->
-                      
+
                       <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px;">
                         <h4>Select Radiologist</h4>
                         <div class="input-group input-group-regist input-regist input-regist-gender">
                           <?php
                           $query_dokter_radiologi = mysqli_query($conn, "SELECT * FROM xray_dokter_radiology");
                           while ($dokter_radiologi = mysqli_fetch_array($query_dokter_radiologi)) { ?>
-                            <input name="dokradid" id="<?= $dokter_radiologi['dokrad_name']; ?>" type="radio" value="<?= $dokter_radiologi['dokrad_name']; ?>" required /><label style="width: 50%;" for="<?= $dokter_radiologi['dokrad_name']; ?>"><?= $dokter_radiologi['dokrad_name']. ' ' . $dokter_radiologi['dokrad_lastname'];; ?></label>
+                            <input name="dokradid" id="<?= $dokter_radiologi['dokrad_name']; ?>" type="radio" value="<?= $dokter_radiologi['dokrad_name']; ?>" required /><label style="width: 50%;" for="<?= $dokter_radiologi['dokrad_name']; ?>"><?= $dokter_radiologi['dokrad_name'] . ' ' . $dokter_radiologi['dokrad_lastname'];; ?></label>
                           <?php } ?>
                         </div>
                       </div>
@@ -231,24 +231,24 @@ if ($_SESSION['level'] == "radiographer") {
                                     <input type="text" name="schedule_time" id="schedule_time" autocomplete="off" style="height: 31px; border: 2px solid #d2c8c8; border-radius: 4px;"></input>
                                   </div>
                                 </div> -->
-                                
-                                  <div class="col-half">
-                                    <div class="input-group input-group-regist input-regist input-group-icon">
-                                      <input type="text" name="schedule_date" id="schedule_date" placeholder="<?= $lang['exam_date'] ?>" autocomplete="off" />
-                                      <div class="input-icon"><i class="fas fa-calendar-alt"></i></div>
-                                    </div>
+
+                                <div class="col-half">
+                                  <div class="input-group input-group-regist input-regist input-group-icon">
+                                    <input type="text" name="schedule_date" id="schedule_date" placeholder="<?= $lang['exam_date'] ?>" autocomplete="off" />
+                                    <div class="input-icon"><i class="fas fa-calendar-alt"></i></div>
                                   </div>
-                                  <div class="col-half">
-                                    <div class="input-group input-group-regist input-regist input-group-icon">
-                                      <input type="text" name="schedule_time" id="schedule_time" placeholder="<?= $lang['exam_time'] ?>" autocomplete="off" />
-                                      <div class="input-icon"><i class="fas fa-clock"></i></div>
-                                    </div>
+                                </div>
+                                <div class="col-half">
+                                  <div class="input-group input-group-regist input-regist input-group-icon">
+                                    <input type="text" name="schedule_time" id="schedule_time" placeholder="<?= $lang['exam_time'] ?>" autocomplete="off" />
+                                    <div class="input-icon"><i class="fas fa-clock"></i></div>
                                   </div>
+                                </div>
                               </div>
                               <!-- End of  schedule date time -->
 
-                            
-                            
+
+
                               <!-- kontras -->
                               <div class="container-fluid">
                                 <label for="contrast" style="font-weight: bold;">Contrast</label><br>
@@ -260,7 +260,7 @@ if ($_SESSION['level'] == "radiographer") {
                                   <input type="radio" name="contrast" id="contrast" value="1"> <?= $lang['using_contrast'] ?>
                                   <span class="checkmark"></span>
                                 </label><br><br> -->
-                                
+
                                 <div class="input-group input-group-regist input-regist input-regist-gender">
                                   <input type="radio" name="contrast" value="0" id="<?= $lang['using_contrast'] ?>" required /><label style="width: 50%;" for="<?= $lang['using_contrast'] ?>"><?= $lang['using_contrast'] ?></label>
                                   <input type="radio" checked="checked" name="contrast" value="1" id="<?= $lang['not_using_contrast'] ?>" required /><label style="width: 50%;" for="<?= $lang['not_using_contrast'] ?>"><?= $lang['not_using_contrast'] ?></label>
@@ -312,7 +312,7 @@ if ($_SESSION['level'] == "radiographer") {
                                 </div>
                               </div>
 
-                               <!-- End of prioritas -->
+                              <!-- End of prioritas -->
 
                               <!-- special needs -->
                               <div class="container-fluid">

@@ -59,8 +59,8 @@ $approved = mysqli_fetch_assoc(mysqli_query(
           <img src="../image/studies.svg">
         </div>
         <div class="count_content">
-          <h3><span class="counter"><?php // echo $waitingtotal1;
-                                    ?> 52</span> </h3>
+          <h3><span class="counter"><?php echo $total['total']
+                                    ?> </span> </h3>
           <p><?= $lang['studies'] ?></p>
         </div>
       </div>
@@ -73,8 +73,8 @@ $approved = mysqli_fetch_assoc(mysqli_query(
             <img src="../image/waitingstudies.svg">
           </div>
           <div class="count_content">
-            <h3><span class="counter"><?php //echo $waitingapprove1; 
-                                      ?>12</span></h3>
+            <h3><span class="counter"><?php echo $approved['total']
+                                      ?></span></h3>
             <p><?= $lang['waiting_report'] ?></p>
           </div>
         </div>
@@ -87,8 +87,8 @@ $approved = mysqli_fetch_assoc(mysqli_query(
           <img src="../image/approvestudies.svg">
         </div>
         <div class="count_content">
-          <h3><span class="counter"><? // php  echo $approved1; 
-                                    ?>33</span> </h3>
+          <h3><span class="counter"><?php echo $waiting['total'];
+                                    ?></span> </h3>
           <p><?= $lang['approved_report'] ?></p>
         </div>
       </div>

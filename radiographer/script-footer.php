@@ -240,7 +240,6 @@
     }
     let sidebarnew = document.querySelector(".sidebarnew");
     let sidebarBtn = document.querySelector(".fa-bars-staggered");
-    console.log(sidebarBtn);
     sidebarBtn.addEventListener("click", () => {
         sidebarnew.classList.toggle("closenew");
     });
