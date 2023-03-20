@@ -40,7 +40,7 @@ if ($radiographerId == 'all') {
     $radiographer_query = mysqli_query($conn, $query_radiographer);
     while ($radiographer = mysqli_fetch_assoc($radiographer_query)) {
         $radiographerIdArray[] = $radiographer['radiographer_id'];
-        $radiographerNameArray[] = $radiographer['radiographer_name'];
+        $radiographerNameArray[] = $radiographer['radiographer_name'] . ' ' . $radiographer['radiographer_lastname'];
     }
     $radiographerId = implode("','", $radiographerIdArray);
     $radiographerName = implode("','", $radiographerNameArray);
@@ -50,7 +50,7 @@ if ($radiographerId == 'all') {
     $radiographer_query = mysqli_query($conn, $query_radiographer . " WHERE radiographer_id IN('$radiographerId')");
     while ($radiographer = mysqli_fetch_assoc($radiographer_query)) {
         $radiographerIdArray[] = $radiographer['radiographer_id'];
-        $radiographerNameArray[] = $radiographer['radiographer_name'];
+        $radiographerNameArray[] = $radiographer['radiographer_name'] . ' ' . $radiographer['radiographer_lastname'];
     }
     $radiographerId = implode("','", $radiographerIdArray);
     $radiographerName = implode("','", $radiographerNameArray);
@@ -131,6 +131,7 @@ $patient = mysqli_query($conn_pacsio, "SELECT
             patientid AS no_foto,
             dokrad_name,
             radiographer_name,
+            radiographer_lastname,
             name_dep,
             payment,
             create_time,
@@ -506,6 +507,7 @@ while ($status = mysqli_fetch_array($statuses)) {
                 $no_foto = strtoupper(defaultValue($row['no_foto']));
                 $name_dep = strtoupper(defaultValue($row['name_dep']));
                 $radiographer_name = strtoupper(defaultValue($row['radiographer_name']));
+                $radiographer_lastname = strtoupper($row['radiographer_lastname']);
                 $create_time = defaultValueDateTime($row['create_time']);
                 $priority_doctor = strtoupper(defaultValue($row['priority_doctor']));
                 $priority = strtoupper(defaultValue($row['priority']));
@@ -547,7 +549,7 @@ while ($status = mysqli_fetch_array($statuses)) {
                     <td align="center"><?= $pat_sex; ?></td>
                     <td align="center"><?= $no_foto; ?></td>
                     <td align="center"><?= $pat_id; ?></td>
-                    <td align="center"><?= $radiographer_name; ?></td>
+                    <td align="center"><?= $radiographer_name . ' ' . $radiographer_lastname; ?></td>
                     <td align="center"><?= $pat_birthdate; ?></td>
                     <td align="center"><?= $age; ?></td>
                     <td align="center"><?= $name_dep; ?></td>

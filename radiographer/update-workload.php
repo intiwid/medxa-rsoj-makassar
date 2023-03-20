@@ -237,7 +237,7 @@ if ($_SESSION['level'] == "radiographer") {
 													<?php
 													$radiographer = mysqli_query($conn, "SELECT * FROM xray_radiographer");
 													while ($row_radiographer = mysqli_fetch_array($radiographer)) { ?>
-														<option value="<?= $row_radiographer['radiographer_id']; ?>" <?= $row_radiographer['radiographer_id'] == $radiographer_id ? 'selected' : "";  ?>><?= $row_radiographer['radiographer_name']; ?></option>
+														<option value="<?= $row_radiographer['radiographer_id']; ?>" <?= $row_radiographer['radiographer_id'] == $radiographer_id ? 'selected' : "";  ?>><?= $row_radiographer['radiographer_name'] . ' ' . $row_radiographer['radiographer_lastname']; ?></option>
 													<?php } ?>
 												</select>
 												<!-- <input type="text" name="radiographer_name" id="radiographer_name" value="<?= $radiographer_name; ?>"> -->
