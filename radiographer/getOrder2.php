@@ -19,7 +19,7 @@ $query = mysqli_query(
     LEFT JOIN $table_study
     ON study.study_iuid = xray_order.uid
     WHERE fromorder IN('SIMRS', 'RIS')
-    ORDER BY xray_order.create_time DESC
+    ORDER BY xray_order.schedule_date DESC, xray_order.schedule_time DESC
     LIMIT 1000"
 );
 
@@ -141,8 +141,8 @@ while ($row = mysqli_fetch_array($query)) {
         "sex" => $sex_icons,
         "xray_type_code" => defaultValue($row['xray_type_code']),
         "prosedur" => defaultValue($row['prosedur']),
-        "schedule_date" => defaultValueDateTime($row['schedule_date'] . ' ' . $row['schedule_time']),
         "create_time" => defaultValueDateTime($row['create_time']),
+        "schedule_date" => defaultValueDateTime($row['schedule_date'] . ' ' . $row['schedule_time']),
         "label" => $label,
     ];
     $i++;

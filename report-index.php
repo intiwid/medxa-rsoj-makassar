@@ -98,17 +98,20 @@
 						</div>
 						<div class="row justify-content-center align-items-center" style="padding: 10px; border-radius: 5px; border: solid 2px #eff1f7;">
 							<div class="col-md-6">
-								<input type="checkbox" class="check-radiologists" style="margin-top: 0px;" checked> <?= $lang['check_all'] ?> Radiologist
-								<ul class="ks-cboxtags">
-									<?php
-									$query_radiologist = mysqli_query(
-										$conn,
-										"SELECT dokradid, dokrad_name, dokrad_lastname FROM xray_dokter_radiology"
-									);
-									while ($radiologist = mysqli_fetch_assoc($query_radiologist)) { ?>
-										<li><label><input class="common_selector check-radiologist checkbox4 search-input-workload" type="checkbox" id="dokradid" name="dokradid[]" value="<?= $radiologist['dokradid']; ?>" checked><span><?= $radiologist['dokrad_name']; ?> <?= $radiologist['dokrad_lastname']; ?></span></label></li>
-									<?php } ?>
-								</ul>
+								<div class="form-group">
+									<label for="sel1">Select Radiologist:</label>
+									<select class="form-control select2" multiple="multiple" name="dokradid[]" id="dokradid" style="width: 100%;" required>
+										<option value="all" selected>Semua</option>
+										<?php
+										$query_radiologist = mysqli_query(
+											$conn,
+											"SELECT dokradid, dokrad_name, dokrad_lastname FROM xray_dokter_radiology"
+										);
+										while ($radiologist = mysqli_fetch_assoc($query_radiologist)) { ?>
+											<option value="<?php echo $radiologist['dokradid']; ?>"><?php echo $radiologist['dokrad_name'] . ' ' . $radiologist['dokrad_lastname']; ?></option>
+										<?php } ?>
+									</select>
+								</div>
 							</div>
 						</div>
 						<div class="row justify-content-center align-items-center" style="padding: 10px; border-radius: 5px; border: solid 2px #eff1f7;">

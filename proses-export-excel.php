@@ -31,17 +31,6 @@ $depId = implode("','", $_POST['dep_id']);
 $dokradId = implode("','", $_POST['dokradid']);
 $statusOne = implode("','", $_POST['status']);
 
-// dokter radiologi
-$dokterRadiologyAll = [];
-$query_dokter_radiology = mysqli_query(
-    $conn,
-    "SELECT dokrad_name, dokrad_lastname FROM xray_dokter_radiology WHERE dokradid IN('$dokradId')"
-);
-while ($dokterRadiology = mysqli_fetch_assoc($query_dokter_radiology)) {
-    $dokterRadiologyAll[] = $dokterRadiology['dokrad_name'] . ' ' . $dokterRadiology['dokrad_lastname'];
-    $dokradFullName = str_replace("'", "", implode("'<br />'", $dokterRadiologyAll));
-}
-
 // radiografer
 $radiographerIdArray = [];
 $radiographerNameArray = [];
@@ -55,6 +44,7 @@ if ($radiographerId == 'all') {
     }
     $radiographerId = implode("','", $radiographerIdArray);
     $radiographerName = implode("','", $radiographerNameArray);
+    $kondisi_radiographer = "(radiographer_id IN('$radiographerId') OR radiographer_id IS NULL)";
     // else jika dipilih query masing2 radiografer
 } else {
     $radiographer_query = mysqli_query($conn, $query_radiographer . " WHERE radiographer_id IN('$radiographerId')");
@@ -64,6 +54,7 @@ if ($radiographerId == 'all') {
     }
     $radiographerId = implode("','", $radiographerIdArray);
     $radiographerName = implode("','", $radiographerNameArray);
+    $kondisi_radiographer = "radiographer_id IN('$radiographerId')";
 }
 
 // department
@@ -79,6 +70,7 @@ if ($depId == 'all') {
     }
     $depId = implode("','", $depIdArray);
     $nameDep = implode("','", $nameDepArray);
+    $kondisi_department = "(dep_id IN('$depId') OR dep_id IS NULL)";
     // else jika dipilih query masing2 department
 } else {
     $department_query = mysqli_query($conn, $query_department . " WHERE dep_id IN('$depId')");
@@ -88,15 +80,45 @@ if ($depId == 'all') {
     }
     $depId = implode("','", $depIdArray);
     $nameDep = implode("','", $nameDepArray);
+    $kondisi_department = "dep_id IN('$depId')";
+}
+
+// dokter radiologi
+$dokradIdArray = [];
+$pkArray = [];
+$dokradNameArray = [];
+$query_dokter_radiology = "SELECT pk, dokradid, dokrad_name, dokrad_lastname FROM xray_dokter_radiology";
+// jika dokter radiologi dipilih all maka query semua dokradid
+if ($dokradId == 'all') {
+    $dokter_radiology_query = mysqli_query($conn, $query_dokter_radiology);
+    while ($dokterRadiology = mysqli_fetch_assoc($dokter_radiology_query)) {
+        $dokradIdArray[] = $dokterRadiology['dokradid'];
+        $dokradNameArray[] = $dokterRadiology['dokrad_name'] . ' ' . $dokterRadiology['dokrad_lastname'];
+    }
+    $dokradId = implode("','", $dokradIdArray);
+    $dokradFullName = str_replace("'", "", implode("'<br />'", $dokradNameArray));
+    $kondisi_dokterRadiology = "(dokradid IN('$dokradId') OR dokradid IS NULL)";
+    // else jika dipilih query masing2 dokradid
+} else {
+    $dokter_radiology_query = mysqli_query($conn, $query_dokter_radiology . " WHERE dokradid IN('$dokradId')");
+    while ($dokterRadiology = mysqli_fetch_assoc($dokter_radiology_query)) {
+        $pkArray[] = $dokterRadiology['pk'];
+        $dokradIdArray[] = $dokterRadiology['dokradid'];
+        $dokradNameArray[] = $dokterRadiology['dokrad_name'] . ' ' . $dokterRadiology['dokrad_lastname'];
+    }
+    $dokradId = implode("','", $dokradIdArray);
+    $pk = implode("','", $pkArray);
+    $dokradFullName = str_replace("'", "", implode("'<br />'", $dokradNameArray));
+    $kondisi_dokterRadiology = "(dokradid IN('$dokradId') OR pk_dokter_radiology IN('$pk'))";
 }
 
 // kondisi form
 $kondisi = "study.study_datetime BETWEEN '$fromUpdatedTime' AND '$toUpdatedTime'
             AND mods_in_study IN('$modsInStudy')
             AND priority_doctor IN('$priorityDoctor')
-            AND radiographer_id IN('$radiographerId')
-            AND dep_id IN('$depId')
-            AND dokradid IN('$dokradId')
+            AND $kondisi_radiographer
+            AND $kondisi_department
+            AND $kondisi_dokterRadiology
             AND status IN('$statusOne')
             ";
 
@@ -132,15 +154,16 @@ $patient = mysqli_query($conn_pacsio, "SELECT
             priority,
             priority_doctor,
             status,
-            approved_at
+            pk_dokter_radiology,
+            approved_at 
             FROM $table_patient
             JOIN $table_study
             ON patient.pk = study.patient_fk
             JOIN $table_workload
             ON study.study_iuid = xray_workload.uid
-            JOIN $table_order
+            LEFT JOIN $table_order
             ON xray_order.uid = xray_workload.uid
-            JOIN $table_workload_bhp
+            LEFT JOIN $table_workload_bhp
             ON xray_workload.uid = xray_workload_bhp.uid
             WHERE $kondisi
             ORDER BY study.study_datetime DESC");
@@ -163,9 +186,9 @@ $sum = mysqli_fetch_array(mysqli_query(
     ON patient.pk = study.patient_fk
     JOIN $table_workload
     ON study.study_iuid = xray_workload.uid
-    JOIN $table_order
+    LEFT JOIN $table_order
     ON xray_order.uid = xray_workload.uid
-    JOIN $table_workload_bhp
+    LEFT JOIN $table_workload_bhp
     ON xray_workload.uid = xray_workload_bhp.uid
     WHERE $kondisi"
 ));
@@ -181,9 +204,9 @@ $studies = mysqli_query(
     ON patient.pk = study.patient_fk
     JOIN $table_workload
     ON study.study_iuid = xray_workload.uid
-    JOIN $table_order
+    LEFT JOIN $table_order
     ON xray_order.uid = xray_workload.uid
-    JOIN $table_workload_bhp
+    LEFT JOIN $table_workload_bhp
     ON xray_workload.uid = xray_workload_bhp.uid
     WHERE $kondisi
     GROUP BY UPPER(study_desc_pacsio)
@@ -200,9 +223,9 @@ $countStudies = mysqli_fetch_array(mysqli_query(
     ON patient.pk = study.patient_fk
     JOIN $table_workload
     ON study.study_iuid = xray_workload.uid
-    JOIN $table_order
+    LEFT JOIN $table_order
     ON xray_order.uid = xray_workload.uid
-    JOIN $table_workload_bhp
+    LEFT JOIN $table_workload_bhp
     ON xray_workload.uid = xray_workload_bhp.uid
     WHERE $kondisi"
 ));
@@ -217,9 +240,9 @@ $totalApproved = mysqli_fetch_array(mysqli_query(
     ON patient.pk = study.patient_fk
     JOIN $table_workload
     ON study.study_iuid = xray_workload.uid
-    JOIN $table_order
+    LEFT JOIN $table_order
     ON xray_order.uid = xray_workload.uid
-    JOIN $table_workload_bhp
+    LEFT JOIN $table_workload_bhp
     ON xray_workload.uid = xray_workload_bhp.uid
     WHERE $kondisi
     AND status = 'approved'"
@@ -234,9 +257,9 @@ $totalStatus = mysqli_fetch_array(mysqli_query(
     ON patient.pk = study.patient_fk
     JOIN $table_workload
     ON study.study_iuid = xray_workload.uid
-    JOIN $table_order
+    LEFT JOIN $table_order
     ON xray_order.uid = xray_workload.uid
-    JOIN $table_workload_bhp
+    LEFT JOIN $table_workload_bhp
     ON xray_workload.uid = xray_workload_bhp.uid
     WHERE $kondisi"
 ));
@@ -257,9 +280,9 @@ $approved = mysqli_fetch_array(mysqli_query(
     ON patient.pk = study.patient_fk
     JOIN $table_workload
     ON study.study_iuid = xray_workload.uid
-    JOIN $table_order
+    LEFT JOIN $table_order
     ON xray_order.uid = xray_workload.uid
-    JOIN $table_workload_bhp
+    LEFT JOIN $table_workload_bhp
     ON xray_workload.uid = xray_workload_bhp.uid
     WHERE $kondisi
     AND status = 'approved'"
@@ -277,9 +300,9 @@ $statuses = mysqli_query(
     ON patient.pk = study.patient_fk
     JOIN $table_workload
     ON study.study_iuid = xray_workload.uid
-    JOIN $table_order
+    LEFT JOIN $table_order
     ON xray_order.uid = xray_workload.uid
-    JOIN $table_workload_bhp
+    LEFT JOIN $table_workload_bhp
     ON xray_workload.uid = xray_workload_bhp.uid
     WHERE $kondisi
     GROUP BY status"
@@ -482,7 +505,6 @@ while ($status = mysqli_fetch_array($statuses)) {
                 $pat_id = strtoupper(defaultValue($row['pat_id']));
                 $no_foto = strtoupper(defaultValue($row['no_foto']));
                 $name_dep = strtoupper(defaultValue($row['name_dep']));
-                $dokrad_name = strtoupper(defaultValue($row['dokrad_name']));
                 $radiographer_name = strtoupper(defaultValue($row['radiographer_name']));
                 $create_time = defaultValueDateTime($row['create_time']);
                 $priority_doctor = strtoupper(defaultValue($row['priority_doctor']));
@@ -501,6 +523,23 @@ while ($status = mysqli_fetch_array($statuses)) {
                 $mas = strtoupper(defaultValue($row['mas']));
                 $approved_at = defaultValueDateTime($row['approved_at']);
                 $spendtime = spendTime($study_datetime, $approved_at, $row['status']);
+                $pk_dokter_radiology = $row['pk_dokter_radiology'];
+
+                // kondisi mencari ditabel dokter radiology
+                $row_dokrad = mysqli_fetch_assoc(mysqli_query(
+                    $conn,
+                    "SELECT CONCAT(xray_dokter_radiology.dokrad_name,' ',xray_dokter_radiology.dokrad_lastname) AS dokrad_fullname
+                    FROM xray_dokter_radiology 
+                    WHERE pk = '$pk_dokter_radiology'"
+                ));
+
+                if ($row['status'] == 'waiting' || $row['status'] == '') {
+                    // jika status waiting kalo ada dokradid di xray_order tampilkan di xray_order
+                    $dokrad_name = defaultValue($row['dokrad_name']);
+                } else if ($row['status'] == 'approved') {
+                    // jika status approved ambil data dari pk_dokter_radiology tabel xray_dokter_radiology
+                    $dokrad_name = defaultValue($row_dokrad['dokrad_fullname']);
+                }
             ?>
                 <tr>
                     <td align="center"><?= $no; ?></td>
