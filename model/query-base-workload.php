@@ -1,6 +1,7 @@
 <?php
 
 $select_workload = "xray_workload.pk_dokter_radiology,
+xray_workload.study_desc_pacsio,
 xray_workload.status,
 xray_workload.fill,
 xray_workload.priority_doctor,

@@ -22,7 +22,7 @@ if ($_SESSION['level'] == "radiology") {
 			</div>
 		</div> -->
 		<?php include('script-footer.php'); ?>
-		<script src="../js/proses/report-excel.js"></script>
+		<script src="../js/proses/report-excel.js?v=<?= $random; ?>"></script>
 		<script>
 			$(document).ready(function() {
 				$("li[data-target='#service']").addClass("active");

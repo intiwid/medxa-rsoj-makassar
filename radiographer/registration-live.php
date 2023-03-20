@@ -351,7 +351,7 @@ if ($_SESSION['level'] == "radiographer") {
     <?php include('script-footer.php'); ?>
     <script src="js/bootstrap-select.min.js"></script>
     <script type="text/javascript" src="js/jquery.datetimepicker.full.js"></script>
-    <script src="../js/proses/registration-live.js?v=2"></script>
+    <script src="../js/proses/registration-live.js?v=<?= $random; ?>"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="css/jquery.datetimepicker.min.css">
     <script>
       $(document).ready(function() {

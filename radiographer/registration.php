@@ -176,7 +176,7 @@ if ($_SESSION['level'] == "radiographer") {
 		<?php include('script-footer.php'); ?>
 		<script type="text/javascript" src="js/jquery.datetimepicker.full.js"></script>
 		<link rel="stylesheet" type="text/css" media="screen" href="css/jquery.datetimepicker.min.css">
-		<script src="../js/proses/registration.js?v=2"></script>
+		<script src="../js/proses/registration.js?v=<?= $random; ?>"></script>
 		<script>
 			$(document).ready(function() {
 				$("li[data-target='#products1']").addClass("active");

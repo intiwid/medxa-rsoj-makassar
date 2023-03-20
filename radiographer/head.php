@@ -1,4 +1,7 @@
-<?php require '../date-time-zone.php'; ?>
+<?php
+require '../date-time-zone.php';
+require '../random.php';
+?>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="../css/bootstrap4.min.css" rel="stylesheet">
@@ -7,13 +10,13 @@
 <!-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css"> -->
 <link rel="stylesheet" href="css/jquery-ui.css" />
 <link rel="icon" href="../image/ipi-icon3.png" type="image/png">
-<link rel="stylesheet" href="../fontawesome/css/all.css">
+<link rel="stylesheet" href="../fontawesome/css/all.css?v=<?= $random; ?>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" media="screen" href="css/jquery.datetimepicker.min.css">
 <link rel="stylesheet" href="css/bootstrap-select.min.css">
 <link href="../css/select2.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="../css/style_master.css?v=3">
-<link rel="stylesheet" href="css/css_media.css">
+<link rel="stylesheet" href="../css/style_master.css?v=<?= $random; ?>">
+<link rel="stylesheet" href="css/css_media.css?v=<?= $random; ?>">
 
 <!-- untuk validasi form -->
 <style>

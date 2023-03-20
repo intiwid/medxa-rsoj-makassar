@@ -358,7 +358,7 @@ if ($_SESSION['level'] == "radiographer") {
 			</div>
 		</div> -->
 		<?php include('script-footer.php'); ?>
-		<script src="../js/proses/update-workload.js?v=15"></script>
+		<script src="../js/proses/update-workload.js?v=<?= $random; ?>"></script>
 		<script src="js/bootstrap-select.min.js"></script>
 		<script>
 			$(document).ready(function() {

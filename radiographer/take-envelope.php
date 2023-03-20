@@ -47,7 +47,7 @@ if ($_SESSION['level'] == "radiographer") {
 			<div class="row">
 				<div id="content1">
 
-					<div class="d-flex justify-content-center align-items-center" style="height: 50vh;">
+					<div class="d-flex justify-content-center align-items-center">
 						<div class="col-md-6 box-change-dokter table-box">
 							<form method="post" id="take-envelope">
 								<div class="radiobtn1">
@@ -98,7 +98,7 @@ if ($_SESSION['level'] == "radiographer") {
 		</div> -->
 		<?php include('script-footer.php'); ?>
 	</body>
-	<script src="../js/proses/take-envelope.js?v=1"></script>
+	<script src="../js/proses/take-envelope.js?v=<?= $random; ?>"></script>
 	<script>
 		$('#created_at').datetimepicker({
 			format: 'd-m-Y H:i',
