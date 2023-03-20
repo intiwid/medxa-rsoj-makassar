@@ -205,7 +205,7 @@ if (!($_SESSION['username'] = $data['username'])) {
     </div>
     <div class="footerindex">
 
-      <center>PT. Intimedika Puspa Indah / Email: itservice@intimedika.co</center>
+      <center>  / Email: itservice@intimedika.co</center>
 
     </div>
 

@@ -3,7 +3,7 @@ $lang = array(
 	"title" => "Judul",
 	"about_us" => "Tentang Perusahaan",
 	"about" => "Tentang",
-	"about_content" => "<p> PT. Intimedika Puspa Indah adalah distributor alat kesehatan terkemuka untuk lembaga farmasi dan kesehatan. Perangkat yang kami sediakan digunakan di banyak bidang, termasuk laboratorium farmasi, kedokteran, kebidanan, keperawatan, fisioterapi, laboratorium klinis. <br> <br>
+	"about_content" => "<p>   adalah distributor alat kesehatan terkemuka untuk lembaga farmasi dan kesehatan. Perangkat yang kami sediakan digunakan di banyak bidang, termasuk laboratorium farmasi, kedokteran, kebidanan, keperawatan, fisioterapi, laboratorium klinis. <br> <br>
 	Kami melayani pelanggan terutama Indonesia baik secara langsung atau melalui transaksi online (masa depan). Kami percaya bahwa layanan yang sangat baik adalah kombinasi dari kualitas barang yang kami sediakan, harga barang yang terjangkau bersama dengan perawatan dan layanan konsultasi yang sangat baik yang dapat Anda percayai. Dengan pengalaman kami yang mapan dan pelanggan yang bahagia, kami dengan senang hati memberikan solusi dari kebutuhan perangkat medis Anda. <br> <br>
 	Mohon gunakan situs web ini sebagai referensi perusahaan kami, produk yang kami miliki untuk kebutuhan perangkat medis Anda, dan informasi tentang beberapa perangkat dari mitra manufaktur kesehatan kami. Jika Anda tertarik untuk mendapatkan produk tertentu yang tidak ditemukan di situs web kami, jangan ragu untuk menghubungi layanan pelanggan kami. Kami akan dengan senang hati membantu! <br> <br>
 	Kami berharap komitmen kuat kami untuk menyediakan barang-barang berkualitas dan terjangkau terbaik dapat membantu memenuhi kebutuhan Anda. <br> <br>
