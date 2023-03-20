@@ -24,7 +24,7 @@ if ($_SESSION['level'] == "radiographer") {
 			</div>
 		</div>
 		<?php include('script-footer.php'); ?>
-		<script src="../js/proses/result-chart.js"></script>
+		<script src="../js/proses/result-chart.js?v=<?= $random; ?>"></script>
 		<script>
 			$(document).ready(function() {
 				// class sidebar aktif

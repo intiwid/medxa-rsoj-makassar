@@ -8,7 +8,7 @@
 <script type="text/javascript" src="../js/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="../js/bootstrap4.min.js"></script>
-<script src="../radiology/ckeditor/ckeditor.js?v=5"></script>
+<script src="../radiology/ckeditor/ckeditor.js?v=<?= $random; ?>"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="../js/mdb.min.js"></script>
 <script src="js/script.js"></script>
@@ -23,7 +23,7 @@
 </script>
 <script src="../js/datetime-moment.js" />
 </script>
-<script src="../js/inobitec.js?v=2"></script>
+<script src="../js/inobitec.js?v=<?= $random; ?>"></script>
 <script type="text/javascript" src="../js/jquery.validate.min.js" />
 </script>
 <script type="text/javascript" src="../js/sweetalert.min.js" />

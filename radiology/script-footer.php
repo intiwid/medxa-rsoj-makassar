@@ -4,7 +4,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- <script src="js/bootstrap.min.js"></script> -->
 <script type="text/javascript" src="js/sketch.min.js"></script>
-<script src="ckeditor/ckeditor.js?v=5"></script>
+<script src="ckeditor/ckeditor.js?v=<?= $random; ?>"></script>
 <script type="text/javascript" src="../js/popper.min.js"></script>
 <script src="../js/bootstrap4.min.js"></script>
 <script type="text/javascript" src="../js/mdb.min.js"></script>
@@ -22,7 +22,7 @@
 </script>
 <script type="text/javascript" src="../js/datetime-moment.js" />
 </script>
-<script type="text/javascript" src="../js/inobitec.js?v=2"></script>
+<script type="text/javascript" src="../js/inobitec.js?v=<?= $random; ?>"></script>
 <script type="text/javascript" src="../js/select2.min.js"></script>
 
 

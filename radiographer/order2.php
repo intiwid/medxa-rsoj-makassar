@@ -50,8 +50,8 @@ if ($_SESSION['level'] == "radiographer") {
 											<th><?= $lang['sex'] ?></th>
 											<th><?= $lang['modality'] ?></th>
 											<th><?= $lang['study'] ?></th>
-											<th><?= $lang['exam_date'] ?></th>
 											<th><?= $lang['patient_order'] ?></th>
+											<th><?= $lang['exam_date'] ?></th>
 											<th>Label</th>
 										</tr>
 									</thead>
@@ -149,10 +149,10 @@ if ($_SESSION['level'] == "radiographer") {
 							"data": "prosedur"
 						},
 						{
-							"data": "schedule_date"
+							"data": "create_time"
 						},
 						{
-							"data": "create_time"
+							"data": "schedule_date"
 						},
 						{
 							"data": "label"

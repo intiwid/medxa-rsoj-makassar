@@ -44,7 +44,7 @@ $approved_at = defaultValueDateTime($row['approved_at']);
             <tr>
                 <td><?= $lang['study'] ?></td>
                 <td>&nbsp;: </td>
-                <td align="left" class="font-weight-bold">&nbsp; <?= defaultValue($row['study_desc']); ?></td>
+                <td align="left" class="font-weight-bold">&nbsp; <?= defaultValue($row['study_desc_pacsio']); ?></td>
             </tr>
             <tr>
                 <td>Approve Date</td>

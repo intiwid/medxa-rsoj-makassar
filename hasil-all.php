@@ -34,7 +34,7 @@ $study_iuid = defaultValue($row['study_iuid']);
 $study_datetime = defaultValueDateTime($row['study_datetime']);
 $accession_no = defaultValue($row['accession_no']);
 $ref_physician = defaultValue($row['ref_physician']);
-$study_desc = defaultValue($row['study_desc']);
+$study_desc_pacsio = defaultValue($row['study_desc_pacsio']);
 $mods_in_study = defaultValue($row['mods_in_study']);
 $num_series = defaultValue($row['num_series']);
 $num_instances = defaultValue($row['num_instances']);
@@ -168,7 +168,7 @@ if ($row['status'] == 'waiting' || $row['status'] == '') {
                 <tr>
                     <td><?= $lang['study'] ?></td>
                     <td>&nbsp;: </td>
-                    <td align="left">&nbsp; <?= $study_desc; ?></td>
+                    <td align="left">&nbsp; <?= $study_desc_pacsio; ?></td>
                 </tr>
                 <tr>
                     <td><?= $lang['series_image'] ?></td>
