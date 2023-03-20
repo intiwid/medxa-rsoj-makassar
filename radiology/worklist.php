@@ -261,11 +261,11 @@ if ($_SESSION['level'] == "radiology") { ?>
 													</div>
 												</div>
 											</div>
-											<div class="left-top">
+											<!-- <div class="left-top">
 												<div style="width: 50%; padding: 3px;">
 													<div class="work-order">
 														<ul>
-															<a class="button-work-order" href="#">
+															<a class="button-work-order" href="#!">
 																<li class="li-work patient-work">History</li>
 															</a>
 														</ul>
@@ -274,16 +274,17 @@ if ($_SESSION['level'] == "radiology") { ?>
 												<div style="width: 50%; padding: 3px;">
 													<div class="work-patient">
 														<ul>
-															<a class="button-work-patient" href="#">
+															<a class="button-work-patient" href="#!">
 																<li class="li-work patient-work">viewer</li>
 															</a>
 														</ul>
 													</div>
 												</div>
-											</div>
+											</div> -->
 											<!-- history pasien berdasarkan mrn pat_iid-->
 											<div class="data-order">
-												<b class="title-history">History Patient</b><br>
+													<h4 style="margin: 0px;">History</h4>
+													<hr style="margin: 10px 0px;">
 												<?php
 												$i = 1;
 												while ($mrn = mysqli_fetch_assoc($query_mrn)) {
@@ -335,7 +336,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 												} ?>
 											</div>
 											<!-- Multimed viewer -->
-											<div class="data-patient">
+											<!-- <div class="data-patient">
 												<div class="content2-adm li-adm">
 													<h4 style="margin: 0px;">Viewer</h4>
 													<hr style="margin: 10px 0px;">
@@ -347,7 +348,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 														?>
 													</div>
 												</div>
-											</div>
+											</div> -->
 											<form action="" method="post">
 												<div class="tambahan1">
 													<label for="priority_doctor">
@@ -368,6 +369,25 @@ if ($_SESSION['level'] == "radiology") { ?>
 									<div class="col-lg-8">
 										<div class="div-mid">
 											<div class="work-patient6">
+												<!-- Multimed viewer -->
+												<div class="data-patient">
+													<div class="content2-adm li-adm">
+														<!-- <h4 style="margin: 0px;">Viewer</h4>
+														<hr style="margin: 10px 0px;"> -->
+														<div class="container-fluid">
+															<div class="row">
+																<?= RADIANTWORKLISTFIRST . "'$uid'" . RADIANTWORKLISTLAST .
+																	INOBITECWORKLISTFIRST . "'$uid'" . INOBITECWORKLISTLAST .
+																	HTMLWORKLISTFIRST . "'$uid'" . HTMLWORKLISTLAST .
+																	OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST;
+																?>
+																
+															</div>
+														</div>
+														
+													</div>
+												</div>
+
 												<input type="hidden" name="uid" value="<?= $uid; ?>">
 												<input type="hidden" name="username" value="<?= $username; ?>">
 												<?php
@@ -426,7 +446,8 @@ if ($_SESSION['level'] == "radiology") { ?>
 										</div>
 									</div>
 								</div>
-							</div><br><br>
+							</div>
+							<br><br>
 
 
 
@@ -507,31 +528,31 @@ if ($_SESSION['level'] == "radiology") { ?>
 		</script>
 		<!-- -------------------javascript select temlate-------------- -->
 		<script>
-			$(document).ready(function() {
-				$(".data-order").hide();
-				$(".work-patient").css("background", "#68b399");
-				$(".work-order").css("background", "#f1f1f1");
-				$(".work-patient a").css("color", "#fff");
-				$(".work-order a").css("color", "#68b399");
-				$(".button-work-order").click(function() {
-					$(".work-order").css("background", "#68b399");
-					$(".work-patient").css("background", "#f1f1f1");
-					$(".work-order a").css("color", "#fff");
-					$(".work-patient a").css("color", "#68b399");
-					$(".data-order").show();
-					$(".data-patient").hide();
-				});
-			});
-			$(document).ready(function() {
-				$(".button-work-patient").click(function() {
-					$(".work-patient").css("background", "#68b399");
-					$(".work-order").css("background", "#f1f1f1");
-					$(".work-patient a").css("color", "#fff");
-					$(".work-order a").css("color", "#68b399");
-					$(".data-patient").show();
-					$(".data-order").hide();
-				});
-			});
+			// $(document).ready(function() {
+			// 	$(".data-order").hide();
+			// 	$(".work-patient").css("background", "#68b399");
+			// 	$(".work-order").css("background", "#f1f1f1");
+			// 	$(".work-patient a").css("color", "#fff");
+			// 	$(".work-order a").css("color", "#68b399");
+			// 	$(".button-work-order").click(function() {
+			// 		$(".work-order").css("background", "#68b399");
+			// 		$(".work-patient").css("background", "#f1f1f1");
+			// 		$(".work-order a").css("color", "#fff");
+			// 		$(".work-patient a").css("color", "#68b399");
+			// 		$(".data-order").show();
+			// 		$(".data-patient").hide();
+			// 	});
+			// });
+			// $(document).ready(function() {
+			// 	$(".button-work-patient").click(function() {
+			// 		$(".work-patient").css("background", "#68b399");
+			// 		$(".work-order").css("background", "#f1f1f1");
+			// 		$(".work-patient a").css("color", "#fff");
+			// 		$(".work-order a").css("color", "#68b399");
+			// 		$(".data-patient").show();
+			// 		$(".data-order").hide();
+			// 	});
+			// });
 		</script>
 		<script>
 			$(document).ready(function() {

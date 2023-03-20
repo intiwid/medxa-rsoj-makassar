@@ -2985,14 +2985,18 @@ input[type="submit"] {
   border: 2px solid #377d71;
   overflow: auto;
   height: 275px;
+  margin-bottom: 13px;
 }
 
 .data-patient {
   color: #484848;
-  background-color: #fcfcfc;
+  /* background-color: #fcfcfc; */
   border: 2px solid #377d71;
   border-radius: 5px;
-  padding: 5px;
+  padding: 0px;
+  margin-top: 17px;
+  margin-left: -22px;
+  margin-right: -9px;
 }
 
 .content2-adm {
@@ -3161,7 +3165,7 @@ input[type="submit"] {
 }
 
 .div-right {
-  min-height: 781px;
+  min-height: 791px;
   background: #377d71;
   /* margin: 0px 10px 20px 10px; */
   border-radius: 3px;
@@ -4389,6 +4393,27 @@ table.dataTable > thead .sorting::before, table.dataTable > thead .sorting::afte
   padding-top: 5px;
 }
 
+.btn-viewer-worklist{
+  width: 100%;
+  border: 1px solid #fcfcfc;
+  border-radius: 5px;
+  box-shadow: none;
+  padding: 11px;
+  background-color: #fff;
+}
+
+.btn-viewer-worklist:hover{
+  box-shadow: none;
+  border: 1px solid #9f015d;
+}
+
+.btn-viewer-worklist img{
+  width: 25px;
+}
+
+a.btn:not([href]):not([tabindex]), a.btn:not([href]):not([tabindex]):focus, a.btn:not([href]):not([tabindex]):hover {
+  color: unset;
+}
   
   @media (max-width: 960px) {
     .img3 {
