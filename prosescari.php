@@ -97,29 +97,29 @@ if (isset($_POST["search"]["value"])) {
 // jika modality disearch
 if (isset($_POST['mods_in_study']) && $_POST['mods_in_study'] != "") {
   $mods_in_study = implode("','", $_POST['mods_in_study']);
-  $mods_in_study = str_replace('\\', '\\\\', $mods_in_study);
-  $query .= "AND mods_in_study IN('" . $mods_in_study . "')
+  $mods_in_study = str_replace('\\', '\\\\', strtoupper($mods_in_study));
+  $query .= "AND UPPER(mods_in_study) IN('" . $mods_in_study . "')
  ";
 }
 
 // jika keyword nama diketik
 if (isset($_POST['pat_name']) && $_POST['pat_name'] != "") {
   $pat_name = strtoupper($_POST['pat_name']);
-  $query .= 'AND pat_name LIKE "%' . $pat_name . '%"
+  $query .= 'AND UPPER(pat_name) LIKE "%' . $pat_name . '%"
  ';
 }
 
 // jika mrn diketik
 if (isset($_POST['mrn']) && $_POST['mrn'] != "") {
   $mrn = strtoupper($_POST['mrn']);
-  $query .= 'AND pat_id LIKE "%' . $mrn . '%"
+  $query .= 'AND UPPER(pat_id) LIKE "%' . $mrn . '%"
  ';
 }
 
 // jika patientid / nofoto diketik
 if (isset($_POST['patientid']) && $_POST['patientid'] != "") {
   $patientid = strtoupper($_POST['patientid']);
-  $query .= 'AND patientid LIKE "%' . $patientid . '%"
+  $query .= 'AND UPPER(patientid) LIKE "%' . $patientid . '%"
  ';
 }
 
