@@ -406,7 +406,7 @@
             <li data-target="#service">
                 <div class="iocn-link">
                     <a href="#">
-                        <i class="fa-solid fa-book-medical"></i>
+                    <i class="fa-solid fa-file-lines"></i>
                         <span class="link_name"><?= $lang['report'] ?></span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
