@@ -99,7 +99,7 @@ if ($_SESSION['level'] == "radiology" || $_SESSION['level'] == "radiographer") {
 		<?php include('head.php'); ?>
 	</head>
 
-	<body style="background-color: #1f69b7;">
+	<body style="background-color: #377d71;">
 		<?php include('../sidebar-index.php'); ?>
 		<div class="container-fluid" id="main">
 			<div class="row">
@@ -107,7 +107,7 @@ if ($_SESSION['level'] == "radiology" || $_SESSION['level'] == "radiographer") {
 
 					<style>
 						.box-change-dokter {
-							background-color: #1862b0;
+							background-color: #2b6c61;
 							padding: 25px;
 							border-radius: 10px;
 							margin: 10px;

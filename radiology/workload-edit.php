@@ -142,234 +142,263 @@ if ($_SESSION['level'] == "radiology") { ?>
 									</ol>
 								</nav>
 							</div>
-							<div class="col-lg-2">
-								<div class="div-left">
-									<div class="info-patient">
-										<div class="info-patient2">
-											<div class="row justify-content-center">
-												<div class="info-left col-sm-12">
-													<table class="infopatientworklist table-left">
-														<tr>
-															<td><span class="table-left">Name</span></td>
-														</tr>
-														<tr>
-															<td><?= $detail_uid; ?></td>
-														</tr>
-														<tr>
-															<td><span class="table-left">MRN</span></td>
-														</tr>
-														<tr>
-															<td><?= $pat_id; ?></td>
-														</tr>
-														<tr>
-															<td><span class="table-left">Sex</span></td>
-														</tr>
-														<tr>
-															<td><?= $pat_sex; ?></td>
-														</tr>
-														<tr>
-															<td><span class="table-left">Age</span></td>
-														</tr>
-														<tr>
-															<td><?= $pat_birthdate; ?></td>
-														</tr>
-														<tr>
-															<td><span class="table-left">Special Needs</span></td>
-														</tr>
-														<tr>
-															<td><?= $spc_needs; ?></td>
-														</tr>
-														<tr>
-															<td><span class="table-left">Procedure</span></td>
-														</tr>
-														<tr>
-															<td><?= $study_desc; ?></td>
-														</tr>
-														<tr>
-															<td><span class="table-left">Study Date</span></td>
-														</tr>
-														<tr>
-															<td><?= $study_datetime; ?></td>
-														</tr>
-														<tr>
-															<td><span class="table-left">Department</span></td>
-														</tr>
-														<tr>
-															<td><?= $name_dep; ?></td>
-														</tr>
-														<tr>
-															<td><span class="table-left">Refferal Physician</span></td>
-														</tr>
-														<tr>
-															<td><?= $named; ?></td>
-														</tr>
-													</table>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="left-top">
-										<div style="width: 50%; padding: 3px;">
-											<div class="work-order">
-												<ul>
-													<a class="button-work-order" href="#">
-														<li class="li-work patient-work">History</li>
-													</a>
-												</ul>
-											</div>
-										</div>
-										<div style="width: 50%; padding: 3px;">
-											<div class="work-patient">
-												<ul>
-													<a class="button-work-patient" href="#">
-														<li class="li-work patient-work">viewer</li>
-													</a>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<!-- history pasien berdasarkan mrn pat_iid-->
-									<div class="data-order">
-										<b class="title-history">History Patient</b><br>
-										<?php
-										$i = 1;
-										while ($mrn = mysqli_fetch_assoc($query_mrn)) {
-											$study_iuid = $mrn['study_iuid'];
-											$detail_mrn = '<a href="#" class="hasil-all penawaran-a" data-id="' . $study_iuid . '">' . removeCharacter($pat_name) . '</a>';
-										?>
-											<table>
-												<tbody>
-													<p class="text-center"><?= $i; ?></p>
-													<tr>
-														<td><span class="table-left">Name</span></td>
-													</tr>
-													<tr>
-														<td><?= $detail_mrn . ' ' . styleStatus($mrn['status']); ?></td>
-													</tr>
-													<tr>
-														<td><span class="table-left">MRN</span></td>
-													</tr>
-													<tr>
-														<td><?= $pat_id; ?></td>
-													</tr>
-													<tr>
-														<td><span class="table-left">Pemeriksaan</span></td>
-													</tr>
-													<tr>
-														<td><?= defaultValue($mrn['study_desc']); ?></td>
-													</tr>
-													<tr>
-														<td><span class="table-left">Waktu Pemeriksaan</span></td>
-													</tr>
-													<tr>
-														<td><strong class="text-dark text-center"><?= defaultValueDateTime($mrn['study_datetime']); ?></strong></td>
-													</tr>
-													<tr>
-														<td>
-															<?= PDFFIRST . $study_iuid . PDFLAST .
-																HOROSFIRST . $study_iuid . HOROSLAST .
-																OHIFOLDFIRST . $study_iuid . OHIFOLDLAST;
-															?>
-															<a href="#" class="view-history-expertise" data-id="<?= $study_iuid;  ?>">
-																<i data-toggle="tooltip" title="View History Expertise" class="fa fa-file-archive-o fa-lg"></i>
-															</a>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-											<hr>
-										<?php $i++;
-										} ?>
-									</div>
-									<!-- Multimed viewer -->
-									<div class="data-patient">
-										<div class="content2-adm li-adm">
-											<h4 style="margin: 0px;">Viewer</h4>
-											<hr style="margin: 10px 0px;">
-											<div class="buttons1">
-												<?= HOROSWORKLISTFIRST . $uid . HOROSWORKLISTLAST .
-													OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST; ?>
-											</div>
-										</div>
-									</div>
-									<form action="" method="post">
-										<div class="tambahan1">
 
-											<label for="priority_doctor">
-												<h5 style="margin-top: 0px; margin-bottom:-6px; font-weight:bold;"><?= $lang['information'] ?></h5>
-											</label><br>
-											<label class="radio-admin">
-												<input type="radio" name="priority_doctor" value="normal" <?= $priority_doctor == 'normal' ? 'checked' : '' ?>> Normal
-												<span class="checkmark"></span>
-											</label>
-											<br>
-											<label class="radio-admin">
-												<input type="radio" name="priority_doctor" value="cito" <?= $priority_doctor == 'cito' ? 'checked' : '' ?>> Cito
-												<span class="checkmark"></span>
-											</label>
-										</div>
-								</div>
-								<br>
-							</div>
-							<div class="col-lg-7 padding-rl-less">
-								<div class="div-mid">
-									<div class="work-patient6">
-										<input type="hidden" name="uid" value="<?= $uid; ?>">
-										<input type="hidden" name="username" value="<?= $username; ?>">
-										<?php
-										@$template_id = $_GET['template_id'];
-										$template = mysqli_fetch_assoc(mysqli_query(
-											$conn,
-											"SELECT $select_template 
-											FROM $table_template
-											WHERE template_id = '$template_id'"
-										));
-										if ($template_id == "") {
-											$fill = $row['fill'];
-										} else {
-											$fill = $template['fill'];
-										}
-										?>
-										<br>
-										<div class="textarea-ckeditor">
-											<textarea class="ckeditor" name="fill" style="width: 100%; height: 320px;" id="ckeditor">
-											<?= $fill; ?>
-											</textarea>
-										</div>
-										<div class="kotak">
-											<!---POP UP -->
-											<div class="container">
-												<!-- Button to Open the Modal -->
-												<button class="btn btn-worklist3 btn-expertise button-popup" type="button" data-toggle="modal" data-target="#modal-insert-template" style="margin-left: -10px;"><i class="fas fa-file-export"></i> Save Template
-												</button>
-												<!-- Modal -->
-												<div class="modal fade" id="modal-insert-template" role="dialog">
-													<div class="modal-dialog">
-														<div class="modal-content">
-															<div class="modal-header">
-																<h4 class="modal-title">Insert Title</h4><br />
-																<button type="button" class="close" data-dismiss="modal">&times;</button>
-															</div>
-															<div class="modal-body-template" style="padding: 10px;">
-																<input class="form-control" type="text" name="title" value="" placeholder="Insert Tittle">
-															</div>
-															<div class="modal-footer">
-																<button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
-																<button style="border-radius: 5px; font-weight: bold; margin-bottom:4px;" class=" btn btn-success" name="save_template">Save</button>
-															</div>
+							<div class="col-lg-9">
+								<div class="row div-left">
+									<div class="col-lg-4" style="padding-top: 11px;">
+										<div class="div-left">
+											<div class="info-patient">
+												<div class="info-patient2">
+													<div class="row justify-content-center">
+														<div class="info-left col-sm-12">
+															<table class="infopatientworklist table-left">
+																<tr>
+																	<td><span class="table-left">Name</span></td>
+																</tr>
+																<tr>
+																	<td><?= $detail_uid; ?></td>
+																</tr>
+																<tr>
+																	<td><span class="table-left">MRN</span></td>
+																</tr>
+																<tr>
+																	<td><?= $pat_id; ?></td>
+																</tr>
+																<tr>
+																	<td><span class="table-left">Sex</span></td>
+																</tr>
+																<tr>
+																	<td><?= $pat_sex; ?></td>
+																</tr>
+																<tr>
+																	<td><span class="table-left">Age</span></td>
+																</tr>
+																<tr>
+																	<td><?= $pat_birthdate; ?></td>
+																</tr>
+																<tr>
+																	<td><span class="table-left">Special Needs</span></td>
+																</tr>
+																<tr>
+																	<td><?= $spc_needs; ?></td>
+																</tr>
+																<tr>
+																	<td><span class="table-left">Procedure</span></td>
+																</tr>
+																<tr>
+																	<td><?= $study_desc; ?></td>
+																</tr>
+																<tr>
+																	<td><span class="table-left">Study Date</span></td>
+																</tr>
+																<tr>
+																	<td><?= $study_datetime; ?></td>
+																</tr>
+																<tr>
+																	<td><span class="table-left">Department</span></td>
+																</tr>
+																<tr>
+																	<td><?= $name_dep; ?></td>
+																</tr>
+																<tr>
+																	<td><span class="table-left">Refferal Physician</span></td>
+																</tr>
+																<tr>
+																	<td><?= $named; ?></td>
+																</tr>
+															</table>
 														</div>
 													</div>
 												</div>
 											</div>
-											<!-- END OF POP UP -->
-											<div class="btn-bar-1">
-												<button class="btn btn-worklist btn-expertise button-popup-approve waves-effect waves-light" name="save_edit"><i class="fas fa-save"></i> Save Edit</button>
+											<!-- <div class="left-top">
+												<div style="width: 50%; padding: 3px;">
+													<div class="work-order">
+														<ul>
+															<a class="button-work-order" href="#!">
+																<li class="li-work patient-work">History</li>
+															</a>
+														</ul>
+													</div>
+												</div>
+												<div style="width: 50%; padding: 3px;">
+													<div class="work-patient">
+														<ul>
+															<a class="button-work-patient" href="#!">
+																<li class="li-work patient-work">viewer</li>
+															</a>
+														</ul>
+													</div>
+												</div>
+											</div> -->
+											<!-- history pasien berdasarkan mrn pat_iid-->
+											<div class="data-order">
+													<h4 style="margin: 0px;">History</h4>
+													<hr style="margin: 10px 0px;">
+												<?php
+												$i = 1;
+												while ($mrn = mysqli_fetch_assoc($query_mrn)) {
+													$study_iuid = $mrn['study_iuid'];
+													$detail_mrn = '<a href="#" class="hasil-all penawaran-a" data-id="' . $study_iuid . '">' . removeCharacter($pat_name) . '</a>';
+												?>
+													<table>
+														<tbody>
+															<p class="text-center"><?= $i; ?></p>
+															<tr>
+																<td><span class="table-left">Name</span></td>
+															</tr>
+															<tr>
+																<td><?= $detail_mrn . ' ' . styleStatus($mrn['status']); ?></td>
+															</tr>
+															<tr>
+																<td><span class="table-left">MRN</span></td>
+															</tr>
+															<tr>
+																<td><?= $pat_id; ?></td>
+															</tr>
+															<tr>
+																<td><span class="table-left">Pemeriksaan</span></td>
+															</tr>
+															<tr>
+																<td><?= defaultValue($mrn['study_desc']); ?></td>
+															</tr>
+															<tr>
+																<td><span class="table-left">Waktu Pemeriksaan</span></td>
+															</tr>
+															<tr>
+																<td><strong class="text-dark text-center"><?= defaultValueDateTime($mrn['study_datetime']); ?></strong></td>
+															</tr>
+															<tr>
+																<td>
+																	<?= PDFFIRST . $study_iuid . PDFLAST .
+																		HOROSFIRST . $study_iuid . HOROSLAST .
+																		OHIFOLDFIRST . $study_iuid . OHIFOLDLAST;
+																	?>
+																	<a href="#" class="view-history-expertise" data-id="<?= $study_iuid;  ?>">
+																		<i data-toggle="tooltip" title="View History Expertise" class="fa fa-file-archive-o fa-lg"></i>
+																	</a>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+													<hr>
+												<?php $i++;
+												} ?>
 											</div>
-											</form>
+											<!-- Multimed viewer -->
+											<!-- <div class="data-patient">
+												<div class="content2-adm li-adm">
+													<h4 style="margin: 0px;">Viewer</h4>
+													<hr style="margin: 10px 0px;">
+													<div class="buttons1">
+														<?= HOROSWORKLISTFIRST . $uid . HOROSWORKLISTLAST .
+															RADIANTWORKLISTFIRST . "'$uid'" . RADIANTWORKLISTLAST .
+															HTMLWORKLISTFIRST . "'$uid'" . HTMLWORKLISTLAST .
+															OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST;
+														?>
+													</div>
+												</div>
+											</div> -->
+											<form action="" method="post">
+												<div class="tambahan1">
+													<label for="priority_doctor">
+														<h5 style="margin-top: 0px; margin-bottom:-6px; font-weight:bold;"><?= $lang['information'] ?></h5>
+													</label><br>
+													<label class="radio-admin">
+														<input type="radio" checked name="priority_doctor" value="normal" required> Normal
+														<span class="checkmark"></span>
+													</label><br>
+													<label class="radio-admin">
+														<input type="radio" name="priority_doctor" value="cito" required> Cito
+														<span class="checkmark"></span>
+													</label>
+												</div>
+										</div>
+									</div>
+							
+									<div class="col-lg-8">
+										<div class="div-mid">
+											<div class="work-patient6">
+												<!-- Multimed viewer -->
+												<div class="data-patient">
+													<div class="content2-adm li-adm">
+														<!-- <h4 style="margin: 0px;">Viewer</h4>
+														<hr style="margin: 10px 0px;"> -->
+														<div class="container-fluid">
+															<div class="row">
+																<?= RADIANTWORKLISTFIRST . "'$uid'" . RADIANTWORKLISTLAST .
+																	INOBITECWORKLISTFIRST . "'$uid'" . INOBITECWORKLISTLAST .
+																	HTMLWORKLISTFIRST . "'$uid'" . HTMLWORKLISTLAST .
+																	OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST;
+																?>
+																
+															</div>
+														</div>
+														
+													</div>
+												</div>
+
+												<input type="hidden" name="uid" value="<?= $uid; ?>">
+												<input type="hidden" name="username" value="<?= $username; ?>">
+												<?php
+												@$template_id = $_GET['template_id'];
+												$template = mysqli_fetch_assoc(mysqli_query(
+													$conn,
+													"SELECT $select_template 
+													FROM $table_template
+													WHERE template_id = '$template_id'"
+												));
+												if ($template_id == "") {
+													$fill = $row['fill'];
+												} else {
+													$fill = $template['fill'];
+												}
+												?>
+												<br>
+												<div class="textarea-ckeditor">
+													<textarea class="ckeditor" name="fill" id="ckeditor">
+													<?= $fill; ?>
+													</textarea>
+												</div>
+												
+												<div class="kotak">
+													<!---POP UP -->
+													<div class="container">
+														<!-- Button to Open the Modal -->
+														<button class="btn btn-worklist3 btn-expertise button-popup" type="button" data-toggle="modal" data-target="#modal-insert-template" style="margin-left: -10px;"><i class="fas fa-file-export"></i> Save Template
+														</button>
+														<!-- Modal -->
+														<div class="modal fade" id="modal-insert-template" role="dialog">
+															<div class="modal-dialog">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<h4 class="modal-title">Insert Title</h4><br />
+																		<button type="button" class="close" data-dismiss="modal">&times;</button>
+																	</div>
+																	<div class="modal-body-template" style="padding: 10px;">
+																		<input class="form-control" type="text" name="title" value="" placeholder="Insert Tittle">
+																	</div>
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
+																		<button style="border-radius: 5px; font-weight: bold; margin-bottom:4px;" class=" btn btn-success" name="save_template">Save</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- END OF POP UP -->
+													<div class="btn-bar-1">
+														<button class="btn btn-worklist btn-expertise button-popup-approve waves-effect waves-light" name="save_edit"><i class="fas fa-save"></i> Save Edit</button>
+													</div>
+													</form>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+							<br><br>
+
 							<div class="col-lg-3">
 								<div class="div-right">
 									<div class="">
@@ -409,6 +438,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 									</div>
 								</div>
 							</div>
+
 						</div>
 					</div>
 				</div>
@@ -481,7 +511,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 			});
 		</script>
 		<!-- -------------------javascript select temlate-------------- -->
-		<script>
+		<!-- <script>
 			$(document).ready(function() {
 				$(".data-order").hide();
 				$(".work-patient").css("background", "#68b399");
@@ -507,7 +537,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 					$(".data-order").hide();
 				});
 			});
-		</script>
+		</script> -->
 		<script>
 			$(document).ready(function() {
 				$(".dokteravail").toggle();

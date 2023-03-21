@@ -28,7 +28,7 @@ $name = $row10['ad_name'] . ' ' . $row10['ad_lastname'];
             <img class="logo1" src="image/logo-rispacs1.png" />
           </div> -->
           <div id="center2" class="col-md-2">
-            <img class="logo" src="../image/intiwid-logo-new-putih-2.png" />
+            <img class="logo" src="../image/multimed_3_logo_putih.png" />
           </div>
         </div>
 
@@ -76,7 +76,7 @@ $name = $row10['ad_name'] . ' ' . $row10['ad_lastname'];
             </div>
             <div class="nav-bg-fostrap">
               <div class="navbar-fostrap"> <span></span> <span></span> <span></span> </div>
-              <a href="" class="title-mobile"><img src="image/intiwid-logo-putih.png" style="width: 115px; margin-top: -5px;"></a>
+              <a href="" class="title-mobile"><img src="image/multimed_3_logo_putih.png" style="width: 115px; margin-top: -5px;"></a>
             </div>
           </div>
         </div>
