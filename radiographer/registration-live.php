@@ -58,14 +58,14 @@ if ($_SESSION['level'] == "radiographer") {
                       <div>
                         <div class="dokteravail cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px;">
                           <h4><?= $lang['referral_physician'] ?></h4><br>
-                            <select class="selectpicker" data-size="10" data-live-search="true" data-width="100%" name="dokterid" id="dokterid" data-style="btn-info">
-                              <option value="null">--pilih--</option>
-                              <?php
-                              $query_dokter = mysqli_query($conn, "SELECT * FROM xray_dokter");
-                              while ($dokter = mysqli_fetch_assoc($query_dokter)) { ?>
-                                <option value="<?= $dokter['dokterid'] . '|' . $dokter['named']; ?>"><b><?= $dokter['named'] . ' ' . $dokter['lastnamed']; ?></b></option>
-                              <?php } ?>
-                            </select>
+                          <select class="selectpicker" data-size="10" data-live-search="true" data-width="100%" name="dokterid" id="dokterid" data-style="btn-info">
+                            <option value="null">--pilih--</option>
+                            <?php
+                            $query_dokter = mysqli_query($conn, "SELECT * FROM xray_dokter");
+                            while ($dokter = mysqli_fetch_assoc($query_dokter)) { ?>
+                              <option value="<?= $dokter['dokterid'] . '|' . $dokter['named']; ?>"><b><?= $dokter['named'] . ' ' . $dokter['lastnamed']; ?></b></option>
+                            <?php } ?>
+                          </select>
                         </div>
 
 
@@ -94,15 +94,15 @@ if ($_SESSION['level'] == "radiographer") {
                       <!-- department -->
                       <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px; margin-bottom:15px;">
                         <h4><?= $lang['select_poly'] ?></h4>
-                          <label><?= $lang['select_poly'] ?> :</label><br>
-                          <select class="selectpicker" data-size="10" data-live-search="true" data-width="100%" name="dep_id" id="dep_id" data-style="btn-info">
-                            <option value="null">--pilih--</option>
-                            <?php
-                            $query_department = mysqli_query($conn, "SELECT * FROM xray_department");
-                            while ($department = mysqli_fetch_array($query_department)) { ?>
-                              <option value="<?= $department['dep_id'] . '|' . $department['name_dep']; ?>"><?= $department['name_dep']; ?></option>
-                            <?php } ?>
-                          </select><br>
+                        <label><?= $lang['select_poly'] ?> :</label><br>
+                        <select class="selectpicker" data-size="10" data-live-search="true" data-width="100%" name="dep_id" id="dep_id" data-style="btn-info">
+                          <option value="null">--pilih--</option>
+                          <?php
+                          $query_department = mysqli_query($conn, "SELECT * FROM xray_department");
+                          while ($department = mysqli_fetch_array($query_department)) { ?>
+                            <option value="<?= $department['dep_id'] . '|' . $department['name_dep']; ?>"><?= $department['name_dep']; ?></option>
+                          <?php } ?>
+                        </select><br>
                       </div>
 
                       <!-- <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px; margin-bottom:15px;">
@@ -119,18 +119,20 @@ if ($_SESSION['level'] == "radiographer") {
 
 
                       <!-- Payment -->
-                      <!-- <label>Select Payment :</label> <br>
-                      <select class="selectpicker" data-size="10" data-live-search="true" data-width="100%" name="id_payment" id="id_payment" data-style="btn-info">
-                        <option value="null">--pilih--</option>
-                        <?php
-                        $query_payment = mysqli_query($conn, "SELECT * FROM xray_payment_insurance");
-                        while ($payment = mysqli_fetch_array($query_payment)) { ?>
-                          <option value="<?= $payment["id_payment"] . '|' . $payment["payment"]; ?> "><?= $payment['payment']; ?></option>
-                        <?php } ?>
-                      </select> -->
+                      <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px; margin: 15px 0 15px 0;">
+                        <h4>Select Payment :</h4> <br>
+                        <select class="selectpicker" data-size="10" data-live-search="true" data-width="100%" name="id_payment" id="id_payment" data-style="btn-info">
+                          <option value="null">--pilih--</option>
+                          <?php
+                          $query_payment = mysqli_query($conn, "SELECT * FROM xray_payment_insurance");
+                          while ($payment = mysqli_fetch_array($query_payment)) { ?>
+                            <option value="<?= $payment["id_payment"] . '|' . $payment["payment"]; ?> "><?= $payment['payment']; ?></option>
+                          <?php } ?>
+                        </select>
+                      </div>
 
-                      <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px; margin-bottom:15px;">
-                        <h4><?= $lang['select_poly'] ?></h4>
+                      <!-- <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px; margin-bottom:15px;">
+                        <h4>Select Payment</h4>
                         <div class="input-group input-group-regist input-regist input-regist-gender">
                           <?php
                           $query_payment = mysqli_query($conn, "SELECT * FROM xray_payment_insurance");
@@ -138,12 +140,12 @@ if ($_SESSION['level'] == "radiographer") {
                             <input name="payment_id" id="<?= $payment['payment']; ?>" type="radio" value="<?= $payment["payment"]; ?>" required /><label for="<?= $payment['payment']; ?>"><?= $payment['payment']; ?></label>
                           <?php } ?>
                         </div>
-                      </div>
+                      </div> -->
                       <!-- End of Payment -->
 
                       <!-- modalitas -->
                       <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px; margin: 15px 0 15px 0;">
-                        <h4><?= $lang['select_mod'] ?> :</h4> <br>
+                        <h4><?= $lang['select_mod'] ?> & Study</h4> <br>
                         <select class="selectpicker" data-size="10" data-live-search="true" data-width="100%" name="id_modality" id="id_modality" data-style="btn-info">
                           <option value="null">--pilih--</option>
                           <?php
@@ -155,7 +157,7 @@ if ($_SESSION['level'] == "radiographer") {
 
                         <!-- study -->
                         <div class="select-procedure">
-                          <label><?= $lang['select_procedure']; ?> :</label> <br>
+                          <label><?= $lang['select_procedure']; ?></label> <br>
                           <select data-size="10" data-live-search="true" style="height: 242px;" class="form-control select2" multiple="multiple" name="id_prosedur[]" id="id_prosedur" required>
                           </select>
                         </div>
@@ -164,17 +166,19 @@ if ($_SESSION['level'] == "radiographer") {
 
 
                       <!-- Radiographer -->
-                      <!-- <label>Select Radiographer :</label><br>
-                      <select class="selectpicker" data-size="10" data-live-search="true" data-width="100%" name="radiographer_id" id="radiographer_id" data-style="btn-info">
-                        <option value="null">--pilih--</option>
-                        <?php
-                        $query_radiographer = mysqli_query($conn, "SELECT * FROM xray_radiographer");
-                        while ($radiographer = mysqli_fetch_array($query_radiographer)) { ?>
-                          <option value="<?= $radiographer['radiographer_id'] . '|' . $radiographer['radiographer_name']; ?>"><?= $radiographer['radiographer_name'] . ' ' . $radiographer['radiographer_lastname']; ?></option>
-                        <?php } ?>
-                      </select><br> -->
+                      <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px;">
+                        <h4>Select Radiographer</h4> <br>
+                        <select class="selectpicker" data-size="10" data-live-search="true" data-width="100%" name="radiographer_id" id="radiographer_id" data-style="btn-info">
+                          <option value="null">--pilih--</option>
+                          <?php
+                          $query_radiographer = mysqli_query($conn, "SELECT * FROM xray_radiographer");
+                          while ($radiographer = mysqli_fetch_array($query_radiographer)) { ?>
+                            <option value="<?= $radiographer['radiographer_id'] . '|' . $radiographer['radiographer_name']; ?>"><?= $radiographer['radiographer_name'] . ' ' . $radiographer['radiographer_lastname']; ?></option>
+                          <?php } ?>
+                        </select><br>
+                      </div>
 
-                      <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px; margin-bottom:15px;">
+                      <!-- <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px; margin-bottom:15px;">
                         <h4>Select Radiographer</h4>
                         <div class="input-group input-group-regist input-regist input-regist-gender">
                           <?php
@@ -183,21 +187,23 @@ if ($_SESSION['level'] == "radiographer") {
                             <input name="radiographer_id" id="<?= $radiographer['radiographer_name']; ?>" type="radio" value="<?= $radiographer['radiographer_name']; ?>" required /><label for="<?= $radiographer['radiographer_name']; ?>"><?= $radiographer['radiographer_name']; ?></label>
                           <?php } ?>
                         </div>
-                      </div>
+                      </div> -->
                       <!-- End of Radiographer -->
 
                       <!-- dokter radiologi -->
-                      <!-- <label>Select Radiologist :</label><br>
-                      <select class="selectpicker" data-size="10" data-live-search="true" data-width="100%" name="dokradid" id="dokradid" data-style="btn-info">
-                        <option value="null">--pilih--</option>
-                        <?php
-                        $query_dokter_radiologi = mysqli_query($conn, "SELECT * FROM xray_dokter_radiology");
-                        while ($dokter_radiologi = mysqli_fetch_array($query_dokter_radiologi)) { ?>
-                          <option value="<?= $dokter_radiologi['dokradid'] . '|' . $dokter_radiologi['dokrad_name']; ?>"><?= $dokter_radiologi['dokrad_name'] . ' ' . $dokter_radiologi['dokrad_lastname']; ?></option>
-                        <?php } ?>
-                      </select><br> -->
-
                       <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px;">
+                        <h4>Select Radiologist</h4><br>
+                        <select class="selectpicker" data-size="10" data-live-search="true" data-width="100%" name="dokradid" id="dokradid" data-style="btn-info">
+                          <option value="null">--pilih--</option>
+                          <?php
+                          $query_dokter_radiologi = mysqli_query($conn, "SELECT * FROM xray_dokter_radiology");
+                          while ($dokter_radiologi = mysqli_fetch_array($query_dokter_radiologi)) { ?>
+                            <option value="<?= $dokter_radiologi['dokradid'] . '|' . $dokter_radiologi['dokrad_name']; ?>"><?= $dokter_radiologi['dokrad_name'] . ' ' . $dokter_radiologi['dokrad_lastname']; ?></option>
+                          <?php } ?>
+                        </select><br>
+                      </div>
+
+                      <!-- <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px;">
                         <h4>Select Radiologist</h4>
                         <div class="input-group input-group-regist input-regist input-regist-gender">
                           <?php
@@ -206,7 +212,7 @@ if ($_SESSION['level'] == "radiographer") {
                             <input name="dokradid" id="<?= $dokter_radiologi['dokrad_name']; ?>" type="radio" value="<?= $dokter_radiologi['dokrad_name']; ?>" required /><label style="width: 50%;" for="<?= $dokter_radiologi['dokrad_name']; ?>"><?= $dokter_radiologi['dokrad_name'] . ' ' . $dokter_radiologi['dokrad_lastname'];; ?></label>
                           <?php } ?>
                         </div>
-                      </div>
+                      </div> -->
 
                     </div>
 
