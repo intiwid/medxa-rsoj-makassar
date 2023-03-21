@@ -111,6 +111,28 @@
     }
 </script>
 
+<!-- ---------SIDE BAR NEW--------------------- -->
+<script>
+    if ($(window).width() < 1200) {
+        $('.sidebarnew').addClass('closenew');
+    }
+
+    let arrow = document.querySelectorAll(".arrow");
+    for (var i = 0; i < arrow.length; i++) {
+        arrow[i].addEventListener("click", (e) => {
+            let arrowParent = e.target.parentElement.parentElement; //selecting main parent of arrow
+            arrowParent.classList.toggle("showMenu");
+        });
+    }
+    let sidebarnew = document.querySelector(".sidebarnew");
+    let sidebarBtn = document.querySelector(".fa-bars-staggered");
+    sidebarBtn.addEventListener("click", () => {
+        sidebarnew.classList.toggle("closenew");
+    });
+</script>
+<!-- ---------END SIDE BAR NEW--------------------- -->
+
+
 <script>
     const container = document.querySelector('.scroller-itwd , .table-box , .back-search');
 

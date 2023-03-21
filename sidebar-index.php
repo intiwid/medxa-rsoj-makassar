@@ -393,7 +393,7 @@
         
         <!-- =================SIDEBAR DOKTER RADIOLOGI====================== -->
         <?php if($_SESSION['level'] == 'radiology') {?>
-            <li id="settings1">
+            <li id="worklist1">
                 <a href="dicom.php">
                     <i class="fa-solid fa-book-medical"></i>
                     <span class="link_name">Expertise</span>
@@ -438,7 +438,7 @@
         <!-- =================END OF SIDEBAR POLI====================== -->
         <?php if($_SESSION['level'] == 'refferal') {?>
             <li data-target="#worklist1">
-            <a href="query-search.php">
+            <a href="workload.php">
                 <i class="fa-solid fa-laptop-file"></i>
                 <span class="link_name">Query </span>
             </a>

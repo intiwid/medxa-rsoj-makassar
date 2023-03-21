@@ -14,7 +14,7 @@ if ($_SESSION['level'] == "refferal") {
   </head>
 
   <body>
-
+  <script type="text/javascript" src="js/jquery.min.js"></script>
     <?php include('../sidebar-index.php'); ?>
     <div class="container-fluid" id="main">
       <div class="row">

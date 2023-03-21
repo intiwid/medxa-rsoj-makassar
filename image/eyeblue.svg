@@ -1,2 +1,26 @@
-<?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><circle xmlns="http://www.w3.org/2000/svg" cx="256.25" cy="256" fill="#b2b2b2" r="245" data-original="#fec753" style="" class=""/><path xmlns="http://www.w3.org/2000/svg" d="m256 105.467c-123.226 0-226.406 111.129-253.017 142.421-3.978 4.678-3.978 11.545 0 16.223 26.611 31.292 129.791 142.422 253.017 142.422s226.406-111.129 253.017-142.421c3.978-4.678 3.978-11.545 0-16.223-26.611-31.292-129.791-142.422-253.017-142.422z" fill="#35528c" data-original="#35528c" style=""/><path xmlns="http://www.w3.org/2000/svg" d="m41.966 256c0-24.313 95.826-150.533 214.034-150.533-122.22 0-224.719 109.322-252.349 141.639-4.381 5.124-4.381 12.663 0 17.788 27.63 32.317 130.129 141.639 252.349 141.639-118.208 0-214.034-126.22-214.034-150.533z" fill="#1f3a60" data-original="#1f3a60" style=""/><circle xmlns="http://www.w3.org/2000/svg" cx="256" cy="256" fill="#99d3ff" r="132" data-original="#99d3ff" style=""/><path xmlns="http://www.w3.org/2000/svg" d="m176 256c0-64.001 45.551-117.357 106-129.434-8.407-1.68-17.099-2.566-26-2.566-72.902 0-132 59.098-132 132s59.098 132 132 132c8.901 0 17.593-.887 26-2.566-60.449-12.077-106-65.433-106-129.434z" fill="#5bb3ce" data-original="#5bb3ce" style=""/><circle xmlns="http://www.w3.org/2000/svg" cx="254.603" cy="256" fill="#1f3a60" r="65.603" data-original="#1f3a60" style=""/><circle xmlns="http://www.w3.org/2000/svg" cx="308.058" cy="225.628" fill="#dcf3ff" r="27.942" data-original="#dcf3ff" style=""/></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns:svgjs="http://svgjs.com/svgjs"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+	 style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#D6D6D6;}
+	.st1{fill:#35528C;}
+	.st2{fill:#1F3A60;}
+	.st3{fill:#99D3FF;}
+	.st4{fill:#5BB3CE;}
+	.st5{fill:#DCF3FF;}
+</style>
+<g>
+	<circle class="st0" cx="256.2" cy="256" r="245"/>
+	<path class="st1" d="M256,105.5c-123.2,0-226.4,111.1-253,142.4c-4,4.7-4,11.5,0,16.2c26.6,31.3,129.8,142.4,253,142.4
+		s226.4-111.1,253-142.4c4-4.7,4-11.5,0-16.2C482.4,216.6,379.2,105.5,256,105.5z"/>
+	<path class="st2" d="M42,256c0-24.3,95.8-150.5,214-150.5c-122.2,0-224.7,109.3-252.3,141.6c-4.4,5.1-4.4,12.7,0,17.8
+		C31.3,297.2,133.8,406.5,256,406.5C137.8,406.5,42,280.3,42,256z"/>
+	<circle class="st3" cx="256" cy="256" r="132"/>
+	<path class="st4" d="M176,256c0-64,45.6-117.4,106-129.4c-8.4-1.7-17.1-2.6-26-2.6c-72.9,0-132,59.1-132,132s59.1,132,132,132
+		c8.9,0,17.6-0.9,26-2.6C221.6,373.4,176,320,176,256L176,256z"/>
+	<circle class="st2" cx="254.6" cy="256" r="65.6"/>
+	<circle class="st5" cx="308.1" cy="225.6" r="27.9"/>
+</g>
+</svg>
