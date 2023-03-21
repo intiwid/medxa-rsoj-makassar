@@ -56,20 +56,20 @@ if ($_SESSION['level'] == "radiographer") {
 
                       <!-- dokter pengirim -->
                       <div>
-                        <!-- <div class="dokteravail">
-                          <label for="dokterid"><?= $lang['referral_physician'] ?> :</label><br>
-                          <select class="selectpicker" data-size="10" data-live-search="true" data-width="100%" name="dokterid" id="dokterid" data-style="btn-info">
-                            <option value="null">--pilih--</option>
-                            <?php
-                            $query_dokter = mysqli_query($conn, "SELECT * FROM xray_dokter");
-                            while ($dokter = mysqli_fetch_assoc($query_dokter)) { ?>
-                              <option value="<?= $dokter['dokterid'] . '|' . $dokter['named']; ?>"><b><?= $dokter['named'] . ' ' . $dokter['lastnamed']; ?></b></option>
-                            <?php } ?>
-                          </select>
-                        </div> -->
+                        <div class="dokteravail cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px;">
+                          <h4><?= $lang['referral_physician'] ?></h4><br>
+                            <select class="selectpicker" data-size="10" data-live-search="true" data-width="100%" name="dokterid" id="dokterid" data-style="btn-info">
+                              <option value="null">--pilih--</option>
+                              <?php
+                              $query_dokter = mysqli_query($conn, "SELECT * FROM xray_dokter");
+                              while ($dokter = mysqli_fetch_assoc($query_dokter)) { ?>
+                                <option value="<?= $dokter['dokterid'] . '|' . $dokter['named']; ?>"><b><?= $dokter['named'] . ' ' . $dokter['lastnamed']; ?></b></option>
+                              <?php } ?>
+                            </select>
+                        </div>
 
 
-                        <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px;">
+                        <!-- <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px;">
                           <h4><?= $lang['referral_physician'] ?></h4>
                           <div class="input-group input-group-regist input-regist input-regist-gender">
                             <?php
@@ -79,7 +79,7 @@ if ($_SESSION['level'] == "radiographer") {
                             <?php } ?>
                             <input name="dokterid" id="dokter_lain" type="radio" value="" data-toggle="collapse" data-target="#demo" class="dok_lain" /><label for="dokter_lain" style="font-weight: bold;"><?= $lang['other_physician'] ?></label>
                           </div>
-                        </div>
+                        </div> -->
                         <br>
                         <div id="demo" class="collapse">
                           <label><?= $lang['f_name'] ?></label>
@@ -92,17 +92,20 @@ if ($_SESSION['level'] == "radiographer") {
                       <!-- end of dokter pengirim -->
 
                       <!-- department -->
-                      <!-- <label><?= $lang['select_poly'] ?> :</label><br>
-                      <select class="selectpicker" data-size="10" data-live-search="true" data-width="100%" name="dep_id" id="dep_id" data-style="btn-info">
-                        <option value="null">--pilih--</option>
-                        <?php
-                        $query_department = mysqli_query($conn, "SELECT * FROM xray_department");
-                        while ($department = mysqli_fetch_array($query_department)) { ?>
-                          <option value="<?= $department['dep_id'] . '|' . $department['name_dep']; ?>"><?= $department['name_dep']; ?></option>
-                        <?php } ?>
-                      </select><br> -->
-
                       <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px; margin-bottom:15px;">
+                        <h4><?= $lang['select_poly'] ?></h4>
+                          <label><?= $lang['select_poly'] ?> :</label><br>
+                          <select class="selectpicker" data-size="10" data-live-search="true" data-width="100%" name="dep_id" id="dep_id" data-style="btn-info">
+                            <option value="null">--pilih--</option>
+                            <?php
+                            $query_department = mysqli_query($conn, "SELECT * FROM xray_department");
+                            while ($department = mysqli_fetch_array($query_department)) { ?>
+                              <option value="<?= $department['dep_id'] . '|' . $department['name_dep']; ?>"><?= $department['name_dep']; ?></option>
+                            <?php } ?>
+                          </select><br>
+                      </div>
+
+                      <!-- <div class="container-fluid cont-regist" style="background: #ececec;   box-shadow: none; padding: 11px; border-radius: 5px; margin-bottom:15px;">
                         <h4><?= $lang['select_poly'] ?></h4>
                         <div class="input-group input-group-regist input-regist input-regist-gender">
                           <?php
@@ -111,7 +114,7 @@ if ($_SESSION['level'] == "radiographer") {
                             <input name="dep_id" id="<?= $department['dep_id'] . '|' . $department['name_dep']; ?>" type="radio" value="<?= $department['dep_id']; ?>" required /><label for="<?= $department['dep_id']; ?>"><?= $department['name_dep']; ?></label>
                           <?php } ?>
                         </div>
-                      </div>
+                      </div> -->
                       <!-- end department -->
 
 
