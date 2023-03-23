@@ -75,8 +75,8 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
                             <h1>EDIT LOGIN</h1>
                             <form action="" method="post">
                                 <input type="hidden" name="id_table" value="<?= $row["id_table"]; ?>">
-                                <label for="username"><b>Username</b></label><br>
-                                <input class="form-control" type="text" name="username" id="username" required value="<?= $row["username"]; ?>">
+                                <label for="username"><b>Username</b> <br> *ubah username wajib didatabase (ubah xray_login dan xray_*)</label><br>
+                                <input class="form-control" type="text" name="username" id="username" required value="<?= $row["username"]; ?>" readonly>
                                 <label for="level"><b>Level</b></label><br>
                                 <select name="level">
                                     <option value="<?= $row["level"]; ?>"><?= $row["level"]; ?></option>
