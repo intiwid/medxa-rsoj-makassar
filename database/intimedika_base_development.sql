@@ -11,7 +11,7 @@
  Target Server Version : 50649 (5.6.49-log)
  File Encoding         : 65001
 
- Date: 03/04/2023 14:09:48
+ Date: 05/04/2023 10:32:01
 */
 
 SET NAMES utf8mb4;
@@ -86,7 +86,7 @@ CREATE TABLE `jobs`  (
   `created_at` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `jobs_queue_index`(`queue`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 86 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 95 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of jobs
@@ -176,6 +176,15 @@ INSERT INTO `jobs` VALUES (82, 'default', '{\"uuid\":\"f70f46b9-15b7-414e-b3a7-4
 INSERT INTO `jobs` VALUES (83, 'default', '{\"uuid\":\"10383ec6-b813-4dc9-8ebd-5e5338072c02\",\"displayName\":\"App\\\\Listeners\\\\LogSlackSimrsRisListener\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Events\\\\CallQueuedListener\",\"command\":\"O:36:\\\"Illuminate\\\\Events\\\\CallQueuedListener\\\":19:{s:5:\\\"class\\\";s:38:\\\"App\\\\Listeners\\\\LogSlackSimrsRisListener\\\";s:6:\\\"method\\\";s:6:\\\"handle\\\";s:4:\\\"data\\\";a:1:{i:0;O:24:\\\"App\\\\Events\\\\SimrsRisEvent\\\":6:{s:4:\\\"bool\\\";s:5:\\\"false\\\";s:3:\\\"url\\\";s:37:\\\"http:\\/\\/192.168.10.139:8000\\/api\\/orders\\\";s:6:\\\"method\\\";s:4:\\\"POST\\\";s:7:\\\"request\\\";a:31:{s:3:\\\"acc\\\";s:13:\\\"3436950000012\\\";s:9:\\\"patientid\\\";s:8:\\\"10710923\\\";s:3:\\\"mrn\\\";s:7:\\\"343695a\\\";s:4:\\\"name\\\";s:17:\\\"AGUS SUPRIADI, TN\\\";s:7:\\\"address\\\";s:27:\\\"jl raya maju sentosa BEKASI\\\";s:3:\\\"sex\\\";s:1:\\\"M\\\";s:10:\\\"birth_date\\\";s:10:\\\"1967-05-23\\\";s:6:\\\"weight\\\";s:2:\\\"50\\\";s:6:\\\"dep_id\\\";s:2:\\\"10\\\";s:8:\\\"name_dep\\\";s:9:\\\"Poli Gigi\\\";s:11:\\\"id_modality\\\";s:3:\\\"101\\\";s:14:\\\"xray_type_code\\\";s:2:\\\"CR\\\";s:11:\\\"id_prosedur\\\";s:3:\\\"41a\\\";s:8:\\\"prosedur\\\";s:13:\\\"Thorax\\/thorak\\\";s:14:\\\"harga_prosedur\\\";s:7:\\\"1000000\\\";s:15:\\\"radiographer_id\\\";s:4:\\\"9471\\\";s:17:\\\"radiographer_name\\\";s:14:\\\"SERIOSA CELINE\\\";s:8:\\\"dokterid\\\";s:5:\\\"Y0026\\\";s:5:\\\"named\\\";s:25:\\\"YOSUA NUGRAHA PRATAMA. dr\\\";s:8:\\\"dokradid\\\";s:1:\\\"5\\\";s:11:\\\"dokrad_name\\\";s:21:\\\"Demo Radiology Sp.Rad\\\";s:11:\\\"create_time\\\";s:19:\\\"2022-10-10 11:39:55\\\";s:13:\\\"schedule_date\\\";s:10:\\\"2022-10-10\\\";s:13:\\\"schedule_time\\\";s:8:\\\"11:50:45\\\";s:8:\\\"priority\\\";s:4:\\\"Cito\\\";s:9:\\\"pat_state\\\";s:11:\\\"Rawat Jalan\\\";s:9:\\\"spc_needs\\\";s:9:\\\"TB paru ?\\\";s:10:\\\"id_payment\\\";s:3:\\\"BPI\\\";s:7:\\\"payment\\\";s:10:\\\"BPJS (PBI)\\\";s:9:\\\"fromorder\\\";s:5:\\\"SIMRS\\\";s:3:\\\"uid\\\";s:49:\\\"1.2.40.0.13.1.343695a.20230403.343695000001241a21\\\";}s:8:\\\"response\\\";O:29:\\\"Illuminate\\\\Support\\\\MessageBag\\\":2:{s:11:\\\"\\u0000*\\u0000messages\\\";a:3:{s:3:\\\"acc\\\";a:1:{i:0;s:19:\\\"acc double (unique)\\\";}s:3:\\\"mrn\\\";a:1:{i:0;s:27:\\\"The mrn must be an integer.\\\";}s:11:\\\"id_prosedur\\\";a:1:{i:0;s:35:\\\"The id prosedur must be an integer.\\\";}}s:9:\\\"\\u0000*\\u0000format\\\";s:8:\\\":message\\\";}s:6:\\\"socket\\\";N;}}s:5:\\\"tries\\\";N;s:13:\\\"maxExceptions\\\";N;s:7:\\\"backoff\\\";N;s:10:\\\"retryUntil\\\";N;s:7:\\\"timeout\\\";N;s:17:\\\"shouldBeEncrypted\\\";b:0;s:3:\\\"job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1680501515, 1680501515);
 INSERT INTO `jobs` VALUES (84, 'default', '{\"uuid\":\"df6e8759-43e0-4ffe-8c65-3e5340794218\",\"displayName\":\"App\\\\Listeners\\\\LogSlackSimrsRisListener\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Events\\\\CallQueuedListener\",\"command\":\"O:36:\\\"Illuminate\\\\Events\\\\CallQueuedListener\\\":19:{s:5:\\\"class\\\";s:38:\\\"App\\\\Listeners\\\\LogSlackSimrsRisListener\\\";s:6:\\\"method\\\";s:6:\\\"handle\\\";s:4:\\\"data\\\";a:1:{i:0;O:24:\\\"App\\\\Events\\\\SimrsRisEvent\\\":6:{s:4:\\\"bool\\\";s:5:\\\"false\\\";s:3:\\\"url\\\";s:37:\\\"http:\\/\\/192.168.10.139:8000\\/api\\/orders\\\";s:6:\\\"method\\\";s:4:\\\"POST\\\";s:7:\\\"request\\\";a:31:{s:3:\\\"acc\\\";s:14:\\\"343695000001a2\\\";s:9:\\\"patientid\\\";s:8:\\\"10710923\\\";s:3:\\\"mrn\\\";s:7:\\\"343695a\\\";s:4:\\\"name\\\";s:17:\\\"AGUS SUPRIADI, TN\\\";s:7:\\\"address\\\";s:27:\\\"jl raya maju sentosa BEKASI\\\";s:3:\\\"sex\\\";s:1:\\\"M\\\";s:10:\\\"birth_date\\\";s:10:\\\"1967-05-23\\\";s:6:\\\"weight\\\";s:2:\\\"50\\\";s:6:\\\"dep_id\\\";s:2:\\\"10\\\";s:8:\\\"name_dep\\\";s:9:\\\"Poli Gigi\\\";s:11:\\\"id_modality\\\";s:3:\\\"101\\\";s:14:\\\"xray_type_code\\\";s:2:\\\"CR\\\";s:11:\\\"id_prosedur\\\";s:3:\\\"41a\\\";s:8:\\\"prosedur\\\";s:13:\\\"Thorax\\/thorak\\\";s:14:\\\"harga_prosedur\\\";s:7:\\\"1000000\\\";s:15:\\\"radiographer_id\\\";s:4:\\\"9471\\\";s:17:\\\"radiographer_name\\\";s:14:\\\"SERIOSA CELINE\\\";s:8:\\\"dokterid\\\";s:5:\\\"Y0026\\\";s:5:\\\"named\\\";s:25:\\\"YOSUA NUGRAHA PRATAMA. dr\\\";s:8:\\\"dokradid\\\";s:1:\\\"5\\\";s:11:\\\"dokrad_name\\\";s:21:\\\"Demo Radiology Sp.Rad\\\";s:11:\\\"create_time\\\";s:19:\\\"2022-10-10 11:39:55\\\";s:13:\\\"schedule_date\\\";s:10:\\\"2022-10-10\\\";s:13:\\\"schedule_time\\\";s:8:\\\"11:50:45\\\";s:8:\\\"priority\\\";s:4:\\\"Cito\\\";s:9:\\\"pat_state\\\";s:11:\\\"Rawat Jalan\\\";s:9:\\\"spc_needs\\\";s:9:\\\"TB paru ?\\\";s:10:\\\"id_payment\\\";s:3:\\\"BPI\\\";s:7:\\\"payment\\\";s:10:\\\"BPJS (PBI)\\\";s:9:\\\"fromorder\\\";s:5:\\\"SIMRS\\\";s:3:\\\"uid\\\";s:51:\\\"1.2.40.0.13.1.343695a.20230403.343695000001a241a955\\\";}s:8:\\\"response\\\";O:29:\\\"Illuminate\\\\Support\\\\MessageBag\\\":2:{s:11:\\\"\\u0000*\\u0000messages\\\";a:3:{s:3:\\\"acc\\\";a:1:{i:0;s:27:\\\"The acc must be an integer.\\\";}s:3:\\\"mrn\\\";a:1:{i:0;s:27:\\\"The mrn must be an integer.\\\";}s:11:\\\"id_prosedur\\\";a:1:{i:0;s:35:\\\"The id prosedur must be an integer.\\\";}}s:9:\\\"\\u0000*\\u0000format\\\";s:8:\\\":message\\\";}s:6:\\\"socket\\\";N;}}s:5:\\\"tries\\\";N;s:13:\\\"maxExceptions\\\";N;s:7:\\\"backoff\\\";N;s:10:\\\"retryUntil\\\";N;s:7:\\\"timeout\\\";N;s:17:\\\"shouldBeEncrypted\\\";b:0;s:3:\\\"job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1680501520, 1680501520);
 INSERT INTO `jobs` VALUES (85, 'default', '{\"uuid\":\"9f103d5e-b817-4bf5-8a6a-ccf2e7daff44\",\"displayName\":\"App\\\\Listeners\\\\LogSlackSimrsRisListener\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Events\\\\CallQueuedListener\",\"command\":\"O:36:\\\"Illuminate\\\\Events\\\\CallQueuedListener\\\":19:{s:5:\\\"class\\\";s:38:\\\"App\\\\Listeners\\\\LogSlackSimrsRisListener\\\";s:6:\\\"method\\\";s:6:\\\"handle\\\";s:4:\\\"data\\\";a:1:{i:0;O:24:\\\"App\\\\Events\\\\SimrsRisEvent\\\":6:{s:4:\\\"bool\\\";s:5:\\\"false\\\";s:3:\\\"url\\\";s:37:\\\"http:\\/\\/192.168.10.139:8000\\/api\\/orders\\\";s:6:\\\"method\\\";s:4:\\\"POST\\\";s:7:\\\"request\\\";a:31:{s:3:\\\"acc\\\";s:13:\\\"3436950000012\\\";s:9:\\\"patientid\\\";s:8:\\\"10710923\\\";s:3:\\\"mrn\\\";s:7:\\\"343695a\\\";s:4:\\\"name\\\";s:17:\\\"AGUS SUPRIADI, TN\\\";s:7:\\\"address\\\";s:27:\\\"jl raya maju sentosa BEKASI\\\";s:3:\\\"sex\\\";s:1:\\\"M\\\";s:10:\\\"birth_date\\\";s:10:\\\"1967-05-23\\\";s:6:\\\"weight\\\";s:2:\\\"50\\\";s:6:\\\"dep_id\\\";s:2:\\\"10\\\";s:8:\\\"name_dep\\\";s:9:\\\"Poli Gigi\\\";s:11:\\\"id_modality\\\";s:3:\\\"101\\\";s:14:\\\"xray_type_code\\\";s:2:\\\"CR\\\";s:11:\\\"id_prosedur\\\";s:3:\\\"41a\\\";s:8:\\\"prosedur\\\";s:13:\\\"Thorax\\/thorak\\\";s:14:\\\"harga_prosedur\\\";s:7:\\\"1000000\\\";s:15:\\\"radiographer_id\\\";s:4:\\\"9471\\\";s:17:\\\"radiographer_name\\\";s:14:\\\"SERIOSA CELINE\\\";s:8:\\\"dokterid\\\";s:5:\\\"Y0026\\\";s:5:\\\"named\\\";s:25:\\\"YOSUA NUGRAHA PRATAMA. dr\\\";s:8:\\\"dokradid\\\";s:1:\\\"5\\\";s:11:\\\"dokrad_name\\\";s:21:\\\"Demo Radiology Sp.Rad\\\";s:11:\\\"create_time\\\";s:19:\\\"2022-10-10 11:39:55\\\";s:13:\\\"schedule_date\\\";s:10:\\\"2022-10-10\\\";s:13:\\\"schedule_time\\\";s:8:\\\"11:50:45\\\";s:8:\\\"priority\\\";s:4:\\\"Cito\\\";s:9:\\\"pat_state\\\";s:11:\\\"Rawat Jalan\\\";s:9:\\\"spc_needs\\\";s:9:\\\"TB paru ?\\\";s:10:\\\"id_payment\\\";s:3:\\\"BPI\\\";s:7:\\\"payment\\\";s:10:\\\"BPJS (PBI)\\\";s:9:\\\"fromorder\\\";s:5:\\\"SIMRS\\\";s:3:\\\"uid\\\";s:50:\\\"1.2.40.0.13.1.343695a.20230403.343695000001241a183\\\";}s:8:\\\"response\\\";O:29:\\\"Illuminate\\\\Support\\\\MessageBag\\\":2:{s:11:\\\"\\u0000*\\u0000messages\\\";a:3:{s:3:\\\"acc\\\";a:1:{i:0;s:19:\\\"acc double (unique)\\\";}s:3:\\\"mrn\\\";a:1:{i:0;s:27:\\\"The mrn must be an integer.\\\";}s:11:\\\"id_prosedur\\\";a:1:{i:0;s:35:\\\"The id prosedur must be an integer.\\\";}}s:9:\\\"\\u0000*\\u0000format\\\";s:8:\\\":message\\\";}s:6:\\\"socket\\\";N;}}s:5:\\\"tries\\\";N;s:13:\\\"maxExceptions\\\";N;s:7:\\\"backoff\\\";N;s:10:\\\"retryUntil\\\";N;s:7:\\\"timeout\\\";N;s:17:\\\"shouldBeEncrypted\\\";b:0;s:3:\\\"job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1680501525, 1680501525);
+INSERT INTO `jobs` VALUES (86, 'default', '{\"uuid\":\"607ce84c-3ba0-42c8-aa44-3511f3a7510a\",\"displayName\":\"App\\\\Listeners\\\\LogSlackSimrsRisListener\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Events\\\\CallQueuedListener\",\"command\":\"O:36:\\\"Illuminate\\\\Events\\\\CallQueuedListener\\\":19:{s:5:\\\"class\\\";s:38:\\\"App\\\\Listeners\\\\LogSlackSimrsRisListener\\\";s:6:\\\"method\\\";s:6:\\\"handle\\\";s:4:\\\"data\\\";a:1:{i:0;O:24:\\\"App\\\\Events\\\\SimrsRisEvent\\\":6:{s:4:\\\"bool\\\";s:5:\\\"false\\\";s:3:\\\"url\\\";s:37:\\\"http:\\/\\/192.168.10.139:8000\\/api\\/orders\\\";s:6:\\\"method\\\";s:4:\\\"POST\\\";s:7:\\\"request\\\";a:31:{s:3:\\\"acc\\\";s:12:\\\"343695000001\\\";s:9:\\\"patientid\\\";s:8:\\\"10710923\\\";s:3:\\\"mrn\\\";s:8:\\\"10710923\\\";s:4:\\\"name\\\";s:30:\\\"ENNI MARLINA PANJAITAN \\/65 THN\\\";s:7:\\\"address\\\";s:27:\\\"jl raya maju sentosa BEKASI\\\";s:3:\\\"sex\\\";s:1:\\\"F\\\";s:10:\\\"birth_date\\\";s:10:\\\"1967-05-23\\\";s:6:\\\"weight\\\";s:2:\\\"50\\\";s:6:\\\"dep_id\\\";s:2:\\\"10\\\";s:8:\\\"name_dep\\\";s:9:\\\"Poli Gigi\\\";s:11:\\\"id_modality\\\";s:3:\\\"101\\\";s:14:\\\"xray_type_code\\\";s:2:\\\"CR\\\";s:11:\\\"id_prosedur\\\";s:2:\\\"41\\\";s:8:\\\"prosedur\\\";s:13:\\\"Thorax\\/thorak\\\";s:14:\\\"harga_prosedur\\\";s:7:\\\"1000000\\\";s:15:\\\"radiographer_id\\\";s:4:\\\"9471\\\";s:17:\\\"radiographer_name\\\";s:14:\\\"SERIOSA CELINE\\\";s:8:\\\"dokterid\\\";s:5:\\\"Y0026\\\";s:5:\\\"named\\\";s:25:\\\"YOSUA NUGRAHA PRATAMA. dr\\\";s:8:\\\"dokradid\\\";s:1:\\\"5\\\";s:11:\\\"dokrad_name\\\";s:21:\\\"Demo Radiology Sp.Rad\\\";s:11:\\\"create_time\\\";s:19:\\\"2022-10-10 11:39:55\\\";s:13:\\\"schedule_date\\\";s:10:\\\"2022-10-10\\\";s:13:\\\"schedule_time\\\";s:8:\\\"11:50:45\\\";s:8:\\\"priority\\\";s:4:\\\"Cito\\\";s:9:\\\"pat_state\\\";s:11:\\\"Rawat Jalan\\\";s:9:\\\"spc_needs\\\";s:9:\\\"TB paru ?\\\";s:10:\\\"id_payment\\\";s:3:\\\"BPI\\\";s:7:\\\"payment\\\";s:10:\\\"BPJS (PBI)\\\";s:9:\\\"fromorder\\\";s:5:\\\"SIMRS\\\";s:3:\\\"uid\\\";s:49:\\\"1.2.40.0.13.1.10710923.20230403.34369500000141298\\\";}s:8:\\\"response\\\";O:29:\\\"Illuminate\\\\Support\\\\MessageBag\\\":2:{s:11:\\\"\\u0000*\\u0000messages\\\";a:1:{s:3:\\\"acc\\\";a:1:{i:0;s:19:\\\"acc double (unique)\\\";}}s:9:\\\"\\u0000*\\u0000format\\\";s:8:\\\":message\\\";}s:6:\\\"socket\\\";N;}}s:5:\\\"tries\\\";N;s:13:\\\"maxExceptions\\\";N;s:7:\\\"backoff\\\";N;s:10:\\\"retryUntil\\\";N;s:7:\\\"timeout\\\";N;s:17:\\\"shouldBeEncrypted\\\";b:0;s:3:\\\"job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1680512239, 1680512239);
+INSERT INTO `jobs` VALUES (87, 'default', '{\"uuid\":\"80ad1a87-b10c-4f29-b472-432b5613e5b1\",\"displayName\":\"App\\\\Listeners\\\\LogSlackSimrsRisListener\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Events\\\\CallQueuedListener\",\"command\":\"O:36:\\\"Illuminate\\\\Events\\\\CallQueuedListener\\\":19:{s:5:\\\"class\\\";s:38:\\\"App\\\\Listeners\\\\LogSlackSimrsRisListener\\\";s:6:\\\"method\\\";s:6:\\\"handle\\\";s:4:\\\"data\\\";a:1:{i:0;O:24:\\\"App\\\\Events\\\\SimrsRisEvent\\\":6:{s:4:\\\"bool\\\";s:5:\\\"false\\\";s:3:\\\"url\\\";s:37:\\\"http:\\/\\/192.168.10.139:8000\\/api\\/orders\\\";s:6:\\\"method\\\";s:4:\\\"POST\\\";s:7:\\\"request\\\";a:30:{s:3:\\\"acc\\\";s:13:\\\"3436950000011\\\";s:9:\\\"patientid\\\";s:9:\\\"107109211\\\";s:3:\\\"mrn\\\";s:8:\\\"10710923\\\";s:4:\\\"name\\\";s:30:\\\"ENNI MARLINA PANJAITAN \\/65 THN\\\";s:7:\\\"address\\\";s:27:\\\"jl raya maju sentosa BEKASI\\\";s:3:\\\"sex\\\";s:1:\\\"F\\\";s:10:\\\"birth_date\\\";s:10:\\\"1967-05-23\\\";s:6:\\\"weight\\\";s:2:\\\"50\\\";s:6:\\\"dep_id\\\";s:2:\\\"10\\\";s:8:\\\"name_dep\\\";s:9:\\\"Poli Gigi\\\";s:11:\\\"id_modality\\\";s:3:\\\"101\\\";s:14:\\\"xray_type_code\\\";s:2:\\\"CR\\\";s:11:\\\"id_prosedur\\\";s:2:\\\"41\\\";s:8:\\\"prosedur\\\";s:13:\\\"Thorax\\/thorak\\\";s:14:\\\"harga_prosedur\\\";s:7:\\\"1000000\\\";s:15:\\\"radiographer_id\\\";s:4:\\\"9471\\\";s:17:\\\"radiographer_name\\\";s:14:\\\"SERIOSA CELINE\\\";s:8:\\\"dokterid\\\";s:5:\\\"Y0026\\\";s:5:\\\"named\\\";s:25:\\\"YOSUA NUGRAHA PRATAMA. dr\\\";s:8:\\\"dokradid\\\";s:1:\\\"5\\\";s:11:\\\"dokrad_name\\\";s:21:\\\"Demo Radiology Sp.Rad\\\";s:11:\\\"create_time\\\";s:19:\\\"2022-10-10 11:39:55\\\";s:13:\\\"schedule_date\\\";s:10:\\\"2022-10-10\\\";s:13:\\\"schedule_time\\\";s:8:\\\"11:50:45\\\";s:8:\\\"priority\\\";s:4:\\\"Cito\\\";s:9:\\\"pat_state\\\";s:11:\\\"Rawat Jalan\\\";s:9:\\\"spc_needs\\\";s:9:\\\"TB paru ?\\\";s:10:\\\"id_payment\\\";s:3:\\\"BPI\\\";s:7:\\\"payment\\\";s:10:\\\"BPJS (PBI)\\\";s:9:\\\"fromorder\\\";s:5:\\\"SIMRS\\\";}s:8:\\\"response\\\";O:29:\\\"Illuminate\\\\Support\\\\MessageBag\\\":2:{s:11:\\\"\\u0000*\\u0000messages\\\";a:2:{s:3:\\\"uid\\\";a:1:{i:0;s:26:\\\"The uid field is required.\\\";}s:3:\\\"acc\\\";a:1:{i:0;s:19:\\\"acc double (unique)\\\";}}s:9:\\\"\\u0000*\\u0000format\\\";s:8:\\\":message\\\";}s:6:\\\"socket\\\";N;}}s:5:\\\"tries\\\";N;s:13:\\\"maxExceptions\\\";N;s:7:\\\"backoff\\\";N;s:10:\\\"retryUntil\\\";N;s:7:\\\"timeout\\\";N;s:17:\\\"shouldBeEncrypted\\\";b:0;s:3:\\\"job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1680576698, 1680576698);
+INSERT INTO `jobs` VALUES (88, 'default', '{\"uuid\":\"d9b7ce32-c53d-4bf6-aa83-a7c8d72aa4fe\",\"displayName\":\"App\\\\Listeners\\\\LogSlackRisModalityListener\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Events\\\\CallQueuedListener\",\"command\":\"O:36:\\\"Illuminate\\\\Events\\\\CallQueuedListener\\\":19:{s:5:\\\"class\\\";s:41:\\\"App\\\\Listeners\\\\LogSlackRisModalityListener\\\";s:6:\\\"method\\\";s:6:\\\"handle\\\";s:4:\\\"data\\\";a:1:{i:0;O:27:\\\"App\\\\Events\\\\RisModalityEvent\\\":5:{s:3:\\\"url\\\";s:4:\\\".bat\\\";s:6:\\\"method\\\";s:4:\\\"POST\\\";s:7:\\\"request\\\";s:27:\\\"Tue 04\\/04\\/2023 9:53:13.83  \\\";s:8:\\\"response\\\";s:545:\\\"Tue 04\\/04\\/2023 9:53:13.83  javax.naming.CommunicationException: Could not obtain connection to any of these urls: 127.0.0.1:31099 and discovery failed with error: javax.naming.CommunicationException: Receive timed out [Root exception is java.net.SocketTimeoutException: Receive timed out] [Root exception is javax.naming.CommunicationException: Failed to connect to server 127.0.0.1:31099 [Root exception is javax.naming.ServiceUnavailableException: Failed to connect to server 127.0.0.1:31099 [Root exception is java.net.ConnectException: Conne\\\";s:6:\\\"socket\\\";N;}}s:5:\\\"tries\\\";N;s:13:\\\"maxExceptions\\\";N;s:7:\\\"backoff\\\";N;s:10:\\\"retryUntil\\\";N;s:7:\\\"timeout\\\";N;s:17:\\\"shouldBeEncrypted\\\";b:0;s:3:\\\"job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1680576794, 1680576794);
+INSERT INTO `jobs` VALUES (89, 'default', '{\"uuid\":\"42309804-87a3-4d00-b439-6fb39c354cd3\",\"displayName\":\"App\\\\Listeners\\\\LogSlackSimrsRisListener\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Events\\\\CallQueuedListener\",\"command\":\"O:36:\\\"Illuminate\\\\Events\\\\CallQueuedListener\\\":19:{s:5:\\\"class\\\";s:38:\\\"App\\\\Listeners\\\\LogSlackSimrsRisListener\\\";s:6:\\\"method\\\";s:6:\\\"handle\\\";s:4:\\\"data\\\";a:1:{i:0;O:24:\\\"App\\\\Events\\\\SimrsRisEvent\\\":6:{s:4:\\\"bool\\\";s:4:\\\"true\\\";s:3:\\\"url\\\";s:37:\\\"http:\\/\\/192.168.10.139:8000\\/api\\/orders\\\";s:6:\\\"method\\\";s:4:\\\"POST\\\";s:7:\\\"request\\\";a:31:{s:3:\\\"acc\\\";s:14:\\\"34369500000112\\\";s:9:\\\"patientid\\\";s:12:\\\"107109211211\\\";s:3:\\\"mrn\\\";s:8:\\\"10710923\\\";s:4:\\\"name\\\";s:30:\\\"ENNI MARLINA PANJAITAN \\/65 THN\\\";s:7:\\\"address\\\";s:27:\\\"jl raya maju sentosa BEKASI\\\";s:3:\\\"sex\\\";s:1:\\\"F\\\";s:10:\\\"birth_date\\\";s:10:\\\"1967-05-23\\\";s:6:\\\"weight\\\";s:2:\\\"50\\\";s:6:\\\"dep_id\\\";s:2:\\\"10\\\";s:8:\\\"name_dep\\\";s:9:\\\"Poli Gigi\\\";s:11:\\\"id_modality\\\";s:3:\\\"101\\\";s:14:\\\"xray_type_code\\\";s:2:\\\"CR\\\";s:11:\\\"id_prosedur\\\";s:2:\\\"41\\\";s:8:\\\"prosedur\\\";s:13:\\\"Thorax\\/thorak\\\";s:14:\\\"harga_prosedur\\\";s:7:\\\"1000000\\\";s:15:\\\"radiographer_id\\\";s:4:\\\"9471\\\";s:17:\\\"radiographer_name\\\";s:14:\\\"SERIOSA CELINE\\\";s:8:\\\"dokterid\\\";s:5:\\\"Y0026\\\";s:5:\\\"named\\\";s:25:\\\"YOSUA NUGRAHA PRATAMA. dr\\\";s:8:\\\"dokradid\\\";s:1:\\\"5\\\";s:11:\\\"dokrad_name\\\";s:21:\\\"Demo Radiology Sp.Rad\\\";s:11:\\\"create_time\\\";s:19:\\\"2022-10-10 11:39:55\\\";s:13:\\\"schedule_date\\\";s:10:\\\"2022-10-10\\\";s:13:\\\"schedule_time\\\";s:8:\\\"11:50:45\\\";s:8:\\\"priority\\\";s:4:\\\"Cito\\\";s:9:\\\"pat_state\\\";s:11:\\\"Rawat Jalan\\\";s:9:\\\"spc_needs\\\";s:9:\\\"TB paru ?\\\";s:10:\\\"id_payment\\\";s:3:\\\"BPI\\\";s:7:\\\"payment\\\";s:10:\\\"BPJS (PBI)\\\";s:9:\\\"fromorder\\\";s:5:\\\"SIMRS\\\";s:3:\\\"uid\\\";s:51:\\\"1.2.40.0.13.1.10710923.20230404.3436950000011241345\\\";}s:8:\\\"response\\\";b:1;s:6:\\\"socket\\\";N;}}s:5:\\\"tries\\\";N;s:13:\\\"maxExceptions\\\";N;s:7:\\\"backoff\\\";N;s:10:\\\"retryUntil\\\";N;s:7:\\\"timeout\\\";N;s:17:\\\"shouldBeEncrypted\\\";b:0;s:3:\\\"job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1680576794, 1680576794);
+INSERT INTO `jobs` VALUES (90, 'default', '{\"uuid\":\"649cb512-baa1-4d90-b708-1155972e795d\",\"displayName\":\"App\\\\Listeners\\\\LogSlackSimrsRisListener\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Events\\\\CallQueuedListener\",\"command\":\"O:36:\\\"Illuminate\\\\Events\\\\CallQueuedListener\\\":19:{s:5:\\\"class\\\";s:38:\\\"App\\\\Listeners\\\\LogSlackSimrsRisListener\\\";s:6:\\\"method\\\";s:6:\\\"handle\\\";s:4:\\\"data\\\";a:1:{i:0;O:24:\\\"App\\\\Events\\\\SimrsRisEvent\\\":6:{s:4:\\\"bool\\\";s:4:\\\"true\\\";s:3:\\\"url\\\";s:37:\\\"http:\\/\\/192.168.10.139:8000\\/api\\/orders\\\";s:6:\\\"method\\\";s:4:\\\"POST\\\";s:7:\\\"request\\\";a:31:{s:3:\\\"acc\\\";s:15:\\\"343695000001121\\\";s:9:\\\"patientid\\\";s:12:\\\"107109211211\\\";s:3:\\\"mrn\\\";s:8:\\\"10710923\\\";s:4:\\\"name\\\";s:30:\\\"ENNI MARLINA PANJAITAN \\/65 THN\\\";s:7:\\\"address\\\";s:27:\\\"jl raya maju sentosa BEKASI\\\";s:3:\\\"sex\\\";s:1:\\\"F\\\";s:10:\\\"birth_date\\\";s:10:\\\"1967-05-23\\\";s:6:\\\"weight\\\";s:2:\\\"50\\\";s:6:\\\"dep_id\\\";s:2:\\\"10\\\";s:8:\\\"name_dep\\\";s:9:\\\"Poli Gigi\\\";s:11:\\\"id_modality\\\";s:3:\\\"101\\\";s:14:\\\"xray_type_code\\\";s:2:\\\"CR\\\";s:11:\\\"id_prosedur\\\";s:2:\\\"41\\\";s:8:\\\"prosedur\\\";s:13:\\\"Thorax\\/thorak\\\";s:14:\\\"harga_prosedur\\\";s:7:\\\"1000000\\\";s:15:\\\"radiographer_id\\\";s:4:\\\"9471\\\";s:17:\\\"radiographer_name\\\";s:14:\\\"SERIOSA CELINE\\\";s:8:\\\"dokterid\\\";s:5:\\\"Y0026\\\";s:5:\\\"named\\\";s:25:\\\"YOSUA NUGRAHA PRATAMA. dr\\\";s:8:\\\"dokradid\\\";s:1:\\\"5\\\";s:11:\\\"dokrad_name\\\";s:21:\\\"Demo Radiology Sp.Rad\\\";s:11:\\\"create_time\\\";s:19:\\\"2022-10-10 11:39:55\\\";s:13:\\\"schedule_date\\\";s:10:\\\"2022-10-10\\\";s:13:\\\"schedule_time\\\";s:8:\\\"11:50:45\\\";s:8:\\\"priority\\\";s:4:\\\"Cito\\\";s:9:\\\"pat_state\\\";s:11:\\\"Rawat Jalan\\\";s:9:\\\"spc_needs\\\";s:9:\\\"TB paru ?\\\";s:10:\\\"id_payment\\\";s:3:\\\"BPI\\\";s:7:\\\"payment\\\";s:10:\\\"BPJS (PBI)\\\";s:9:\\\"fromorder\\\";s:5:\\\"SIMRS\\\";s:3:\\\"uid\\\";s:52:\\\"1.2.40.0.13.1.10710923.20230404.34369500000112141218\\\";}s:8:\\\"response\\\";b:1;s:6:\\\"socket\\\";N;}}s:5:\\\"tries\\\";N;s:13:\\\"maxExceptions\\\";N;s:7:\\\"backoff\\\";N;s:10:\\\"retryUntil\\\";N;s:7:\\\"timeout\\\";N;s:17:\\\"shouldBeEncrypted\\\";b:0;s:3:\\\"job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1680576798, 1680576798);
+INSERT INTO `jobs` VALUES (91, 'default', '{\"uuid\":\"0a04d2fb-fe23-4326-b09b-97524df8c0d5\",\"displayName\":\"App\\\\Listeners\\\\LogSlackRisModalityListener\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Events\\\\CallQueuedListener\",\"command\":\"O:36:\\\"Illuminate\\\\Events\\\\CallQueuedListener\\\":19:{s:5:\\\"class\\\";s:41:\\\"App\\\\Listeners\\\\LogSlackRisModalityListener\\\";s:6:\\\"method\\\";s:6:\\\"handle\\\";s:4:\\\"data\\\";a:1:{i:0;O:27:\\\"App\\\\Events\\\\RisModalityEvent\\\":5:{s:3:\\\"url\\\";s:4:\\\".bat\\\";s:6:\\\"method\\\";s:4:\\\"POST\\\";s:7:\\\"request\\\";s:27:\\\"Tue 04\\/04\\/2023 9:54:55.66  \\\";s:8:\\\"response\\\";s:545:\\\"Tue 04\\/04\\/2023 9:54:55.66  javax.naming.CommunicationException: Could not obtain connection to any of these urls: 127.0.0.1:31099 and discovery failed with error: javax.naming.CommunicationException: Receive timed out [Root exception is java.net.SocketTimeoutException: Receive timed out] [Root exception is javax.naming.CommunicationException: Failed to connect to server 127.0.0.1:31099 [Root exception is javax.naming.ServiceUnavailableException: Failed to connect to server 127.0.0.1:31099 [Root exception is java.net.ConnectException: Conne\\\";s:6:\\\"socket\\\";N;}}s:5:\\\"tries\\\";N;s:13:\\\"maxExceptions\\\";N;s:7:\\\"backoff\\\";N;s:10:\\\"retryUntil\\\";N;s:7:\\\"timeout\\\";N;s:17:\\\"shouldBeEncrypted\\\";b:0;s:3:\\\"job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1680576895, 1680576895);
+INSERT INTO `jobs` VALUES (92, 'default', '{\"uuid\":\"004d333a-8617-4e49-be8a-c92276b4a776\",\"displayName\":\"App\\\\Listeners\\\\LogSlackSimrsRisListener\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Events\\\\CallQueuedListener\",\"command\":\"O:36:\\\"Illuminate\\\\Events\\\\CallQueuedListener\\\":19:{s:5:\\\"class\\\";s:38:\\\"App\\\\Listeners\\\\LogSlackSimrsRisListener\\\";s:6:\\\"method\\\";s:6:\\\"handle\\\";s:4:\\\"data\\\";a:1:{i:0;O:24:\\\"App\\\\Events\\\\SimrsRisEvent\\\":6:{s:4:\\\"bool\\\";s:4:\\\"true\\\";s:3:\\\"url\\\";s:37:\\\"http:\\/\\/192.168.10.139:8000\\/api\\/orders\\\";s:6:\\\"method\\\";s:4:\\\"POST\\\";s:7:\\\"request\\\";a:31:{s:3:\\\"acc\\\";s:16:\\\"3436950000011212\\\";s:9:\\\"patientid\\\";s:12:\\\"107109211211\\\";s:3:\\\"mrn\\\";s:8:\\\"10710923\\\";s:4:\\\"name\\\";s:30:\\\"ENNI MARLINA PANJAITAN \\/65 THN\\\";s:7:\\\"address\\\";s:27:\\\"jl raya maju sentosa BEKASI\\\";s:3:\\\"sex\\\";s:1:\\\"F\\\";s:10:\\\"birth_date\\\";s:10:\\\"1967-05-23\\\";s:6:\\\"weight\\\";s:2:\\\"50\\\";s:6:\\\"dep_id\\\";s:2:\\\"10\\\";s:8:\\\"name_dep\\\";s:9:\\\"Poli Gigi\\\";s:11:\\\"id_modality\\\";s:3:\\\"101\\\";s:14:\\\"xray_type_code\\\";s:2:\\\"CR\\\";s:11:\\\"id_prosedur\\\";s:2:\\\"41\\\";s:8:\\\"prosedur\\\";s:13:\\\"Thorax\\/thorak\\\";s:14:\\\"harga_prosedur\\\";s:7:\\\"1000000\\\";s:15:\\\"radiographer_id\\\";s:4:\\\"9471\\\";s:17:\\\"radiographer_name\\\";s:14:\\\"SERIOSA CELINE\\\";s:8:\\\"dokterid\\\";s:5:\\\"Y0026\\\";s:5:\\\"named\\\";s:25:\\\"YOSUA NUGRAHA PRATAMA. dr\\\";s:8:\\\"dokradid\\\";s:1:\\\"5\\\";s:11:\\\"dokrad_name\\\";s:21:\\\"Demo Radiology Sp.Rad\\\";s:11:\\\"create_time\\\";s:19:\\\"2022-10-10 11:39:55\\\";s:13:\\\"schedule_date\\\";s:10:\\\"2022-10-10\\\";s:13:\\\"schedule_time\\\";s:8:\\\"11:50:45\\\";s:8:\\\"priority\\\";s:4:\\\"Cito\\\";s:9:\\\"pat_state\\\";s:11:\\\"Rawat Jalan\\\";s:9:\\\"spc_needs\\\";s:9:\\\"TB paru ?\\\";s:10:\\\"id_payment\\\";s:3:\\\"BPI\\\";s:7:\\\"payment\\\";s:10:\\\"BPJS (PBI)\\\";s:9:\\\"fromorder\\\";s:5:\\\"SIMRS\\\";s:3:\\\"uid\\\";s:53:\\\"1.2.40.0.13.1.10710923.20230404.343695000001121241845\\\";}s:8:\\\"response\\\";b:1;s:6:\\\"socket\\\";N;}}s:5:\\\"tries\\\";N;s:13:\\\"maxExceptions\\\";N;s:7:\\\"backoff\\\";N;s:10:\\\"retryUntil\\\";N;s:7:\\\"timeout\\\";N;s:17:\\\"shouldBeEncrypted\\\";b:0;s:3:\\\"job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1680576896, 1680576896);
+INSERT INTO `jobs` VALUES (93, 'default', '{\"uuid\":\"8596640f-7ac8-41a1-81fd-e105d21a0363\",\"displayName\":\"App\\\\Listeners\\\\LogSlackRisModalityListener\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Events\\\\CallQueuedListener\",\"command\":\"O:36:\\\"Illuminate\\\\Events\\\\CallQueuedListener\\\":19:{s:5:\\\"class\\\";s:41:\\\"App\\\\Listeners\\\\LogSlackRisModalityListener\\\";s:6:\\\"method\\\";s:6:\\\"handle\\\";s:4:\\\"data\\\";a:1:{i:0;O:27:\\\"App\\\\Events\\\\RisModalityEvent\\\":5:{s:3:\\\"url\\\";s:4:\\\".bat\\\";s:6:\\\"method\\\";s:4:\\\"POST\\\";s:7:\\\"request\\\";s:27:\\\"Tue 04\\/04\\/2023 9:55:03.71  \\\";s:8:\\\"response\\\";s:545:\\\"Tue 04\\/04\\/2023 9:55:03.71  javax.naming.CommunicationException: Could not obtain connection to any of these urls: 127.0.0.1:31099 and discovery failed with error: javax.naming.CommunicationException: Receive timed out [Root exception is java.net.SocketTimeoutException: Receive timed out] [Root exception is javax.naming.CommunicationException: Failed to connect to server 127.0.0.1:31099 [Root exception is javax.naming.ServiceUnavailableException: Failed to connect to server 127.0.0.1:31099 [Root exception is java.net.ConnectException: Conne\\\";s:6:\\\"socket\\\";N;}}s:5:\\\"tries\\\";N;s:13:\\\"maxExceptions\\\";N;s:7:\\\"backoff\\\";N;s:10:\\\"retryUntil\\\";N;s:7:\\\"timeout\\\";N;s:17:\\\"shouldBeEncrypted\\\";b:0;s:3:\\\"job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1680576904, 1680576904);
+INSERT INTO `jobs` VALUES (94, 'default', '{\"uuid\":\"df374eb4-1439-4f02-b568-39a0ac5ff7ee\",\"displayName\":\"App\\\\Listeners\\\\LogSlackSimrsRisListener\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"maxExceptions\":null,\"failOnTimeout\":false,\"backoff\":null,\"timeout\":null,\"retryUntil\":null,\"data\":{\"commandName\":\"Illuminate\\\\Events\\\\CallQueuedListener\",\"command\":\"O:36:\\\"Illuminate\\\\Events\\\\CallQueuedListener\\\":19:{s:5:\\\"class\\\";s:38:\\\"App\\\\Listeners\\\\LogSlackSimrsRisListener\\\";s:6:\\\"method\\\";s:6:\\\"handle\\\";s:4:\\\"data\\\";a:1:{i:0;O:24:\\\"App\\\\Events\\\\SimrsRisEvent\\\":6:{s:4:\\\"bool\\\";s:4:\\\"true\\\";s:3:\\\"url\\\";s:37:\\\"http:\\/\\/192.168.10.139:8000\\/api\\/orders\\\";s:6:\\\"method\\\";s:4:\\\"POST\\\";s:7:\\\"request\\\";a:31:{s:3:\\\"acc\\\";s:15:\\\"343695000001112\\\";s:9:\\\"patientid\\\";s:8:\\\"10710923\\\";s:3:\\\"mrn\\\";s:8:\\\"10710923\\\";s:4:\\\"name\\\";s:30:\\\"ENNI MARLINA PANJAITAN \\/65 THN\\\";s:7:\\\"address\\\";s:27:\\\"jl raya maju sentosa BEKASI\\\";s:3:\\\"sex\\\";s:1:\\\"F\\\";s:10:\\\"birth_date\\\";s:10:\\\"1967-05-23\\\";s:6:\\\"weight\\\";s:2:\\\"50\\\";s:6:\\\"dep_id\\\";s:2:\\\"10\\\";s:8:\\\"name_dep\\\";s:9:\\\"Poli Gigi\\\";s:11:\\\"id_modality\\\";s:3:\\\"101\\\";s:14:\\\"xray_type_code\\\";s:2:\\\"CR\\\";s:11:\\\"id_prosedur\\\";s:2:\\\"41\\\";s:8:\\\"prosedur\\\";s:13:\\\"Thorax\\/thorak\\\";s:14:\\\"harga_prosedur\\\";s:7:\\\"1000000\\\";s:15:\\\"radiographer_id\\\";s:4:\\\"9471\\\";s:17:\\\"radiographer_name\\\";s:14:\\\"SERIOSA CELINE\\\";s:8:\\\"dokterid\\\";s:5:\\\"Y0026\\\";s:5:\\\"named\\\";s:25:\\\"YOSUA NUGRAHA PRATAMA. dr\\\";s:8:\\\"dokradid\\\";s:1:\\\"5\\\";s:11:\\\"dokrad_name\\\";s:21:\\\"Demo Radiology Sp.Rad\\\";s:11:\\\"create_time\\\";s:19:\\\"2022-10-10 11:39:55\\\";s:13:\\\"schedule_date\\\";s:10:\\\"2022-10-10\\\";s:13:\\\"schedule_time\\\";s:8:\\\"11:50:45\\\";s:8:\\\"priority\\\";s:4:\\\"Cito\\\";s:9:\\\"pat_state\\\";s:11:\\\"Rawat Jalan\\\";s:9:\\\"spc_needs\\\";s:9:\\\"TB paru ?\\\";s:10:\\\"id_payment\\\";s:3:\\\"BPI\\\";s:7:\\\"payment\\\";s:10:\\\"BPJS (PBI)\\\";s:9:\\\"fromorder\\\";s:5:\\\"SIMRS\\\";s:3:\\\"uid\\\";s:52:\\\"1.2.40.0.13.1.10710923.20230404.34369500000111241841\\\";}s:8:\\\"response\\\";b:1;s:6:\\\"socket\\\";N;}}s:5:\\\"tries\\\";N;s:13:\\\"maxExceptions\\\";N;s:7:\\\"backoff\\\";N;s:10:\\\"retryUntil\\\";N;s:7:\\\"timeout\\\";N;s:17:\\\"shouldBeEncrypted\\\";b:0;s:3:\\\"job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:19:\\\"chainCatchCallbacks\\\";N;s:5:\\\"delay\\\";N;s:11:\\\"afterCommit\\\";N;s:10:\\\"middleware\\\";a:0:{}s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1680576904, 1680576904);
 
 -- ----------------------------
 -- Table structure for migrations
@@ -256,7 +265,7 @@ CREATE TABLE `personal_access_tokens`  (
 -- Records of personal_access_tokens
 -- ----------------------------
 INSERT INTO `personal_access_tokens` VALUES (1, 'App\\User', 1, 'andikautama034@gmail.com', 'e4be60b9f1a58ceb7abdf8112aa4bc06a709eabdc59e5a94a5015d655d9d9d8b', '[\"*\"]', '2023-03-21 09:55:06', '2022-10-17 09:52:24', '2023-03-21 09:55:06');
-INSERT INTO `personal_access_tokens` VALUES (2, 'App\\User', 2, 'kutamz@gmail.com', '3a6aa94fa33e095a1cc53503fcadc52b7ecb6b774d0cab809a4ec3694ebd15ed', '[\"*\"]', '2023-04-03 12:58:45', '2022-12-08 10:22:48', '2023-04-03 12:58:45');
+INSERT INTO `personal_access_tokens` VALUES (2, 'App\\User', 2, 'kutamz@gmail.com', '3a6aa94fa33e095a1cc53503fcadc52b7ecb6b774d0cab809a4ec3694ebd15ed', '[\"*\"]', '2023-04-04 09:54:56', '2022-12-08 10:22:48', '2023-04-04 09:54:56');
 
 -- ----------------------------
 -- Table structure for rename_link
@@ -385,7 +394,9 @@ CREATE TABLE `xray_department`  (
   `pk` int(11) NOT NULL AUTO_INCREMENT,
   `dep_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `name_dep` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`pk`, `dep_id`) USING BTREE
+  PRIMARY KEY (`pk`, `dep_id`) USING BTREE,
+  INDEX `dep_id`(`dep_id`) USING BTREE,
+  INDEX `name_dep`(`name_dep`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -402,7 +413,7 @@ INSERT INTO `xray_department` VALUES (4, '4', 'department4');
 DROP TABLE IF EXISTS `xray_dokter`;
 CREATE TABLE `xray_dokter`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `dokterid` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `dokterid` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `named` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `lastnamed` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sexd` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -410,8 +421,12 @@ CREATE TABLE `xray_dokter`  (
   `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `idtele` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  `idtele` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `dokterid`(`dokterid`) USING BTREE,
+  INDEX `named`(`named`) USING BTREE,
+  INDEX `lastnamed`(`lastnamed`) USING BTREE,
+  INDEX `username`(`username`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -428,10 +443,10 @@ INSERT INTO `xray_dokter` VALUES (4, '4', 'dokter pengirim4', ' ', NULL, '0', NU
 DROP TABLE IF EXISTS `xray_dokter_radiology`;
 CREATE TABLE `xray_dokter_radiology`  (
   `pk` int(11) NOT NULL AUTO_INCREMENT,
-  `dokradid` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `dokradid` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `dokrad_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `dokrad_lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `nip` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `nip` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `dokrad_sex` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `dokrad_tlp` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `dokrad_email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -439,8 +454,12 @@ CREATE TABLE `xray_dokter_radiology`  (
   `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `otp` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `idtele` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`pk`, `username`) USING BTREE
+  `idtele` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`pk`, `username`) USING BTREE,
+  INDEX `dokradid`(`dokradid`) USING BTREE,
+  INDEX `dokrad_name`(`dokrad_name`) USING BTREE,
+  INDEX `dokrad_lastname`(`dokrad_lastname`) USING BTREE,
+  INDEX `nip`(`nip`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -476,7 +495,10 @@ CREATE TABLE `xray_login`  (
   `level` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `date` datetime NULL DEFAULT NULL,
   `password_contract` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id_table`, `username`) USING BTREE
+  PRIMARY KEY (`id_table`, `username`) USING BTREE,
+  INDEX `username`(`username`) USING BTREE,
+  INDEX `password`(`password`) USING BTREE,
+  INDEX `level`(`level`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -515,7 +537,9 @@ CREATE TABLE `xray_modalitas`  (
   `id_modality` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `xray_type_code` varchar(101) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`pk`, `id_modality`) USING BTREE,
-  UNIQUE INDEX `xray_type_code`(`xray_type_code`) USING BTREE
+  UNIQUE INDEX `xray_type_code`(`xray_type_code`) USING BTREE,
+  INDEX `id_modality`(`id_modality`) USING BTREE,
+  INDEX `xray_type_code_normal`(`xray_type_code`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -565,14 +589,51 @@ CREATE TABLE `xray_order`  (
   `pat_state` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `contrast_allergies` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `spc_needs` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `id_payment` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `id_payment` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `payment` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `fromorder` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `examed_at` datetime NULL DEFAULT NULL,
   `deleted_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`pk`) USING BTREE,
-  UNIQUE INDEX `uid`(`uid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 67 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
+  UNIQUE INDEX `uid`(`uid`) USING BTREE,
+  INDEX `uid_normal`(`uid`) USING BTREE,
+  INDEX `acc`(`acc`) USING BTREE,
+  INDEX `patientid`(`patientid`) USING BTREE,
+  INDEX `mrn`(`mrn`) USING BTREE,
+  INDEX `name`(`name`) USING BTREE,
+  INDEX `address`(`address`) USING BTREE,
+  INDEX `sex`(`sex`) USING BTREE,
+  INDEX `birth_date`(`birth_date`) USING BTREE,
+  INDEX `weight`(`weight`) USING BTREE,
+  INDEX `dep_id`(`dep_id`) USING BTREE,
+  INDEX `name_dep`(`name_dep`) USING BTREE,
+  INDEX `id_modality`(`id_modality`) USING BTREE,
+  INDEX `xray_type_code`(`xray_type_code`) USING BTREE,
+  INDEX `id_prosedur`(`id_prosedur`) USING BTREE,
+  INDEX `prosedur`(`prosedur`) USING BTREE,
+  INDEX `harga_prosedur`(`harga_prosedur`) USING BTREE,
+  INDEX `dokterid`(`dokterid`) USING BTREE,
+  INDEX `named`(`named`) USING BTREE,
+  INDEX `lastnamed`(`lastnamed`) USING BTREE,
+  INDEX `email`(`email`) USING BTREE,
+  INDEX `radiographer_id`(`radiographer_id`) USING BTREE,
+  INDEX `radiographer_name`(`radiographer_name`) USING BTREE,
+  INDEX `dokradid`(`dokradid`) USING BTREE,
+  INDEX `dokrad_name`(`dokrad_name`) USING BTREE,
+  INDEX `create_time`(`create_time`) USING BTREE,
+  INDEX `schedule_date`(`schedule_date`) USING BTREE,
+  INDEX `schedule_time`(`schedule_time`) USING BTREE,
+  INDEX `contrast`(`contrast`) USING BTREE,
+  INDEX `priority`(`priority`) USING BTREE,
+  INDEX `pat_state`(`pat_state`) USING BTREE,
+  INDEX `contrast_allergies`(`contrast_allergies`) USING BTREE,
+  INDEX `spc_needs`(`spc_needs`) USING BTREE,
+  INDEX `id_payment`(`id_payment`) USING BTREE,
+  INDEX `payment`(`payment`) USING BTREE,
+  INDEX `fromorder`(`fromorder`) USING BTREE,
+  INDEX `examed_at`(`examed_at`) USING BTREE,
+  INDEX `deleted_at`(`deleted_at`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 77 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_order
@@ -643,6 +704,11 @@ INSERT INTO `xray_order` VALUES (63, '1.2.40.0.13.1.838123.20230331.115752611941
 INSERT INTO `xray_order` VALUES (64, '1.2.40.0.13.1.343695.20230403.34369500000141733', '343695000001', '10710923', '343695', 'AGUS SUPRIADI, TN', NULL, 'jl raya maju sentosa BEKASI', 'M', '1967-05-23', '50', '10', 'Poli Gigi', '101', 'CR', '41', 'Thorax/thorak', '1000000', 'Y0026', 'YOSUA NUGRAHA PRATAMA. dr', NULL, NULL, '9471', 'SERIOSA CELINE', NULL, '5', 'Demo Radiology Sp.Rad', NULL, '2022-10-10 11:39:55', '2022-10-10', '11:50:45', NULL, 'Cito', 'Rawat Jalan', NULL, 'TB paru ?', 'BPI', 'BPJS (PBI)', 'SIMRS', '2023-04-03 10:55:36', NULL);
 INSERT INTO `xray_order` VALUES (65, '1.2.40.0.13.1.343695.20230403.343695000001141904', '3436950000011', '10710923', '343695', 'AGUS SUPRIADI, TN', NULL, 'jl raya maju sentosa BEKASI', 'M', '1967-05-23', '50', '10', 'Poli Gigi', '101', 'CR', '41', 'Thorax/thorak', '1000000', 'Y0026', 'YOSUA NUGRAHA PRATAMA. dr', NULL, NULL, '9471', 'SERIOSA CELINE', NULL, '5', 'Demo Radiology Sp.Rad', NULL, '2022-10-10 11:39:55', '2022-10-10', '11:50:45', NULL, 'Cito', 'Rawat Jalan', NULL, 'TB paru ?', 'BPI', 'BPJS (PBI)', 'SIMRS', '2023-04-03 11:04:14', NULL);
 INSERT INTO `xray_order` VALUES (66, '1.2.40.0.13.1.343695.20230403.34369500000124156', '3436950000012', '10710923', '343695', 'AGUS SUPRIADI, TN', NULL, 'jl raya maju sentosa BEKASI', 'M', '1967-05-23', '50', '10', 'Poli Gigi', '101', 'CR', '41', 'Thorax/thorak', '1000000', 'Y0026', 'YOSUA NUGRAHA PRATAMA. dr', NULL, NULL, '9471', 'SERIOSA CELINE', NULL, '5', 'Demo Radiology Sp.Rad', NULL, '2022-10-10 11:39:55', '2022-10-10', '11:50:45', NULL, 'Cito', 'Rawat Jalan', NULL, 'TB paru ?', 'BPI', 'BPJS (PBI)', 'SIMRS', '2023-04-03 11:05:59', NULL);
+INSERT INTO `xray_order` VALUES (67, '1.3.46.670589.33.1.63815208423050200100001.4787843188095402399', '23032341', '1010', '953720', 'maryono', NULL, 'bekasi', NULL, NULL, '55', '0', '1', NULL, NULL, NULL, NULL, '0', '0', '1', NULL, NULL, '1', 'radiografer1 ', NULL, '3031', 'dokter radiologi ', NULL, NULL, NULL, NULL, '1', 'normal', NULL, '1', 'asd', '0', '1', 'SIMRS', NULL, NULL);
+INSERT INTO `xray_order` VALUES (68, '1.2.40.0.13.1.10710923.20230404.3436950000011241345', '34369500000112', '107109211211', '10710923', 'ENNI MARLINA PANJAITAN /65 THN', NULL, 'jl raya maju sentosa BEKASI', 'F', '1967-05-23', '50', '10', 'Poli Gigi', '101', 'CR', '41', 'Thorax/thorak', '1000000', 'Y0026', 'YOSUA NUGRAHA PRATAMA. dr', NULL, NULL, '9471', 'SERIOSA CELINE', NULL, '5', 'Demo Radiology Sp.Rad', NULL, '2022-10-10 11:39:55', '2022-10-10', '11:50:45', NULL, 'Cito', 'Rawat Jalan', NULL, 'TB paru ?', 'BPI', 'BPJS (PBI)', 'SIMRS', '2023-04-04 09:53:14', NULL);
+INSERT INTO `xray_order` VALUES (69, '1.2.40.0.13.1.10710923.20230404.34369500000112141218', '343695000001121', '107109211211', '10710923', 'ENNI MARLINA PANJAITAN /65 THN', NULL, 'jl raya maju sentosa BEKASI', 'F', '1967-05-23', '50', '10', 'Poli Gigi', '101', 'CR', '41', 'Thorax/thorak', '1000000', 'Y0026', 'YOSUA NUGRAHA PRATAMA. dr', NULL, NULL, '9471', 'SERIOSA CELINE', NULL, '5', 'Demo Radiology Sp.Rad', NULL, '2022-10-10 11:39:55', '2022-10-10', '11:50:45', NULL, 'Cito', 'Rawat Jalan', NULL, 'TB paru ?', 'BPI', 'BPJS (PBI)', 'SIMRS', '2023-04-04 09:53:17', NULL);
+INSERT INTO `xray_order` VALUES (70, '1.2.40.0.13.1.10710923.20230404.343695000001121241845', '3436950000011212', '107109211211', '10710923', 'ENNI MARLINA PANJAITAN /65 THN', NULL, 'jl raya maju sentosa BEKASI', 'F', '1967-05-23', '50', '10', 'Poli Gigi', '101', 'CR', '41', 'Thorax/thorak', '1000000', 'Y0026', 'YOSUA NUGRAHA PRATAMA. dr', NULL, NULL, '9471', 'SERIOSA CELINE', NULL, '5', 'Demo Radiology Sp.Rad', NULL, '2022-10-10 11:39:55', '2022-10-10', '11:50:45', NULL, 'Cito', 'Rawat Jalan', NULL, 'TB paru ?', 'BPI', 'BPJS (PBI)', 'SIMRS', '2023-04-04 09:54:56', NULL);
+INSERT INTO `xray_order` VALUES (71, '1.2.40.0.13.1.10710923.20230404.34369500000111241841', '343695000001112', '10710923', '10710923', 'ENNI MARLINA PANJAITAN /65 THN', NULL, 'jl raya maju sentosa BEKASI', 'F', '1967-05-23', '50', '10', 'Poli Gigi', '101', 'CR', '41', 'Thorax/thorak', '1000000', 'Y0026', 'YOSUA NUGRAHA PRATAMA. dr', NULL, NULL, '9471', 'SERIOSA CELINE', NULL, '5', 'Demo Radiology Sp.Rad', NULL, '2022-10-10 11:39:55', '2022-10-10', '11:50:45', NULL, 'Cito', 'Rawat Jalan', NULL, 'TB paru ?', 'BPI', 'BPJS (PBI)', 'SIMRS', '2023-04-04 09:55:04', NULL);
 
 -- ----------------------------
 -- Table structure for xray_patient
@@ -665,7 +731,16 @@ CREATE TABLE `xray_patient`  (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`pk`, `mrn`) USING BTREE,
-  UNIQUE INDEX `index_mrn`(`mrn`) USING BTREE
+  UNIQUE INDEX `index_mrn`(`mrn`) USING BTREE,
+  INDEX `patientid`(`patientid`) USING BTREE,
+  INDEX `mrn`(`mrn`) USING BTREE,
+  INDEX `name`(`name`) USING BTREE,
+  INDEX `lastname`(`lastname`) USING BTREE,
+  INDEX `sex`(`sex`) USING BTREE,
+  INDEX `birth_date`(`birth_date`) USING BTREE,
+  INDEX `weight`(`weight`) USING BTREE,
+  INDEX `address`(`address`) USING BTREE,
+  INDEX `phone`(`phone`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 45 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -706,7 +781,9 @@ CREATE TABLE `xray_payment_insurance`  (
   `payment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`pk`, `id_payment`) USING BTREE
+  PRIMARY KEY (`pk`, `id_payment`) USING BTREE,
+  INDEX `id_payment`(`id_payment`) USING BTREE,
+  INDEX `payment`(`payment`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -720,13 +797,19 @@ INSERT INTO `xray_payment_insurance` VALUES (1, '1', 'BPJS', NULL, NULL);
 DROP TABLE IF EXISTS `xray_radiographer`;
 CREATE TABLE `xray_radiographer`  (
   `pk` int(11) NOT NULL AUTO_INCREMENT,
-  `radiographer_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `radiographer_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `radiographer_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `radiographer_lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `radiographer_sex` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `radiographer_tlp` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `radiographer_email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`pk`) USING BTREE
+  PRIMARY KEY (`pk`) USING BTREE,
+  INDEX `radiographer_id`(`radiographer_id`) USING BTREE,
+  INDEX `radiographer_name`(`radiographer_name`) USING BTREE,
+  INDEX `radiographer_lastname`(`radiographer_lastname`) USING BTREE,
+  INDEX `radiographer_sex`(`radiographer_sex`) USING BTREE,
+  INDEX `radiographer_tlp`(`radiographer_tlp`) USING BTREE,
+  INDEX `radiographer_email`(`radiographer_email`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -745,12 +828,12 @@ CREATE TABLE `xray_recyclebin`  (
   `pk` bigint(20) NOT NULL AUTO_INCREMENT,
   `uid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `acc` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `patientid` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `patientid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `mrn` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sex` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `birth_date` varchar(19) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `birth_date` varchar(19) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `weight` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `depid` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `name_dep` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -758,14 +841,14 @@ CREATE TABLE `xray_recyclebin`  (
   `typename` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `type` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `prosedur` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `dokterid` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `dokterid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `named` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `lastnamed` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `radiographer_id` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `radiographer_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `radiographer_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `radiographer_lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `dokradid` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `dokradid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `dokrad_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `dokrad_lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `create_time` datetime NULL DEFAULT NULL,
@@ -791,7 +874,7 @@ CREATE TABLE `xray_recyclebin`  (
   `num_series` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `series_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `src_aet` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `del` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `del` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`pk`) USING BTREE,
   UNIQUE INDEX `uid`(`uid`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
@@ -827,7 +910,11 @@ CREATE TABLE `xray_study`  (
   `id_study` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `study` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `harga` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`pk`) USING BTREE
+  PRIMARY KEY (`pk`) USING BTREE,
+  INDEX `id_modality`(`id_modality`) USING BTREE,
+  INDEX `id_study`(`id_study`) USING BTREE,
+  INDEX `study`(`study`) USING BTREE,
+  INDEX `harga`(`harga`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -865,7 +952,9 @@ CREATE TABLE `xray_template`  (
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `fill` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`template_id`) USING BTREE
+  PRIMARY KEY (`template_id`) USING BTREE,
+  INDEX `template_id`(`template_id`) USING BTREE,
+  INDEX `title`(`title`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 474 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -1337,18 +1426,28 @@ CREATE TABLE `xray_workload`  (
   `pk` bigint(20) NOT NULL AUTO_INCREMENT,
   `uid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `accession_no` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `status` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `status` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `fill` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `approved_at` datetime NULL DEFAULT NULL,
   `approve_updated_at` datetime NULL DEFAULT NULL,
-  `pk_dokter_radiology` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `pk_dokter_radiology` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `study_datetime_pacsio` datetime NULL DEFAULT NULL,
   `updated_time_pacsio` datetime NULL DEFAULT NULL,
-  `study_desc_pacsio` varchar(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `study_desc_pacsio` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `priority_doctor` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `signature` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `signature_datetime` datetime NULL DEFAULT NULL,
-  PRIMARY KEY (`pk`) USING BTREE
+  PRIMARY KEY (`pk`) USING BTREE,
+  INDEX `uid`(`uid`) USING BTREE,
+  INDEX `accession_no`(`accession_no`) USING BTREE,
+  INDEX `status`(`status`) USING BTREE,
+  INDEX `approved_at`(`approved_at`) USING BTREE,
+  INDEX `approve_updated_at`(`approve_updated_at`) USING BTREE,
+  INDEX `pk_dokter_radiology`(`pk_dokter_radiology`) USING BTREE,
+  INDEX `study_datetime_pacsio`(`study_datetime_pacsio`) USING BTREE,
+  INDEX `updated_time_pacsio`(`updated_time_pacsio`) USING BTREE,
+  INDEX `study_desc_pacsio`(`study_desc_pacsio`) USING BTREE,
+  INDEX `priority_doctor`(`priority_doctor`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -1363,8 +1462,8 @@ INSERT INTO `xray_workload` VALUES (6, '1.2.40.0.13.1.588643.202303070022.035720
 INSERT INTO `xray_workload` VALUES (7, '1.2.40.0.13.1.588643.202303070023.8471823705859182', '1399710', 'waiting', NULL, NULL, NULL, NULL, '2019-10-15 08:34:21', '2020-06-11 15:56:33', 'Thorax/thorak simrs', 'normal', NULL, NULL);
 INSERT INTO `xray_workload` VALUES (8, '1.2.40.0.13.1.588643.202303070024.9848823705805187', '1399710', 'waiting', NULL, NULL, NULL, NULL, '2019-10-15 08:34:21', '2020-06-11 15:56:33', 'Thorax/thorak simrs', 'normal', NULL, NULL);
 INSERT INTO `xray_workload` VALUES (9, '1.2.40.0.13.1.588643.202303070024.9848823705884712', '1399710', 'waiting', NULL, NULL, NULL, NULL, '2019-10-15 08:34:21', '2020-06-11 15:56:33', 'Thorax/thorak simrs', 'normal', NULL, NULL);
-INSERT INTO `xray_workload` VALUES (10, '1.2.392.200036.9125.2.244579227459.6530942899.5972461', '23032340A', 'waiting', NULL, NULL, NULL, NULL, '2019-10-15 08:34:21', '2020-06-11 15:56:33', 'THORAX', 'normal', NULL, NULL);
-INSERT INTO `xray_workload` VALUES (11, '1.3.46.670589.33.1.63815208423050200100001.4787843188095402399', NULL, 'approved', 'testing', NULL, NULL, '8', '2019-10-15 08:34:21', '2020-06-11 15:56:33', 'Thorax/thorak', 'normal', NULL, NULL);
+INSERT INTO `xray_workload` VALUES (10, '1.2.392.200036.9125.2.244579227459.6530942899.5972461', '23032341A', 'waiting', NULL, NULL, NULL, NULL, '2019-10-15 08:34:21', '2020-06-11 15:56:33', 'THORAX', 'normal', NULL, NULL);
+INSERT INTO `xray_workload` VALUES (11, '1.3.46.670589.33.1.63815208423050200100001.4787843188095402399', '23032341', 'waiting', NULL, NULL, NULL, '9', '2019-10-15 08:34:21', '2020-06-11 15:56:33', NULL, 'normal', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for xray_workload_bhp
@@ -1376,17 +1475,28 @@ CREATE TABLE `xray_workload_bhp`  (
   `acc` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `film_small` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `film_medium` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `film_large` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `film_large` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `film_reject_small` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `film_reject_medium` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `film_reject_large` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `film_reject_large` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `re_photo` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `kv` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `mas` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`pk`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
+  PRIMARY KEY (`pk`) USING BTREE,
+  INDEX `uid`(`uid`) USING BTREE,
+  INDEX `acc`(`acc`) USING BTREE,
+  INDEX `film_small`(`film_small`) USING BTREE,
+  INDEX `film_medium`(`film_medium`) USING BTREE,
+  INDEX `film_large`(`film_large`) USING BTREE,
+  INDEX `film_reject_small`(`film_reject_small`) USING BTREE,
+  INDEX `film_reject_medium`(`film_reject_medium`) USING BTREE,
+  INDEX `film_reject_large`(`film_reject_large`) USING BTREE,
+  INDEX `re_photo`(`re_photo`) USING BTREE,
+  INDEX `kv`(`kv`) USING BTREE,
+  INDEX `mas`(`mas`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_workload_bhp
@@ -1400,5 +1510,6 @@ INSERT INTO `xray_workload_bhp` VALUES (6, '1.2.276.0.26.1.1.1.2.548725.20221011
 INSERT INTO `xray_workload_bhp` VALUES (7, '1.2.276.0.26.1.1.1.2.548725.20221011.14123', NULL, '2', '2', NULL, NULL, NULL, NULL, NULL, '123', '123', '2023-02-10 11:20:25', '2023-02-10 11:20:25');
 INSERT INTO `xray_workload_bhp` VALUES (8, '1.2.40.0.13.1.588643.202302020003.0284761805958123', NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, '80', '80', '2023-03-14 13:49:36', '2023-03-14 13:49:36');
 INSERT INTO `xray_workload_bhp` VALUES (9, '1.2.40.0.13.1.588643.202302020002.0284761829491834', '281835', '1', NULL, NULL, NULL, NULL, NULL, NULL, '78', '78', '2023-03-31 13:54:27', '2023-03-31 13:54:27');
+INSERT INTO `xray_workload_bhp` VALUES (14, '1.3.46.670589.33.1.63815208423050200100001.4787843188095402399', '23032341', '1', '1', NULL, NULL, NULL, NULL, NULL, '1', '1', '2023-04-04 10:38:33', '2023-04-04 11:07:53');
 
 SET FOREIGN_KEY_CHECKS = 1;

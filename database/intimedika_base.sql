@@ -11,7 +11,7 @@
  Target Server Version : 50649 (5.6.49-log)
  File Encoding         : 65001
 
- Date: 03/04/2023 14:10:04
+ Date: 05/04/2023 10:44:16
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `active_notification_unread`  (
 -- ----------------------------
 -- Records of active_notification_unread
 -- ----------------------------
-INSERT INTO `active_notification_unread` VALUES (1, 0, '2022-12-26 07:14:01', '2022-12-26 07:14:01');
+INSERT INTO `active_notification_unread` VALUES (1, 0, '2022-12-26 07:46:45', '2022-12-26 07:46:45');
 
 -- ----------------------------
 -- Table structure for active_update_simrs
@@ -146,12 +146,13 @@ CREATE TABLE `personal_access_tokens`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `personal_access_tokens_token_unique`(`token`) USING BTREE,
   INDEX `personal_access_tokens_tokenable_type_tokenable_id_index`(`tokenable_type`, `tokenable_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of personal_access_tokens
 -- ----------------------------
-INSERT INTO `personal_access_tokens` VALUES (1, 'App\\User', 1, 'andikautama034@gmail.com', 'e4be60b9f1a58ceb7abdf8112aa4bc06a709eabdc59e5a94a5015d655d9d9d8b', '[\"*\"]', '2022-11-15 11:03:08', '2022-10-17 09:52:24', '2022-11-15 11:03:08');
+INSERT INTO `personal_access_tokens` VALUES (1, 'App\\User', 1, 'andikautama034@gmail.com', 'e4be60b9f1a58ceb7abdf8112aa4bc06a709eabdc59e5a94a5015d655d9d9d8b', '[\"*\"]', '2023-03-21 09:55:06', '2022-10-17 09:52:24', '2023-03-21 09:55:06');
+INSERT INTO `personal_access_tokens` VALUES (2, 'App\\User', 2, 'kutamz@gmail.com', '3a6aa94fa33e095a1cc53503fcadc52b7ecb6b774d0cab809a4ec3694ebd15ed', '[\"*\"]', '2023-04-04 09:54:56', '2022-12-08 10:22:48', '2023-04-04 09:54:56');
 
 -- ----------------------------
 -- Table structure for rename_link
@@ -164,7 +165,7 @@ CREATE TABLE `rename_link`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`pk`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of rename_link
@@ -188,30 +189,30 @@ CREATE TABLE `users`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_username_unique`(`username`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 'andika utama', 'andika', 'andikautama034@gmail.com', NULL, '$2y$10$hYyszbnB.Dy.ZGuCKrS.uOB3t2ZsS4YIk18ejQTsZUtdl6ENfaaty', NULL, '2022-10-17 09:52:20', '2022-10-17 09:52:20');
+INSERT INTO `users` VALUES (2, 'andika utama', 'kutamz', 'kutamz@gmail.com', NULL, '$2y$10$erZfBA9nbIZbQx7G3Jksh.Ex3Edbv.yhVwY3xejE0ooeRRSSGrVai', NULL, '2022-12-08 10:22:33', '2022-12-08 10:22:33');
 
 -- ----------------------------
 -- Table structure for xray_admin
 -- ----------------------------
 DROP TABLE IF EXISTS `xray_admin`;
 CREATE TABLE `xray_admin`  (
-  `admin_id` int(11) NOT NULL,
+  `admin_id` int(11) NOT NULL AUTO_INCREMENT,
   `ad_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `ad_lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `password` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`admin_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_admin
 -- ----------------------------
-INSERT INTO `xray_admin` VALUES (1, 'Administrator', '', 'admin', '$2y$12$yDnFvm5BmsF9lCkpxV0aQORHtHx09535SFc2Bj.8rxRGaDd/XaQpC');
 
 -- ----------------------------
 -- Table structure for xray_chat_message
@@ -279,7 +280,9 @@ CREATE TABLE `xray_department`  (
   `pk` int(11) NOT NULL AUTO_INCREMENT,
   `dep_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `name_dep` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`pk`, `dep_id`) USING BTREE
+  PRIMARY KEY (`pk`, `dep_id`) USING BTREE,
+  INDEX `dep_id`(`dep_id`) USING BTREE,
+  INDEX `name_dep`(`name_dep`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -292,7 +295,7 @@ CREATE TABLE `xray_department`  (
 DROP TABLE IF EXISTS `xray_dokter`;
 CREATE TABLE `xray_dokter`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `dokterid` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `dokterid` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `named` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `lastnamed` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sexd` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -300,8 +303,12 @@ CREATE TABLE `xray_dokter`  (
   `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `idtele` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  `idtele` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `dokterid`(`dokterid`) USING BTREE,
+  INDEX `named`(`named`) USING BTREE,
+  INDEX `lastnamed`(`lastnamed`) USING BTREE,
+  INDEX `username`(`username`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -314,10 +321,10 @@ CREATE TABLE `xray_dokter`  (
 DROP TABLE IF EXISTS `xray_dokter_radiology`;
 CREATE TABLE `xray_dokter_radiology`  (
   `pk` int(11) NOT NULL AUTO_INCREMENT,
-  `dokradid` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `dokradid` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `dokrad_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `dokrad_lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `nip` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `nip` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `dokrad_sex` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `dokrad_tlp` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `dokrad_email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -325,8 +332,12 @@ CREATE TABLE `xray_dokter_radiology`  (
   `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `otp` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `idtele` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`pk`, `username`) USING BTREE
+  `idtele` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`pk`, `username`) USING BTREE,
+  INDEX `dokradid`(`dokradid`) USING BTREE,
+  INDEX `dokrad_name`(`dokrad_name`) USING BTREE,
+  INDEX `dokrad_lastname`(`dokrad_lastname`) USING BTREE,
+  INDEX `nip`(`nip`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -347,7 +358,6 @@ CREATE TABLE `xray_hostname_publik`  (
 -- ----------------------------
 -- Records of xray_hostname_publik
 -- ----------------------------
-INSERT INTO `xray_hostname_publik` VALUES ('1', '103.144.183.157', '2022-11-29 21:42:06');
 
 -- ----------------------------
 -- Table structure for xray_login
@@ -360,17 +370,15 @@ CREATE TABLE `xray_login`  (
   `level` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `date` datetime NULL DEFAULT NULL,
   `password_contract` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id_table`, `username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+  PRIMARY KEY (`id_table`, `username`) USING BTREE,
+  INDEX `username`(`username`) USING BTREE,
+  INDEX `password`(`password`) USING BTREE,
+  INDEX `level`(`level`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_login
 -- ----------------------------
-INSERT INTO `xray_login` VALUES (1, 'bella', '$2y$12$anQt7glmTA9HDBcv4R/fGuRT8Mtj/Ipa9fGdHTIBdIfhApH3mEze6', 'refferal', NULL, NULL);
-INSERT INTO `xray_login` VALUES (2, 'rafdi', '$2y$12$LH0MUp3xMh036SVIGUrAOOsVJIlru5LHCmGfTkxSbHRsKypTGWN9a', 'radiographer', NULL, NULL);
-INSERT INTO `xray_login` VALUES (3, 'sarah', '$2y$12$5/VwESd91BF3chX0kz4Nn.jWY8PdseTKyzZpRRw2NYjsbwsEvhwLq', 'radiology', NULL, NULL);
-INSERT INTO `xray_login` VALUES (4, 'admin', '$2y$12$KF9bjufvOUasAfIQOAw.r./A7flSnpnkWVd1jX7aGFlrtwywvZvfO', 'admin', NULL, NULL);
-INSERT INTO `xray_login` VALUES (5, 'superadmin', '$2y$12$3j1STCXbcRdnSHQ9W6FWHOocfLgtXGf4J3FZLxHyK5/un8kWFxh3q', 'superadmin', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for xray_maintenance
@@ -398,7 +406,9 @@ CREATE TABLE `xray_modalitas`  (
   `id_modality` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `xray_type_code` varchar(101) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`pk`, `id_modality`) USING BTREE,
-  UNIQUE INDEX `xray_type_code`(`xray_type_code`) USING BTREE
+  UNIQUE INDEX `xray_type_code`(`xray_type_code`) USING BTREE,
+  INDEX `id_modality`(`id_modality`) USING BTREE,
+  INDEX `xray_type_code_normal`(`xray_type_code`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -427,7 +437,7 @@ CREATE TABLE `xray_order`  (
   `xray_type_code` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `id_prosedur` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `prosedur` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `harga_prosedur` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `harga_prosedur` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `dokterid` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `named` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `lastnamed` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -446,13 +456,50 @@ CREATE TABLE `xray_order`  (
   `pat_state` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `contrast_allergies` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `spc_needs` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `id_payment` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `id_payment` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `payment` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `fromorder` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `examed_at` datetime NULL DEFAULT NULL,
   `deleted_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`pk`) USING BTREE,
-  UNIQUE INDEX `uid`(`uid`) USING BTREE
+  UNIQUE INDEX `uid`(`uid`) USING BTREE,
+  INDEX `uid_normal`(`uid`) USING BTREE,
+  INDEX `acc`(`acc`) USING BTREE,
+  INDEX `patientid`(`patientid`) USING BTREE,
+  INDEX `mrn`(`mrn`) USING BTREE,
+  INDEX `name`(`name`) USING BTREE,
+  INDEX `address`(`address`) USING BTREE,
+  INDEX `sex`(`sex`) USING BTREE,
+  INDEX `birth_date`(`birth_date`) USING BTREE,
+  INDEX `weight`(`weight`) USING BTREE,
+  INDEX `dep_id`(`dep_id`) USING BTREE,
+  INDEX `name_dep`(`name_dep`) USING BTREE,
+  INDEX `id_modality`(`id_modality`) USING BTREE,
+  INDEX `xray_type_code`(`xray_type_code`) USING BTREE,
+  INDEX `id_prosedur`(`id_prosedur`) USING BTREE,
+  INDEX `prosedur`(`prosedur`) USING BTREE,
+  INDEX `harga_prosedur`(`harga_prosedur`) USING BTREE,
+  INDEX `dokterid`(`dokterid`) USING BTREE,
+  INDEX `named`(`named`) USING BTREE,
+  INDEX `lastnamed`(`lastnamed`) USING BTREE,
+  INDEX `email`(`email`) USING BTREE,
+  INDEX `radiographer_id`(`radiographer_id`) USING BTREE,
+  INDEX `radiographer_name`(`radiographer_name`) USING BTREE,
+  INDEX `dokradid`(`dokradid`) USING BTREE,
+  INDEX `dokrad_name`(`dokrad_name`) USING BTREE,
+  INDEX `create_time`(`create_time`) USING BTREE,
+  INDEX `schedule_date`(`schedule_date`) USING BTREE,
+  INDEX `schedule_time`(`schedule_time`) USING BTREE,
+  INDEX `contrast`(`contrast`) USING BTREE,
+  INDEX `priority`(`priority`) USING BTREE,
+  INDEX `pat_state`(`pat_state`) USING BTREE,
+  INDEX `contrast_allergies`(`contrast_allergies`) USING BTREE,
+  INDEX `spc_needs`(`spc_needs`) USING BTREE,
+  INDEX `id_payment`(`id_payment`) USING BTREE,
+  INDEX `payment`(`payment`) USING BTREE,
+  INDEX `fromorder`(`fromorder`) USING BTREE,
+  INDEX `examed_at`(`examed_at`) USING BTREE,
+  INDEX `deleted_at`(`deleted_at`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -480,7 +527,16 @@ CREATE TABLE `xray_patient`  (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`pk`, `mrn`) USING BTREE,
-  UNIQUE INDEX `index_mrn`(`mrn`) USING BTREE
+  UNIQUE INDEX `index_mrn`(`mrn`) USING BTREE,
+  INDEX `patientid`(`patientid`) USING BTREE,
+  INDEX `mrn`(`mrn`) USING BTREE,
+  INDEX `name`(`name`) USING BTREE,
+  INDEX `lastname`(`lastname`) USING BTREE,
+  INDEX `sex`(`sex`) USING BTREE,
+  INDEX `birth_date`(`birth_date`) USING BTREE,
+  INDEX `weight`(`weight`) USING BTREE,
+  INDEX `address`(`address`) USING BTREE,
+  INDEX `phone`(`phone`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -497,7 +553,9 @@ CREATE TABLE `xray_payment_insurance`  (
   `payment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`pk`, `id_payment`) USING BTREE
+  PRIMARY KEY (`pk`, `id_payment`) USING BTREE,
+  INDEX `id_payment`(`id_payment`) USING BTREE,
+  INDEX `payment`(`payment`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -510,13 +568,19 @@ CREATE TABLE `xray_payment_insurance`  (
 DROP TABLE IF EXISTS `xray_radiographer`;
 CREATE TABLE `xray_radiographer`  (
   `pk` int(11) NOT NULL AUTO_INCREMENT,
-  `radiographer_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `radiographer_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `radiographer_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `radiographer_lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `radiographer_sex` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `radiographer_tlp` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `radiographer_email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`pk`) USING BTREE
+  PRIMARY KEY (`pk`) USING BTREE,
+  INDEX `radiographer_id`(`radiographer_id`) USING BTREE,
+  INDEX `radiographer_name`(`radiographer_name`) USING BTREE,
+  INDEX `radiographer_lastname`(`radiographer_lastname`) USING BTREE,
+  INDEX `radiographer_sex`(`radiographer_sex`) USING BTREE,
+  INDEX `radiographer_tlp`(`radiographer_tlp`) USING BTREE,
+  INDEX `radiographer_email`(`radiographer_email`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -531,12 +595,12 @@ CREATE TABLE `xray_recyclebin`  (
   `pk` bigint(20) NOT NULL AUTO_INCREMENT,
   `uid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `acc` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `patientid` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `patientid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `mrn` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sex` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `birth_date` varchar(19) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `birth_date` varchar(19) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `weight` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `depid` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `name_dep` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -544,14 +608,14 @@ CREATE TABLE `xray_recyclebin`  (
   `typename` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `type` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `prosedur` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `dokterid` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `dokterid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `named` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `lastnamed` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `radiographer_id` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `radiographer_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `radiographer_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `radiographer_lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `dokradid` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `dokradid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `dokrad_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `dokrad_lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `create_time` datetime NULL DEFAULT NULL,
@@ -577,7 +641,7 @@ CREATE TABLE `xray_recyclebin`  (
   `num_series` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `series_desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `src_aet` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `del` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `del` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`pk`) USING BTREE,
   UNIQUE INDEX `uid`(`uid`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
@@ -612,7 +676,11 @@ CREATE TABLE `xray_study`  (
   `id_study` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `study` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `harga` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`pk`) USING BTREE
+  PRIMARY KEY (`pk`) USING BTREE,
+  INDEX `id_modality`(`id_modality`) USING BTREE,
+  INDEX `id_study`(`id_study`) USING BTREE,
+  INDEX `study`(`study`) USING BTREE,
+  INDEX `harga`(`harga`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -646,7 +714,9 @@ CREATE TABLE `xray_template`  (
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `fill` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`template_id`) USING BTREE
+  PRIMARY KEY (`template_id`) USING BTREE,
+  INDEX `template_id`(`template_id`) USING BTREE,
+  INDEX `title`(`title`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -698,18 +768,28 @@ CREATE TABLE `xray_workload`  (
   `pk` bigint(20) NOT NULL AUTO_INCREMENT,
   `uid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `accession_no` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `status` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `status` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `fill` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `approved_at` datetime NULL DEFAULT NULL,
   `approve_updated_at` datetime NULL DEFAULT NULL,
-  `pk_dokter_radiology` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `pk_dokter_radiology` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `study_datetime_pacsio` datetime NULL DEFAULT NULL,
   `updated_time_pacsio` datetime NULL DEFAULT NULL,
-  `study_desc_pacsio` varchar(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `study_desc_pacsio` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `priority_doctor` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `signature` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `signature_datetime` datetime NULL DEFAULT NULL,
-  PRIMARY KEY (`pk`) USING BTREE
+  PRIMARY KEY (`pk`) USING BTREE,
+  INDEX `uid`(`uid`) USING BTREE,
+  INDEX `accession_no`(`accession_no`) USING BTREE,
+  INDEX `status`(`status`) USING BTREE,
+  INDEX `approved_at`(`approved_at`) USING BTREE,
+  INDEX `approve_updated_at`(`approve_updated_at`) USING BTREE,
+  INDEX `pk_dokter_radiology`(`pk_dokter_radiology`) USING BTREE,
+  INDEX `study_datetime_pacsio`(`study_datetime_pacsio`) USING BTREE,
+  INDEX `updated_time_pacsio`(`updated_time_pacsio`) USING BTREE,
+  INDEX `study_desc_pacsio`(`study_desc_pacsio`) USING BTREE,
+  INDEX `priority_doctor`(`priority_doctor`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
@@ -726,16 +806,27 @@ CREATE TABLE `xray_workload_bhp`  (
   `acc` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `film_small` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `film_medium` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `film_large` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `film_large` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `film_reject_small` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `film_reject_medium` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `film_reject_large` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `film_reject_large` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `re_photo` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `kv` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `mas` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`pk`) USING BTREE
+  PRIMARY KEY (`pk`) USING BTREE,
+  INDEX `uid`(`uid`) USING BTREE,
+  INDEX `acc`(`acc`) USING BTREE,
+  INDEX `film_small`(`film_small`) USING BTREE,
+  INDEX `film_medium`(`film_medium`) USING BTREE,
+  INDEX `film_large`(`film_large`) USING BTREE,
+  INDEX `film_reject_small`(`film_reject_small`) USING BTREE,
+  INDEX `film_reject_medium`(`film_reject_medium`) USING BTREE,
+  INDEX `film_reject_large`(`film_reject_large`) USING BTREE,
+  INDEX `re_photo`(`re_photo`) USING BTREE,
+  INDEX `kv`(`kv`) USING BTREE,
+  INDEX `mas`(`mas`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
