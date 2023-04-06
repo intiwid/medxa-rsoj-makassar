@@ -60,14 +60,14 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 			}
 
 			.tab-pane h4 {
-				color: #1a61ac;
+				color: #377D71;
 			}
 
 			.nav-tabs li a {
 				font-weight: bold;
 				font-size: 18px;
 				padding: 7px 10px 10px 10px;
-				color: #1a61ac;
+				color: #377D71;
 			}
 
 			.nav-tabs>li.active>a,
@@ -75,7 +75,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 			.nav-tabs>li.active>a:focus {
 				color: #FFF;
 				cursor: default;
-				background-color: #1f69b7;
+				background-color: #377D71;
 				border: none;
 				border-bottom-color: rgb(221, 221, 221);
 				border-bottom-color: transparent;
@@ -86,13 +86,13 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 			.nav>li>a:hover,
 			.nav>li>a:focus {
 				text-decoration: none;
-				background-color: #1f69b7;
+				background-color: #377D71;
 				border: none;
 				color: #fff;
 			}
 
 			.tab-content {
-				background-color: #1f69b7;
+				background-color: #377D71;
 				width: 100%;
 				height: 200px;
 				margin: -10px 0;
