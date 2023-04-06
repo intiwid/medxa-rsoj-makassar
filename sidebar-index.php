@@ -8,6 +8,7 @@
         background: #377D71;
         z-index: 100;
         transition: all 0.3s ease;
+        border-right: 1px solid #2f645b;
     }
 
     .sidebarnew.closenew {

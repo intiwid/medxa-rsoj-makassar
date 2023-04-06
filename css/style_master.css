@@ -4414,6 +4414,11 @@ table.dataTable > thead .sorting::before, table.dataTable > thead .sorting::afte
 a.btn:not([href]):not([tabindex]), a.btn:not([href]):not([tabindex]):focus, a.btn:not([href]):not([tabindex]):hover {
   color: unset;
 }
+
+.table-dicom .alert{
+  padding: 6px;
+  margin: 2px;
+}
   
   @media (max-width: 960px) {
     .img3 {
