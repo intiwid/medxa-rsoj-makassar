@@ -98,7 +98,7 @@ $approved = mysqli_fetch_assoc(mysqli_query(
   </div>
 
 
-  <div class="table-box row ovrflow">
+  <div class="table-box row ovrflow" style="overflow-x:auto;">
     <table class="table-dicom" id="example" style="margin-top: 3px; width: 100px;" cellpadding="8" cellspacing="0">
       <thead class="thead1">
         <?php require 'thead.php'; ?>
