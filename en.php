@@ -175,9 +175,11 @@ Contact us at (Office) +62-21-4532648</p>",
 
 	//all order
 	"name" => "Name",
+	"orders" => "Orders",
 	"patient_name" => "Patient Name",
 	"type" => "Type",
 	"order_time" => "Order Time",
+	"patient_management" => "Patient Management",
 	// end of all order
 
 	// MODALITY WORKLIST

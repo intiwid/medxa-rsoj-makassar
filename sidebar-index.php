@@ -351,12 +351,12 @@
             <div class="iocn-link">
                 <a href="#">
                     <i class="fa-solid fa-hospital-user"></i>
-                    <span class="link_name"><?= $lang['patient_order'] ?></span>
+                    <span class="link_name"><?= $lang['orders'] ?></span>
                 </a>
                 <i class="fa-solid fa-angle-down arrow"></i>
             </div>
             <ul class="sub-menu">
-                <li><a class="link_name" href="#"><?= $lang['patient_order'] ?></a></li>
+                <li><a class="link_name" href="#"><?= $lang['orders'] ?></a></li>
                 <li><a href="registration.php"><?= $lang['registration'] ?></a></li>
                 <li><a href="order2.php"><?= $lang['all_order'] ?></a></li>
                 <li><a href="exam2.php"><?= $lang['examroom'] ?></a></li>
@@ -366,12 +366,12 @@
             <div class="iocn-link">
                 <a href="#">
                     <i class="fa-solid fa-book-medical"></i>
-                    <span class="link_name"><?= $lang['report'] ?></span>
+                    <span class="link_name"><?= $lang['patient_management'] ?></span>
                 </a>
                 <i class="fa-solid fa-angle-down arrow"></i>
             </div>
             <ul class="sub-menu">
-                <li><a class="link_name" href="#"><?= $lang['report'] ?></a></li>
+                <li><a class="link_name" href="#"><?= $lang['patient_management'] ?></a></li>
                 <li><a href="workload.php"><?= $lang['workload'] ?></a></li>
                 <li><a href="report.php"><?= $lang['download_excel'] ?></a></li>
                 <li><a href="uploadexcel.php"><?= $lang['backup_excel'] ?></a></li>
@@ -396,10 +396,10 @@
             <li id="worklist1">
                 <a href="dicom.php">
                     <i class="fa-solid fa-book-medical"></i>
-                    <span class="link_name">Expertise</span>
+                    <span class="link_name"><?= $lang['report'] ?> Expertise</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="dicom.php">Expertise</a></li>
+                    <li><a class="link_name" href="dicom.php"><?= $lang['report'] ?> Expertise</a></li>
                 </ul>
             </li>
 
@@ -407,12 +407,12 @@
                 <div class="iocn-link">
                     <a href="#">
                     <i class="fa-solid fa-file-lines"></i>
-                        <span class="link_name"><?= $lang['report'] ?></span>
+                        <span class="link_name"><?= $lang['patient_management'] ?></span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name" href="#"><?= $lang['report'] ?></a></li>
+                    <li><a class="link_name" href="#"><?= $lang['patient_management'] ?></a></li>
                     <li><a href="workload.php">Expertise Approved</a></li>
                     <li><a href="report.php"><?= $lang['download_excel'] ?></a></li>
                 </ul>
@@ -422,14 +422,14 @@
                 <div class="iocn-link">
                     <a href="#">
                         <i class="fa-solid fa-file-word"></i>
-                        <span class="link_name">Template Expertise</span>
+                        <span class="link_name">Custom Expertise</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Template Expertise</a></li>
-                    <li><a href="new_template.php">New Template</a></li>
-                    <li><a href="view_template.php">View Template</a></li>
+                    <li><a class="link_name" href="#">Custom Expertise</a></li>
+                    <li><a href="new_template.php">New Expertise</a></li>
+                    <li><a href="view_template.php">View Expertise</a></li>
                 </ul>
             </li>
         <?php }?>

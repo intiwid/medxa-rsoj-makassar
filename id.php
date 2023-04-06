@@ -176,6 +176,8 @@ Hubungi kami di (Kantor) + 62-21-4532648 </p>",
 	"patient_name" => "Nama pasien",
 	"type" => "Tipe",
 	"order_time" => "Waktu Order",
+	"orders" => "Order",
+	"patient_management" => "Berkas Pasien",
 	// end of all order
 
 	// MODALITY WORKLIST
