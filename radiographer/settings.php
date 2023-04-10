@@ -210,7 +210,7 @@ if ($_SESSION['level'] == "radiographer") {
                       <h1 style="color: #377d71;"><?= $lang['create_template'] ?></h1>
                     </center>
 
-                    <?php include('view_template.php'); ?>
+                    <?php include('../template-index.php') ?>
                   </div>
                 </div>
               </div>
@@ -454,6 +454,30 @@ if ($_SESSION['level'] == "radiographer") {
     </div> -->
 
     <?php include('script-footer.php'); ?>
+    <script>
+    $('document').ready(function() {
+      var table = $('#example1').dataTable({
+        "stateSave": true,
+        "ajax": {
+          "url": "../getTemplate.php",
+          "dataSrc": ""
+        },
+        "columns": [{
+            "data": "no"
+          },
+          {
+            "data": "action"
+          },
+          {
+            "data": "title"
+          },
+          {
+            "data": "username"
+          }
+        ]
+      });
+    });
+  </script>
     <script>
       function myFunction() {
         var y = document.getElementById("passwordulang");
