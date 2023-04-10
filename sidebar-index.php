@@ -347,40 +347,40 @@
         </li>
 
         <!-- =================SIDEBAR RADIOGRAPHER====================== -->
-        <?php if($_SESSION['level'] == 'radiographer') {?>
-        <li data-target="#products1">
-            <div class="iocn-link">
-                <a href="#">
-                    <i class="fa-solid fa-hospital-user"></i>
-                    <span class="link_name"><?= $lang['orders'] ?></span>
-                </a>
-                <i class="fa-solid fa-angle-down arrow"></i>
-            </div>
-            <ul class="sub-menu">
-                <li><a class="link_name" href="#"><?= $lang['orders'] ?></a></li>
-                <li><a href="registration.php"><?= $lang['registration'] ?></a></li>
-                <li><a href="order2.php"><?= $lang['all_order'] ?></a></li>
-                <li><a href="exam2.php"><?= $lang['examroom'] ?></a></li>
-            </ul>
-        </li>
-        <li data-target="#service">
-            <div class="iocn-link">
-                <a href="#">
-                    <i class="fa-solid fa-book-medical"></i>
-                    <span class="link_name"><?= $lang['patient_management'] ?></span>
-                </a>
-                <i class="fa-solid fa-angle-down arrow"></i>
-            </div>
-            <ul class="sub-menu">
-                <li><a class="link_name" href="#"><?= $lang['patient_management'] ?></a></li>
-                <li><a href="workload.php"><?= $lang['workload'] ?></a></li>
-                <li><a href="report.php"><?= $lang['download_excel'] ?></a></li>
-                <li><a href="uploadexcel.php"><?= $lang['backup_excel'] ?></a></li>
-                <li><a href="downloadexcel.php">Storage Excel</a></li>
-                <li><a href="chart.php"><?= $lang['chart'] ?></a></li>
-            </ul>
-        </li>
-        <!-- <li id="storage1">
+        <?php if ($_SESSION['level'] == 'radiographer') { ?>
+            <li data-target="#products1">
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class="fa-solid fa-hospital-user"></i>
+                        <span class="link_name"><?= $lang['orders'] ?></span>
+                    </a>
+                    <i class="fa-solid fa-angle-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#"><?= $lang['orders'] ?></a></li>
+                    <li><a href="registration.php"><?= $lang['registration'] ?></a></li>
+                    <li><a href="order2.php"><?= $lang['all_order'] ?></a></li>
+                    <li><a href="exam2.php"><?= $lang['examroom'] ?></a></li>
+                </ul>
+            </li>
+            <li data-target="#service">
+                <div class="iocn-link">
+                    <a href="#">
+                        <i class="fa-solid fa-book-medical"></i>
+                        <span class="link_name"><?= $lang['patient_management'] ?></span>
+                    </a>
+                    <i class="fa-solid fa-angle-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#"><?= $lang['patient_management'] ?></a></li>
+                    <li><a href="workload.php"><?= $lang['workload'] ?></a></li>
+                    <li><a href="report.php"><?= $lang['download_excel'] ?></a></li>
+                    <li><a href="uploadexcel.php"><?= $lang['backup_excel'] ?></a></li>
+                    <li><a href="downloadexcel.php">Storage Excel</a></li>
+                    <li><a href="chart.php"><?= $lang['chart'] ?></a></li>
+                </ul>
+            </li>
+            <!-- <li id="storage1">
             <a href="storage.php">
                 <i class="fa-solid fa-box-archive"></i>
                 <span class="link_name"></i> <?= $lang['storage'] ?></span>
@@ -391,9 +391,9 @@
         </li> -->
         <?php } ?>
         <!-- =================END OF SIDEBAR RADIOGRAPHER====================== -->
-        
+
         <!-- =================SIDEBAR DOKTER RADIOLOGI====================== -->
-        <?php if($_SESSION['level'] == 'radiology') {?>
+        <?php if ($_SESSION['level'] == 'radiology') { ?>
             <li id="worklist1">
                 <a href="dicom.php">
                     <i class="fa-solid fa-book-medical"></i>
@@ -407,7 +407,7 @@
             <li data-target="#service">
                 <div class="iocn-link">
                     <a href="#">
-                    <i class="fa-solid fa-file-lines"></i>
+                        <i class="fa-solid fa-file-lines"></i>
                         <span class="link_name"><?= $lang['patient_management'] ?></span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
@@ -433,28 +433,28 @@
                     <li><a href="view_template.php">View Expertise</a></li>
                 </ul>
             </li>
-        <?php }?>
+        <?php } ?>
         <!-- =================End of SIDEBAR DOKTER RADIOLOGI====================== -->
-        
+
         <!-- =================END OF SIDEBAR POLI====================== -->
-        <?php if($_SESSION['level'] == 'refferal') {?>
+        <?php if ($_SESSION['level'] == 'refferal') { ?>
             <li data-target="#worklist1">
-            <a href="workload.php">
-                <i class="fa-solid fa-laptop-file"></i>
-                <span class="link_name">Query </span>
-            </a>
-            <ul class="sub-menu blank">
-                <li><a class="link_name" href="query-search.php">Query </a></li>
-            </ul>
-        </li>
-        <?php }?>
-        
-        
-        
-        
-        
-        
-        
+                <a href="workload.php">
+                    <i class="fa-solid fa-laptop-file"></i>
+                    <span class="link_name">Query </span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="workload.php">Query </a></li>
+                </ul>
+            </li>
+        <?php } ?>
+
+
+
+
+
+
+
         <li id="settings1">
             <a href="settings.php">
                 <i class="fa-solid fa-gears"></i>
@@ -479,11 +479,11 @@
         <li>
             <div class="profile-details">
                 <div class="profile-content">
-                <i class="fas fa-user"></i> 
+                    <i class="fas fa-user"></i>
                 </div>
                 <div class="name-job" style="margin-left: -90px;">
-                    <div class="profile_name"><label style="margin: 0;"><?=  $_SESSION['username']; ?></label></div>
-                    <div class="job"><?= $_SESSION['level']?></div>
+                    <div class="profile_name"><label style="margin: 0;"><?= $_SESSION['username']; ?></label></div>
+                    <div class="job"><?= $_SESSION['level'] ?></div>
                 </div>
                 <a href="logout.php">
                     <i class="fa-solid fa-right-from-bracket"></i>
