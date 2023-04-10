@@ -31,8 +31,8 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
             <h2><?= $lang['about_us'] ?></h2><br>
             <?= $lang['about_content'] ?>
 
-            <img style="width: 30px;" src="../image/whatsapp.png">&nbsp;&nbsp;<label>+62 822-2022-7912</label>&nbsp; (IT SERVICE)<br><br>
-            <img style="width: 30px;" src="../image/email.png">&nbsp;&nbsp;<label>itservice@intimedika.com</label>
+            <img style="width: 30px;" src="../image/whatsapp.png">&nbsp;&nbsp;<label></label>&nbsp; (IT SERVICE)<br><br>
+            <img style="width: 30px;" src="../image/email.png">&nbsp;&nbsp;<label></label>
             </p>
           </div>
         </div>

@@ -283,8 +283,8 @@ if ($_SESSION['level'] == "radiology") { ?>
 											</div> -->
 											<!-- history pasien berdasarkan mrn pat_iid-->
 											<div class="data-order">
-													<h4 style="margin: 0px;">History</h4>
-													<hr style="margin: 10px 0px;">
+												<h4 style="margin: 0px;">History</h4>
+												<hr style="margin: 10px 0px;">
 												<?php
 												$i = 1;
 												while ($mrn = mysqli_fetch_assoc($query_mrn)) {
@@ -342,8 +342,8 @@ if ($_SESSION['level'] == "radiology") { ?>
 													<hr style="margin: 10px 0px;">
 													<div class="buttons1">
 														<?= HOROSWORKLISTFIRST . $uid . HOROSWORKLISTLAST .
-															RADIANTWORKLISTFIRST . "'$uid'" . RADIANTWORKLISTLAST .
-															HTMLWORKLISTFIRST . "'$uid'" . HTMLWORKLISTLAST .
+															RADIANTWORKLISTFIRST . $uid . RADIANTWORKLISTLAST .
+															HTMLWORKLISTFIRST . $uid . HTMLWORKLISTLAST .
 															OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST;
 														?>
 													</div>
@@ -365,7 +365,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 												</div>
 										</div>
 									</div>
-							
+
 									<div class="col-lg-8">
 										<div class="div-mid">
 											<div class="work-patient6">
@@ -376,15 +376,15 @@ if ($_SESSION['level'] == "radiology") { ?>
 														<hr style="margin: 10px 0px;"> -->
 														<div class="container-fluid">
 															<div class="row">
-																<?= RADIANTWORKLISTFIRST . "'$uid'" . RADIANTWORKLISTLAST .
+																<?= RADIANTWORKLISTFIRST . $uid . RADIANTWORKLISTLAST .
 																	INOBITECWORKLISTFIRST . "'$uid'" . INOBITECWORKLISTLAST .
-																	HTMLWORKLISTFIRST . "'$uid'" . HTMLWORKLISTLAST .
+																	HTMLWORKLISTFIRST . $uid . HTMLWORKLISTLAST .
 																	OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST;
 																?>
-																
+
 															</div>
 														</div>
-														
+
 													</div>
 												</div>
 
@@ -491,7 +491,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 								</div>
 							</div>
 
-							
+
 						</div>
 					</div>
 				</div>

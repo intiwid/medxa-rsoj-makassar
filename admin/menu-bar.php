@@ -68,7 +68,9 @@ $name = $row10['ad_name'] . ' ' . $row10['ad_lastname'];
                   <center><a href="logout.php"><img style="width: 30px;" src="../icon-menubar/new_icon/logout.png"><br><?= $lang['logout'] ?></a></center>
                 </li>
                 <li style="float: right; color: #fff">
-                  <center><bold><br>Administrator</bold></center>
+                  <center>
+                    <bold><br>Administrator</bold>
+                  </center>
                 </li>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                   <!-- <i class="fa fa-bars"></i> -->
@@ -102,7 +104,7 @@ $name = $row10['ad_name'] . ' ' . $row10['ad_lastname'];
       <div class="modal-body">
         <label>Contact us for Enterprise</label><br>
         <p><img style="width: 30px;" src="../image/whatsapp.png">&nbsp;&nbsp;<label>+62 822-2022-7912</label><br><br>
-          <img style="width: 30px;" src="../image/email.png">&nbsp;&nbsp;<label>itservice@intimedika.com</label>/<label>Email: sales@intimedika.co</label>
+          <img style="width: 30px;" src="../image/email.png">&nbsp;&nbsp;<label></label>/<label></label>
         </p>
       </div>
       <div class="modal-footer">

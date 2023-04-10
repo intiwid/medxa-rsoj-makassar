@@ -79,8 +79,8 @@ include '../contract-service.php';
       </div>
       <div class="modal-body">
         <h2>Contact us at (Office) +62-21-4532648</h2>
-        <img style="width: 30px;" src="../image/whatsapp.png">&nbsp;&nbsp;<label>+62 822-2022-7912</label>&nbsp; (IT SERVICE)<br><br>
-        <img style="width: 30px;" src="../image/email.png">&nbsp;&nbsp;<label>itservice@intimedika.com</label>
+        <img style="width: 30px;" src="../image/whatsapp.png">&nbsp;&nbsp;<label></label>&nbsp;<br><br>
+        <img style="width: 30px;" src="../image/email.png">&nbsp;&nbsp;<label></label>
 
       </div>
       <div class="modal-footer">
