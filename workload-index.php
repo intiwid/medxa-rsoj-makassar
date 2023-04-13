@@ -1,3 +1,6 @@
+<?php
+$level = $_SESSION['level'];
+?>
 <div class="col-12" style="padding: 0;">
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
@@ -86,7 +89,7 @@
 		});
 		fetch_data('no');
 
-		function fetch_data(is_date_search = 'yes', from_study_datetime = '', to_study_datetime = '', mods_in_study = '', pat_name = '', mrn = '', patientid = '') {
+		function fetch_data(is_date_search = 'yes', from_study_datetime = '', to_study_datetime = '', mods_in_study = '', pat_name = '', mrn = '', patientid = '', fill = '') {
 			var dataTable = $('#purchase_order').DataTable({
 				"processing": true,
 				"serverSide": true,
@@ -102,7 +105,8 @@
 						mods_in_study: mods_in_study,
 						pat_name: pat_name,
 						mrn: mrn,
-						patientid: patientid
+						patientid: patientid,
+						fill: fill
 					}
 				},
 			});
@@ -115,9 +119,10 @@
 			var mrn = $('#mrn').val();
 			var mods_in_study = get_filter('checkbox');
 			var patientid = $('#patientid').val();
+			var fill = $('#fill').val();
 			if (from_study_datetime != '' && to_study_datetime != '') {
 				$('#purchase_order').DataTable().destroy();
-				fetch_data('yes', from_study_datetime, to_study_datetime, mods_in_study, pat_name, mrn, patientid);
+				fetch_data('yes', from_study_datetime, to_study_datetime, mods_in_study, pat_name, mrn, patientid, fill);
 			} else {
 				alert("Please Select Date");
 			}

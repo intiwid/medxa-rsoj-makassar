@@ -116,11 +116,21 @@ if (isset($_POST['mrn']) && $_POST['mrn'] != "") {
  ';
 }
 
-// jika patientid / nofoto diketik
-if (isset($_POST['patientid']) && $_POST['patientid'] != "") {
-  $patientid = strtoupper($_POST['patientid']);
-  $query .= 'AND UPPER(patientid) LIKE "%' . $patientid . '%"
+// jika login radiology mencari berdasarkan fill, else mencari berdasarkan no foto
+if ($level == 'radiology') {
+  // jika fill
+  if (isset($_POST['fill']) && $_POST['fill'] != "") {
+    $fill = strtoupper($_POST['fill']);
+    $query .= 'AND UPPER(fill) LIKE "%' . $fill . '%"
+  ';
+  }
+} else {
+  // jika patientid / nofoto diketik
+  if (isset($_POST['patientid']) && $_POST['patientid'] != "") {
+    $patientid = strtoupper($_POST['patientid']);
+    $query .= 'AND UPPER(patientid) LIKE "%' . $patientid . '%"
  ';
+  }
 }
 
 // order by

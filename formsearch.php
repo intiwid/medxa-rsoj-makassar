@@ -71,7 +71,7 @@ $date2 = date('d-m-Y 23:59');
                         </ul>
                     </div>
 
-                    
+
                 </div>
             </div>
 
@@ -102,13 +102,32 @@ $date2 = date('d-m-Y 23:59');
                             </div>
                         </div>
                     </div>
-                    <div class="col" style="padding: 5px;">
-                        <div class="input-group input-group-regist input-regist input-group-icon">
-                            <input type="text" name="patientid" id="patientid" placeholder="Search No Foto" />
-                            <div class="input-icon"><i class="fas fa-image"></i>
+                    <!-- jika login radiology mencari berdasarkan fill, else mencari berdasarkan no foto -->
+                    <?php if ($level == 'radiology') { ?>
+                        <div class="col" style="padding: 5px;">
+                            <div class="input-group input-group-regist input-regist input-group-icon">
+                                <input type="text" name="fill" id="fill" placeholder="Search Expertise" />
+                                <div class="input-icon"><i class="fas fa-image"></i>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php } else if ($level == 'radiographer' || $level == 'refferal') { ?>
+                        <div class="col" style="padding: 5px;">
+                            <div class="input-group input-group-regist input-regist input-group-icon">
+                                <input type="text" name="patientid" id="patientid" placeholder="Search No Foto" />
+                                <div class="input-icon"><i class="fas fa-image"></i>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } else { ?>
+                        <div class="col" style="padding: 5px;">
+                            <div class="input-group input-group-regist input-regist input-group-icon">
+                                <input type="text" name="patientid" id="patientid" placeholder="Search No Foto" />
+                                <div class="input-icon"><i class="fas fa-image"></i>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
 
             </div>
