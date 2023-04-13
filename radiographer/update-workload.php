@@ -140,7 +140,7 @@ if ($_SESSION['level'] == "radiographer") {
 												</li>
 												<li>
 													<label for="pat_name">Nama</label><br>
-													<input class="not-allowed" type="text" id="pat_name" value="<?= removeCharacter($pat_name); ?>" name="pat_name" readonly>
+													<input type="text" id="pat_name" value="<?= removeCharacter($pat_name); ?>" name="pat_name">
 												</li>
 												<li>
 													<label for="pat_sex"><b>Jenis Kelamin</b></label><br>
@@ -283,7 +283,7 @@ if ($_SESSION['level'] == "radiographer") {
 											<br>
 											<li>
 												<label for="study">Study</label><br>
-												<input type="text" class="not-allowed" name="study_desc" id="study_desc" value="<?= $study_desc; ?>" readonly>
+												<input type="text" name="study_desc" id="study_desc" value="<?= $study_desc; ?>">
 											</li>
 											<li>
 												<label for="harga_prosedur">Tarif Pemeriksaan</label><br>
