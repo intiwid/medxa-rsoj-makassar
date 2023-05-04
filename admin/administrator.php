@@ -135,6 +135,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 									<li><a data-toggle="tab" href="#menu10">IP Publik</a></li>
 									<li><a data-toggle="tab" href="#menu11">Notification Radiologist</a></li>
 								<?php } ?>
+								<li><a data-toggle="tab" href="#menu12">Payment</a></li>
 							</ul>
 							<div class="tab-content">
 								<div id="home" class="tab-pane fade in active">
@@ -380,6 +381,26 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 										</div>
 									</div>
 								<?php } ?>
+								<div id="menu12" class="tab-pane fade">
+									<div id="home" class="tab-pane fade in active">
+										<div>
+											<ul class="social-links">
+												<li class="li-admin">
+													<a href="new_payment.php">
+														<img style="width: 100%;" src="../image/plus.png">
+														<h5><?= $lang['add'] ?> or Update</h5>
+													</a>
+												</li>
+												<li class="li-admin">
+													<a href="view_payment.php">
+														<img style="width: 100%;" src="../image/view.png">
+														<h5><?= $lang['view'] ?></h5>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

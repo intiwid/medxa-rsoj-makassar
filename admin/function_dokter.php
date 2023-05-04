@@ -767,3 +767,58 @@ function update_notification_radiologist($value)
 
 	return mysqli_affected_rows($conn);
 }
+
+///////////////////////////payment/////////////////////////////////
+
+//untuk insert atau menambahkan
+function new_payment($value)
+{
+	global $conn;
+
+	$id_payment = $value['id_payment'];
+	$payment = $value['payment'];
+
+	mysqli_query(
+		$conn,
+		"INSERT INTO xray_payment_insurance (id_payment, payment, created_at)
+		VALUES('$id_payment', '$payment', NOW())"
+	);
+
+	return mysqli_affected_rows($conn);
+}
+
+//untuk menghapus
+function delete_payment($pk)
+{
+	global $conn;
+
+	mysqli_query(
+		$conn,
+		"DELETE FROM xray_payment_insurance 
+		WHERE pk = '$pk'"
+	);
+
+	return mysqli_affected_rows($conn);
+}
+
+
+//untuk mengubah / edit
+function update_payment($value)
+{
+	global $conn;
+	$pk = $value['pk'];
+	$id_payment = $value['id_payment'];
+	$payment = $value['payment'];
+
+	mysqli_query(
+		$conn,
+		"UPDATE xray_payment_insurance SET
+		id_payment = '$id_payment',
+		payment = '$payment'
+		WHERE pk = '$pk'"
+	);
+
+	return mysqli_affected_rows($conn);
+}
+
+///////////////end of payment////////////////////////
