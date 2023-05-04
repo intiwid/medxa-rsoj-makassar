@@ -11,7 +11,7 @@ define('DICOMFIRST', '<a style="text-decoration:none;" href="jnlp://' . $_SERVER
 define('DICOMLAST', '"><span class="btn btn-inti2" style="box-shadow: none;"><img src="../image/eyered.svg" data-toggle="tooltip" title="Dicom Viewer" style="width: 100%;"></span></a>');
 
 // HTML
-define('HTMLFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':19898/intiwid/viewer.html?studyUID=');
+define('HTMLFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':19898/mms/viewer.html?studyUID=');
 define('HTMLLAST', '"target="_blank"><span class="btn btn-inti2" style="box-shadow: none;"><img src="../image/eyeyellow.svg" data-toggle="tooltip" title="HTML Viewer" style="width: 100%;"></span></a>');
 
 // Mobile
