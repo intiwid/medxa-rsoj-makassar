@@ -14,6 +14,8 @@
     </script>
     <script src="../js/datetime-moment.js" />
     </script>
+    <script type="text/javascript" src="../js/jquery.validate.min.js" />
+    </script>
 
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {

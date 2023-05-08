@@ -17,3 +17,18 @@ require '../random.php';
 <link rel="icon" href="../image/ipi-icon3.png" type="image/png">
 <link rel="stylesheet" href="fontawesome/css/all.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- untuk validasi form -->
+<style>
+    .not-allowed {
+        cursor: not-allowed;
+    }
+
+    .invalid {
+        border: 1px solid red !important;
+    }
+
+    .invalid-text {
+        color: red !important;
+    }
+</style>
