@@ -126,17 +126,18 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 								<li><a data-toggle="tab" href="#menu3">Department</a></li>
 								<li><a data-toggle="tab" href="#menu4">Modality</a></li>
 								<li><a data-toggle="tab" href="#menu5">Procedure</a></li>
-								<li><a data-toggle="tab" href="#menu6">AET</a></li>
+								<li><a data-toggle="tab" href="#menu6">AET Worklist</a></li>
+								<li><a data-toggle="tab" href="#menu7">AET Send</a></li>
 								<?php
 								if ($level == 'superadmin') { ?>
-									<li><a data-toggle="tab" href="#menu7">Login</a></li>
-									<li><a data-toggle="tab" href="#menu8">Template</a></li>
-									<li><a data-toggle="tab" href="#menu9">Worklist</a></li>
-									<li><a data-toggle="tab" href="#menu10">IP Publik</a></li>
-									<li><a data-toggle="tab" href="#menu11">Notification Radiologist</a></li>
+									<li><a data-toggle="tab" href="#menu8">Login</a></li>
+									<li><a data-toggle="tab" href="#menu9">Template</a></li>
+									<li><a data-toggle="tab" href="#menu10">Worklist</a></li>
+									<li><a data-toggle="tab" href="#menu11">IP Publik</a></li>
+									<li><a data-toggle="tab" href="#menu12">Notification Radiologist</a></li>
 								<?php } ?>
-								<li><a data-toggle="tab" href="#menu12">Payment</a></li>
-								<li><a data-toggle="tab" href="#menu13">Kop Surat</a></li>
+								<li><a data-toggle="tab" href="#menu13">Payment</a></li>
+								<li><a data-toggle="tab" href="#menu14">Kop Surat</a></li>
 							</ul>
 							<div class="tab-content">
 								<div id="home" class="tab-pane fade in active">
@@ -263,13 +264,33 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 										<div>
 											<ul class="social-links">
 												<li class="li-admin">
-													<a href="new_ae.php">
+													<a href="new_ae_worklist.php">
 														<img style="width: 100%;" src="../image/plus.png">
 														<h5><?= $lang['add'] ?></h5>
 													</a>
 												</li>
 												<li class="li-admin">
-													<a href="view_ae.php">
+													<a href="view_ae_worklist.php">
+														<img style="width: 100%;" src="../image/view.png">
+														<h5><?= $lang['view'] ?></h5>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div id="menu7" class="tab-pane fade">
+									<div id="home" class="tab-pane fade in active">
+										<div>
+											<ul class="social-links">
+												<li class="li-admin">
+													<a href="new_ae_send.php">
+														<img style="width: 100%;" src="../image/plus.png">
+														<h5><?= $lang['add'] ?></h5>
+													</a>
+												</li>
+												<li class="li-admin">
+													<a href="view_ae_send.php">
 														<img style="width: 100%;" src="../image/view.png">
 														<h5><?= $lang['view'] ?></h5>
 													</a>
@@ -281,7 +302,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 								<!-- jika superadmin -->
 								<?php
 								if ($level == 'superadmin') { ?>
-									<div id="menu7" class="tab-pane fade">
+									<div id="menu8" class="tab-pane fade">
 										<div id="home" class="tab-pane fade in active">
 											<div>
 												<ul class="social-links">
@@ -301,7 +322,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 											</div>
 										</div>
 									</div>
-									<div id="menu8" class="tab-pane fade">
+									<div id="menu9" class="tab-pane fade">
 										<div id="home" class="tab-pane fade in active">
 											<div>
 												<ul class="social-links">
@@ -321,7 +342,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 											</div>
 										</div>
 									</div>
-									<div id="menu9" class="tab-pane fade">
+									<div id="menu10" class="tab-pane fade">
 										<div id="home" class="tab-pane fade in active">
 											<div>
 												<ul class="social-links">
@@ -341,7 +362,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 											</div>
 										</div>
 									</div>
-									<div id="menu10" class="tab-pane fade">
+									<div id="menu11" class="tab-pane fade">
 										<div id="home" class="tab-pane fade in active">
 											<div>
 												<ul class="social-links">
@@ -361,7 +382,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 											</div>
 										</div>
 									</div>
-									<div id="menu11" class="tab-pane fade">
+									<div id="menu12" class="tab-pane fade">
 										<div id="home" class="tab-pane fade in active">
 											<div>
 												<ul class="social-links">
@@ -382,7 +403,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 										</div>
 									</div>
 								<?php } ?>
-								<div id="menu12" class="tab-pane fade">
+								<div id="menu13" class="tab-pane fade">
 									<div id="home" class="tab-pane fade in active">
 										<div>
 											<ul class="social-links">
@@ -402,7 +423,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 										</div>
 									</div>
 								</div>
-								<div id="menu13" class="tab-pane fade">
+								<div id="menu14" class="tab-pane fade">
 									<div id="home" class="tab-pane fade in active">
 										<div>
 											<ul class="social-links">

@@ -7,7 +7,7 @@ session_start();
 $username = $_SESSION['username'];
 
 $result = mysqli_query(
-    $conn_pacsio,
+    $conn_mppsio,
     "SELECT * FROM ae"
 );
 
@@ -27,15 +27,15 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb1 breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php"><?= $lang['home'] ?></a></li>
-                <li class="breadcrumb-item active" aria-current="page"><?= $lang['table_aetitle'] ?></li>
+                <li class="breadcrumb-item active" aria-current="page"><?= $lang['table_aetitle'] ?> worklist</li>
             </ol>
         </nav>
 
         <div id="container1">
             <div id="content1">
                 <div class="container-fluid">
-                    <h1 style="color: #ee7423"><?= $lang['data_aetitle'] ?></h1>
-                    <a class="ahref" href="new_ae.php"><i class="fas fa-plus"></i><?= $lang['add_aetitle'] ?></a>
+                    <h1 style="color: #ee7423"><?= $lang['data_aetitle'] ?> worklist</h1>
+                    <a class="ahref" href="new_ae_worklist.php"><i class="fas fa-plus"></i><?= $lang['add_aetitle'] ?> worklist</a>
                     <br><br>
                     <div class="about-inti table-box">
                         <table class="table-dicom table-paginate" style="margin-top: 0px;" border="1" cellpadding="8" cellspacing="0">
@@ -56,8 +56,8 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
                                     <td><?= $row['hostname']; ?></td>
                                     <td><?= $row['port']; ?></td>
                                     <td>
-                                        <a href="update_ae.php?pk=<?= $row["pk"]; ?>"><img data-toggle="tooltip" title="Edit" class="iconbutton" src="../image/edit.png" style="height: 20px;"></a>
-                                        <a href="delete_ae.php?pk=<?= $row["pk"]; ?>" class="tombol-hapus"><img style="height: 20px;" data-toggle="tooltip" title="Hapus" class="iconbutton" src="../image/delete.png"></a>
+                                        <a href="update_ae_worklist.php?pk=<?= $row["pk"]; ?>"><img data-toggle="tooltip" title="Edit" class="iconbutton" src="../image/edit.png" style="height: 20px;"></a>
+                                        <a href="delete_ae_worklist.php?pk=<?= $row["pk"]; ?>" class="tombol-hapus"><img style="height: 20px;" data-toggle="tooltip" title="Hapus" class="iconbutton" src="../image/delete.png"></a>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>
@@ -71,7 +71,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
                 <div class="">
                     <div class="footer-login col-sm-12"><br>
                         <center>
-                            <p>&copy; Powered by Multimed IT Solution 2022</a>.</p>
+                            <p>&copy; Powered by Intiwid IT Solution 2022</a>.</p>
                         </center>
                     </div>
                 </div>

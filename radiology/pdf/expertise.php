@@ -78,6 +78,10 @@ if ($status == "waiting" || $status == '') {
     exit();
 }
 
+// kop surat
+$kopSurat = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM kop_surat LIMIT 1"));
+$image = $kopSurat['image'] == null ? 'header-rs.jpg' : "http://" . $_SERVER['SERVER_NAME'] . ":8000/storage/" . $kopSurat['image'];
+
 //Based on HTML2PDF by Clément Lavoillotte
 // memanggil library FPDF
 require('fpdf.php');
@@ -96,7 +100,7 @@ $pdf->SetFont('Arial', '', 10);
 
 $pdf->SetTitle('Hasil expertise');
 
-$pdf->image('header-rs.jpg', 14, 10, 185);
+$pdf->image($image, 14, 10, 185);
 $pdf->MultiCell(0, 15, '', 0, "J", false);
 
 

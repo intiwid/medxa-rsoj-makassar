@@ -657,7 +657,7 @@ function berita($post_berita)
 
 //////////////////////// end of berita //////////////////////////////////////////////////////////////////////
 
-function new_ae($value)
+function new_ae_send($value)
 {
 	global $conn_pacsio;
 	$aet = $value['aet'];
@@ -674,7 +674,7 @@ function new_ae($value)
 	return mysqli_affected_rows($conn_pacsio);
 }
 
-function update_ae($value)
+function update_ae_send($value)
 {
 	global $conn_pacsio;
 	$pk = $value['pk'];
@@ -694,7 +694,7 @@ function update_ae($value)
 	return mysqli_affected_rows($conn_pacsio);
 }
 
-function delete_ae($pk)
+function delete_ae_send($pk)
 {
 	global $conn_pacsio;
 	mysqli_query(
@@ -702,6 +702,53 @@ function delete_ae($pk)
 		"DELETE FROM ae WHERE pk = '$pk'"
 	);
 	return mysqli_affected_rows($conn_pacsio);
+}
+
+function new_ae_worklist($value)
+{
+	global $conn_mppsio;
+	$aet = $value['aet'];
+	$hostname = $value['hostname'];
+	$port = $value['port'];
+	// $color = $value['color'];
+
+	mysqli_query(
+		$conn_mppsio,
+		"INSERT INTO ae (aet, hostname, port, installed) 
+		VALUES ('$aet', '$hostname', '$port', 1)"
+	);
+
+	return mysqli_affected_rows($conn_mppsio);
+}
+
+function update_ae_worklist($value)
+{
+	global $conn_mppsio;
+	$pk = $value['pk'];
+	$aet = $value['aet'];
+	$hostname = $value['hostname'];
+	$port = $value['port'];
+
+	mysqli_query(
+		$conn_mppsio,
+		"UPDATE ae SET 
+		aet = '$aet',
+		hostname = '$hostname',
+		port = '$port'
+		WHERE pk = '$pk'
+	"
+	);
+	return mysqli_affected_rows($conn_mppsio);
+}
+
+function delete_ae_worklist($pk)
+{
+	global $conn_mppsio;
+	mysqli_query(
+		$conn_mppsio,
+		"DELETE FROM ae WHERE pk = '$pk'"
+	);
+	return mysqli_affected_rows($conn_mppsio);
 }
 
 function update_template($value)
