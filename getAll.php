@@ -156,8 +156,15 @@ while ($row = mysqli_fetch_array($query)) {
             $detail = '<a href="dicom.php" class="penawaran-a">' . removeCharacter($pat_name) . '</a>';
         }
     } else {
-        $aksi = PDFFIRST . $study_iuid . PDFLAST .
-            OHIFOLDFIRST . $study_iuid . OHIFOLDLAST;
+        $pdf = PDFFIRST . $study_iuid . PDFLAST;
+        // ketika modality MRI
+        if ($mods_in_study == 'MR' || $mods_in_study == 'PR\\MR' || $mods_in_study == 'SC\\PR\\MR') {
+            $aksi = $pdf . DICOMFIRST . $study_iuid . DICOMLAST;
+        } else {
+            $aksi = $pdf .
+                OHIFOLDFIRST . $study_iuid . OHIFOLDLAST .
+                HTMLFIRST . $study_iuid . HTMLLAST;
+        }
     }
 
     // kondisi jika prioriry normal dan CITO
