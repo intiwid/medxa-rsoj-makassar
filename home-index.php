@@ -40,7 +40,7 @@ $approved = mysqli_fetch_assoc(mysqli_query(
 </style>
 <meta http-equiv="refresh" content="600" />
 <br>
-<div class=" container-fluid ovrflow scroller-itwd">
+<div class="container-fluid">
   <div class="row">
     <div class="col-12" style="padding: 0;">
       <nav aria-label="breadcrumb">
@@ -96,9 +96,11 @@ $approved = mysqli_fetch_assoc(mysqli_query(
 
 
   </div>
+</div>
 
 
-  <div class="table-box row ovrflow" style="overflow-x:auto;">
+<div class="container-fluid ovrflow scroller-itwd table-box ">
+  <div class="ovrflow">
     <table class="table-dicom" id="example" style="margin-top: 3px; width: 100px;" cellpadding="8" cellspacing="0">
       <thead class="thead1">
         <?php require 'thead.php'; ?>
