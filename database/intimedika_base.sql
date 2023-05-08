@@ -11,7 +11,7 @@
  Target Server Version : 50649 (5.6.49-log)
  File Encoding         : 65001
 
- Date: 05/04/2023 10:44:16
+ Date: 08/05/2023 10:38:12
 */
 
 SET NAMES utf8mb4;
@@ -89,6 +89,23 @@ CREATE TABLE `jobs`  (
 
 -- ----------------------------
 -- Records of jobs
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for kop_surat
+-- ----------------------------
+DROP TABLE IF EXISTS `kop_surat`;
+CREATE TABLE `kop_surat`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `kode_image` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `image` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of kop_surat
 -- ----------------------------
 
 -- ----------------------------
