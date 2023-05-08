@@ -5,7 +5,7 @@ session_start();
 
 $pk = $_GET["pk"];
 
-if (delete_ae($pk) > 0) {
+if (delete_ae_send($pk) > 0) {
 	echo "<script type='text/javascript'>
 	setTimeout(function () { 
 	swal({
@@ -17,7 +17,7 @@ if (delete_ae($pk) > 0) {
 		});  
 	},10); 
 	window.setTimeout(function(){ 
-	window.location.replace('view_ae.php');
+	window.location.replace('view_ae_send.php');
 	} ,1000); 
 </script>";
 } else {
@@ -32,7 +32,7 @@ if (delete_ae($pk) > 0) {
 		});  
 	},10); 
 	window.setTimeout(function(){ 
-	window.location.replace('view_ae.php');
+	window.location.replace('view_ae_send.php');
 	} ,1000); 
 </script>";
 }

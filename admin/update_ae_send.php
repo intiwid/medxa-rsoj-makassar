@@ -10,7 +10,7 @@ $ae = mysqli_fetch_assoc(mysqli_query(
 
 if (isset($_POST["submit"])) {
 	if ($_POST['passwordconfirm'] == "27102108") {
-		if (update_ae($_POST) > 0) {
+		if (update_ae_send($_POST) > 0) {
 			echo "<script type='text/javascript'>
 		setTimeout(function () { 
 		swal({
@@ -22,7 +22,7 @@ if (isset($_POST["submit"])) {
 			});  
 		},10); 
 		window.setTimeout(function(){ 
-		window.location.replace('view_ae.php');
+		window.location.replace('view_ae_send.php');
 		} ,1000); 
 	</script>";
 		} else {
@@ -37,7 +37,7 @@ if (isset($_POST["submit"])) {
 				});  
             },10); 
             window.setTimeout(function(){ 
-            window.location.replace('update_ae.php?pk=$pk');
+            window.location.replace('update_ae_send.php?pk=$pk');
             } ,1000); 
         </script>";
 		}
@@ -53,7 +53,7 @@ if (isset($_POST["submit"])) {
                });  
         },10); 
         window.setTimeout(function(){ 
-         window.location.replace('update_ae.php?pk=$pk');
+         window.location.replace('_send.php?pk=$pk');
         } ,1000); 
        </script>";
 	}
@@ -87,7 +87,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 		<div id="container1">
 			<div id="content1">
 				<div class="body">
-					<h1>Ubah Data Dokter</h1>
+					<h1>Ubah Aet Send</h1>
 					<div class="container-fluid">
 						<div class="row form-dokter">
 							<form action="" method="post">
@@ -114,7 +114,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 				<div class="">
 					<div class="footer-login col-sm-12"><br>
 						<center>
-							<p>&copy; Powered by Multimed IT Solution 2022</a>.</p>
+							<p>&copy; Powered by Intiwid IT Solution 2022</a>.</p>
 						</center>
 					</div>
 				</div>

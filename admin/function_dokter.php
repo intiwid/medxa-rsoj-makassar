@@ -657,7 +657,7 @@ function berita($post_berita)
 
 //////////////////////// end of berita //////////////////////////////////////////////////////////////////////
 
-function new_ae($value)
+function new_ae_send($value)
 {
 	global $conn_pacsio;
 	$aet = $value['aet'];
@@ -674,7 +674,7 @@ function new_ae($value)
 	return mysqli_affected_rows($conn_pacsio);
 }
 
-function update_ae($value)
+function update_ae_send($value)
 {
 	global $conn_pacsio;
 	$pk = $value['pk'];
@@ -694,7 +694,7 @@ function update_ae($value)
 	return mysqli_affected_rows($conn_pacsio);
 }
 
-function delete_ae($pk)
+function delete_ae_send($pk)
 {
 	global $conn_pacsio;
 	mysqli_query(

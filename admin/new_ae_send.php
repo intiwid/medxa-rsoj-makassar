@@ -5,7 +5,7 @@ session_start();
 
 if (isset($_POST["submit"])) {
     if ($_POST['passwordconfirm'] == "27102108") {
-        if (new_ae($_POST) > 0) {
+        if (new_ae_send($_POST) > 0) {
             echo "<script type='text/javascript'>
             setTimeout(function () { 
             swal({
@@ -17,7 +17,7 @@ if (isset($_POST["submit"])) {
                 });  
             },10); 
             window.setTimeout(function(){ 
-            window.location.replace('view_ae.php');
+            window.location.replace('view_ae_send.php');
             } ,1000); 
         </script>";
         } else {
@@ -32,7 +32,7 @@ if (isset($_POST["submit"])) {
                 });  
             },10); 
             window.setTimeout(function(){ 
-            window.location.replace('new_ae.php');
+            window.location.replace('new_ae_send.php');
             } ,1000); 
         </script>";
         }
@@ -48,7 +48,7 @@ if (isset($_POST["submit"])) {
                });  
         },10); 
         window.setTimeout(function(){ 
-         window.location.replace('new_ae.php');
+         window.location.replace('new_ae_send.php');
         } ,1000); 
        </script>";
     }
@@ -77,10 +77,10 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
         <div id="container1">
             <div id="content1">
                 <div class="body">
-                    <h1 style="color: #ee7423"><?= $lang['add_aetitle'] ?></h1>
+                    <h1 style="color: #ee7423"><?= $lang['add_aetitle'] ?> Send</h1>
                     <div class="container">
                         <div class="row">
-                            <a class="ahref" href="view_ae.php"><i class="fas fa-eye"></i><?= $lang['view_aetitle'] ?></a>
+                            <a class="ahref" href="view_ae_send.php"><i class="fas fa-eye"></i><?= $lang['view_aetitle'] ?></a>
                             <br><br>
                         </div>
                     </div>
@@ -111,7 +111,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
                 <div class="">
                     <div class="footer-login col-sm-12"><br>
                         <center>
-                            <p>&copy; Powered by Multimed IT Solution 2022</a>.</p>
+                            <p>&copy; Powered by Intiwid IT Solution 2022</a>.</p>
                         </center>
                     </div>
                 </div>
