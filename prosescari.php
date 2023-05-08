@@ -232,7 +232,13 @@ while ($row = mysqli_fetch_array($result)) {
   } else if ($level == 'radiographer') {
     // kondisi ketika xray_workload masuk dari trigger
     if ($status != '-') {
-      $level = OHIFOLDFIRST . $study_iuid . OHIFOLDLAST . HTMLFIRST . $study_iuid . HTMLLAST . EDITPASIENFIRST . $study_iuid . EDITPASIENLAST .
+      // ketika modality MRI 
+      if ($mods_in_study == 'MR' || $mods_in_study == 'PR\\MR' || $mods_in_study == 'SC\\PR\\MR') {
+        $viewer = DICOMFIRST . $study_iuid . DICOMLAST;
+      } else {
+        $viewer = OHIFOLDFIRST . $study_iuid . OHIFOLDLAST . HTMLFIRST . $study_iuid . HTMLLAST;
+      }
+      $level = $viewer . EDITPASIENFIRST . $study_iuid . EDITPASIENLAST .
         CHANGEDOCTORFIRST . $study_iuid . CHANGEDOCTORMID . $dokradid . CHANGEDOCTORSTAT . $workload_status . CHANGEDOCTORLAST . $icon_change_doctor . CHANGEDOCTORVERYLAST .
         GETEXPERTISEFIRST . $name_envelope . ' ' . defaultValueDateTime($created_at_envelope) . $href_get_expertise . GETEXPERTISELAST . $icon_get_expertise . GETEXPERTISEVERYLAST;
       // TELEDOKTERPENGIRIMFIRST . $study_iuid . TELEDOKTERPENGIRIMLAST;
@@ -243,7 +249,12 @@ while ($row = mysqli_fetch_array($result)) {
     }
     // ketika login refferal
   } else if ($level == 'refferal') {
-    $level = OHIFOLDFIRST . $study_iuid . OHIFOLDLAST;
+    // ketika modality MRI
+    if ($mods_in_study == 'MR' || $mods_in_study == 'PR\\MR' || $mods_in_study == 'SC\\PR\\MR') {
+      $level = DICOMFIRST . $study_iuid . DICOMLAST;
+    } else {
+      $level = OHIFOLDFIRST . $study_iuid . OHIFOLDLAST . HTMLFIRST . $study_iuid . HTMLLAST;
+    }
   } else {
     $level = '-';
   }
