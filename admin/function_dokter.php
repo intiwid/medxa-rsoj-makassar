@@ -704,6 +704,53 @@ function delete_ae_send($pk)
 	return mysqli_affected_rows($conn_pacsio);
 }
 
+function new_ae_worklist($value)
+{
+	global $conn_mppsio;
+	$aet = $value['aet'];
+	$hostname = $value['hostname'];
+	$port = $value['port'];
+	// $color = $value['color'];
+
+	mysqli_query(
+		$conn_mppsio,
+		"INSERT INTO ae (aet, hostname, port, installed) 
+		VALUES ('$aet', '$hostname', '$port', 1)"
+	);
+
+	return mysqli_affected_rows($conn_mppsio);
+}
+
+function update_ae_worklist($value)
+{
+	global $conn_mppsio;
+	$pk = $value['pk'];
+	$aet = $value['aet'];
+	$hostname = $value['hostname'];
+	$port = $value['port'];
+
+	mysqli_query(
+		$conn_mppsio,
+		"UPDATE ae SET 
+		aet = '$aet',
+		hostname = '$hostname',
+		port = '$port'
+		WHERE pk = '$pk'
+	"
+	);
+	return mysqli_affected_rows($conn_mppsio);
+}
+
+function delete_ae_worklist($pk)
+{
+	global $conn_mppsio;
+	mysqli_query(
+		$conn_mppsio,
+		"DELETE FROM ae WHERE pk = '$pk'"
+	);
+	return mysqli_affected_rows($conn_mppsio);
+}
+
 function update_template($value)
 {
 	global $conn;
