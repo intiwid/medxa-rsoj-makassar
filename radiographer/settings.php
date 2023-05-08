@@ -207,7 +207,7 @@ if ($_SESSION['level'] == "radiographer") {
                   <div class="about-inti back-search" style="padding: 10px;">
 
                     <center>
-                      <h1 style="color: #377d71;"><?= $lang['create_template'] ?></h1>
+                      <h1 style="color: #377d71;">Template Expertise</h1>
                     </center>
 
                     <?php include('../template-index.php') ?>
