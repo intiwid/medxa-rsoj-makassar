@@ -57,7 +57,7 @@ $row_dokrad = mysqli_fetch_assoc(mysqli_query(
 
 $dokrad_name = defaultValue($row_dokrad['dokrad_fullname']);
 $nip = $row_dokrad['nip'];
-
+$dokrad_img =  $row_dokrad['dokrad_img'] == null ? '' : "http://" . $_SERVER['SERVER_NAME'] . ":8000/storage/" . $row_dokrad['dokrad_img'];
 
 if ($status == "waiting" || $status == '') {
     echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
@@ -195,11 +195,13 @@ $pdf->WriteHtml($fill);
 $pdf->WriteHTML("<br>");
 $pdf->WriteHTML("<br>");
 
+$text = "<p align='right'>Terimakasih atas kepercayaan TS</p>
+<p align='right'>Salam sejawat</p>";
+
 // jika ttd menggunakan signature
 if (!empty($signature)) {
     $pdf->WriteHTML(
-        "<p align='right'>Terimakasih atas kepercayaan TS</p>
-        <p align='right'>Salam sejawat</p>"
+        "$text"
     );
     $pdf->image('../phpqrcode/ttddokter/' . $signature, 163, 170, 25);
     $pdf->WriteHTML(
@@ -207,11 +209,19 @@ if (!empty($signature)) {
         <br><br>
         <p align='right'>$dokrad_name <br />$nip</p>"
     );
-} else {
-    // jika ttd tidak menggunakan signature
+} else if (!empty($dokrad_img)) {
+    // jika ttd menggunakan image
     $pdf->WriteHTML(
-        "<p align='right'>Terimakasih atas kepercayaan TS</p>
-        <p align='right'>Salam sejawat</p><br>
+        "$text<br>"
+
+    ) . $pdf->image($dokrad_img, 147, NULL, 55) .
+        $pdf->WriteHTML(
+            "<p align='right'>$dokrad_name <br><font size='7' face='Arial'>$nip</font></p>"
+        );
+} else {
+    // jika ttd tidak menggunakan signature  dan image
+    $pdf->WriteHTML(
+        "$text<br>
         <br><br><br>
         <p align='right'>$dokrad_name <br />$nip</p>"
     );

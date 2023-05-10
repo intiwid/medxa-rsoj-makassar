@@ -74,6 +74,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 											<td><?= $row["username"]; ?></td>
 											<td>
 												<a href="update_dokter_radiology.php?pk=<?= $row["pk"]; ?>"><img data-toggle="tooltip" title="Edit" class="iconbutton" src="../image/edit.png"></a>
+												<a href="update_dokter_radiology_ttd.php?pk=<?= $row["pk"]; ?>"><img data-toggle="tooltip" title="Doctor Signature" class="fas fa-image fa-lg"></a>
 												<a href="delete_dokter_radiology.php?pk=<?= $row["pk"]; ?> &amp; id_table=<?= $row['id_table']; ?>" class="tombol-hapus"><img data-toggle="tooltip" title="Hapus" class="iconbutton" src="../image/delete.png"></a>
 											</td>
 										</tr>

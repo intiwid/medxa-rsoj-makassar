@@ -5,6 +5,7 @@ xray_dokter_radiology.pk,
 xray_dokter_radiology.dokrad_email,
 xray_dokter_radiology.dokradid,
 xray_dokter_radiology.username,
+xray_dokter_radiology.dokrad_img,
 xray_dokter_radiology.nip,
 xray_dokter_radiology.idtele";
 
