@@ -86,6 +86,10 @@ define('RADIANTLAST', '%22" "target="_blank"><span class="btn btn-inti2" style="
 define('IPIVIEWFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://192.168.10.144:8089/ipiview/ipiview/html/start.html?StudyInstanceUID=');
 define('IPIVIEWLAST', '" target="_blank"><span class="btn btn-inti2" style="box-shadow: none;"><img src="../image/eyeyellow.svg" data-toggle="tooltip" title="IPI Viewer" style="width: 100%;"></span></a>');
 
+// send dicom
+define('SENDDICOMFIRST', '<a title="" href="view-send-dicom.php?uid=');
+define('SENDDICOMLAST', '">SEND<span class="btn rgba-stylish-slight darken-1 btn-inti2"></span></a>');
+
 // inobitec
 define('INOBITECFIRST', '<a href="#" class="ahref-edit" onclick="inobitec(');
 define('INOBITECLAST', ')"id="inobitec" data-ip="' . $_SERVER['SERVER_NAME'] . '"><span class="btn btn-warning btn-inti"><i class="fas fa-eye" data-toggle="tooltip" title="Web Viewer"></i></span></a>');

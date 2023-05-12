@@ -96,8 +96,8 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
                                     <input class="form-control" type="text" name="hostname" required><br />
                                     <label for="port">PORT</label>
                                     <input class="form-control" type="text" name="port" required><br />
-                                    <!-- <label for="color">COLOR</label>
-                                    <input class="form-control" type="color" name="color" required><br /> -->
+                                    <label for="station_name">Station Name</label>
+                                    <input class="form-control" type="text" name="station_name" required><br />
                                     <label for="port">Password Confirm</label>
                                     <input class="form-control" type="password" name="passwordconfirm" required><br />
                                     <input type="submit" class="btn btn-success" name="submit" value="SAVE" style="margin: 0px; font-size: 12px; font-weight: bold;">

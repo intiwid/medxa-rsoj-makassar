@@ -238,7 +238,7 @@ while ($row = mysqli_fetch_array($result)) {
       } else {
         $viewer = OHIFOLDFIRST . $study_iuid . OHIFOLDLAST . HTMLFIRST . $study_iuid . HTMLLAST;
       }
-      $level = $viewer . EDITPASIENFIRST . $study_iuid . EDITPASIENLAST .
+      $level = $viewer . SENDDICOMFIRST . $study_iuid . SENDDICOMLAST . EDITPASIENFIRST . $study_iuid . EDITPASIENLAST .
         CHANGEDOCTORFIRST . $study_iuid . CHANGEDOCTORMID . $dokradid . CHANGEDOCTORSTAT . $workload_status . CHANGEDOCTORLAST . $icon_change_doctor . CHANGEDOCTORVERYLAST .
         GETEXPERTISEFIRST . $name_envelope . ' ' . defaultValueDateTime($created_at_envelope) . $href_get_expertise . GETEXPERTISELAST . $icon_get_expertise . GETEXPERTISEVERYLAST;
       // TELEDOKTERPENGIRIMFIRST . $study_iuid . TELEDOKTERPENGIRIMLAST;

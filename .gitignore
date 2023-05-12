@@ -2,3 +2,4 @@
 /radiographer/files
 /read-more/*.exe
 /radiographer/dcm_temp
+/log/*.log

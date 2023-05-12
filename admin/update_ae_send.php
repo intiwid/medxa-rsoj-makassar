@@ -99,8 +99,8 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 									<input class="form-control" type="text" value="<?= $ae['hostname']; ?>" name="hostname" required><br />
 									<label for="port">PORT</label>
 									<input class="form-control" type="text" value="<?= $ae['port']; ?>" name="port" required><br />
-									<!-- <label for="color">COLOR</label>
-                                    <input class="form-control" type="color" name="color" required><br /> -->
+									<label for="station_name">station_name</label>
+									<input class="form-control" type="text" value="<?= $ae['station_name']; ?>" name="station_name">
 									<label for="port">Password Confirm</label>
 									<input class="form-control" type="password" name="passwordconfirm" required><br />
 									<button class="button1" type="submit" name="submit"><?= $lang['add_data'] ?></button>

@@ -45,6 +45,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
                                     <th>AE Title</th>
                                     <th>IP</th>
                                     <th>PORT</th>
+                                    <th>Station Name</th>
                                     <th>ACTION</th>
                                 </tr>
                             </thead>
@@ -55,6 +56,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
                                     <td><?= $row['aet']; ?></td>
                                     <td><?= $row['hostname']; ?></td>
                                     <td><?= $row['port']; ?></td>
+                                    <td><?= $row['station_name']; ?></td>
                                     <td>
                                         <a href="update_ae_send.php?pk=<?= $row["pk"]; ?>"><img data-toggle="tooltip" title="Edit" class="iconbutton" src="../image/edit.png" style="height: 20px;"></a>
                                         <a href="delete_ae_send.php?pk=<?= $row["pk"]; ?>" class="tombol-hapus"><img style="height: 20px;" data-toggle="tooltip" title="Hapus" class="iconbutton" src="../image/delete.png"></a>

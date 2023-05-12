@@ -663,12 +663,12 @@ function new_ae_send($value)
 	$aet = $value['aet'];
 	$hostname = $value['hostname'];
 	$port = $value['port'];
-	// $color = $value['color'];
+	$station_name = $value['station_name'];
 
 	mysqli_query(
 		$conn_pacsio,
-		"INSERT INTO ae (aet, hostname, port, installed) 
-		VALUES ('$aet', '$hostname', '$port', 1)"
+		"INSERT INTO ae (aet, hostname, port, station_name, installed) 
+		VALUES ('$aet', '$hostname', '$port', '$station_name', 1)"
 	);
 
 	return mysqli_affected_rows($conn_pacsio);
@@ -681,13 +681,15 @@ function update_ae_send($value)
 	$aet = $value['aet'];
 	$hostname = $value['hostname'];
 	$port = $value['port'];
+	$station_name = $value['station_name'];
 
 	mysqli_query(
 		$conn_pacsio,
 		"UPDATE ae SET 
 		aet = '$aet',
 		hostname = '$hostname',
-		port = '$port'
+		port = '$port',
+		station_name = '$station_name'
 		WHERE pk = '$pk'
 	"
 	);
