@@ -202,11 +202,11 @@
       margin-top: 36px;
     }*/
   
-    .button-popup-approve {
+    /* .button-popup-approve {
       margin-left: 125px;
       margin-top: 2px;
   
-    }
+    } */
   
   }
 
@@ -343,6 +343,17 @@
 
     @media (max-width: 464px) {
       .button-popup {
-        margin-left: -13px;
+        /* margin-left: -13px; */
+        position: relative;
+        width: 111%;
+        margin: 0 -9px;
     }
+    }
+
+
+    @media (max-width: 601px) {
+      .button-popup-approve {
+        float: none;
+        width: 100%;
+      }
     }
