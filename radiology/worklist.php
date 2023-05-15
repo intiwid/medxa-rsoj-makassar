@@ -190,7 +190,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 										<li class="breadcrumb-item active">Expertise</li>
 									</ol>
 								</nav>
-							</div>
+							</div>     
 
 
 							<div class="col-lg-9">
@@ -405,10 +405,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 												}
 												?>
 												<br>
-												<!-- menampilkan OHIF 1 halaman -->
-												<div class="collapse" id="ohif">
-													<iframe src="<?= "$url$uid" ?>" frameborder="0" marginheight="0" marginwidth="0" width="100%" height="600px"></iframe>
-												</div>
+												
 												<div class="textarea-ckeditor">
 													<textarea class="ckeditor" name="fill" id="ckeditor">
 													<?= $fill; ?>
@@ -491,6 +488,15 @@ if ($_SESSION['level'] == "radiology") { ?>
 												<?php } ?>
 												</thead>
 										</table>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-12" style="overflow-x: auto;"><br><br>
+								<div style="margin-left: -14px; min-width: 697px;">
+									<!-- menampilkan OHIF 1 halaman -->
+									<div class="collapse div-left" id="ohif">
+										<iframe src="<?= "$url$uid" ?>" frameborder="0" marginheight="0" marginwidth="0" width="100%" height="600px"></iframe>
 									</div>
 								</div>
 							</div>
