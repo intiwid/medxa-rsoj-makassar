@@ -52,7 +52,7 @@ if ($_SESSION['level'] == "radiographer") {
                                 <div class="radiobtn1">
                                     <h6>Pilih AET Station yang akan dikirim</h6>
                                     <hr>
-                                    <form method="POST" id="send-dicom" action="../send-dicom.php">
+                                    <form method="POST" id="send-dicom">
                                         <input type="hidden" name="uid" value="<?= $uid ?>" id="uid">
                                         <table>
                                             <tr>
