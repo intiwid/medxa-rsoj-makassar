@@ -152,7 +152,7 @@ if ($_SERVER['SERVER_NAME'] == $hostname['ip_publik']) {
 define('DICOMWORKLISTFIRST', '<div class="col-lg-3"><a href="jnlp://' . $_SERVER['SERVER_NAME'] . ':19898/weasis-pacs-connector/DCM_viewer.jnlp?studyUID=');
 define('DICOMWORKLISTLAST', '"class="btn btn-viewer-worklist"><img src="../image/desktop.svg">&nbsp; Dicom Viewer</a></div>');
 
-define('HTMLWORKLISTFIRST', '<div class="col-lg-3"><a href="http://' . $_SERVER['SERVER_NAME'] . ':19898/intiwid/viewer.html?studyUID=');
+define('HTMLWORKLISTFIRST', '<div class="col-lg-3"><a href="http://' . $_SERVER['SERVER_NAME'] . ':19898/mms/viewer.html?studyUID=');
 define('HTMLWORKLISTLAST', '" class="btn btn-viewer-worklist" target="_blank"><img src="../image/html.svg">&nbsp; HTML Viewer</a></div>');
 
 define('RADIANTWORKLISTFIRST', '<div class="col-lg-3"><a href="radiant://?n=paet&v=dcmPACS&n=pstv&v=0020000D&v=%22');
