@@ -1,6 +1,12 @@
 <?php
 
 require '../koneksi/koneksi.php';
+include "phpqrcode/qrlib.php";
+require '../model/query-base-workload.php';
+require '../model/query-base-order.php';
+require '../model/query-base-study.php';
+require '../model/query-base-patient.php';
+
 //untuk menampilkan
 function query($query)
 {
@@ -50,11 +56,14 @@ function insert_template_workload($value)
 
 function insert_workload($value)
 {
-	global $conn;
+	global $conn, $conn_pacsio, $table_patient, $table_study, $table_workload, $table_order;
 	$uid = $value['uid'];
 	$fill = addslashes($value['fill']);
 	$username = $value['username'];
 	$priority_doctor = $value['priority_doctor'];
+	$signature = $uid . ".png";
+	$hostname = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM xray_hostname_publik"));
+	$link = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM rename_link"));
 
 	$dokter_radiologi = mysqli_fetch_assoc(mysqli_query(
 		$conn,
@@ -77,10 +86,52 @@ function insert_workload($value)
 		xray_workload.status = 'approved', 
 		fill = '$fill',
 		approved_at = NOW(),
-		priority_doctor = '$priority_doctor'
+		priority_doctor = '$priority_doctor',
+		signature = '$signature',
+		signature_datetime = NOW()
 		WHERE uid = '$uid'
 		"
 	);
+
+	$row = mysqli_fetch_assoc(mysqli_query(
+		$conn_pacsio,
+		"SELECT *
+		FROM $table_patient
+		JOIN $table_study
+		ON patient.pk = study.patient_fk
+		JOIN $table_workload
+		ON study.study_iuid = xray_workload.uid
+		LEFT JOIN $table_order
+		ON xray_order.uid = xray_workload.uid
+		WHERE study.study_iuid = '$uid'"
+	));
+	$pat_name = defaultValue($row['pat_name']);
+	$pat_id = defaultValue($row['pat_id']);
+	$study_desc = defaultValue($row['study_desc']);
+	$study_datetime = defaultValueDateTime($row['study_datetime']);
+	$signature_datetime = defaultValueDateTime($row['signature_datetime']);
+
+	// untuk tanda tangan digital
+	QRcode::png(
+		"Patient Name: $pat_name
+MRN : $pat_id 
+Study : $study_desc
+Study Date : $study_datetime
+Approved By : $dokrad_name 
+Physician Radiology ID : $dokradid
+Approved Sign in $signature_datetime",
+		"phpqrcode/ttddokter/$uid.png",
+		"L",
+		4,
+		4
+	);
+
+	// untuk hasil pasien (xampp)
+	$hasilPasien = $hostname['ip_publik'] == null ? 'Domain Tidak Ditemukan! Silahkan input domain RS pada aplikasi RIS' : "http://$hostname[ip_publik]:8089/$link[link_simrs_expertise]/pasien.php?uid=$uid";
+	QRcode::png($hasilPasien, "phpqrcode/hasil-pasien/$uid.png", "L", 4, 4);
+
+	// untuk hasil pasien (laravel)
+	// QRcode::png("http://$hostname[ip_publik]:8000/pasien/$uid", "phpqrcode/hasil-pasien/$uid.png", "L", 4, 4);
 
 	return mysqli_affected_rows($conn);
 }

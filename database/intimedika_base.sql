@@ -11,7 +11,7 @@
  Target Server Version : 50649 (5.6.49-log)
  File Encoding         : 65001
 
- Date: 08/05/2023 10:38:12
+ Date: 30/05/2023 10:32:40
 */
 
 SET NAMES utf8mb4;
@@ -102,7 +102,7 @@ CREATE TABLE `kop_surat`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of kop_surat
@@ -187,7 +187,7 @@ CREATE TABLE `rename_link`  (
 -- ----------------------------
 -- Records of rename_link
 -- ----------------------------
-INSERT INTO `rename_link` VALUES (1, 'intiwid', 'intiwid-base', NULL, NULL);
+INSERT INTO `rename_link` VALUES (1, 'mms', 'multimed', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for users
@@ -359,6 +359,23 @@ CREATE TABLE `xray_dokter_radiology`  (
 
 -- ----------------------------
 -- Records of xray_dokter_radiology
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for xray_expertise
+-- ----------------------------
+DROP TABLE IF EXISTS `xray_expertise`;
+CREATE TABLE `xray_expertise`  (
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `qr_code_pasien` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `signature_dokter_radiologi` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`pk`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of xray_expertise
 -- ----------------------------
 
 -- ----------------------------

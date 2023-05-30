@@ -138,6 +138,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 								<?php } ?>
 								<li><a data-toggle="tab" href="#menu13">Payment</a></li>
 								<li><a data-toggle="tab" href="#menu14">Kop Surat</a></li>
+								<li><a data-toggle="tab" href="#menu15">Expertise</a></li>
 							</ul>
 							<div class="tab-content">
 								<div id="home" class="tab-pane fade in active">
@@ -435,6 +436,26 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 												</li>
 												<li class="li-admin">
 													<a href="http://<?= $_SERVER['SERVER_NAME']; ?>:8000/kop-surat" frameborder="0"></iframe>
+														<img style="width: 100%;" src="../image/view.png">
+														<h5><?= $lang['view'] ?></h5>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div id="menu15" class="tab-pane fade">
+									<div id="home" class="tab-pane fade in active">
+										<div>
+											<ul class="social-links">
+												<li class="li-admin">
+													<a href="new_expertise.php">
+														<img style="width: 100%;" src="../image/plus.png">
+														<h5><?= $lang['add'] ?> or Update</h5>
+													</a>
+												</li>
+												<li class="li-admin">
+													<a href="view_expertise.php">
 														<img style="width: 100%;" src="../image/view.png">
 														<h5><?= $lang['view'] ?></h5>
 													</a>

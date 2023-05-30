@@ -817,6 +817,23 @@ function update_notification_radiologist($value)
 	return mysqli_affected_rows($conn);
 }
 
+function update_expertise($value)
+{
+	global $conn;
+	$pk = $value['pk'];
+	$qr_code_pasien = $value['qr_code_pasien'];
+	$signature_dokter_radiologi = $value['signature_dokter_radiologi'];
+
+	mysqli_query(
+		$conn,
+		"INSERT INTO xray_expertise (pk, qr_code_pasien, signature_dokter_radiologi, created_at, updated_at) VALUES('$pk', '$qr_code_pasien', '$signature_dokter_radiologi', NOW(), NOW())
+		ON DUPLICATE KEY UPDATE pk = '$pk', qr_code_pasien = '$qr_code_pasien', signature_dokter_radiologi = '$signature_dokter_radiologi', created_at = NOW(), updated_at = NOW()"
+	);
+
+	return mysqli_affected_rows($conn);
+}
+
+
 ///////////////////////////payment/////////////////////////////////
 
 //untuk insert atau menambahkan
