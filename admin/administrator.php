@@ -60,14 +60,14 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 			}
 
 			.tab-pane h4 {
-				color: #377D71;
+				color: #1a61ac;
 			}
 
 			.nav-tabs li a {
 				font-weight: bold;
 				font-size: 18px;
 				padding: 7px 10px 10px 10px;
-				color: #377D71;
+				color: #1a61ac;
 			}
 
 			.nav-tabs>li.active>a,
@@ -75,7 +75,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 			.nav-tabs>li.active>a:focus {
 				color: #FFF;
 				cursor: default;
-				background-color: #377D71;
+				background-color: #1f69b7;
 				border: none;
 				border-bottom-color: rgb(221, 221, 221);
 				border-bottom-color: transparent;
@@ -86,18 +86,25 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 			.nav>li>a:hover,
 			.nav>li>a:focus {
 				text-decoration: none;
-				background-color: #377D71;
+				background-color: #1f69b7;
 				border: none;
 				color: #fff;
 			}
 
 			.tab-content {
-				background-color: #377D71;
+				background-color: #1f69b7;
 				width: 100%;
 				height: 200px;
 				margin: -10px 0;
 				padding: 10px;
 				border-radius: 5px;
+			}
+
+			.btn{
+				box-shadow: none;
+			}
+			.btn:hover{
+				box-shadow: none;
 			}
 		</style>
 
@@ -116,363 +123,204 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 			<div id="content1">
 
 				<div class="container-fluid adm">
-					<div class="content-adm" style="padding: 0;">
+					
+					
 
-						<div>
-							<ul class="nav nav-tabs">
-								<li class="active"><a data-toggle="tab" href="#home">Ref. Physician</a></li>
-								<li><a data-toggle="tab" href="#menu1">Radiology Physician</a></li>
-								<li><a data-toggle="tab" href="#menu2">Radiographer</a></li>
-								<li><a data-toggle="tab" href="#menu3">Department</a></li>
-								<li><a data-toggle="tab" href="#menu4">Modality</a></li>
-								<li><a data-toggle="tab" href="#menu5">Procedure</a></li>
-								<li><a data-toggle="tab" href="#menu6">AET Worklist</a></li>
-								<li><a data-toggle="tab" href="#menu7">AET Send</a></li>
-								<?php
-								if ($level == 'superadmin') { ?>
-									<li><a data-toggle="tab" href="#menu8">Login</a></li>
-									<li><a data-toggle="tab" href="#menu9">Template</a></li>
-									<li><a data-toggle="tab" href="#menu10">Worklist</a></li>
-									<li><a data-toggle="tab" href="#menu11">IP Publik</a></li>
-									<li><a data-toggle="tab" href="#menu12">Notification Radiologist</a></li>
-								<?php } ?>
-								<li><a data-toggle="tab" href="#menu13">Payment</a></li>
-								<li><a data-toggle="tab" href="#menu14">Kop Surat</a></li>
-								<li><a data-toggle="tab" href="#menu15">Expertise</a></li>
-							</ul>
-							<div class="tab-content">
-								<div id="home" class="tab-pane fade in active">
-									<div>
-										<ul class="social-links">
-											<li class="li-admin">
-												<a href="new_dokter.php">
-													<img style="width: 100%;" src="../image/plus.png">
-													<h5><?= $lang['add'] ?></h5>
-												</a>
-											</li>
-											<li class="li-admin">
-												<a href="view_dokter.php">
-													<img style="width: 100%;" src="../image/view.png">
-													<h5><?= $lang['view'] ?></h5>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div id="menu1" class="tab-pane fade">
-									<div id="home" class="tab-pane fade in active">
-										<div>
-											<ul class="social-links">
-												<li class="li-admin">
-													<a href="new_dokter_radiology.php">
-														<img style="width: 100%;" src="../image/plus.png">
-														<h5><?= $lang['add'] ?></h5>
-													</a>
-												</li>
-												<li class="li-admin">
-													<a href="view_dokter_radiology.php">
-														<img style="width: 100%;" src="../image/view.png">
-														<h5><?= $lang['view'] ?></h5>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div id="menu2" class="tab-pane fade">
-
-									<div id="home" class="tab-pane fade in active">
-										<div>
-											<ul class="social-links">
-												<li class="li-admin">
-													<a href="new_radiographer.php">
-														<img style="width: 100%;" src="../image/plus.png">
-														<h5><?= $lang['add'] ?></h5>
-													</a>
-												</li>
-												<li class="li-admin">
-													<a href="view_radiographer.php">
-														<img style="width: 100%;" src="../image/view.png">
-														<h5><?= $lang['view'] ?></h5>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div id="menu3" class="tab-pane fade">
-									<div id="home" class="tab-pane fade in active">
-										<div>
-											<ul class="social-links">
-												<li class="li-admin">
-													<a href="new_department.php">
-														<img style="width: 100%;" src="../image/plus.png">
-														<h5><?= $lang['add'] ?></h5>
-													</a>
-												</li>
-												<li class="li-admin">
-													<a href="view_department.php">
-														<img style="width: 100%;" src="../image/view.png">
-														<h5><?= $lang['view'] ?></h5>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div id="menu4" class="tab-pane fade">
-									<div id="home" class="tab-pane fade in active">
-										<div>
-											<ul class="social-links">
-												<li class="li-admin">
-													<a href="new_modalitas.php">
-														<img style="width: 100%;" src="../image/plus.png">
-														<h5><?= $lang['add'] ?></h5>
-													</a>
-												</li>
-												<li class="li-admin">
-													<a href="view_modalitas.php">
-														<img style="width: 100%;" src="../image/view.png">
-														<h5><?= $lang['view'] ?></h5>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div id="menu5" class="tab-pane fade">
-									<div id="home" class="tab-pane fade in active">
-										<div>
-											<ul class="social-links">
-												<li class="li-admin">
-													<a href="new_study.php">
-														<img style="width: 100%;" src="../image/plus.png">
-														<h5><?= $lang['add'] ?></h5>
-													</a>
-												</li>
-												<li class="li-admin">
-													<a href="view_study.php">
-														<img style="width: 100%;" src="../image/view.png">
-														<h5><?= $lang['view'] ?></h5>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div id="menu6" class="tab-pane fade">
-									<div id="home" class="tab-pane fade in active">
-										<div>
-											<ul class="social-links">
-												<li class="li-admin">
-													<a href="new_ae_worklist.php">
-														<img style="width: 100%;" src="../image/plus.png">
-														<h5><?= $lang['add'] ?></h5>
-													</a>
-												</li>
-												<li class="li-admin">
-													<a href="view_ae_worklist.php">
-														<img style="width: 100%;" src="../image/view.png">
-														<h5><?= $lang['view'] ?></h5>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div id="menu7" class="tab-pane fade">
-									<div id="home" class="tab-pane fade in active">
-										<div>
-											<ul class="social-links">
-												<li class="li-admin">
-													<a href="new_ae_send.php">
-														<img style="width: 100%;" src="../image/plus.png">
-														<h5><?= $lang['add'] ?></h5>
-													</a>
-												</li>
-												<li class="li-admin">
-													<a href="view_ae_send.php">
-														<img style="width: 100%;" src="../image/view.png">
-														<h5><?= $lang['view'] ?></h5>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<!-- jika superadmin -->
-								<?php
-								if ($level == 'superadmin') { ?>
-									<div id="menu8" class="tab-pane fade">
-										<div id="home" class="tab-pane fade in active">
-											<div>
-												<ul class="social-links">
-													<li class="li-admin">
-														<a href="new_login.php">
-															<img style="width: 100%;" src="../image/plus.png">
-															<h5><?= $lang['add'] ?></h5>
-														</a>
-													</li>
-													<li class="li-admin">
-														<a href="view_login.php">
-															<img style="width: 100%;" src="../image/view.png">
-															<h5><?= $lang['view'] ?></h5>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div id="menu9" class="tab-pane fade">
-										<div id="home" class="tab-pane fade in active">
-											<div>
-												<ul class="social-links">
-													<li class="li-admin">
-														<a href="new_template.php">
-															<img style="width: 100%;" src="../image/plus.png">
-															<h5><?= $lang['add'] ?></h5>
-														</a>
-													</li>
-													<li class="li-admin">
-														<a href="view_template.php">
-															<img style="width: 100%;" src="../image/view.png">
-															<h5><?= $lang['view'] ?></h5>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div id="menu10" class="tab-pane fade">
-										<div id="home" class="tab-pane fade in active">
-											<div>
-												<ul class="social-links">
-													<li class="li-admin">
-														<a href="new_selected_dokter_radiology.php">
-															<img style="width: 100%;" src="../image/plus.png">
-															<h5><?= $lang['add'] ?> or Update</h5>
-														</a>
-													</li>
-													<li class="li-admin">
-														<a href="view_selected_dokter_radiology.php">
-															<img style="width: 100%;" src="../image/view.png">
-															<h5><?= $lang['view'] ?></h5>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div id="menu11" class="tab-pane fade">
-										<div id="home" class="tab-pane fade in active">
-											<div>
-												<ul class="social-links">
-													<li class="li-admin">
-														<a href="new_hostname_publik.php">
-															<img style="width: 100%;" src="../image/plus.png">
-															<h5><?= $lang['add'] ?> or Update</h5>
-														</a>
-													</li>
-													<li class="li-admin">
-														<a href="view_hostname_publik.php">
-															<img style="width: 100%;" src="../image/view.png">
-															<h5><?= $lang['view'] ?></h5>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div id="menu12" class="tab-pane fade">
-										<div id="home" class="tab-pane fade in active">
-											<div>
-												<ul class="social-links">
-													<li class="li-admin">
-														<a href="new_notification_radiologist.php">
-															<img style="width: 100%;" src="../image/plus.png">
-															<h5><?= $lang['add'] ?> or Update</h5>
-														</a>
-													</li>
-													<li class="li-admin">
-														<a href="view_notification_radiologist.php">
-															<img style="width: 100%;" src="../image/view.png">
-															<h5><?= $lang['view'] ?></h5>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								<?php } ?>
-								<div id="menu13" class="tab-pane fade">
-									<div id="home" class="tab-pane fade in active">
-										<div>
-											<ul class="social-links">
-												<li class="li-admin">
-													<a href="new_payment.php">
-														<img style="width: 100%;" src="../image/plus.png">
-														<h5><?= $lang['add'] ?> or Update</h5>
-													</a>
-												</li>
-												<li class="li-admin">
-													<a href="view_payment.php">
-														<img style="width: 100%;" src="../image/view.png">
-														<h5><?= $lang['view'] ?></h5>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div id="menu14" class="tab-pane fade">
-									<div id="home" class="tab-pane fade in active">
-										<div>
-											<ul class="social-links">
-												<li class="li-admin">
-													<a href="new_kop_surat.php">
-														<img style="width: 100%;" src="../image/plus.png">
-														<h5><?= $lang['add'] ?> or Update</h5>
-													</a>
-												</li>
-												<li class="li-admin">
-													<a href="http://<?= $_SERVER['SERVER_NAME']; ?>:8000/kop-surat" frameborder="0"></iframe>
-														<img style="width: 100%;" src="../image/view.png">
-														<h5><?= $lang['view'] ?></h5>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div id="menu15" class="tab-pane fade">
-									<div id="home" class="tab-pane fade in active">
-										<div>
-											<ul class="social-links">
-												<li class="li-admin">
-													<a href="new_expertise.php">
-														<img style="width: 100%;" src="../image/plus.png">
-														<h5><?= $lang['add'] ?> or Update</h5>
-													</a>
-												</li>
-												<li class="li-admin">
-													<a href="view_expertise.php">
-														<img style="width: 100%;" src="../image/view.png">
-														<h5><?= $lang['view'] ?></h5>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
+					<div class="row">
+						
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>Ref. Physician</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_dokter.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="view_dokter.php" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
 								</div>
 							</div>
 						</div>
+
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>Radiology Physician</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_dokter_radiology.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="view_dokter_radiology.php" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>Radiographer</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_radiographer.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="view_radiographer.php" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>Departmen</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_department.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="view_department.php" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>Modality</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_modalitas.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="view_modalitas.php" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>Procedure</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_study.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="view_study.php" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>AET Worklist</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_ae_worklist.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="view_ae_worklist.php" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>AET Send</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_ae_send.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="view_ae_send.php" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
+								</div>
+							</div>
+						</div>
+
+
+						<?php if ($level == 'superadmin') { ?>
+						<!-- ===================superadmin==================	 -->
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>Login</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_login.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="view_login.php" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>Template</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_template.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="view_template.php" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>Worklist</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_selected_dokter_radiology.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="view_selected_dokter_radiology.php" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>IP Public</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_hostname_publik.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="view_hostname_publik.php" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>Notification Radiologist</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_notification_radiologist.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="view_notification_radiologist.php" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
+								</div>
+							</div>
+						</div>
+						<!-- ===================superadmin==================	 -->
+						<?php } ?>
+
+
+
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>Payment</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_payment.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="view_payment.php" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>Kop Surat</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_kop_surat.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="http://<?= $_SERVER['SERVER_NAME']; ?>:8000/kop-surat" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-2">
+							<div class="box-admin1">
+								<div class="box-title-admin">
+									<h3>Expertise</h3>
+									<hr style="margin-top: 5px;">
+									<a href="new_expertise.php" class="btn-add-admin"><i class="fas fa-plus"></i>&nbsp;&nbsp; Add</a>
+									<a href="view_expertise.php" class="btn-view-admin"><i class="fas fa-table"></i>&nbsp;&nbsp; View</a>
+								</div>
+							</div>
+						</div>
+						
+						
 					</div>
+
+
 				</div>
 			</div>
 			<div class="footerindex">
 				<div class="footer-login col-sm-12"><br>
 					<center>
-						<p>&copy; Powered by Multimed IT Solution 2022</a>.</p>
+						<p>&copy; Powered by Intiwid IT Solution 2022</a>.</p>
 					</center>
 				</div>
 			</div>
