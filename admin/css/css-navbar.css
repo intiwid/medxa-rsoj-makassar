@@ -1015,11 +1015,11 @@ rgba(0,0,0,.05);
   background-color: #1a96f1; 
   border: none; 
   width: 100%; 
-  padding: 7px 0;
+  padding: 10px 0;
   display: block;
   text-align: center;
   color: inherit;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .btn-view-admin{
@@ -1028,11 +1028,11 @@ rgba(0,0,0,.05);
   background-color: #0D879B; 
   border: none; 
   width: 100%; 
-  padding: 7px 0;
+  padding: 10px 0;
   display: block;
   text-align: center;
   color: inherit;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 
