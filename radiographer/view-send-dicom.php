@@ -41,7 +41,7 @@ if ($_SESSION['level'] == "radiographer") {
         <?php include('head.php'); ?>
     </head>
 
-    <body style="background-color: #1f69b7;">
+    <body style="background-color: #377d71;">
         <?php include('../sidebar-index.php'); ?>
         <div class="container-fluid" id="main">
             <div class="row">
