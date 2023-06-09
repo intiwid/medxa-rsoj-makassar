@@ -104,7 +104,7 @@ if ($_SESSION['level'] == "radiographer") {
             <div class="row">
                 <div id="content1">
                     <div class="d-flex justify-content-center align-items-center">
-                        <div class="col-md-6 box-change-dokter table-box">
+                        <div class="col-md-6 box-change-dokter table-box" style="background-color: #111; color: #d0d0d0;">
                             <h6>Input</h6>
                             <p id="input"></p>
                             <h6>Output</h6>
