@@ -350,13 +350,13 @@
         <?php if ($_SESSION['level'] == 'radiographer') { ?>
             <li data-target="#products1">
                 <div class="iocn-link">
-                    <a href="#">
+                    <a href="#" class="click-orders">
                         <i class="fa-solid fa-hospital-user"></i>
                         <span class="link_name"><?= $lang['orders'] ?></span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
-                <ul class="sub-menu">
+                <ul class="sub-menu sub-menu-orders">
                     <li><a class="link_name" href="#"><?= $lang['orders'] ?></a></li>
                     <li><a href="registration.php"><?= $lang['registration'] ?></a></li>
                     <li><a href="order2.php"><?= $lang['all_order'] ?></a></li>
@@ -365,13 +365,13 @@
             </li>
             <li data-target="#service">
                 <div class="iocn-link">
-                    <a href="#">
+                    <a href="#" class="click-management">
                         <i class="fa-solid fa-book-medical"></i>
                         <span class="link_name"><?= $lang['patient_management'] ?></span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
-                <ul class="sub-menu">
+                <ul class="sub-menu sub-menu-management">
                     <li><a class="link_name" href="#"><?= $lang['patient_management'] ?></a></li>
                     <li><a href="workload.php"><?= $lang['workload'] ?></a></li>
                     <li><a href="report.php"><?= $lang['download_excel'] ?></a></li>
@@ -406,13 +406,13 @@
 
             <li data-target="#service">
                 <div class="iocn-link">
-                    <a href="#">
+                    <a href="#" class="click-management2">
                         <i class="fa-solid fa-file-lines"></i>
                         <span class="link_name"><?= $lang['patient_management'] ?></span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
-                <ul class="sub-menu">
+                <ul class="sub-menu sub-menu-management2">
                     <li><a class="link_name" href="#"><?= $lang['patient_management'] ?></a></li>
                     <li><a href="workload.php">Expertise Approved</a></li>
                     <li><a href="report.php"><?= $lang['download_excel'] ?></a></li>
@@ -421,13 +421,13 @@
 
             <li data-target="#template">
                 <div class="iocn-link">
-                    <a href="#">
+                    <a href="#" class="click-expertise">
                         <i class="fa-solid fa-file-word"></i>
                         <span class="link_name">Custom Expertise</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
-                <ul class="sub-menu">
+                <ul class="sub-menu sub-menu-expertise">
                     <li><a class="link_name" href="#">Custom Expertise</a></li>
                     <li><a href="new_template.php">New Expertise</a></li>
                     <li><a href="view_template.php">View Expertise</a></li>

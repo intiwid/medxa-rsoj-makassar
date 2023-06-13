@@ -44,7 +44,31 @@
     $(".table-dicom").on("click", "tbody tr", function(event) {
         $(this).addClass("highlight").siblings().removeClass("highlight");
     });
+
+    
 </script>
+
+
+
+<script>
+    // hide show submenu sidebar
+    $(document).ready(function(){
+    $(".click-orders").click(function(){
+        $(".sub-menu-orders").toggle(
+            function(){$(".sub-menu-orders").css({"opacity": 1});}
+        );
+        $(".sub-menu-management").hide();
+    });
+
+    $(".click-management").click(function(){
+        $(".sub-menu-management").toggle(
+            function(){$(".sub-menu-management").css({"opacity": 1});}
+        );
+        $(".sub-menu-orders").hide();
+    });
+    });  
+</script>
+
 
 <script>
     $(document).ready(function() {
