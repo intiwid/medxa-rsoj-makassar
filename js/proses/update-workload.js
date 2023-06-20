@@ -1,3 +1,4 @@
+// variabel masing2 kolom
 let pat_id = $("#pat_id");
 let accession_no = $("#accession_no");
 let study_iuid = $("#study_iuid").val();
@@ -31,6 +32,7 @@ $("#generate").click(function () {
   accession_no.val(pat_id.val() + Math.floor(Math.random() * 10000));
 });
 
+// action ketika update acc number
 $("#post-acc-number").validate({
   rules: {
     accession_no: "required",
@@ -46,15 +48,17 @@ $("#post-acc-number").validate({
   errorClass: "invalid-text",
   ignoreTitle: true,
   submitHandler: function (form) {
+    // submit pengecekan acc, mrn, alat
     $.ajax({
       type: "POST",
       url: `http://${
         location.hostname
-      }:8000/api/update-workload-accession-no/${accession_no.val()}/${pat_id.val()}`,
+      }:8000/api/validation-workload-accession-no/${accession_no.val()}/${pat_id.val()}/${mods_in_study}`,
       data: {
         study_iuid: study_iuid,
         accession_no: accession_no.val(),
         pat_id: pat_id.val(),
+        mods_in_study: mods_in_study,
       },
       beforeSend: function () {
         $(".loading-acc").show();
@@ -65,14 +69,59 @@ $("#post-acc-number").validate({
         $(".ubah-acc").show();
       },
       success: function (response) {
-        swal({
-          title: response,
-          icon: "success",
-          timer: 1000,
-        });
-        setTimeout(function () {
-          window.location.reload();
-        }, 1000);
+        // jika status validasi alat simrs dengan alat ris berbeda
+        if (response.status == "validation") {
+          swal({
+            title: "Perbedaan Modality \n (SIMRS)",
+            text: `Name ${response.name} \n Modality ${response.xray_type_code} \n Prosedur ${response.prosedur} \n \n Yakin Ingin Update ?`,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          }).then((result) => {
+            if (result) {
+              $.ajax({
+                type: "POST",
+                url: `http://${
+                  location.hostname
+                }:8000/api/update-workload-accession-no/${accession_no.val()}/${pat_id.val()}/${mods_in_study}`,
+                data: {
+                  study_iuid: study_iuid,
+                  accession_no: accession_no.val(),
+                  pat_id: pat_id.val(),
+                  mods_in_study: mods_in_study,
+                },
+                beforeSend: function () {
+                  $(".loading-acc").show();
+                  $(".ubah-acc").hide();
+                },
+                complete: function () {
+                  $(".loading-acc").hide();
+                  $(".ubah-acc").show();
+                },
+                success: function (response) {
+                  swal({
+                    title: response,
+                    icon: "success",
+                    timer: 1000,
+                  });
+                  setTimeout(function () {
+                    window.location.reload();
+                  }, 1000);
+                },
+              });
+            }
+          });
+        } else {
+          // jika sukses update acc number (tanpa munculkan pop up perbedaan modality)
+          swal({
+            title: response,
+            icon: "success",
+            timer: 1000,
+          });
+          setTimeout(function () {
+            window.location.reload();
+          }, 1000);
+        }
       },
       error: function (xhr, textStatus, error) {
         swal({
@@ -181,6 +230,7 @@ $("#edit-workload").validate({
   errorClass: "invalid-text",
   ignoreTitle: true,
   submitHandler: function (form) {
+    // ketika tombol ubah data diklik
     $.ajax({
       type: "POST",
       url: `http://${location.hostname}:8000/api/update-workload/${study_iuid}`,
