@@ -29,7 +29,7 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Report</h4> 
+                <h4 class="modal-title">Report</h4>
 
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
@@ -62,3 +62,15 @@
     </div>
 </div>
 <!--END Modal view history expertise patient -->
+
+<!-- pop up update-workload untuk accession no -->
+<div class="modal" id="modal-acc">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body"></div>
+        </div>
+    </div>
+</div>

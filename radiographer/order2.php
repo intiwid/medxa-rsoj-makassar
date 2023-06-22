@@ -91,23 +91,6 @@ if ($_SESSION['level'] == "radiographer") {
 		</div> -->
 		<?php include('script-footer.php'); ?>
 		<script>
-			// untuk menampilkan data popup
-			$(function() {
-				$(document).on('click', '.order2', function(e) {
-					e.preventDefault();
-					$("#modal-order2").modal('show');
-					$.post('hasil-order2.php', {
-							uid: $(this).attr('data-id')
-						},
-						function(html) {
-							$(".modal-body").html(html);
-						}
-					);
-				});
-			});
-			// end untuk menampilkan data popup
-		</script>
-		<script>
 			$(document).ready(function() {
 				$("li[data-target='#products1']").addClass("active");
 				$("ul[id='products1'] li[id='order3']").addClass("active");

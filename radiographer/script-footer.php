@@ -44,29 +44,35 @@
     $(".table-dicom").on("click", "tbody tr", function(event) {
         $(this).addClass("highlight").siblings().removeClass("highlight");
     });
-
-    
 </script>
 
 
 
 <script>
     // hide show submenu sidebar
-    $(document).ready(function(){
-    $(".click-orders").click(function(){
-        $(".sub-menu-orders").toggle(
-            function(){$(".sub-menu-orders").css({"opacity": 1});}
-        );
-        $(".sub-menu-management").hide();
-    });
+    $(document).ready(function() {
+        $(".click-orders").click(function() {
+            $(".sub-menu-orders").toggle(
+                function() {
+                    $(".sub-menu-orders").css({
+                        "opacity": 1
+                    });
+                }
+            );
+            $(".sub-menu-management").hide();
+        });
 
-    $(".click-management").click(function(){
-        $(".sub-menu-management").toggle(
-            function(){$(".sub-menu-management").css({"opacity": 1});}
-        );
-        $(".sub-menu-orders").hide();
+        $(".click-management").click(function() {
+            $(".sub-menu-management").toggle(
+                function() {
+                    $(".sub-menu-management").css({
+                        "opacity": 1
+                    });
+                }
+            );
+            $(".sub-menu-orders").hide();
+        });
     });
-    });  
 </script>
 
 
@@ -143,6 +149,24 @@
 <script>
     // untuk menampilkan data popup
     $(function() {
+        $(document).on('click', '.hasil-acc', function(e) {
+            e.preventDefault();
+            $("#modal-acc").modal('show');
+            $.post('../hasil-acc.php', {
+                    pat_id: $("#pat_id").val(),
+                    uid: $(this).attr('data-id')
+                },
+                function(html) {
+                    $(".modal-body").html(html);
+                }
+            );
+        });
+    });
+    // end untuk menampilkan data popup
+</script>
+<script>
+    // untuk menampilkan data popup
+    $(function() {
         $(document).on('click', '.view-template', function(e) {
             e.preventDefault();
             $("#view-template").modal('show');
@@ -164,6 +188,23 @@
             e.preventDefault();
             $("#myModal").modal('show');
             $.post('hasil2.php', {
+                    uid: $(this).attr('data-id')
+                },
+                function(html) {
+                    $(".modal-body").html(html);
+                }
+            );
+        });
+    });
+    // end untuk menampilkan data popup
+</script>
+<script>
+    // untuk menampilkan data popup
+    $(function() {
+        $(document).on('click', '.order2', function(e) {
+            e.preventDefault();
+            $("#modal-order2").modal('show');
+            $.post('hasil-order2.php', {
                     uid: $(this).attr('data-id')
                 },
                 function(html) {
