@@ -77,40 +77,51 @@ $("#post-acc-number").validate({
             icon: "warning",
             buttons: true,
             dangerMode: true,
-          }).then((result) => {
-            if (result) {
-              $.ajax({
-                type: "POST",
-                url: `http://${
-                  location.hostname
-                }:8000/api/update-workload-accession-no/${accession_no.val()}/${pat_id.val()}/${mods_in_study}`,
-                data: {
-                  study_iuid: study_iuid,
-                  accession_no: accession_no.val(),
-                  pat_id: pat_id.val(),
-                  mods_in_study: mods_in_study,
-                },
-                beforeSend: function () {
-                  $(".loading-acc").show();
-                  $(".ubah-acc").hide();
-                },
-                complete: function () {
-                  $(".loading-acc").hide();
-                  $(".ubah-acc").show();
-                },
-                success: function (response) {
-                  swal({
-                    title: response,
-                    icon: "success",
-                    timer: 1000,
-                  });
-                  setTimeout(function () {
-                    window.location.reload();
-                  }, 1000);
-                },
-              });
-            }
-          });
+          })
+            .then((result) => {
+              if (result) {
+                $.ajax({
+                  type: "POST",
+                  url: `http://${
+                    location.hostname
+                  }:8000/api/update-workload-accession-no/${accession_no.val()}/${pat_id.val()}/${mods_in_study}`,
+                  data: {
+                    study_iuid: study_iuid,
+                    accession_no: accession_no.val(),
+                    pat_id: pat_id.val(),
+                    mods_in_study: mods_in_study,
+                  },
+                  beforeSend: function () {
+                    $(".loading-acc").show();
+                    $(".ubah-acc").hide();
+                  },
+                  complete: function () {
+                    $(".loading-acc").hide();
+                    $(".ubah-acc").show();
+                  },
+                  success: function (response) {
+                    swal({
+                      title: response,
+                      icon: "success",
+                      timer: 1000,
+                    });
+                    setTimeout(function () {
+                      window.location.reload();
+                    }, 1000);
+                  },
+                  error: function (xhr, textStatus, error) {
+                    swal({
+                      title: xhr.responseJSON,
+                      icon: "error",
+                      timer: 1500,
+                    });
+                  },
+                });
+              }
+            })
+            .catch(() => {
+              alert("error");
+            });
         } else {
           // jika sukses update acc number (tanpa munculkan pop up perbedaan modality)
           swal({
