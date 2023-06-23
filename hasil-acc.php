@@ -102,79 +102,84 @@ $row_study = mysqli_fetch_assoc(mysqli_query(
                         AND schedule_date > DATE_SUB(NOW(), INTERVAL 8 DAY)
                         ORDER BY xray_order.schedule_date DESC, xray_order.schedule_time DESC"
                     );
-                    while ($row = mysqli_fetch_assoc($query)) {
-                        $server_name = $_SERVER['SERVER_NAME'];
-                        $study_iuid_mppsio = $row['study_iuid_mppsio'];
-                        $study_iuid_pacsio = $row['study_iuid_pacsio'];
-                        $uid = $row['uid'];
-                        $priority = defaultValue($row['priority']);
-                        $fromorder = strtoupper($row['fromorder']);
-                        $deleted_at = $row['deleted_at'];
+                    if (mysqli_num_rows($query) > 0) {
+                        while ($row = mysqli_fetch_assoc($query)) {
+                            $server_name = $_SERVER['SERVER_NAME'];
+                            $study_iuid_mppsio = $row['study_iuid_mppsio'];
+                            $study_iuid_pacsio = $row['study_iuid_pacsio'];
+                            $uid = $row['uid'];
+                            $priority = defaultValue($row['priority']);
+                            $fromorder = strtoupper($row['fromorder']);
+                            $deleted_at = $row['deleted_at'];
 
-                        $sex = defaultValue($row['sex']);
-                        if ($sex == 'M') {
-                            $sex_icons = '<i style="color: blue;" class="fas fa-mars"> M</i>';
-                        } else if ($sex == 'L') {
-                            $sex_icons = '<i style="color: blue;" class="fas fa-mars"> L</i>';
-                        } else if ($sex == 'P') {
-                            $sex_icons = '<i style="color: #ff637e;" class="fas fa-venus"> P</i>';
-                        } else if ($sex == 'F') {
-                            $sex_icons = '<i style="color: #ff637e;" class="fas fa-venus"> F</i>';
-                        } else if ($sex == 'O') {
-                            $sex_icons = '<i class="fas fa-genderless"> O</i>';
-                        } else {
-                            $sex_icons = '-';
-                        }
+                            $sex = defaultValue($row['sex']);
+                            if ($sex == 'M') {
+                                $sex_icons = '<i style="color: blue;" class="fas fa-mars"> M</i>';
+                            } else if ($sex == 'L') {
+                                $sex_icons = '<i style="color: blue;" class="fas fa-mars"> L</i>';
+                            } else if ($sex == 'P') {
+                                $sex_icons = '<i style="color: #ff637e;" class="fas fa-venus"> P</i>';
+                            } else if ($sex == 'F') {
+                                $sex_icons = '<i style="color: #ff637e;" class="fas fa-venus"> F</i>';
+                            } else if ($sex == 'O') {
+                                $sex_icons = '<i class="fas fa-genderless"> O</i>';
+                            } else {
+                                $sex_icons = '-';
+                            }
 
-                        // tidak menggunakan orderrefresh
-                        if ($study_iuid_mppsio == null && $study_iuid_pacsio == null && $fromorder == 'SIMRS') {
-                            $label = "<div class='alert alert-danger' role='alert'>GAGAL DIPERIKSA</div>";
-                        } else if ($study_iuid_mppsio == null && $study_iuid_pacsio == null && $fromorder != 'SIMRS') {
-                            $label = "<div class='alert alert-primary' role='alert'>BARU</div>";
-                        } else if ($study_iuid_mppsio != null && $study_iuid_pacsio == null) {
-                            $label = "<div class='alert alert-info' role='alert'>SEDANG DIPERIKSA</div>";
-                        } else if ($study_iuid_mppsio == null && $study_iuid_pacsio != null) {
-                            $label = "<div class='alert alert-success' role='alert'>SELESAI DIPERIKSA</div>";
-                        } else if ($study_iuid_mppsio != null && $study_iuid_pacsio != null) {
-                            $label = "<div class='alert alert-success' role='alert'>SELESAI DIPERIKSA</div>";
-                        } else {
-                            $label = "-";
-                        }
+                            // tidak menggunakan orderrefresh
+                            if ($study_iuid_mppsio == null && $study_iuid_pacsio == null && $fromorder == 'SIMRS') {
+                                $label = "<div class='alert alert-danger' role='alert'>GAGAL DIPERIKSA</div>";
+                            } else if ($study_iuid_mppsio == null && $study_iuid_pacsio == null && $fromorder != 'SIMRS') {
+                                $label = "<div class='alert alert-primary' role='alert'>BARU</div>";
+                            } else if ($study_iuid_mppsio != null && $study_iuid_pacsio == null) {
+                                $label = "<div class='alert alert-info' role='alert'>SEDANG DIPERIKSA</div>";
+                            } else if ($study_iuid_mppsio == null && $study_iuid_pacsio != null) {
+                                $label = "<div class='alert alert-success' role='alert'>SELESAI DIPERIKSA</div>";
+                            } else if ($study_iuid_mppsio != null && $study_iuid_pacsio != null) {
+                                $label = "<div class='alert alert-success' role='alert'>SELESAI DIPERIKSA</div>";
+                            } else {
+                                $label = "-";
+                            }
 
-                        $detail = '<a href="#" class="order2 penawaran-a" data-id="' . $uid . '">' . defaultValue($row['name']) . '</a>';
+                            $detail = '<a href="#" class="order2 penawaran-a" data-id="' . $uid . '">' . defaultValue($row['name']) . '</a>';
 
-                        // kondisi ketika data dari simrs
-                        if ($fromorder == 'SIMRS' || $fromorder == 'simrs') {
-                            $badge = SIMRS;
-                        } else {
-                            $badge = '';
-                        }
+                            // kondisi ketika data dari simrs
+                            if ($fromorder == 'SIMRS' || $fromorder == 'simrs') {
+                                $badge = SIMRS;
+                            } else {
+                                $badge = '';
+                            }
 
-                        // kondisi jika prioriry normal dan CITO
-                        if ($priority == 'Normal' || $priority == 'NORMAL' || $priority == 'normal') {
-                            $priority_style = PRIORITYNORMAL;
-                        } else if ($priority == 'Cito' || $priority == 'CITO' || $priority == 'cito') {
-                            $priority_style = PRIORITYCITO;
-                        } else {
-                            $priority_style = '';
-                        }
+                            // kondisi jika prioriry normal dan CITO
+                            if ($priority == 'Normal' || $priority == 'NORMAL' || $priority == 'normal') {
+                                $priority_style = PRIORITYNORMAL;
+                            } else if ($priority == 'Cito' || $priority == 'CITO' || $priority == 'cito') {
+                                $priority_style = PRIORITYCITO;
+                            } else {
+                                $priority_style = '';
+                            }
                     ?>
+                            <tr>
+                                <td align=" left"><?= $i; ?></td>
+                                <td align="left"><?= $badge ?></td>
+                                <td align="left"><?= $detail . '&nbsp;' . $priority_style ?></td>
+                                <td align="left"><?= defaultValue($row['mrn']) ?></td>
+                                <td align="left"><a href="#" onclick="copyPaste(event, '<?= $row['acc']; ?>', '<?= $row['xray_type_code']; ?>')"><?= defaultValue($row['acc']); ?> <i class="fas fa-copy" title="copy paste"></i></a></td>
+                                <td align="left"><?= defaultValue($row['xray_type_code']) ?></td>
+                                <td align="left"><?= defaultValue($row['prosedur']); ?></td>
+                                <td align="left"><?= defaultValueDateTime($row['create_time']); ?></td>
+                                <td align="left"><?= defaultValueDateTime($row['schedule_date'] . ' ' . $row['schedule_time']); ?></td>
+                                <td align="left"><?= $label; ?></td>
+                            </tr>
+                        <?php
+                            $i++;
+                        }
+                    } else { ?>
                         <tr>
-                            <td align=" left"><?= $i; ?></td>
-                            <td align="left"><?= $badge ?></td>
-                            <td align="left"><?= $detail . '&nbsp;' . $priority_style ?></td>
-                            <td align="left"><?= defaultValue($row['mrn']) ?></td>
-                            <td align="left"><a href="#" onclick="copyPaste(event, '<?= $row['acc']; ?>', '<?= $row['xray_type_code']; ?>')"><?= defaultValue($row['acc']); ?> <i class="fas fa-copy" title="copy paste"></i></a></td>
-                            <td align="left"><?= defaultValue($row['xray_type_code']) ?></td>
-                            <td align="left"><?= defaultValue($row['prosedur']); ?></td>
-                            <td align="left"><?= defaultValueDateTime($row['create_time']); ?></td>
-                            <td align="left"><?= defaultValueDateTime($row['schedule_date'] . ' ' . $row['schedule_time']); ?></td>
-                            <td align="left"><?= $label; ?></td>
+                            <td colspan="10">Data Tidak Ada</td>
                         </tr>
-                    <?php
-                        $i++;
-                    }
-                    ?>
+                    <?php } ?>
                 </thead>
             </table>
         </strong>
