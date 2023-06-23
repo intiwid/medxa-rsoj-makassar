@@ -84,6 +84,13 @@ $level = $_SESSION['level'];
 </script>
 <script>
 	$(document).ready(function() {
+		$(document).keypress(function(e) {
+			var keycode = (e.keycode ? e.keycode : e.which);
+			if (keycode == '13') {
+				properties_data()
+			}
+		});
+
 		$(document).on('click', '.cboxtombol', function() {
 			$('.cbox').prop('checked', this.checked);
 		});
@@ -112,7 +119,7 @@ $level = $_SESSION['level'];
 			});
 		}
 
-		$('#range').click(function() {
+		function properties_data() {
 			var from_study_datetime = $('#from_study_datetime').val();
 			var to_study_datetime = $('#to_study_datetime').val();
 			var pat_name = $('#pat_name').val();
@@ -126,6 +133,10 @@ $level = $_SESSION['level'];
 			} else {
 				alert("Please Select Date");
 			}
+		}
+
+		$('#range').click(function() {
+			properties_data()
 		});
 
 		function get_filter(class_name) {
