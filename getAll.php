@@ -32,11 +32,11 @@ $http_referer = $_SERVER['HTTP_REFERER'] ?? '';
 $explode = explode('/radiology', $http_referer);
 $dicom = $explode[1] ?? '';
 if ($dicom == '/dicom.php') {
-    // (dicom.php) berdasarkan priority CITO, updated_time DESC
-    // kondisi ketika bridging simrs status waiting dan dokradid simrs (xray_order)
-    // OR kondisi pk_dokter_radiology is null (tidak integrasi simrs) dan ketika login dokter radiologi. 
+    // (dicom.php) berdasarkan priority CITO, updated_time DESC.
+    // kondisi ketika bridging simrs status waiting dan dokradid simrs (xray_order).
+    // OR kondisi ketika bridging simrs dokter radiologi is null atau pasien manual (tidak integrasi simrs). 
     $kondisi = "WHERE (xray_workload.status = 'waiting' AND xray_order.dokradid = '$dokradid')
-                OR (xray_order.dokradid IS NULL)
+                OR (xray_workload.status = 'waiting' AND xray_order.dokradid IS NULL)
                 ORDER BY xray_order.priority IS NULL, xray_order.priority ASC, study.study_datetime DESC 
                 LIMIT 3000";
 } else {
