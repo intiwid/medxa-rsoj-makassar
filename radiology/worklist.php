@@ -117,7 +117,6 @@ if (isset($_POST["save_approve"])) {
 		echo "<script type='text/javascript'>
 					alert('expertise wajib diisi');
 				</script>";
-		mysqli_close($conn);
 	} else {
 		if (insert_workload($_POST)) {
 			echo "<script type='text/javascript'>
@@ -137,7 +136,6 @@ if (isset($_POST["save_approve"])) {
 					win.focus();
 					win.print();
 				</script>";
-			mysqli_close($conn);
 		} else {
 			echo "<script type='text/javascript'>
 					setTimeout(function () { 
@@ -153,7 +151,6 @@ if (isset($_POST["save_approve"])) {
 					history.back();
 					} ,1000); 
 				</script>";
-			mysqli_close($conn);
 		}
 	}
 }
@@ -190,7 +187,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 										<li class="breadcrumb-item active">Expertise</li>
 									</ol>
 								</nav>
-							</div>     
+							</div>
 
 
 							<div class="col-lg-9">
@@ -405,7 +402,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 												}
 												?>
 												<br>
-												
+
 												<div class="textarea-ckeditor">
 													<textarea class="ckeditor" name="fill" id="ckeditor">
 													<?= $fill; ?>
@@ -577,4 +574,5 @@ if ($_SESSION['level'] == "radiology") { ?>
 	</html>
 <?php } else {
 	header("location:../index.php");
+	mysqli_close($conn);
 } ?>
