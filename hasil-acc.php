@@ -32,7 +32,7 @@ $row_study = mysqli_fetch_assoc(mysqli_query(
 </style>
 <div class="fill">
     <h5 class="text-center font-weight-bold">Bridging Simrs</h5>
-    <p>Catatan : <br> - Pastikan modality dan pemeriksaan sesuai - klik kolom acc <br> - Menampilkan pasien berdasarkan norekam medis selama exam date 7 hari periode <?= date('d-m-Y', strtotime('-7 day')) ?> - <?= date('d-m-Y') ?> <br> - Tidak tampil data pasien ? silahkan edit norekam medis (MRN) pada form</p>
+    <p>Catatan : <br> - Pastikan order dari simrs pasien <?= removeCharacter($row_study['pat_name']); ?> pemeriksaan <?= defaultValue($row_study['study_desc']); ?> sudah terkirim ke rispacs <br> - Pastikan modality dan pemeriksaan sesuai - klik kolom acc <br> - Menampilkan pasien berdasarkan norekam medis selama exam date 7 hari periode <?= date('d-m-Y', strtotime('-7 day')) ?> - <?= date('d-m-Y') ?> <br> - Tidak tampil data pasien ? silahkan edit norekam medis (MRN) pada form</p>
     <div class="table-responsive-sm">
         <h6 class="font-weight-bold">Pasien Modality</h6>
         <table class="" id="example" style="margin-top: 3px;" cellpadding="8" cellspacing="0">
