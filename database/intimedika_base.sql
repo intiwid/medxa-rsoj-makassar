@@ -11,7 +11,7 @@
  Target Server Version : 50649 (5.6.49-log)
  File Encoding         : 65001
 
- Date: 30/06/2023 11:32:00
+ Date: 30/06/2023 16:37:37
 */
 
 SET NAMES utf8mb4;
@@ -129,11 +129,24 @@ INSERT INTO `migrations` VALUES (4, '2022_08_31_132301_create_jobs_table', 1);
 INSERT INTO `migrations` VALUES (5, '2022_09_12_101504_create_notification_unread_table', 1);
 
 -- ----------------------------
--- Table structure for mppsio_mwl_item_backup
+-- Table structure for mppsio_patient_mwl_item_backup
 -- ----------------------------
-DROP TABLE IF EXISTS `mppsio_mwl_item_backup`;
-CREATE TABLE `mppsio_mwl_item_backup`  (
+DROP TABLE IF EXISTS `mppsio_patient_mwl_item_backup`;
+CREATE TABLE `mppsio_patient_mwl_item_backup`  (
   `pk` bigint(20) NOT NULL AUTO_INCREMENT,
+  `merge_fk` bigint(20) NULL DEFAULT NULL,
+  `pat_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_id_issuer` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_fn_sx` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_gn_sx` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_i_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_p_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_birthdate` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_sex` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_custom1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_custom2` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_custom3` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
   `patient_fk` bigint(20) NULL DEFAULT NULL,
   `sps_status` int(11) NULL DEFAULT NULL,
   `sps_id` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
@@ -153,7 +166,6 @@ CREATE TABLE `mppsio_mwl_item_backup`  (
   `created_time` datetime NULL DEFAULT NULL,
   `item_attrs` longblob NULL,
   PRIMARY KEY (`pk`) USING BTREE,
-  UNIQUE INDEX `mwl_sps_id`(`sps_id`(16), `req_proc_id`(16)) USING BTREE,
   INDEX `mwl_patient_fk`(`patient_fk`) USING BTREE,
   INDEX `sps_status`(`sps_status`) USING BTREE,
   INDEX `mwl_start_time`(`start_datetime`) USING BTREE,
@@ -171,48 +183,7 @@ CREATE TABLE `mppsio_mwl_item_backup`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
--- Records of mppsio_mwl_item_backup
--- ----------------------------
-
--- ----------------------------
--- Table structure for mppsio_patient_backup
--- ----------------------------
-DROP TABLE IF EXISTS `mppsio_patient_backup`;
-CREATE TABLE `mppsio_patient_backup`  (
-  `pk` bigint(20) NOT NULL AUTO_INCREMENT,
-  `merge_fk` bigint(20) NULL DEFAULT NULL,
-  `pat_id` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `pat_id_issuer` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `pat_name` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `pat_fn_sx` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `pat_gn_sx` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `pat_i_name` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `pat_p_name` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `pat_birthdate` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `pat_sex` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `pat_custom1` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `pat_custom2` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `pat_custom3` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
-  `updated_time` datetime NULL DEFAULT NULL,
-  `created_time` datetime NULL DEFAULT NULL,
-  `pat_attrs` longblob NULL,
-  PRIMARY KEY (`pk`) USING BTREE,
-  INDEX `pat_merge_fk`(`merge_fk`) USING BTREE,
-  INDEX `pat_id`(`pat_id`(64), `pat_id_issuer`(64)) USING BTREE,
-  INDEX `pat_name`(`pat_name`(64)) USING BTREE,
-  INDEX `pat_fn_sx`(`pat_fn_sx`(16)) USING BTREE,
-  INDEX `pat_gn_sx`(`pat_gn_sx`(16)) USING BTREE,
-  INDEX `pat_i_name`(`pat_i_name`(64)) USING BTREE,
-  INDEX `pat_p_name`(`pat_p_name`(64)) USING BTREE,
-  INDEX `pat_birthdate`(`pat_birthdate`(8)) USING BTREE,
-  INDEX `pat_sex`(`pat_sex`(1)) USING BTREE,
-  INDEX `pat_custom1`(`pat_custom1`(64)) USING BTREE,
-  INDEX `pat_custom2`(`pat_custom2`(64)) USING BTREE,
-  INDEX `pat_custom3`(`pat_custom3`(64)) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
-
--- ----------------------------
--- Records of mppsio_patient_backup
+-- Records of mppsio_patient_mwl_item_backup
 -- ----------------------------
 
 -- ----------------------------
@@ -1043,16 +1014,5 @@ CREATE TABLE `xray_workload_bhp`  (
 -- ----------------------------
 -- Records of xray_workload_bhp
 -- ----------------------------
-
--- ----------------------------
--- Triggers structure for table mppsio_mwl_item_backup
--- ----------------------------
-DROP TRIGGER IF EXISTS `update_xray_order`;
-delimiter ;;
-CREATE TRIGGER `update_xray_order` AFTER DELETE ON `mppsio_mwl_item_backup` FOR EACH ROW BEGIN
-	UPDATE intimedika.xray_order SET intimedika.xray_order.deleted_at = NOW() WHERE intimedika.xray_order.uid = OLD.study_iuid;
-END
-;;
-delimiter ;
 
 SET FOREIGN_KEY_CHECKS = 1;
