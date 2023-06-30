@@ -11,7 +11,7 @@
  Target Server Version : 50649 (5.6.49-log)
  File Encoding         : 65001
 
- Date: 30/05/2023 10:32:40
+ Date: 30/06/2023 11:32:00
 */
 
 SET NAMES utf8mb4;
@@ -129,6 +129,93 @@ INSERT INTO `migrations` VALUES (4, '2022_08_31_132301_create_jobs_table', 1);
 INSERT INTO `migrations` VALUES (5, '2022_09_12_101504_create_notification_unread_table', 1);
 
 -- ----------------------------
+-- Table structure for mppsio_mwl_item_backup
+-- ----------------------------
+DROP TABLE IF EXISTS `mppsio_mwl_item_backup`;
+CREATE TABLE `mppsio_mwl_item_backup`  (
+  `pk` bigint(20) NOT NULL AUTO_INCREMENT,
+  `patient_fk` bigint(20) NULL DEFAULT NULL,
+  `sps_status` int(11) NULL DEFAULT NULL,
+  `sps_id` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `start_datetime` datetime NOT NULL,
+  `station_aet` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `station_name` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `modality` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `perf_physician` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `perf_phys_fn_sx` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `perf_phys_gn_sx` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `perf_phys_i_name` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `perf_phys_p_name` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `req_proc_id` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `accession_no` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `study_iuid` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `updated_time` datetime NULL DEFAULT NULL,
+  `created_time` datetime NULL DEFAULT NULL,
+  `item_attrs` longblob NULL,
+  PRIMARY KEY (`pk`) USING BTREE,
+  UNIQUE INDEX `mwl_sps_id`(`sps_id`(16), `req_proc_id`(16)) USING BTREE,
+  INDEX `mwl_patient_fk`(`patient_fk`) USING BTREE,
+  INDEX `sps_status`(`sps_status`) USING BTREE,
+  INDEX `mwl_start_time`(`start_datetime`) USING BTREE,
+  INDEX `mwl_station_aet`(`station_aet`(16)) USING BTREE,
+  INDEX `mwl_station_name`(`station_name`(16)) USING BTREE,
+  INDEX `mwl_modality`(`modality`(16)) USING BTREE,
+  INDEX `mwl_perf_physician`(`perf_physician`(64)) USING BTREE,
+  INDEX `mwl_perf_phys_fn_sx`(`perf_phys_fn_sx`(16)) USING BTREE,
+  INDEX `mwl_perf_phys_gn_sx`(`perf_phys_gn_sx`(16)) USING BTREE,
+  INDEX `mwl_perf_phys_i_nm`(`perf_phys_i_name`(64)) USING BTREE,
+  INDEX `mwl_perf_phys_p_nm`(`perf_phys_p_name`(64)) USING BTREE,
+  INDEX `mwl_req_proc_id`(`req_proc_id`(16)) USING BTREE,
+  INDEX `mwl_accession_no`(`accession_no`(16)) USING BTREE,
+  INDEX `mwl_study_iuid`(`study_iuid`(64)) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of mppsio_mwl_item_backup
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for mppsio_patient_backup
+-- ----------------------------
+DROP TABLE IF EXISTS `mppsio_patient_backup`;
+CREATE TABLE `mppsio_patient_backup`  (
+  `pk` bigint(20) NOT NULL AUTO_INCREMENT,
+  `merge_fk` bigint(20) NULL DEFAULT NULL,
+  `pat_id` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_id_issuer` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_name` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_fn_sx` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_gn_sx` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_i_name` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_p_name` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_birthdate` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_sex` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_custom1` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_custom2` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `pat_custom3` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
+  `updated_time` datetime NULL DEFAULT NULL,
+  `created_time` datetime NULL DEFAULT NULL,
+  `pat_attrs` longblob NULL,
+  PRIMARY KEY (`pk`) USING BTREE,
+  INDEX `pat_merge_fk`(`merge_fk`) USING BTREE,
+  INDEX `pat_id`(`pat_id`(64), `pat_id_issuer`(64)) USING BTREE,
+  INDEX `pat_name`(`pat_name`(64)) USING BTREE,
+  INDEX `pat_fn_sx`(`pat_fn_sx`(16)) USING BTREE,
+  INDEX `pat_gn_sx`(`pat_gn_sx`(16)) USING BTREE,
+  INDEX `pat_i_name`(`pat_i_name`(64)) USING BTREE,
+  INDEX `pat_p_name`(`pat_p_name`(64)) USING BTREE,
+  INDEX `pat_birthdate`(`pat_birthdate`(8)) USING BTREE,
+  INDEX `pat_sex`(`pat_sex`(1)) USING BTREE,
+  INDEX `pat_custom1`(`pat_custom1`(64)) USING BTREE,
+  INDEX `pat_custom2`(`pat_custom2`(64)) USING BTREE,
+  INDEX `pat_custom3`(`pat_custom3`(64)) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of mppsio_patient_backup
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for notification_unread
 -- ----------------------------
 DROP TABLE IF EXISTS `notification_unread`;
@@ -182,12 +269,11 @@ CREATE TABLE `rename_link`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`pk`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of rename_link
 -- ----------------------------
-INSERT INTO `rename_link` VALUES (1, 'mms', 'multimed', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for users
@@ -372,7 +458,7 @@ CREATE TABLE `xray_expertise`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`pk`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of xray_expertise
@@ -538,6 +624,97 @@ CREATE TABLE `xray_order`  (
 
 -- ----------------------------
 -- Records of xray_order
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for xray_order_simrs_backup
+-- ----------------------------
+DROP TABLE IF EXISTS `xray_order_simrs_backup`;
+CREATE TABLE `xray_order_simrs_backup`  (
+  `pk` bigint(255) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `acc` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
+  `patientid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0',
+  `mrn` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `sex` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `birth_date` date NULL DEFAULT NULL,
+  `weight` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `dep_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name_dep` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id_modality` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `xray_type_code` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id_prosedur` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `prosedur` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `harga_prosedur` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `dokterid` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `named` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `lastnamed` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `radiographer_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `radiographer_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `radiographer_lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `dokradid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `dokrad_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `dokrad_lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `create_time` datetime NULL DEFAULT NULL,
+  `schedule_date` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `schedule_time` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `contrast` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `priority` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `pat_state` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `contrast_allergies` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `spc_needs` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id_payment` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `payment` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fromorder` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `examed_at` datetime NULL DEFAULT NULL,
+  `deleted_at` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`pk`) USING BTREE,
+  UNIQUE INDEX `uid`(`uid`) USING BTREE,
+  INDEX `uid_normal`(`uid`) USING BTREE,
+  INDEX `acc`(`acc`) USING BTREE,
+  INDEX `patientid`(`patientid`) USING BTREE,
+  INDEX `mrn`(`mrn`) USING BTREE,
+  INDEX `name`(`name`) USING BTREE,
+  INDEX `address`(`address`) USING BTREE,
+  INDEX `sex`(`sex`) USING BTREE,
+  INDEX `birth_date`(`birth_date`) USING BTREE,
+  INDEX `weight`(`weight`) USING BTREE,
+  INDEX `dep_id`(`dep_id`) USING BTREE,
+  INDEX `name_dep`(`name_dep`) USING BTREE,
+  INDEX `id_modality`(`id_modality`) USING BTREE,
+  INDEX `xray_type_code`(`xray_type_code`) USING BTREE,
+  INDEX `id_prosedur`(`id_prosedur`) USING BTREE,
+  INDEX `prosedur`(`prosedur`) USING BTREE,
+  INDEX `harga_prosedur`(`harga_prosedur`) USING BTREE,
+  INDEX `dokterid`(`dokterid`) USING BTREE,
+  INDEX `named`(`named`) USING BTREE,
+  INDEX `lastnamed`(`lastnamed`) USING BTREE,
+  INDEX `email`(`email`) USING BTREE,
+  INDEX `radiographer_id`(`radiographer_id`) USING BTREE,
+  INDEX `radiographer_name`(`radiographer_name`) USING BTREE,
+  INDEX `dokradid`(`dokradid`) USING BTREE,
+  INDEX `dokrad_name`(`dokrad_name`) USING BTREE,
+  INDEX `create_time`(`create_time`) USING BTREE,
+  INDEX `schedule_date`(`schedule_date`) USING BTREE,
+  INDEX `schedule_time`(`schedule_time`) USING BTREE,
+  INDEX `contrast`(`contrast`) USING BTREE,
+  INDEX `priority`(`priority`) USING BTREE,
+  INDEX `pat_state`(`pat_state`) USING BTREE,
+  INDEX `contrast_allergies`(`contrast_allergies`) USING BTREE,
+  INDEX `spc_needs`(`spc_needs`) USING BTREE,
+  INDEX `id_payment`(`id_payment`) USING BTREE,
+  INDEX `payment`(`payment`) USING BTREE,
+  INDEX `fromorder`(`fromorder`) USING BTREE,
+  INDEX `examed_at`(`examed_at`) USING BTREE,
+  INDEX `deleted_at`(`deleted_at`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of xray_order_simrs_backup
 -- ----------------------------
 
 -- ----------------------------
@@ -866,5 +1043,16 @@ CREATE TABLE `xray_workload_bhp`  (
 -- ----------------------------
 -- Records of xray_workload_bhp
 -- ----------------------------
+
+-- ----------------------------
+-- Triggers structure for table mppsio_mwl_item_backup
+-- ----------------------------
+DROP TRIGGER IF EXISTS `update_xray_order`;
+delimiter ;;
+CREATE TRIGGER `update_xray_order` AFTER DELETE ON `mppsio_mwl_item_backup` FOR EACH ROW BEGIN
+	UPDATE intimedika.xray_order SET intimedika.xray_order.deleted_at = NOW() WHERE intimedika.xray_order.uid = OLD.study_iuid;
+END
+;;
+delimiter ;
 
 SET FOREIGN_KEY_CHECKS = 1;
