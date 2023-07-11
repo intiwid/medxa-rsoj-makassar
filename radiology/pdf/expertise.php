@@ -108,6 +108,7 @@ $pdf = new PDF('P', 'mm', 'A4');
 
 // membuat halaman baru
 $pdf->SetMargins(15, 23, 15);
+$pdf->SetAutoPageBreak(true, 40);
 $pdf->AddPage();
 // setting jenis font yang akan digunakan
 $pdf->SetFont('Arial', '', 10);
