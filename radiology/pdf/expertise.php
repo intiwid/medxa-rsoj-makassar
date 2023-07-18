@@ -152,7 +152,7 @@ $pdf->Cell(55, 5, $age, 0, 0, 'L');
 // -----------------
 $pdf->Cell(35, 5, 'Dokter Radiologi', 0, 0, 'L');
 $pdf->Cell(3, 5, ':', 0, 0, 'L');
-$pdf->Cell(65, 5, $dokrad_name, 0, 1, 'L');
+$pdf->Cell(65, 5, substr($dokrad_name, 0, 35), 0, 1, 'L');
 //-------------------
 $pdf->Cell(28, 5, 'Jenis Kelamin', 0, 0, 'L');
 $pdf->Cell(3, 5, ':', 0, 0, 'L');

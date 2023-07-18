@@ -375,6 +375,7 @@
                     <li><a class="link_name" href="#"><?= $lang['patient_management'] ?></a></li>
                     <li><a href="workload.php"><?= $lang['workload'] ?></a></li>
                     <li><a href="report.php"><?= $lang['download_excel'] ?></a></li>
+                    <li id="expertise-history"><a href="workload-fill.php">Expertise History</a></li>
                     <li><a href="uploadexcel.php"><?= $lang['backup_excel'] ?></a></li>
                     <li><a href="downloadexcel.php">Storage Excel</a></li>
                     <li><a href="chart.php"><?= $lang['chart'] ?></a></li>
@@ -416,6 +417,7 @@
                     <li><a class="link_name" href="#"><?= $lang['patient_management'] ?></a></li>
                     <li><a href="workload.php">Expertise Approved</a></li>
                     <li><a href="report.php"><?= $lang['download_excel'] ?></a></li>
+                    <li id="expertise-history"><a href="workload-fill.php">Expertise History</a></li>
                 </ul>
             </li>
 
@@ -438,7 +440,16 @@
 
         <!-- =================END OF SIDEBAR POLI====================== -->
         <?php if ($_SESSION['level'] == 'refferal') { ?>
-            <li data-target="#worklist1">
+            <li data-target="#expertise-history">
+                <a href="workload-fill.php">
+                    <i class="fa fa-history fa-lg"></i>
+                    <span class="link_name">Expertise History </span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="workload-fill.php">Expertise History </a></li>
+                </ul>
+            </li>
+            <li data-target="#query1">
                 <a href="workload.php">
                     <i class="fa-solid fa-laptop-file"></i>
                     <span class="link_name">Query </span>

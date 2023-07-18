@@ -14,7 +14,7 @@ if ($_SESSION['level'] == "refferal") {
   </head>
 
   <body>
-  <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <?php include('../sidebar-index.php'); ?>
     <div class="container-fluid" id="main">
       <div class="row">
@@ -35,6 +35,9 @@ if ($_SESSION['level'] == "refferal") {
     <script>
       $(document).ready(function() {
         $("li[id='query1']").addClass("active");
+        $("li[data-target='#query1']").addClass("active");
+        $("ul[id='query1'] li[id='workload1']").addClass("active");
+        $("li[data-target='#query1'] a i").css('color', '#bdbdbd');
       });
     </script>
 

@@ -10,6 +10,8 @@ $level = $_SESSION['level'];
 	</nav>
 </div>
 <div class="table-view">
+	<h3 class="text-center">Expertise Approved</h3>
+	<hr>
 	<?php require_once 'formsearch.php'; ?>
 	<div class="col-md-12 table-box" style="overflow-x:auto;">
 		<table class="table-dicom" id="purchase_order" style="width: 2400px;" cellpadding="8" cellspacing="0">

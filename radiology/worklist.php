@@ -52,7 +52,7 @@ $priority = defaultValue($row['priority']);
 $spc_needs = defaultValue($row['spc_needs']);
 $payment = defaultValue($row['payment']);
 $fromorder = $row['fromorder'];
-$status = styleStatus($row['status']);
+$status = styleStatus($row['status'], $study_iuid);
 $fill = $row['fill'];
 $approved_at = defaultValueDateTime($row['approved_at']);
 $spendtime = spendTime($study_datetime, $approved_at, $row['status']);
@@ -295,7 +295,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 																<td><span class="table-left">Name</span></td>
 															</tr>
 															<tr>
-																<td><?= $detail_mrn . ' ' . styleStatus($mrn['status']); ?></td>
+																<td><?= $detail_mrn . ' ' . styleStatus($mrn['status'], $study_iuid); ?></td>
 															</tr>
 															<tr>
 																<td><span class="table-left">MRN</span></td>

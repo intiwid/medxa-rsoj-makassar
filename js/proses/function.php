@@ -68,6 +68,21 @@ function ubahdokterworkload($post)
 	";
     mysqli_query($conn, $query1);
 
+    // UPDATE XRAY_WORKLOAD_FILL is_default menjadi 0 berdasarkan uid dan changedoctor 1
+    mysqli_query(
+        $conn,
+        "UPDATE xray_workload_fill SET 
+        is_default = 0
+        WHERE uid = '$uid'"
+    );
+
+    // INSERT XRAY_WORKLOAD_FILL
+    mysqli_query(
+        $conn,
+        "INSERT INTO xray_workload_fill (uid, is_default, change_doctor_approved, created_at) 
+		VALUES ('$uid', 0, 1, NOW())"
+    );
+
     return mysqli_affected_rows($conn);
 }
 
@@ -86,4 +101,25 @@ function new_template($new_template)
     );
 
     return mysqli_affected_rows($conn);
+}
+
+function ubahDefaultExpertise($uid, $pk)
+{
+    global $conn;
+
+    // UPDATE XRAY_WORKLOAD_FILL is_default menjadi 0 berdasarkan uid
+    mysqli_query(
+        $conn,
+        "UPDATE xray_workload_fill SET 
+		is_default = 0 
+		WHERE uid = '$uid'"
+    );
+
+    // UPDATE XRAY_WORKLOAD_FILL is_default menjadi 1 berdasarkan pk
+    mysqli_query(
+        $conn,
+        "UPDATE xray_workload_fill SET 
+        is_default = 1 
+        WHERE pk = '$pk'"
+    );
 }

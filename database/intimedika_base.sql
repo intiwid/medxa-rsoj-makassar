@@ -11,7 +11,7 @@
  Target Server Version : 50649 (5.6.49-log)
  File Encoding         : 65001
 
- Date: 30/06/2023 16:37:37
+ Date: 18/07/2023 09:31:46
 */
 
 SET NAMES utf8mb4;
@@ -1013,6 +1013,29 @@ CREATE TABLE `xray_workload_bhp`  (
 
 -- ----------------------------
 -- Records of xray_workload_bhp
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for xray_workload_fill
+-- ----------------------------
+DROP TABLE IF EXISTS `xray_workload_fill`;
+CREATE TABLE `xray_workload_fill`  (
+  `pk` bigint(20) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `pk_dokter_radiology` int(11) NULL DEFAULT NULL,
+  `dokradid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `dokrad_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fill` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `is_default` smallint(6) NULL DEFAULT NULL,
+  `change_doctor_approved` smallint(6) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
+  `deleted_at` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`pk`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of xray_workload_fill
 -- ----------------------------
 
 SET FOREIGN_KEY_CHECKS = 1;

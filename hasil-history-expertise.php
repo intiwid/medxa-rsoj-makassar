@@ -29,7 +29,7 @@ $approved_at = defaultValueDateTime($row['approved_at']);
             <tr>
                 <td><?= $lang['patient_name'] ?></td>
                 <td>&nbsp;: </td>
-                <td align="left">&nbsp; <?= removeCharacter($row['pat_name']) . ' ' . styleStatus($row['status']); ?></td>
+                <td align="left">&nbsp; <?= removeCharacter($row['pat_name']) . ' ' . styleStatus($row['status'], $study_iuid); ?></td>
             </tr>
             <tr>
                 <td>MRN</td>

@@ -69,9 +69,11 @@ function insert_workload($value)
 		$conn,
 		"SELECT * FROM xray_dokter_radiology WHERE username = '$username'"
 	));
-	$pk = $dokter_radiologi['pk'];
+	$pk_dokter_radiology = $dokter_radiologi['pk'];
 	$dokradid = $dokter_radiologi['dokradid'];
 	$dokrad_name = $dokter_radiologi['dokrad_name'];
+	$dokrad_lastname = $dokter_radiologi['dokrad_lastname'];
+	$dokrad_fullname = $dokrad_name . ' ' . $dokrad_lastname;
 
 	mysqli_query(
 		$conn,
@@ -82,7 +84,7 @@ function insert_workload($value)
 	mysqli_query(
 		$conn,
 		"UPDATE xray_workload 
-		SET pk_dokter_radiology = '$pk',
+		SET pk_dokter_radiology = '$pk_dokter_radiology',
 		xray_workload.status = 'approved', 
 		fill = '$fill',
 		approved_at = NOW(),
@@ -91,6 +93,13 @@ function insert_workload($value)
 		signature_datetime = NOW()
 		WHERE uid = '$uid'
 		"
+	);
+
+	// INSERT XRAY_WORKLOAD_FILL
+	mysqli_query(
+		$conn,
+		"INSERT INTO xray_workload_fill (uid, pk_dokter_radiology, dokradid, dokrad_name, fill, is_default, created_at) 
+		VALUES ('$uid', '$pk_dokter_radiology', '$dokradid', '$dokrad_fullname', '$fill', 1, NOW())"
 	);
 
 	$row = mysqli_fetch_assoc(mysqli_query(
@@ -243,6 +252,7 @@ function update_workload($value)
 	$hostname = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM xray_hostname_publik"));
 	$link = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM rename_link"));
 
+	// UPDATE XRAY_WORKLOAD
 	mysqli_query(
 		$conn,
 		"UPDATE xray_workload SET 
@@ -278,6 +288,8 @@ function update_workload($value)
 	));
 	$dokradid = $dokter_radiologi['dokradid'];
 	$dokrad_name = $dokter_radiologi['dokrad_name'];
+	$dokrad_lastname = $dokter_radiologi['dokrad_lastname'];
+	$dokrad_fullname = $dokrad_name . ' ' . $dokrad_lastname;
 
 	// untuk tanda tangan digital
 	QRcode::png(
@@ -300,6 +312,21 @@ Approved Sign in $signature_datetime",
 
 	// untuk hasil pasien (laravel)
 	// QRcode::png("http://$hostname[ip_publik]:8000/pasien/$uid", "phpqrcode/hasil-pasien/$uid.png", "L", 4, 4);
+
+	// UPDATE XRAY_WORKLOAD_FILL is_default menjadi 0 berdasarkan uid
+	mysqli_query(
+		$conn,
+		"UPDATE xray_workload_fill SET 
+		is_default = 0 
+		WHERE uid = '$uid'"
+	);
+
+	// INSERT XRAY_WORKLOAD_FILL
+	mysqli_query(
+		$conn,
+		"INSERT INTO xray_workload_fill (uid, pk_dokter_radiology, dokradid, dokrad_name, fill, is_default, created_at) 
+		VALUES ('$uid', '$pk_dokter_radiology', '$dokradid', '$dokrad_fullname', '$fill', 1, NOW())"
+	);
 
 	return mysqli_affected_rows($conn);
 }
