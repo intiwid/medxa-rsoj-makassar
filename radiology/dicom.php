@@ -1,8 +1,44 @@
 <?php
 session_start();
-
+require '../koneksi/koneksi.php';
+require '../default-value.php';
+require '../model/query-base-workload.php';
+require '../model/query-base-order.php';
+require '../model/query-base-study.php';
+require '../model/query-base-patient.php';
+require '../model/query-base-dokter-radiology.php';
 $username = $_SESSION['username'];
 // -----------------xray_exam2--------------
+
+// kondisi jika ada di dicom.php
+$row_dokrad = mysqli_fetch_assoc(mysqli_query(
+	$conn,
+	"SELECT dokradid 
+    FROM $table_dokter_radiology 
+    WHERE username = '$username'"
+));
+$dokradid = $row_dokrad['dokradid'];
+
+$kondisi = "WHERE (xray_workload.status = 'waiting' AND xray_order.dokradid = '$dokradid' AND xray_order.priority = 'cito')
+OR (xray_workload.status = 'waiting' AND xray_order.dokradid IS NULL AND xray_order.priority = 'cito')
+ORDER BY xray_order.priority IS NULL, xray_order.priority ASC, study.study_datetime DESC 
+LIMIT 3000";
+
+$row = mysqli_fetch_assoc(mysqli_query(
+	$conn_pacsio,
+	"SELECT 
+    COUNT(priority) AS jumlah_cito
+    FROM $table_patient
+    JOIN $table_study
+    ON patient.pk = study.patient_fk
+    JOIN $table_workload
+    ON study.study_iuid = xray_workload.uid
+    LEFT JOIN $table_order
+    ON xray_order.uid = xray_workload.uid
+    $kondisi"
+));
+
+$jumlah_cito = $row['jumlah_cito'];
 
 if ($_SESSION['level'] == "radiology") {
 ?>
@@ -33,6 +69,18 @@ if ($_SESSION['level'] == "radiology") {
 								</nav>
 							</div>
 							<div class="table-view col-md-12 dashboard-home" style="overflow-x:auto;">
+								<?php
+								if ($jumlah_cito > 0) { ?>
+									<div class="alert alert-danger text-center" role="alert">
+										<i class="fa fa-bell" aria-hidden="true"></i>
+										<?= $jumlah_cito ?> Pasien Prioritas CITO
+									</div>
+								<?php } else { ?>
+									<div class="alert alert-success text-center" role="alert">
+										<i class="fa fa-bell" aria-hidden="true"></i>
+										Semua Pasien Worklist Prioritas Normal
+									</div>
+								<?php } ?>
 
 								<table class="table-dicom" id="example" border="1" cellpadding="8" cellspacing="0" style="margin-top: 3px; width: 2325px;">
 									<thead class="thead1">
