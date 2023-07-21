@@ -503,6 +503,21 @@ if ($_SESSION['level'] == "radiology") { ?>
 				enterMode: CKEDITOR.ENTER_BR
 			});
 		</script>
+		<script>
+			// ketika dokter input 1 kata, dan close browser atau pindah halaman akan muncul pop up.
+			$(document).ready(function() {
+				CKEDITOR.instances['ckeditor'].on('change', function(e) {
+					var fill = CKEDITOR.instances['ckeditor'].getData();
+
+					window.addEventListener('beforeunload', function(e) {
+						if (fill !== '') {
+							e.preventDefault();
+							e.returnValue = '';
+						}
+					});
+				});
+			});
+		</script>
 		<!-- -------------------javascript select template-------------- -->
 		<script>
 			$(document).ready(function() {
