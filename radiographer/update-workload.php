@@ -38,7 +38,7 @@ $pat_birthdate = $row['pat_birthdate'] == null ? '' : date('d-m-Y', strtotime($r
 $study_iuid = $row['study_iuid'];
 $accession_no = $row['accession_no'];
 $ref_physician = $row['ref_physician'];
-$study_desc = $row['study_desc'];
+$study_desc_pacsio = $row['study_desc_pacsio'];
 $harga_prosedur = defaultValueNumber($row['harga_prosedur']);
 $mods_in_study = $row['mods_in_study'];
 $num_series = $row['num_series'];
@@ -287,7 +287,7 @@ if ($_SESSION['level'] == "radiographer") {
 											<br>
 											<li>
 												<label for="study">Study</label><br>
-												<input type="text" name="study_desc" id="study_desc" value="<?= $study_desc; ?>">
+												<input type="text" name="study_desc_pacsio" id="study_desc_pacsio" value="<?= $study_desc_pacsio; ?>">
 											</li>
 											<li>
 												<label for="harga_prosedur">Tarif Pemeriksaan</label><br>
