@@ -385,7 +385,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 																	</div>
 																	<div class="modal-footer">
 																		<button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
-																		<button style="border-radius: 5px; font-weight: bold; margin-bottom:4px;" class=" btn btn-success" name="save_template">Save</button>
+																		<button style="border-radius: 5px; font-weight: bold; margin-bottom:4px;" class=" btn btn-success" id="save_template" name="save_template">Save</button>
 																	</div>
 																</div>
 															</div>
@@ -393,7 +393,7 @@ if ($_SESSION['level'] == "radiology") { ?>
 													</div>
 													<!-- END OF POP UP -->
 													<div class="btn-bar-1">
-														<button class="btn btn-worklist btn-expertise button-popup-approve waves-effect waves-light" name="save_edit"><i class="fas fa-save"></i> Save Edit</button>
+														<button class="btn btn-worklist btn-expertise button-popup-approve waves-effect waves-light" name="save_edit" id="save_edit"><i class="fas fa-save"></i> Save Edit</button>
 													</div>
 													</form>
 												</div>
@@ -504,13 +504,23 @@ if ($_SESSION['level'] == "radiology") { ?>
 			});
 		</script>
 		<script>
+			var save = false;
+			$('#save_edit').click(function() {
+				save = true;
+			});
+
+			$('#save_template').click(function() {
+				save = true;
+			});
+
 			// ketika dokter input 1 kata, dan close browser atau pindah halaman akan muncul pop up.
 			$(document).ready(function() {
 				CKEDITOR.instances['ckeditor'].on('change', function(e) {
 					var fill = CKEDITOR.instances['ckeditor'].getData();
 
 					window.addEventListener('beforeunload', function(e) {
-						if (fill !== '') {
+						// ketika fill tidak kosong dan tombol save edit tidak diklik
+						if (fill !== '' && save !== true) {
 							e.preventDefault();
 							e.returnValue = '';
 						}
