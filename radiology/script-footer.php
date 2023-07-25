@@ -24,7 +24,7 @@
 </script>
 <script type="text/javascript" src="../js/inobitec.js?v=<?= $random; ?>"></script>
 <script type="text/javascript" src="../js/select2.min.js"></script>
-
+<script type="text/javascript" src="../js/change-doctor-approved.js?v=<?= $random; ?>"></script>
 
 <!-- =======menghapus border pada div======== -->
 <script>
@@ -50,23 +50,31 @@
 
 <script>
     // hide show submenu sidebar
-    $(document).ready(function(){
-        $(".click-management2").click(function(){
-        $(".sub-menu-management2").toggle(
-            function(){$(".sub-menu-management2").css({"opacity": 1});}
-        );
-        $(".sub-menu-expertise").hide();
-    });
+    $(document).ready(function() {
+        $(".click-management2").click(function() {
+            $(".sub-menu-management2").toggle(
+                function() {
+                    $(".sub-menu-management2").css({
+                        "opacity": 1
+                    });
+                }
+            );
+            $(".sub-menu-expertise").hide();
+        });
 
-        $(".click-expertise").click(function(){
-        $(".sub-menu-expertise").toggle(
-            function(){$(".sub-menu-expertise").css({"opacity": 1});}
-        );
-        $(".sub-menu-management2").hide();
-    });
+        $(".click-expertise").click(function() {
+            $(".sub-menu-expertise").toggle(
+                function() {
+                    $(".sub-menu-expertise").css({
+                        "opacity": 1
+                    });
+                }
+            );
+            $(".sub-menu-management2").hide();
+        });
 
-    
-    });  
+
+    });
 </script>
 
 <script>

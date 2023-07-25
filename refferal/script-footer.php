@@ -19,7 +19,7 @@
 </script>
 <script src="../js/datetime-moment.js" />
 </script>
-
+<script type="text/javascript" src="../js/change-doctor-approved.js?v=<?= $random; ?>"></script>
 
 <!-- =======menghapus border pada div======== -->
 <script>

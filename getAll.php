@@ -105,9 +105,9 @@ while ($row = mysqli_fetch_array($query)) {
     $pk_dokter_radiology = $row['pk_dokter_radiology'];
     //kondisi status change doctor
     if ($row['status'] == 'approved') {
-        $workloadstat = 'approved';
+        $workload_status = 'approved';
     } else {
-        $workloadstat = 'waiting';
+        $workload_status = 'waiting';
     }
 
     // kondisi ketika detail nama lihat detail HOME (radiographer, radiology, referral)
@@ -148,7 +148,7 @@ while ($row = mysqli_fetch_array($query)) {
                 $detail = '<a href="worklist.php?uid=' . $study_iuid . '" class="penawaran-a">' . removeCharacter($pat_name) . '</a>';
 
                 $aksi = $worklist .
-                    CHANGEDOCTORFIRST . $study_iuid . CHANGEDOCTORMID . $dokradid . CHANGEDOCTORSTAT . $workloadstat . CHANGEDOCTORLAST . $icon_change_doctor . CHANGEDOCTORVERYLAST;
+                    CHANGEDOCTORFIRST . "'$study_iuid', '$dokradid', '$workload_status'" . CHANGEDOCTORLAST . $icon_change_doctor . CHANGEDOCTORVERYLAST;
             }
         } else {
             // kondisi ketika xray_workload TIDAK masuk dari trigger

@@ -21,10 +21,8 @@ define('MOBILELAST', '"target="_blank"><span class="btn btn-warning btn-inti"><i
 // Change doctor
 define('CHANGEDOCTORICONYES', '<img src="../image/new/user-doctor.svg" data-toggle="tooltip" title="choose Physician" style="width: 100%;">');
 define('CHANGEDOCTORICONNO', '<img src="../image/new/user-doctor-no.svg" data-toggle="tooltip" title="choose Physician" style="width: 100%;">');
-define('CHANGEDOCTORFIRST', '<a style="text-decoration: none;" href="changedoctorworklist.php?uid=');
-define('CHANGEDOCTORMID', '&dokradid=');
-define('CHANGEDOCTORSTAT', '&status=');
-define('CHANGEDOCTORLAST', '"><span class="btn darken-1 btn-inti2" style="box-shadow: none;">');
+define('CHANGEDOCTORFIRST', '<a style="text-decoration: none;" href="#" onclick="changeDoctorApproved(event, ');
+define('CHANGEDOCTORLAST', ')"><span class="btn rgba-stylish-slight darken-1 btn-inti2">');
 define('CHANGEDOCTORVERYLAST', '</span></a>');
 
 // Ambil hasil expertise
