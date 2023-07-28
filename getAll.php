@@ -23,11 +23,12 @@ $selected_dokter_radiology = mysqli_fetch_assoc(mysqli_query(
 // kondisi jika ada di dicom.php
 $row_dokrad = mysqli_fetch_assoc(mysqli_query(
     $conn,
-    "SELECT dokradid 
+    "SELECT $select_dokter_radiology 
     FROM $table_dokter_radiology 
     WHERE username = '$username'"
 ));
 $dokradid = $row_dokrad['dokradid'];
+$dokrad_fullname = $row_dokrad['dokrad_fullname'];
 $http_referer = $_SERVER['HTTP_REFERER'] ?? '';
 $explode = explode('/radiology', $http_referer);
 $dicom = $explode[1] ?? '';
@@ -133,7 +134,7 @@ while ($row = mysqli_fetch_array($query)) {
             // kondisi pk_dokter_radiologi null dan dokradid null dan ketika aktif bernilai 1 mapping dokter
             if ($pk_dokter_radiology == null && $dokradid == null && $selected_dokter_radiology['is_active'] == 1) {
                 $aksi = '?';
-                $detail = '<a href="dicom.php" class="penawaran-a">' . removeCharacter($pat_name) . '</a>';
+                $detail = '<a href="dicom.php" onclick="validationDokter(event,' . "'$dokrad_fullname'" . ')" class="penawaran-a">' . removeCharacter($pat_name) . '</a>';
             } else {
                 // kondisi ketika pasien manual tetapi pk_dokter_radiologi sudah ada 
                 if (!$fill || $fill == null) {
