@@ -5,6 +5,7 @@ require 'default-value.php';
 require 'model/query-base-patient.php';
 require 'model/query-base-study.php';
 require 'model/query-base-series.php';
+require 'model/query-base-series-req.php';
 require 'bahasa.php';
 
 $uid = $_POST['uid'];
@@ -65,6 +66,8 @@ $row = mysqli_fetch_assoc(mysqli_query(
 						<th><?= $lang['modality'] ?></th>
 						<th>#i</th>
 						<th>Department</th>
+						<th>req_proc_id</th>
+						<th>sps_id</th>
 						<th>Created Date</th>
 						<th>Updated Date</th>
 					</tr>
@@ -73,8 +76,11 @@ $row = mysqli_fetch_assoc(mysqli_query(
 					$query = mysqli_query(
 						$conn_pacsio,
 						"SELECT
-						$select_series 
+						$select_series,
+						$select_series_req  
 						FROM $table_series
+						LEFT JOIN $table_series_req
+						ON series.pk = series_req.series_fk
 						WHERE study_fk = '$pk_study'"
 					);
 					while ($row1 = mysqli_fetch_assoc($query)) { ?>
@@ -86,6 +92,8 @@ $row = mysqli_fetch_assoc(mysqli_query(
 							<td align="left"><?= defaultValue($row1['modality']); ?></td>
 							<td align="left"><?= defaultValue($row1['num_instances']); ?></td>
 							<td align="left"><?= defaultValue($row1['department']) ?></td>
+							<td align="left"><?= defaultValue($row1['sps_id']) ?></td>
+							<td align="left"><?= defaultValue($row1['req_proc_id']) ?></td>
 							<td align="left"><?= defaultValueDateTime($row1['created_time']); ?></td>
 							<td align="left"><?= defaultValueDateTime($row1['updated_time']); ?></td>
 						</tr>

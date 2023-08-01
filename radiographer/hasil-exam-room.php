@@ -61,7 +61,7 @@ $row = mysqli_fetch_assoc(mysqli_query(
                 <tr>
                     <td><?= $lang['sex'] ?></td>
                     <td>&nbsp;: </td>
-                    <td align="left">&nbsp; <?= defaultValue($row['pat_sex']); ?></td>
+                    <td align="left">&nbsp; <?= styleSex($row['pat_sex']); ?></td>
                 </tr>
                 <tr>
                     <td><?= $lang['modality'] ?></td>
@@ -94,9 +94,14 @@ $row = mysqli_fetch_assoc(mysqli_query(
                     <td align="left">&nbsp; <?= $row['perf_physician'] == '^^^^' ? '-' : str_replace('^^^^', '', $row['perf_physician']); ?></td>
                 </tr>
                 <tr>
-                    <td><?= $lang['patient_order'] ?></td>
+                    <td><?= $lang['patient_order'] ?> Date</td>
                     <td>&nbsp;: </td>
                     <td align="left">&nbsp; <?= defaultValueDateTime($row['created_time']); ?></td>
+                </tr>
+                <tr>
+                    <td><?= $lang['exam_date'] ?></td>
+                    <td>&nbsp;: </td>
+                    <td align="left">&nbsp; <?= defaultValueDateTime($row['start_datetime']); ?></td>
                 </tr>
             </thead>
         </table>

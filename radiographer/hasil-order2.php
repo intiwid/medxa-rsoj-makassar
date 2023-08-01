@@ -84,12 +84,22 @@ $fromorder = $row['fromorder'];
                 <tr>
                     <td><?= $lang['sex'] ?></td>
                     <td>&nbsp;: </td>
-                    <td align="left">&nbsp; <?= defaultValue($row['sex']); ?></td>
+                    <td align="left">&nbsp; <?= styleSex($row['sex']); ?></td>
+                </tr>
+                <tr>
+                    <td>Kode <?= $lang['referral_physician'] ?></td>
+                    <td>&nbsp;: </td>
+                    <td align="left">&nbsp; <?= defaultValue($row['dokterid']); ?></td>
                 </tr>
                 <tr>
                     <td><?= $lang['referral_physician'] ?></td>
                     <td>&nbsp;: </td>
                     <td align="left">&nbsp; <?= defaultValue($row['named']); ?></td>
+                </tr>
+                <tr>
+                    <td>Kode <?= $lang['radiology_physician'] ?></td>
+                    <td>&nbsp;: </td>
+                    <td align="left">&nbsp; <?= defaultValue($row['dokradid']); ?></td>
                 </tr>
                 <tr>
                     <td><?= $lang['radiology_physician'] ?></td>
@@ -107,14 +117,34 @@ $fromorder = $row['fromorder'];
                     <td align="left">&nbsp; <?= defaultValue($row['pat_state']); ?></td>
                 </tr>
                 <tr>
+                    <td>Kode <?= $lang['modality'] ?></td>
+                    <td>&nbsp;: </td>
+                    <td align="left">&nbsp; <?= defaultValue($row['id_modality']); ?></td>
+                </tr>
+                <tr>
                     <td><?= $lang['modality'] ?></td>
                     <td>&nbsp;: </td>
                     <td align="left">&nbsp; <?= defaultValue($row['xray_type_code']); ?></td>
                 </tr>
                 <tr>
-                    <td><?= $lang['exam_date'] ?></td>
+                    <td>Kode <?= $lang['study'] ?></td>
                     <td>&nbsp;: </td>
-                    <td align="left">&nbsp; <?= defaultValueDateTime($row['schedule_date'] . ' ' . $row['schedule_time']); ?></td>
+                    <td align="left">&nbsp; <?= defaultValue($row['id_prosedur']); ?></td>
+                </tr>
+                <tr>
+                    <td><?= $lang['study'] ?></td>
+                    <td>&nbsp;: </td>
+                    <td align="left">&nbsp; <?= defaultValue($row['prosedur']); ?></td>
+                </tr>
+                <tr>
+                    <td>Harga <?= $lang['study'] ?></td>
+                    <td>&nbsp;: </td>
+                    <td align="left">&nbsp; <?= defaultValue($row['harga_prosedur']); ?></td>
+                </tr>
+                <tr>
+                    <td>Kode <?= $lang['radiographer'] ?></td>
+                    <td>&nbsp;: </td>
+                    <td align="left">&nbsp; <?= defaultValue($row['radiographer_id']); ?></td>
                 </tr>
                 <tr>
                     <td><?= $lang['radiographer'] ?></td>
@@ -127,14 +157,34 @@ $fromorder = $row['fromorder'];
                     <td align="left">&nbsp; <?= defaultValue($row['spc_needs']); ?></td>
                 </tr>
                 <tr>
+                    <td>Kode <?= $lang['payment'] ?></td>
+                    <td>&nbsp;: </td>
+                    <td align="left">&nbsp; <?= defaultValue($row['id_payment']); ?></td>
+                </tr>
+                <tr>
                     <td><?= $lang['payment'] ?></td>
                     <td>&nbsp;: </td>
                     <td align="left">&nbsp; <?= defaultValue($row['payment']); ?></td>
                 </tr>
                 <tr>
-                    <td><?= $lang['patient_order'] ?></td>
+                    <td><?= $lang['patient_order'] ?> Date</td>
                     <td>&nbsp;: </td>
                     <td align="left">&nbsp; <?= defaultValueDateTime($row['create_time']); ?></td>
+                </tr>
+                <tr>
+                    <td><?= $lang['exam_date'] ?></td>
+                    <td>&nbsp;: </td>
+                    <td align="left">&nbsp; <?= defaultValueDateTime($row['schedule_date'] . ' ' . $row['schedule_time']); ?></td>
+                </tr>
+                <tr>
+                    <td>Send Modality Date</td>
+                    <td>&nbsp;: </td>
+                    <td align="left">&nbsp; <?= defaultValueDateTime($row['examed_at']); ?></td>
+                </tr>
+                <tr>
+                    <td>From Order</td>
+                    <td>&nbsp;: </td>
+                    <td align="left">&nbsp; <?= defaultValue($row['fromorder']); ?></td>
                 </tr>
             </thead>
         </table>

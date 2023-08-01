@@ -34,7 +34,7 @@ if ($_SESSION['level'] == "radiographer") {
 							</div>
 							<div class="table-view col-md-12 back-search" id="content1" style="overflow-x:auto;">
 								<center>
-									<h3 class="textsearchnewpasien2">Order</h3>
+									<h3 class="textsearchnewpasien2">Order SIMRS/RIS</h3>
 									<hr>
 									<h6><?= $lang['patient_finished_order'] ?></h6>
 								</center>
@@ -65,7 +65,7 @@ if ($_SESSION['level'] == "radiographer") {
 		</div>
 		<!-- The Modal study_iuid -->
 		<div class="modal" id="modal-order2">
-			<div class="modal-dialog modal-dialog-scrollable">
+			<div class="modal-dialog modal-dialog-scrollable modal-lg">
 				<div class="modal-content">
 					<!-- Modal Header -->
 					<div class="modal-header">

@@ -147,12 +147,13 @@ if ($_SESSION['level'] == "radiographer") {
 											<th>Action</th>
 											<th><?= $lang['patient_name'] ?></th>
 											<th>MRN</th>
+											<th>(pat_id_issuer) <br /> No Foto</th>
 											<th>Accession No</th>
 											<th><?= $lang['date_birth'] ?></th>
 											<th><?= $lang['sex'] ?></th>
 											<th><?= $lang['modality'] ?></th>
-											<th><?= $lang['exam_date'] ?></th>
 											<th><?= $lang['patient_order'] ?></th>
+											<th><?= $lang['exam_date'] ?></th>
 										</tr>
 									</thead>
 								</table>
@@ -323,6 +324,9 @@ if ($_SESSION['level'] == "radiographer") {
 						},
 						{
 							"data": "pat_id"
+						},
+						{
+							"data": "pat_id_issuer"
 						},
 						{
 							"data": "accession_no"

@@ -9,6 +9,7 @@ $query = mysqli_query(
     "SELECT pat_name, 
     pat_sex, 
     pat_id,
+    pat_id_issuer,
     pat_birthdate, 
     accession_no, 
     modality, 
@@ -54,12 +55,13 @@ while ($row = mysqli_fetch_array($query)) {
         "action" => $delete,
         "pat_name" => $detail,
         "pat_id" => defaultValue($row['pat_id']),
+        "pat_id_issuer" => defaultValue($row['pat_id_issuer']),
         "accession_no" => defaultValue($row['accession_no']),
         "pat_birthdate" => defaultValueDate($row['pat_birthdate']),
         "pat_sex" => $pat_sex,
         "modality" => defaultValue($row['modality']),
-        "start_datetime" => defaultValueDateTime($row['start_datetime']),
-        "created_time" => defaultValueDateTime($row['created_time'])
+        "created_time" => defaultValueDateTime($row['created_time']),
+        "start_datetime" => defaultValueDateTime($row['start_datetime'])
     ];
     $i++;
 }

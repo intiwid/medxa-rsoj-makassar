@@ -158,12 +158,12 @@ if ($row['status'] == 'waiting' || $row['status'] == '') {
                 <tr>
                     <td><?= $lang['priority'] ?>(SIMRS)</td>
                     <td>&nbsp;: </td>
-                    <td align="left">&nbsp; <?= $priority; ?></td>
+                    <td align="left">&nbsp; <?= strtoupper($priority); ?></td>
                 </tr>
                 <tr>
                     <td><?= $lang['priority'] ?> (Hasil)</td>
                     <td>&nbsp;: </td>
-                    <td align="left">&nbsp; <?= $priority_doctor; ?></td>
+                    <td align="left">&nbsp; <?= strtoupper($priority_doctor); ?></td>
                 </tr>
                 <tr>
                     <td><?= $lang['study'] ?></td>
@@ -216,12 +216,12 @@ if ($row['status'] == 'waiting' || $row['status'] == '') {
                     <td align="left">&nbsp; <?= $payment; ?></td>
                 </tr>
                 <tr>
-                    <td><?= $lang['patient_order'] ?></td>
+                    <td><?= $lang['patient_order'] ?> Date</td>
                     <td>&nbsp;: </td>
                     <td align="left">&nbsp; <?= $create_time; ?></td>
                 </tr>
                 <tr>
-                    <td><?= $lang['exam_date'] ?></td>
+                    <td>Send Modality Date</td>
                     <td>&nbsp;: </td>
                     <td align="left">&nbsp; <?= $examed_at; ?></td>
                 </tr>
@@ -241,12 +241,12 @@ if ($row['status'] == 'waiting' || $row['status'] == '') {
                     <td align="left">&nbsp; <?= $spendtime; ?></td>
                 </tr>
                 <tr>
-                    <td>Created Date</td>
+                    <td>Created Date Send Pacs</td>
                     <td>&nbsp;: </td>
                     <td align="left">&nbsp; <?= $created_time; ?></td>
                 </tr>
                 <tr>
-                    <td>Updated Date</td>
+                    <td>Updated Date Send Pacs</td>
                     <td>&nbsp;: </td>
                     <td align="left">&nbsp; <?= $updated_time; ?></td>
                 </tr>
