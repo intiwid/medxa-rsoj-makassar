@@ -79,11 +79,6 @@ $row = mysqli_fetch_assoc(mysqli_query(
                     <td align="left">&nbsp; <?= defaultValue($row['req_proc_id']); ?></td>
                 </tr>
                 <tr>
-                    <td><?= $lang['exam_date'] ?></td>
-                    <td>&nbsp;: </td>
-                    <td align="left">&nbsp; <?= defaultValueDateTime($row['start_datetime']); ?></td>
-                </tr>
-                <tr>
                     <td>Station Aet</td>
                     <td>&nbsp;: </td>
                     <td align="left">&nbsp; <?= defaultValue($row['station_aet']); ?></td>
