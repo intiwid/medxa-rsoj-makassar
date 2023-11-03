@@ -36,7 +36,7 @@ li {
 
 .pink-ms {
   box-shadow: none;
-  background-color: #9f015d;
+  background-color: #07437e;
 }
 
 .red-ms {
@@ -83,7 +83,7 @@ li {
 
 .btn-pink-ms {
   box-shadow: none;
-  background-color: #9f015d;
+  background-color: #07437e;
 }
 .btn-pink-ms:hover {
   box-shadow: none;
@@ -558,7 +558,7 @@ table.dataTable tbody td {
 }
 
 .btn-worklist {
-  background-color: #9f015d;
+  background-color: #07437e;
   color: #fff;
   display: inline-block;
   border-width: 1px;
@@ -939,7 +939,7 @@ canvas {
 .footerindex {
   height: 30px;
   line-height: 10px;
-  background: #2a645a;
+  background: #07437e;
   color: #fff;
   /* position: fixed; */
 
@@ -3632,7 +3632,7 @@ table.dataTable > thead .sorting_desc_disabled::after {
 .sidebarnew ul .active,
 .sidebarnew li .active {
   /* border-left: 3px solid #ee6464; */
-  background-color: #2a645a;
+  background-color: #07437e;
 }
 
 .iocn-link .arrow:hover {
@@ -3640,7 +3640,7 @@ table.dataTable > thead .sorting_desc_disabled::after {
 }
 
 .cont-regist h4 {
-  color: #2a645a;
+  color: #07437e;
 }
 
 .input-regist input,
@@ -4140,7 +4140,7 @@ table.dataTable > thead .sorting_desc_disabled::after {
 }
 
 .breadcrumb-item a {
-  color: #9f015d;
+  color: #07437e;
 }
 
 .settings-card {
@@ -4209,7 +4209,7 @@ table.dataTable > thead .sorting_desc_disabled::after {
 
 .btn-viewer-worklist:hover {
   box-shadow: none;
-  border: 1px solid #9f015d;
+  border: 1px solid #07437e;
 }
 
 .btn-viewer-worklist img {

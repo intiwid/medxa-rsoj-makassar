@@ -306,7 +306,7 @@
         });
     }
     let sidebarnew = document.querySelector(".sidebarnew");
-    let sidebarBtn = document.querySelector(".fa-bars-staggered");
+    let sidebarBtn = document.querySelector(".logo-side-bar");
     sidebarBtn.addEventListener("click", () => {
         sidebarnew.classList.toggle("closenew");
     });

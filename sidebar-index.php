@@ -5,7 +5,7 @@
         left: 0;
         height: 100%;
         width: 260px;
-        background: #377D71;
+        background: #0b4c8c;
         z-index: 100;
         transition: all 0.3s ease;
         border-right: 1px solid #2f645b;
@@ -192,7 +192,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: #2b6c61;
+        background: #073a6c;
         padding: 12px 0;
         transition: all 0.3s ease;
     }
@@ -313,7 +313,7 @@
 <!-- ------loader------ -->
 <div class="disokin">
     <div class="spinner">
-        <div><img src="../image/multimed_3_logo_putih.png" style="width: 200px;margin-left: 17px; margin-bottom: 9px;"></div>
+        <div><img src="../image/new/medxa-text-white-2.png" style="width: 200px;margin-left: 17px; margin-bottom: 9px;"></div>
         <div class="back-loader">
             <span class="loader_new"></span>
         </div>
@@ -328,11 +328,14 @@
     <div class="logo-details">
         <div class="home-content">
 
-            <i class="fa-solid fa-bars-staggered"></i>
+            <div style="width: 45px; margin-left: 8px; cursor: pointer;" class="logo-side-bar">
+                <img style="width:75%;" src="../image/new/medxa-logo-only.png">
+            </div>
+            <!-- <i class="fa-solid fa-bars-staggered"></i> -->
             <!-- <span class="text">Drop Down Sidebarnew</span> -->
         </div>
         <div class="logo_name">
-            <div style="width: 165px; margin-top:10px; margin-left: 10px;"><img style="width: 100%;" src="../image/multimed_3_logo_putih.png"></div>
+            <div style="width: 165px;"><img style="width: 75%;" src="../image/new/medxa-text-white-only.png"></div>
         </div>
     </div>
     <ul class="nav-links">

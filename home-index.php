@@ -45,7 +45,7 @@ $approved = mysqli_fetch_assoc(mysqli_query(
     <div class="col-12" style="padding: 0;">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.php">Multimed Solution</a></li>
+          <li class="breadcrumb-item"><a href="index.php">Medxa </a></li>
           <li class="breadcrumb-item active"><?= $lang['ris'] ?></li>
         </ol>
       </nav>
