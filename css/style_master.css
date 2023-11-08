@@ -21,7 +21,7 @@ li {
 
 .green-ms {
   box-shadow: none;
-  background-color: #377d71;
+  background-color: #07437e;
 }
 
 .green-ms-2 {
@@ -60,7 +60,7 @@ li {
 /* -------------------------------------------------------- */
 .btn-green-ms {
   box-shadow: none;
-  background-color: #377d71;
+  background-color: #07437e;
 }
 .btn-green-ms-2 {
   box-shadow: none;
@@ -198,7 +198,7 @@ body {
   width: auto;
   overflow-x: scroll;
   white-space: nowrap;
-  /*  scrollbar-color: #377d71 #cbcccb; 
+  /*  scrollbar-color: #07437e #cbcccb; 
   scrollbar-width: thin;*/
 }
 
@@ -211,7 +211,7 @@ a {
 }
 
 .btn-info.dropdown-toggle {
-  background-color: #377d71 !important;
+  background-color: #07437e !important;
   box-shadow: none;
   border-radius: 5px;
   padding: 6px;
@@ -283,11 +283,11 @@ table.table-dicom tbody tr {
   padding-bottom: 5px;
   text-align: left;
   background: #fff;
-  color: #377d71;
+  color: #07437e;
   text-align: center;
   /* font-weight: bold; */
   border-bottom: 1px solid #d0d0d0;
-  border-top: 1px solid #d0d0d0;
+  /* border-top: 1px solid #d0d0d0; */
   font-size: 13px;
 }
 
@@ -310,7 +310,7 @@ table.table-dicom tbody tr {
 
 .table-box1 {
   background-color: whitesmoke;
-  border-top: 5px solid#377d71;
+  border-top: 5px solid#07437e;
   margin-top: 10px;
   padding: 5px 75px;
 }
@@ -442,7 +442,7 @@ table.dataTable tbody td {
 
 .nav-fostrap li:hover a {
   background: #ecebeb;
-  color: #377d71 !important;
+  color: #07437e !important;
   border-radius: 12px;
 }
 
@@ -645,7 +645,7 @@ table.dataTable tbody td {
 }
 
 .reg-1 {
-  background-color: #377d71;
+  background-color: #07437e;
   width: 100%;
   color: #fff;
   padding-left: 5px;
@@ -661,7 +661,7 @@ table.dataTable tbody td {
 }*/
 
 .border-reg {
-  border-right: 3px solid #377d71;
+  border-right: 3px solid #07437e;
 }
 
 .wrap-search {
@@ -697,7 +697,7 @@ table.dataTable tbody td {
 .work-1 {
   background-color: #fff;
   width: 100%;
-  color: #377d71;
+  color: #07437e;
   padding: 1px 5px 5px 3px;
   font-weight: bold;
   border-bottom: 1px solid #d0d0d0;
@@ -761,7 +761,7 @@ table.dataTable tbody td {
 
 .btn-worklist3 {
   background-color: #fff;
-  color: #377d71;
+  color: #07437e;
   display: inline-block;
   border-width: 1px;
   border-style: solid;
@@ -905,7 +905,7 @@ canvas {
 }
 
 .label-font {
-  background-color: #377d71;
+  background-color: #07437e;
   /* width: 40%; */
   /* padding: 5px; */
   color: #fff;
@@ -1128,7 +1128,7 @@ select {
 
 .hr-home {
   height: 5px;
-  background-color: #377d71;
+  background-color: #07437e;
 }
 
 .btn-cancell {
@@ -1203,7 +1203,7 @@ select {
 
 .search-workload5 {
   background-color: #116d93;
-  color: #377d71;
+  color: #07437e;
   border: 4px solid #116d93;
   margin-bottom: 25px;
   height: 210px;
@@ -1225,7 +1225,7 @@ select {
 }
 
 .report-input2 {
-  border-right: 3px solid #377d71;
+  border-right: 3px solid #07437e;
   height: 50px;
 }
 
@@ -1288,14 +1288,13 @@ select {
 
 .btn-inti2 {
   margin: 1px;
-  padding: 3px 3px;
-  width: 25px;
-  /*margin-right: 3px;*/
-  /* color: #fff; */
-  /*margin-bottom: 5px;*/
+  padding: 4px;
+  width: 30px;
+  border-radius: 50px;
+  background: #eff1f7;
+  border: 1px solid #d0d0d0;
   font-size: 12px;
-  height: 25px;
-  /* border-top: solid 1px #d0d0d0; */
+  height: 30px;
   box-shadow: none;
 }
 
@@ -1331,7 +1330,7 @@ select {
 
 .hr-home2 {
   height: 5px;
-  background-color: #377d71;
+  background-color: #07437e;
   margin: 0px;
 }
 
@@ -1560,12 +1559,12 @@ select {
 }
 
 #menu a.active {
-  background-color: #377d71;
+  background-color: #07437e;
   color: #fff;
 }
 
 #menu a:hover {
-  background-color: #377d71;
+  background-color: #07437e;
   color: #fff;
 }
 
@@ -1679,7 +1678,7 @@ label.file1:after {
 }
 
 .textsearchnewpasien2 {
-  color: #377d71;
+  color: #07437e;
   /* background: #fff; */
   /* margin: 7px 0px 0px 0px; */
   padding: 1px 5px 11px 5px;
@@ -1723,7 +1722,7 @@ label.file1:after {
 
 .table-dicom thead th,
 .table-dicom thead td {
-  /* border-bottom: 3px solid #377d71; */
+  /* border-bottom: 3px solid #07437e; */
 }
 
 /* table.dataTable thead th,
@@ -2453,7 +2452,7 @@ input[type="submit"] {
 
 /* When the radio button is checked, add a blue background */
 .radio-admin input:checked ~ .checkmark-male {
-  background-color: #377d71;
+  background-color: #07437e;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -2467,7 +2466,7 @@ input[type="submit"] {
 
 /* When the radio button is checked, add a blue background */
 .radio-admin input:checked ~ .checkmark-female {
-  background-color: #377d71;
+  background-color: #07437e;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -2481,7 +2480,7 @@ input[type="submit"] {
 
 /* When the radio button is checked, add a blue background */
 .radio-admin input:checked ~ .checkmark-other {
-  background-color: #377d71;
+  background-color: #07437e;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -2714,7 +2713,7 @@ input[type="submit"] {
 @-webkit-keyframes blink-bg-resp {
   0%,
   49% {
-    background-color: #377d71;
+    background-color: #07437e;
     /* border: 3px solid #e50000; */
   }
 
@@ -2732,7 +2731,7 @@ input[type="submit"] {
 
 .div-left {
   min-height: 700px;
-  background: #377d71;
+  background: #07437e;
   /* margin-top: 0px; */
   border-radius: 3px;
   padding: 5px;
@@ -2776,7 +2775,7 @@ input[type="submit"] {
 
 .info-patient {
   /* margin: 10px 10px 10px 5px; */
-  border: 2px solid #377d71;
+  border: 2px solid #07437e;
 }
 
 .info-patient2 {
@@ -2809,7 +2808,7 @@ input[type="submit"] {
   width: 100%;
   border-radius: 6px;
   padding: 5px;
-  border: 2px solid #377d71;
+  border: 2px solid #07437e;
   overflow: auto;
   height: 275px;
   margin-bottom: 13px;
@@ -2818,7 +2817,7 @@ input[type="submit"] {
 .data-patient {
   color: #484848;
   /* background-color: #fcfcfc; */
-  border: 2px solid #377d71;
+  border: 2px solid #07437e;
   border-radius: 5px;
   padding: 0px;
   margin-top: 17px;
@@ -2918,7 +2917,7 @@ input[type="submit"] {
 }
 
 .buttons1 a.button8.delete1:hover {
-  background: #377d71;
+  background: #07437e;
   color: #fff;
   box-shadow: none;
 }
@@ -2940,11 +2939,11 @@ input[type="submit"] {
   padding: 10px;
   border-radius: 5px;
   /* margin: 10px 10px 10px 5px; */
-  border: 2px solid #377d71;
+  border: 2px solid #07437e;
 }
 
 .div-mid {
-  background: #377d71;
+  background: #07437e;
   padding: 0px 5px 0px 5px;
   border-radius: 3px;
   min-height: 764px;
@@ -2957,7 +2956,7 @@ input[type="submit"] {
 }
 
 .textarea-ckeditor {
-  border: 2px solid #377d71;
+  border: 2px solid #07437e;
   width: 100%;
   justify-content: center;
   display: flex;
@@ -2994,7 +2993,7 @@ input[type="submit"] {
 
 .div-right {
   min-height: 791px;
-  background: #377d71;
+  background: #07437e;
   /* margin: 0px 10px 20px 10px; */
   border-radius: 3px;
   padding: 10px;
@@ -3044,7 +3043,7 @@ input[type="submit"] {
 }
 
 .infopatientworklist > tbody > tr:nth-of-type(2n + 1) {
-  color: #377d71;
+  color: #07437e;
 }
 
 .btn-expertise {
@@ -3286,7 +3285,7 @@ button:focus {
   font-family: verdana;
   font-size: 12px;
   font-weight: 200;
-  background-color: #377d71;
+  background-color: #07437e;
   position: fixed;
   top: 0px;
   width: 250px;
@@ -3295,7 +3294,7 @@ button:focus {
   border-right: 2px solid #1ea9e4;
 }
 .nav-side-menu .brand {
-  background-color: #377d71;
+  background-color: #07437e;
   line-height: 50px;
   display: block;
   text-align: center;
@@ -3340,10 +3339,10 @@ button:focus {
 }
 .nav-side-menu ul .sub-menu1 li,
 .nav-side-menu li .sub-menu1 li {
-  background-color: #377d71;
+  background-color: #07437e;
   border: none;
   line-height: 28px;
-  /* border-bottom: 1px solid #377d71; */
+  /* border-bottom: 1px solid #07437e; */
   margin: 0 22px;
   padding: 1px 19px;
 }
@@ -3420,7 +3419,7 @@ button:focus {
 .disokin {
   height: 125%;
   width: 100%;
-  background: #377d71;
+  background: #07437e;
   position: absolute;
   z-index: 900;
 }
@@ -3555,7 +3554,7 @@ table.dataTable > thead .sorting_desc_disabled::after {
 
 .pagination .page-item.active .page-link {
   color: #fff;
-  background-color: #377d71;
+  background-color: #07437e;
   border-radius: 0.125rem;
   margin-bottom: 7px;
   border-top: 1px solid #868686;
@@ -3668,11 +3667,11 @@ table.dataTable > thead .sorting_desc_disabled::after {
 }
 
 .input-regist input:focus + .input-icon i {
-  color: #377d71;
+  color: #07437e;
 }
 
 .input-regist input:focus + .input-icon:after {
-  border-right-color: #377d71;
+  border-right-color: #07437e;
 }
 
 .input-regist input[type="radio"],
@@ -3720,7 +3719,7 @@ table.dataTable > thead .sorting_desc_disabled::after {
 .input-regist input:checked + label:before,
 .input-regist select:focus,
 .input-regist select:active {
-  background-color: #377d71;
+  background-color: #07437e;
   color: #fff;
   /* border-color: #309ace; */
 }
@@ -3863,7 +3862,7 @@ table.dataTable > thead .sorting_desc_disabled::after {
 
 .regist-live tr td {
   font-size: 15px;
-  color: #377d71;
+  color: #07437e;
 }
 
 .right-regist {
@@ -3928,7 +3927,7 @@ table.dataTable > thead .sorting_desc_disabled::after {
 
 .ks-cboxtags li input[type="checkbox"]:checked + span {
   border: 2px solid #fff;
-  background-color: #377d71;
+  background-color: #07437e;
   color: #fff;
   transition: all 0.2s;
 }
@@ -3943,7 +3942,7 @@ table.dataTable > thead .sorting_desc_disabled::after {
 }
 
 .ks-cboxtags li input[type="checkbox"]:focus + span {
-  border: 1px solid #377d71;
+  border: 1px solid #07437e;
 }
 
 .card-body i,
@@ -4105,7 +4104,7 @@ table.dataTable > thead .sorting_desc_disabled::after {
 }
 
 .icon-daily img {
-  width: 80px;
+  width: 85px;
 }
 
 .count_content {
@@ -4152,14 +4151,14 @@ table.dataTable > thead .sorting_desc_disabled::after {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #377d71;
+  background-color: #07437e;
   border-radius: 0;
   font-size: 20px;
 }
 
 .nav-pills .nav-item a {
   font-size: 20px;
-  color: #377d71;
+  color: #07437e;
 }
 
 .settings-card .tab-content {
@@ -4225,6 +4224,18 @@ a.btn:not([href]):not([tabindex]):hover {
 .table-dicom .alert {
   padding: 6px;
   margin: 2px;
+}
+
+
+.label-status-approve{
+  font-weight: bold;
+  color: #0080ff;
+  cursor: pointer;
+}
+
+.label-status-waiting{
+  font-weight: bold;
+  color: #ff8040;
 }
 
 @media (max-width: 960px) {

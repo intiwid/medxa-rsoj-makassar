@@ -18,10 +18,10 @@ $date2 = date('d-m-Y 23:59');
             <div style="padding: 0px;" class="col-lg-3 input-date">
                 <div class="card rounded border-0 position-relative">
                     <div class="card-body">
-                        <div class="d-flex align-items-center"><i class="far fa-calendar-alt fa-4x mr-2"></i>
+                        <div class="d-flex align-items-center"><!--<i class="far fa-calendar-alt fa-4x mr-2"></i>--><img style="width: 55px;" src="../image/new/date.svg" alt="">
                             <div class="ms-3">
                                 <h4 class="text-uppercase fw-weight-bold mb-0"><?= $lang['search_date'] ?></h4>
-                                <p class="mb-0" style="font-style: italic; color: grey;">And time</p>
+                                <p class="mb-0" style="font-style: italic; color: grey;">Date And Time</p>
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@ $date2 = date('d-m-Y 23:59');
             <div style="padding: 0px;" class="col-lg-4 input-checkbox">
                 <div class="card rounded border-0 position-relative">
                     <div class="card-body">
-                        <div class="d-flex align-items-center"><i class="fas fa-x-ray fa-4x mr-2"></i>
+                        <div class="d-flex align-items-center"> <!--<i class="fas fa-x-ray fa-4x mr-2"></i> --><img style="width: 55px;" src="../image/new/xray.svg" alt="">
                             <div class="ms-3">
                                 <h4 class="text-uppercase fw-weight-bold mb-0"><?= $lang['search_mod'] ?></h4>
                                 <p class="mb-0" style="font-style: italic; color: grey;"><input type="checkbox" class="cboxtombol" style="margin-top: 0px;" checked> <?= $lang['check_all'] ?></p>
@@ -78,7 +78,7 @@ $date2 = date('d-m-Y 23:59');
             <div style="padding: 0px;" s class="col-lg-5 input-name">
                 <div class="card rounded border-0 position-relative">
                     <div class="card-body">
-                        <div class="d-flex align-items-center"><i class="fas fa-user-plus fa-4x mr-2"></i>
+                        <div class="d-flex align-items-center"><!-- <i class="fas fa-user-plus fa-4x mr-2"></i>--><img style="width: 55px;" src="../image/new/patient-repo.svg" alt=""> 
                             <div class="ms-3">
                                 <h4 class="text-uppercase fw-weight-bold mb-0"><?= $lang['search_patient'] ?></h4>
                                 <p class="mb-0" style="font-style: italic; color: grey;">Name, MRN or No foto</p>

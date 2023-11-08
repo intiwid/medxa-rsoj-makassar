@@ -111,6 +111,11 @@ if (!($_SESSION['username'] = $data['username'])) {
             .input5:valid~.label5 {
                 color: #d5d5d5;
             }
+
+            .img-login img{
+              width: 100%;
+
+            }
         </style>
   </head>
 
@@ -125,7 +130,7 @@ if (!($_SESSION['username'] = $data['username'])) {
 
             <form class="login" method="post" action="" style="width: 375px;">
                 <div class="img-login">
-                    <img src="image/multimed_2_logo.png" alt="">
+                    <img src="image/new/medxa-portrait.png" alt="">
                 </div><br>
                 <div class="form-group">
                     <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="<?= $lang['input_uname'] ?>" required>
@@ -136,7 +141,7 @@ if (!($_SESSION['username'] = $data['username'])) {
                 <button href="readmore.php" type="submit" name="login" class="buttonsearch" style="width: 100%;">Login</button>
 
                 <div class="dropdown" style=" position: absolute; width: 79%; bottom: 39px;">
-                    <button class="dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 6px; border: none; border-radius: 3px;background: #eaeaea; color: #9f015d; font-weight: bold; font-size: 12px;"><?= $lang['language'] ?>
+                    <button class="dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 6px; border: none; border-radius: 3px;background: #eaeaea; color: #2db09a; font-weight: bold; font-size: 12px;"><?= $lang['language'] ?>
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <li><a href="?lang=en"><img style="width: 20px;" src="image/usa.png"> English</a></li>

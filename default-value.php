@@ -78,9 +78,9 @@ function styleSex($value)
 function styleStatus($value, $study_iuid)
 {
     if ($value == 'WAITING' || $value == 'waiting') {
-        $status =  '<i style="color: #18A850;" class="fas fa-sync"> Waiting</i>';
+        $status =  '<img style="width: 26px;" src="../image/new/clock.svg"> <label class="label-status-waiting">Waiting</label>';
     } else if ($value == 'APPROVED' || $value == 'approved') {
-        $status =  '<i class="fa fa-history text-success" title="Expertise History" aria-hidden="true"></i> <a href="workload-fill-detail.php?study_iuid=' . $study_iuid . '"><i style="color: #1862B0" class="fas fa-check-square"> Approved</i></a>';
+        $status =  '<i class="fa fa-history text-success" title="Expertise History" aria-hidden="true"></i> <a href="workload-fill-detail.php?study_iuid=' . $study_iuid . '"><img style="width: 26px;" src="../image/new/check.svg"><label class="label-status-approve">Approved</label></a>';
     } else if ($value == 'backup') {
         $status =  '<i style="color: red" class="fas fa-check-square"> BACK UP</i>';
     } else {

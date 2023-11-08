@@ -53,10 +53,11 @@ $approved = mysqli_fetch_assoc(mysqli_query(
   </div>
 
   <div class="row">
+  
     <div class="col-md-4 card-daily">
       <div class="box-daily">
         <div class="icon-daily">
-          <img src="../image/studies.svg">
+          <img src="../image/new/user-studies.svg">
         </div>
         <div class="count_content">
           <h3><span class="counter"><?php echo $total['total']
@@ -70,7 +71,7 @@ $approved = mysqli_fetch_assoc(mysqli_query(
       <div class="card-daily">
         <div class="box-daily">
           <div class="icon-daily">
-            <img src="../image/waitingstudies.svg">
+            <img src="../image/new/user-waiting.svg">
           </div>
           <div class="count_content">
             <h3><span class="counter"><?php echo $approved['total']
@@ -84,7 +85,7 @@ $approved = mysqli_fetch_assoc(mysqli_query(
     <div class="col-md-4 card-daily">
       <div class="box-daily">
         <div class="icon-daily">
-          <img src="../image/approvestudies.svg">
+          <img src="../image/new/user-approve.svg">
         </div>
         <div class="count_content">
           <h3><span class="counter"><?php echo $waiting['total'];

@@ -67,7 +67,7 @@
     }
 
     .sidebarnew .nav-links li:hover {
-        background: #2b6c61;
+        background: #07437e;
     }
 
     .sidebarnew .nav-links li .iocn-link {
@@ -120,7 +120,7 @@
     .sidebarnew .nav-links li .sub-menu {
         padding: 6px 6px 14px 50px;
         margin-top: -10px;
-        background: #2b6c61;
+        background: #07437e;
         display: none;
     }
 

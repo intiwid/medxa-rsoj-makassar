@@ -1,17 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 800 800" style="enable-background:new 0 0 800 800;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;stroke:#008080;stroke-width:66.6667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:133.3333;}
-</style>
-<g id="SVGRepo_bgCarrier">
-</g>
-<g id="SVGRepo_tracerCarrier">
-</g>
-<g id="SVGRepo_iconCarrier">
-	<path class="st0" d="M440.5,35.2H197.3c-44.8,0-81.1,36.3-81.1,81.1v202.7 M440.5,35.2l243.2,243.2 M440.5,35.2v202.7
-		c0,22.4,18.1,40.5,40.5,40.5h202.7 M683.7,278.4v405.3c0,44.8-36.3,81.1-81.1,81.1H318.9c-89.5,0-162.1-72.6-162.1-162.1l0,0
-		c0-89.5,72.6-162.1,162.1-162.1h121.6 M440.5,440.5L318.9,318.9 M440.5,440.5L318.9,562.1"/>
-</g>
-</svg>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <rect width="48" height="48" fill="white" fill-opacity="0.01"/> <path d="M48 0H0V48H48V0Z" fill="white" fill-opacity="0.01"/> <path d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z" fill="#2F88FF" stroke="#2F88FF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/> <path d="M33.5424 27C32.2681 31.0571 28.4778 34 24.0002 34C19.5226 34 15.7323 31.0571 14.458 27V33" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/> <path d="M33.5424 15V21C32.2681 16.9429 28.4778 14 24.0002 14C19.5226 14 15.7323 16.9429 14.458 21" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>

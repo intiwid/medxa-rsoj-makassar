@@ -1,19 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns:svgjs="http://svgjs.com/svgjs"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
-	 style="enable-background:new 0 0 512 512;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;stroke:#BC5E0A;stroke-width:51;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:133.3333;}
-	.st1{fill:none;stroke:#808080;stroke-width:38;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:133.3333;}
-</style>
-<g id="SVGRepo_iconCarrier">
-	<path id="secondary" class="st0" d="M436.2,256.8c0,0-80.3,102.7-179.7,102.7S76.8,256.8,76.8,256.8s80.3-102.7,179.7-102.7
-		S436.2,256.8,436.2,256.8z M256.5,205.4c-28.4,0-51.3,23-51.3,51.3s23,51.3,51.3,51.3s51.3-23,51.3-51.3S284.9,205.4,256.5,205.4z"
-		/>
-	<path id="primary" class="st1" d="M25.5,128.4v-77c0-14.2,11.5-25.7,25.7-25.7h77"/>
-	<path id="primary-2" class="st1" d="M487.5,128.4v-77c0-14.2-11.5-25.7-25.7-25.7h-77"/>
-	<path id="primary-3" class="st1" d="M25.5,385.1v77c0,14.2,11.5,25.7,25.7,25.7h77"/>
-	<path id="primary-4" class="st1" d="M487.5,385.1v77c0,14.2-11.5,25.7-25.7,25.7h-77"/>
-</g>
-</svg>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path opacity="0.5" d="M2 12C2 13.6394 2.42496 14.1915 3.27489 15.2957C4.97196 17.5004 7.81811 20 12 20C16.1819 20 19.028 17.5004 20.7251 15.2957C21.575 14.1915 22 13.6394 22 12C22 10.3606 21.575 9.80853 20.7251 8.70433C19.028 6.49956 16.1819 4 12 4C7.81811 4 4.97196 6.49956 3.27489 8.70433C2.42496 9.80853 2 10.3606 2 12Z" fill="#ff8000"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12C8.25 9.92893 9.92893 8.25 12 8.25C14.0711 8.25 15.75 9.92893 15.75 12C15.75 14.0711 14.0711 15.75 12 15.75C9.92893 15.75 8.25 14.0711 8.25 12ZM9.75 12C9.75 10.7574 10.7574 9.75 12 9.75C13.2426 9.75 14.25 10.7574 14.25 12C14.25 13.2426 13.2426 14.25 12 14.25C10.7574 14.25 9.75 13.2426 9.75 12Z" fill="#ff8000"/> </g>
+</svg>
