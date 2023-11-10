@@ -59,7 +59,7 @@ function spendTime($value_study_datetime, $value_approved_at, $value_status)
 function styleSex($value)
 {
     if ($value == 'M') {
-        $sex = '<i style="color: #1f69b7;" class="fas fa-mars"> M</i>';
+        $sex = '<span class="btn btn-inti5 waves-effect waves-light" style="box-shadow: none;"><i style="color: #1f69b7;" class="fas fa-mars"> M</i></span>';
     } else if ($value == 'L') {
         $sex = '<i style="color: #1f69b7;" class="fas fa-mars"> L</i>';
     } else if ($value == 'P') {

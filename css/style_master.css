@@ -1308,6 +1308,18 @@ select {
   font-size: 12px;
 }
 
+.btn-inti5 {
+  margin: 1px;
+  padding: 7px;
+  width: 40px;
+  border-radius: 10px;
+  background: #eff1f7;
+  border: 1px solid #d0d0d0;
+  font-size: 12px;
+  height: 30px;
+  box-shadow: none;
+}
+
 .btn.focus,
 .btn:focus,
 .btn:hover {
