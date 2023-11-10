@@ -1311,7 +1311,7 @@ select {
 .btn-inti5 {
   margin: 1px;
   padding: 7px;
-  width: 40px;
+  width: 100%;
   border-radius: 10px;
   background: #eff1f7;
   border: 1px solid #d0d0d0;

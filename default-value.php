@@ -59,15 +59,15 @@ function spendTime($value_study_datetime, $value_approved_at, $value_status)
 function styleSex($value)
 {
     if ($value == 'M') {
-        $sex = '<span class="btn btn-inti5 waves-effect waves-light" style="box-shadow: none;"><i style="color: #1f69b7;" class="fas fa-mars"> M</i></span>';
+        $sex = '<span class="btn-inti5" style="box-shadow: none;"><i style="color: #1f69b7;" class="fas fa-mars"> M</i></span>';
     } else if ($value == 'L') {
-        $sex = '<i style="color: #1f69b7;" class="fas fa-mars"> L</i>';
+        $sex = '<span class="btn-inti5" style="box-shadow: none;"><i style="color: #1f69b7;" class="fas fa-mars"> L</i></span>';
     } else if ($value == 'P') {
-        $sex = '<i style="color: #ff637e;" class="fas fa-venus"> P</i>';
+        $sex = '<span class="btn-inti5" style="box-shadow: none;"><i style="color: #ff637e;" class="fas fa-venus"> P</i></span>';
     } else if ($value == 'F') {
-        $sex = '<i style="color: #ff637e;" class="fas fa-venus"> F</i>';
+        $sex = '<span class="btn-inti5" style="box-shadow: none;"><i style="color: #ff637e;" class="fas fa-venus"> F</i></span>';
     } else if ($value == 'O') {
-        $sex = '<i class="fas fa-genderless"> O</i>';
+        $sex = '<span class="btn-inti5" style="box-shadow: none;"><i class="fas fa-genderless"> O</i></span>';
     } else {
         $sex = '-';
     }
