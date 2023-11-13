@@ -4,7 +4,7 @@
         top: 0;
         left: 0;
         height: 100%;
-        width: 260px;
+        width: 275px;
         background: #0b4c8c;
         z-index: 100;
         transition: all 0.3s ease;
@@ -252,7 +252,7 @@
         position: relative;
         /* background: #eff1f7; */
         height: 100vh;
-        left: 260px;
+        left: 265px;
         width: calc(100% - 260px);
         transition: all 0.5s ease;
     }
@@ -352,13 +352,17 @@
         <!-- =================SIDEBAR RADIOGRAPHER====================== -->
         <?php if ($_SESSION['level'] == 'radiographer') { ?>
             <li data-target="#products1">
-                <div class="iocn-link">
-                    <a href="#" class="click-orders">
-                        <i class="fa-solid fa-hospital-user"></i>
-                        <span class="link_name"><?= $lang['orders'] ?></span>
-                    </a>
-                    <i class="fa-solid fa-angle-down arrow"></i>
-                </div>
+                
+                    <div class="">
+                        <a href="#" class="click-orders iocn-link">
+                            <div>
+                                <i class="fa-solid fa-hospital-user"></i>
+                                <span class="link_name"><?= $lang['orders'] ?></span>
+                            </div>
+                            <i class="fa-solid fa-angle-down arrow"></i>
+                        </a>
+                    </div>
+             
                 <ul class="sub-menu sub-menu-orders">
                     <li><a class="link_name" href="#"><?= $lang['orders'] ?></a></li>
                     <li><a href="registration.php"><?= $lang['registration'] ?></a></li>
@@ -367,12 +371,14 @@
                 </ul>
             </li>
             <li data-target="#service">
-                <div class="iocn-link">
-                    <a href="#" class="click-management">
-                        <i class="fa-solid fa-book-medical"></i>
-                        <span class="link_name"><?= $lang['patient_management'] ?></span>
+                <div class="">
+                    <a href="#" class="click-management iocn-link">
+                        <div>
+                            <i class="fa-solid fa-book-medical"></i>
+                            <span class="link_name"><?= $lang['patient_management'] ?></span>
+                        </div>
+                        <i class="fa-solid fa-angle-down arrow"></i>
                     </a>
-                    <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu sub-menu-management">
                     <li><a class="link_name" href="#"><?= $lang['patient_management'] ?></a></li>

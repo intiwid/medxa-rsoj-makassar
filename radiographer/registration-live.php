@@ -332,7 +332,7 @@ if ($_SESSION['level'] == "radiographer") {
                               <input type="hidden" name="fromorder" id="fromorder" value="RIS">
                               <!-- create time -->
                               <input type="hidden" name="create_time" id="create_time" value="<?= date('Y-m-d H:i:s'); ?>">
-                              <button class="btn btn-lg waves-effect waves-light" type="submit" id="submit" name="submit" style="border-radius: 5px; box-shadow:none; background-color:#9f015d; color: #fff;">
+                              <button class="btn btn-lg waves-effect waves-light" type="submit" id="submit" name="submit" style="border-radius: 5px; box-shadow:none; background-color:#2fb9a2; color: #fff;">
                                 <span class="spinner-grow spinner-grow-sm loading" role="status" aria-hidden="true"></span>
                                 <p class="loading" style="display:inline;">Loading...</p>
                                 <p class="ubah" style="display:inline;">Order</p>

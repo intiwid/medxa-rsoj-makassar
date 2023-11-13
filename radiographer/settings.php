@@ -85,7 +85,7 @@ if ($_SESSION['level'] == "radiographer") {
 
 
 
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="border-bottom: 2px solid #377d71;">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="border-bottom: 2px solid #07437e;">
               <li class="nav-item">
                 <a class="nav-link active" id="upload-dicom-tab" data-toggle="pill" href="#upload-dicom" role="tab" aria-controls="upload-dicom" aria-selected="true" style="border-radius: 5px 0 0 0;"><i class="fa-solid fa-file-import"></i> Upload Dicom</a>
               </li>
