@@ -99,7 +99,7 @@ $mail->Subject = 'Notifikasi Patient Ruangan Radiology';
 $mail->msgHTML(file_get_contents(''), __DIR__);
 
 //Replace the plain text body with one created manually
-$mail->Body = "<h2>Multimed RISPACS</h2>"."<h3>Pasien Anda Menunggu</h3>".
+$mail->Body = "<h2>Medxa RISPACS</h2>"."<h3>Pasien Anda Menunggu</h3>".
 
 
                      "<table width='100%' border='1' style='margin-top:15px;' align='left class='table table-striped'>". 

@@ -150,7 +150,7 @@ if (isset($_POST["submit"])) {
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
     <div class="background">
-        <div class="title">BERIKUT ADALAH TATA CARA UNTUK MAINTENANCE SERVER Multimed RISPACS
+        <div class="title">BERIKUT ADALAH TATA CARA UNTUK MAINTENANCE SERVER Medxa RISPACS
         </div>
         <div style="height:20px"></div>
         <div class="instructions">Jadwal Maintenance :<b> <?php echo date("d M Y", strtotime($date_maintenance)); ?></div>

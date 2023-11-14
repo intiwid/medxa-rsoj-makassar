@@ -34,7 +34,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
     <!-- <div class="footerindex">
         
           <div class="footer-login"><br>
-            <center><p style="margin-bottom: 0px;">&copy; Powered by Multimed IT Solution 2022</a>.</p></center>
+            <center><p style="margin-bottom: 0px;">&copy; Powered by Medxa IT Solution 2022</a>.</p></center>
           </div>
   
       </div> -->

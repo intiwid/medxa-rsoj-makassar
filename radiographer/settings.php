@@ -116,7 +116,7 @@ if ($_SESSION['level'] == "radiographer") {
                               <div><img src="../image/upload_med.png"></div>
                               <div class="heading">DICOM SEND</div>
                               <div class="site-title">Upload Your Dicom Files Here</div>
-                              <!-- <div class="site-slogan">With <a style="color: #ac0061; font-weight: bold;" href="index.php">Multimed</a> Dicom Send</div> -->
+                              <!-- <div class="site-slogan">With <a style="color: #ac0061; font-weight: bold;" href="index.php">Medxa</a> Dicom Send</div> -->
                             </div>
                           </div>
                         </div>

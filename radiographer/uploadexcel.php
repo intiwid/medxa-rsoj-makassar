@@ -32,7 +32,7 @@ if ($_SESSION['level'] == "radiographer") {
                                     <div><img src="../icon-menubar/new_icon/excel.png"></div>
                                     <div class="heading">UPLOAD FILE REPORT</div>
                                     <div class="site-title">Back Up Your Report Files</div>
-                                    <div class="site-slogan">With <a style="color: #85cbb3; font-weight: bold;" href="index.php">Multimed</a> Backup</div>
+                                    <div class="site-slogan">With <a style="color: #85cbb3; font-weight: bold;" href="index.php">Medxa</a> Backup</div>
                                 </div>
                             </div>
                         </div>
