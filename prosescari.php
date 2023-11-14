@@ -293,12 +293,12 @@ while ($row = mysqli_fetch_array($result)) {
 
   $sub_array = array();
   $sub_array[] = $i;
+  $sub_array[] = $detail . '&nbsp;' . $priority_style;
+  $sub_array[] = $pat_id;
+  $sub_array[] = $status . '&nbsp;' . $badge;
   $sub_array[] =
     PDFFIRST . $study_iuid . PDFLAST .
     $level;
-  $sub_array[] = $status . '&nbsp;' . $badge;
-  $sub_array[] = $detail . '&nbsp;' . $priority_style;
-  $sub_array[] = $pat_id;
   $sub_array[] = $no_foto;
   $sub_array[] = $pat_birthdate;
   $sub_array[] = $pat_sex;

@@ -124,17 +124,18 @@ $approved = mysqli_fetch_assoc(mysqli_query(
           "data": "no"
         },
         {
-          "data": "report"
-        },
-        {
-          "data": "status"
-        },
-        {
           "data": "pat_name"
         },
         {
           "data": "mrn"
         },
+        {
+          "data": "status"
+        },
+        {
+          "data": "report"
+        },
+        
         {
           "data": "no_foto"
         },

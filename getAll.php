@@ -195,9 +195,9 @@ while ($row = mysqli_fetch_array($query)) {
 
     $data[] = [
         "no" => $i,
-        "report" => $aksi,
-        "status" => $status . '&nbsp;' . $badge,
         "pat_name" => $detail . '&nbsp;' . $priority_style,
+        "status" => $status . '&nbsp;' . $badge,
+        "report" => $aksi,
         "mrn" => $pat_id,
         "no_foto" => $no_foto,
         "pat_birthdate" => $pat_birthdate,

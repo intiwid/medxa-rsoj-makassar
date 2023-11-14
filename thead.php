@@ -1,9 +1,9 @@
 <tr>
     <th>No</th>
-    <th>Action</th>
-    <th>Status</th>
     <th><?= $lang['patient_name'] ?></th>
     <th>MRN</th>
+    <th>Status</th>
+    <th>Action</th>
     <th>No Foto</th>
     <th><?= $lang['age'] ?></th>
     <th><?= $lang['sex'] ?></th>
