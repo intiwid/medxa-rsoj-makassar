@@ -219,7 +219,7 @@ Contact us at (Office) +62-21-4532648</p>",
 	// END OF CHART
 
 	//  LOGIN
-	"welcome_Multimed" => "Welcome to Multimed RISPACS",
+	"welcome_Multimed" => "Welcome to Medxa RISPACS",
 	"contact_us" => "Contact US",
 	"login" => "Login",
 

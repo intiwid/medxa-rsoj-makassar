@@ -188,7 +188,7 @@
     .sidebarnew .profile-details {
         position: fixed;
         bottom: 0;
-        width: 260px;
+        width: 275px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -253,7 +253,7 @@
         /* background: #eff1f7; */
         height: 100vh;
         left: 265px;
-        width: calc(100% - 260px);
+        width: calc(100% - 265px);
         transition: all 0.5s ease;
     }
 
@@ -328,7 +328,7 @@
     <div class="logo-details">
         <div class="home-content">
 
-            <div style="width: 45px; margin-left: 8px; cursor: pointer;" class="logo-side-bar">
+            <div style="width: 45px; margin-left: 12px; cursor: pointer;" class="logo-side-bar">
                 <img style="width:75%;" src="../image/new/medxa-logo-only.png">
             </div>
             <!-- <i class="fa-solid fa-bars-staggered"></i> -->

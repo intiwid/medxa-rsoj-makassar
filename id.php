@@ -217,7 +217,7 @@ Hubungi kami di (Kantor) + 62-21-4532648 </p>",
 	// END OF CHART
 
 	//  LOGIN
-	"welcome_Multimed" => "Selamat Datang di Multimed RISPACS",
+	"welcome_Multimed" => "Selamat Datang di Medxa RISPACS",
 	"contact_us" => "Hubungi Kami",
 	"login" => "Masuk",
 
