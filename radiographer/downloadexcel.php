@@ -14,7 +14,7 @@ if ($_SESSION['level'] == "radiographer") {
         <?php include('head.php'); ?>
         <style>
             body {
-                background-color: #377d71;
+                background-color: #0b4c8c;
             }
         </style>
     </head>

@@ -320,7 +320,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 			<div class="footerindex">
 				<div class="footer-login col-sm-12"><br>
 					<center>
-						<p>&copy; Powered by Intiwid IT Solution 2022</a>.</p>
+						<p>&copy; Powered by IT Solution 2023</a>.</p>
 					</center>
 				</div>
 			</div>

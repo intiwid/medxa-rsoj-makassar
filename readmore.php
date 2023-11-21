@@ -46,7 +46,7 @@ session_start();
           <i class="fas fa-tags"></i>&nbsp;
           Description
         </h3>
-        <!-- <p><b>Panduan Penggunaan Intiwid RisPacs.</b></p>
+        <!-- <p><b>Panduan Penggunaan RisPacs.</b></p>
         <p>Download Panduan lengkap <a href="read-more/manual-book.docx">Di sini</a></p> -->
         <h3 class="ui horizontal divider header">
           <i class="fas fa-chart-bar"></i>&nbsp;
