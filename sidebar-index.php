@@ -259,7 +259,7 @@
 
     .sidebarnew.closenew~.home-section {
         left: 55px;
-        width: calc(100% - 78px);
+        width: calc(100% - 60px);
     }
 
     .home-section .home-content {
