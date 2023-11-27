@@ -28,8 +28,8 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
       <div id="content1">
         <div class="container-fluid">
           <div class="about-inti col-md-7">
-            <h2><?= $lang['about_us'] ?></h2><br>
-            <?= $lang['about_content'] ?>
+            <!-- <h2><?= $lang['about_us'] ?></h2><br>
+            <?= $lang['about_content'] ?> -->
 
             <img style="width: 30px;" src="../image/whatsapp.png">&nbsp;&nbsp;<label></label>&nbsp; (IT SERVICE)<br><br>
             <img style="width: 30px;" src="../image/email.png">&nbsp;&nbsp;<label></label>

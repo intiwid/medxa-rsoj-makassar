@@ -568,9 +568,10 @@ table.dataTable tbody td {
   /* width: 25%; */
   /* height: 25px; */
   margin-right: 5px;
-  padding: 6px 33px;
+  padding: 10px 33px;
   box-shadow: none;
   font-weight: bold;
+  float: right;
 }
 
 .btn-worklist:hover {
@@ -748,7 +749,7 @@ table.dataTable tbody td {
   border-width: 1px;
   border-style: solid;
   transition: 0.5s ease-in-out;
-  padding: 6px;
+  padding: 11px;
   border-radius: 5px;
   font-weight: bold;
   /*box-shadow: #c4aeae 3px 3px;*/
