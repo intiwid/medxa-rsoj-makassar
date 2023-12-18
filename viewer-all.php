@@ -154,7 +154,7 @@ define('HTMLWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $_SERVER['S
 define('HTMLWORKLISTLAST', '" class="btn btn-viewer-worklist" target="_blank"><img src="../image/html.svg">&nbsp; HTML Viewer</a></div>');
 
 define('RADIANTWORKLISTFIRST', '<div class="col-lg"><a href="radiant://?n=paet&v=dcmPACS&n=pstv&v=0020000D&v=%22');
-define('RADIANTWORKLISTLAST', '%22" class="btn btn-viewer-worklist"><img src="../image/radiAnt.png">&nbsp; Radiant</a></div>');
+define('RADIANTWORKLISTLAST', '%22" class="btn btn-viewer-worklist"><img src="../image/radiAnt.png">&nbsp; Radiant Viewer</a></div>');
 // url HOROS -> Horos://?methodName=retrieve&serverName=INTIWID&then=open&retrieveOnlyIfNeeded=yes&filterKey=StudyInstanceUID&filterValue=
 // url HOROS -> Horos://?methodName=displayStudy&StudyInstanceUID=
 define('HOROSWORKLISTFIRST', '<div class="col-lg"><a href="Horos://?methodName=displayStudy&StudyInstanceUID=');
