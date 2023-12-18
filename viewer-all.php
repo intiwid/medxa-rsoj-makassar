@@ -109,13 +109,13 @@ if ($_SERVER['SERVER_NAME'] == $hostname['ip_publik']) {
     define('OHIFNEWFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':82/viewer?StudyInstanceUIDs=');
     define('OHIFNEWLAST', "$ohif_small");
     // jika menggunakan ohif baru icon(large)
-    define('OHIFNEWWORKLISTFIRST', '<div class="col-lg-3"><a href="http://' . $_SERVER['SERVER_NAME'] . ':82/viewer?StudyInstanceUIDs=');
+    define('OHIFNEWWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $_SERVER['SERVER_NAME'] . ':82/viewer?StudyInstanceUIDs=');
     define('OHIFNEWWORKLISTLAST', "$ohif_large");
 } else {
     define('OHIFNEWFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':81/viewer?StudyInstanceUIDs=');
     define('OHIFNEWLAST', "$ohif_small");
     // jika menggunakan ohif baru icon(large)
-    define('OHIFNEWWORKLISTFIRST', '<div class="col-lg-3"><a href="http://' . $_SERVER['SERVER_NAME'] . ':81/viewer?StudyInstanceUIDs=');
+    define('OHIFNEWWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $_SERVER['SERVER_NAME'] . ':81/viewer?StudyInstanceUIDs=');
     define('OHIFNEWWORKLISTLAST', "$ohif_large");
 }
 
@@ -132,7 +132,7 @@ if ($_SERVER['SERVER_NAME'] == $hostname['ip_publik']) {
     define('OHIFOLDLAST', "$ohif_small");
 
     // jika menggunakan ohif lama icon(large)
-    define('OHIFOLDWORKLISTFIRST', '<div class="col-lg-3"><a data-toggle="collapse" href="#ohif" role="button" aria-expanded="false" aria-controls="ohif');
+    define('OHIFOLDWORKLISTFIRST', '<div class="col-lg"><a data-toggle="collapse" href="#ohif" role="button" aria-expanded="false" aria-controls="ohif');
     define('OHIFOLDWORKLISTLAST', "$ohif_large");
 } else {
     $url = ohifurl(91);
@@ -142,23 +142,23 @@ if ($_SERVER['SERVER_NAME'] == $hostname['ip_publik']) {
     define('OHIFOLDLAST', "$ohif_small");
 
     // jika menggunakan ohif lama icon(large)
-    define('OHIFOLDWORKLISTFIRST', '<div class="col-lg-3"><a data-toggle="collapse" href="#ohif" role="button" aria-expanded="false" aria-controls="ohif');
+    define('OHIFOLDWORKLISTFIRST', '<div class="col-lg"><a data-toggle="collapse" href="#ohif" role="button" aria-expanded="false" aria-controls="ohif');
     define('OHIFOLDWORKLISTLAST', "$ohif_large");
 }
 
 // VIEWER DI WORKLIST ICON LARGE
-define('DICOMWORKLISTFIRST', '<div class="col-lg-3"><a href="jnlp://' . $_SERVER['SERVER_NAME'] . ':19898/weasis-pacs-connector/DCM_viewer.jnlp?studyUID=');
+define('DICOMWORKLISTFIRST', '<div class="col-lg"><a href="jnlp://' . $_SERVER['SERVER_NAME'] . ':19898/weasis-pacs-connector/DCM_viewer.jnlp?studyUID=');
 define('DICOMWORKLISTLAST', '"class="btn btn-viewer-worklist"><img src="../image/desktop.svg">&nbsp; Dicom Viewer</a></div>');
 
-define('HTMLWORKLISTFIRST', '<div class="col-lg-3"><a href="http://' . $_SERVER['SERVER_NAME'] . ':19898/mms/viewer.html?studyUID=');
+define('HTMLWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $_SERVER['SERVER_NAME'] . ':19898/mms/viewer.html?studyUID=');
 define('HTMLWORKLISTLAST', '" class="btn btn-viewer-worklist" target="_blank"><img src="../image/html.svg">&nbsp; HTML Viewer</a></div>');
 
-define('RADIANTWORKLISTFIRST', '<div class="col-lg-3"><a href="radiant://?n=paet&v=dcmPACS&n=pstv&v=0020000D&v=%22');
+define('RADIANTWORKLISTFIRST', '<div class="col-lg"><a href="radiant://?n=paet&v=dcmPACS&n=pstv&v=0020000D&v=%22');
 define('RADIANTWORKLISTLAST', '%22" class="btn btn-viewer-worklist"><img src="../image/radiAnt.png">&nbsp; Radiant</a></div>');
 // url HOROS -> Horos://?methodName=retrieve&serverName=INTIWID&then=open&retrieveOnlyIfNeeded=yes&filterKey=StudyInstanceUID&filterValue=
 // url HOROS -> Horos://?methodName=displayStudy&StudyInstanceUID=
-define('HOROSWORKLISTFIRST', '<div class="col-lg-3"><a href="Horos://?methodName=displayStudy&StudyInstanceUID=');
+define('HOROSWORKLISTFIRST', '<div class="col-lg"><a href="Horos://?methodName=displayStudy&StudyInstanceUID=');
 define('HOROSWORKLISTLAST', '"class="btn btn-viewer-worklist"><img src="../image/horos.png">&nbsp; Horos</a></div>');
 
-define('INOBITECWORKLISTFIRST', '<div class="col-lg-3"><a onclick="inobitec(');
+define('INOBITECWORKLISTFIRST', '<div class="col-lg"><a onclick="inobitec(');
 define('INOBITECWORKLISTLAST', ')" id="inobitec" data-ip="' . $_SERVER['SERVER_NAME'] . '" class="btn btn-viewer-worklist"><img src="../image/inobitec.png">&nbsp; Inobitec</a></div>');

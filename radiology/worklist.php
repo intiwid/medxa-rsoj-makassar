@@ -396,9 +396,10 @@ if ($_SESSION['level'] == "radiology") {
 															<div class="container-fluid">
 																<div class="row">
 																	<?= RADIANTWORKLISTFIRST . $uid . RADIANTWORKLISTLAST .
-																		INOBITECWORKLISTFIRST . "'$uid'" . INOBITECWORKLISTLAST .
-																		HTMLWORKLISTFIRST . $uid . HTMLWORKLISTLAST .
-																		OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST;
+																		// INOBITECWORKLISTFIRST . "'$uid'" . INOBITECWORKLISTLAST .
+																		OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST.
+																		HTMLWORKLISTFIRST . $uid . HTMLWORKLISTLAST ;
+																		;
 																	?>
 
 																</div>

@@ -222,7 +222,7 @@ while ($row = mysqli_fetch_array($result)) {
   if ($level == 'radiology') {
     $detail = '<a href="workload-edit.php?uid=' . $study_iuid . '" class="penawaran-a">' . removeCharacter($pat_name) . '</a>';
     $level =
-      HOROSFIRST . $study_iuid . HOROSLAST .
+      RADIANTFIRST . $study_iuid . RADIANTLAST .
       OHIFOLDFIRST . $study_iuid . OHIFOLDLAST .
       CHANGEDOCTORFIRST . "'$study_iuid', '$dokradid', '$workload_status'" . CHANGEDOCTORLAST . $icon_change_doctor . CHANGEDOCTORVERYLAST .
       EDITWORKLOADFIRST . $study_iuid . EDITWORKLOADLAST;
