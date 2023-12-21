@@ -11,7 +11,7 @@ define('DICOMFIRST', '<a style="text-decoration:none;" href="jnlp://' . $_SERVER
 define('DICOMLAST', '"><span class="btn btn-inti2" style="box-shadow: none;"><img src="../image/eyered.svg" data-toggle="tooltip" title="Dicom Viewer" style="width: 100%;"></span></a>');
 
 // HTML
-define('HTMLFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':19898/mms/viewer.html?studyUID=');
+define('HTMLFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':19898/medxa/viewer.html?studyUID=');
 define('HTMLLAST', '"target="_blank"><span class="btn btn-inti2" style="box-shadow: none;"><img src="../image/eyeyellow.svg" data-toggle="tooltip" title="HTML Viewer" style="width: 100%;"></span></a>');
 
 // Mobile
@@ -150,7 +150,7 @@ if ($_SERVER['SERVER_NAME'] == $hostname['ip_publik']) {
 define('DICOMWORKLISTFIRST', '<div class="col-lg"><a href="jnlp://' . $_SERVER['SERVER_NAME'] . ':19898/weasis-pacs-connector/DCM_viewer.jnlp?studyUID=');
 define('DICOMWORKLISTLAST', '"class="btn btn-viewer-worklist"><img src="../image/desktop.svg">&nbsp; Dicom Viewer</a></div>');
 
-define('HTMLWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $_SERVER['SERVER_NAME'] . ':19898/mms/viewer.html?studyUID=');
+define('HTMLWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $_SERVER['SERVER_NAME'] . ':19898/medxa/viewer.html?studyUID=');
 define('HTMLWORKLISTLAST', '" class="btn btn-viewer-worklist" target="_blank"><img src="../image/html.svg">&nbsp; HTML Viewer</a></div>');
 
 define('RADIANTWORKLISTFIRST', '<div class="col-lg"><a href="radiant://?n=paet&v=dcmPACS&n=pstv&v=0020000D&v=%22');
