@@ -223,6 +223,7 @@ while ($row = mysqli_fetch_array($result)) {
     $detail = '<a href="workload-edit.php?uid=' . $study_iuid . '" class="penawaran-a">' . removeCharacter($pat_name) . '</a>';
     $level =
       RADIANTFIRST . $study_iuid . RADIANTLAST .
+      DICOMFIRST . $study_iuid . DICOMLAST .
       OHIFOLDFIRST . $study_iuid . OHIFOLDLAST .
       CHANGEDOCTORFIRST . "'$study_iuid', '$dokradid', '$workload_status'" . CHANGEDOCTORLAST . $icon_change_doctor . CHANGEDOCTORVERYLAST .
       EDITWORKLOADFIRST . $study_iuid . EDITWORKLOADLAST;
@@ -234,9 +235,9 @@ while ($row = mysqli_fetch_array($result)) {
     if ($status != '-') {
       // ketika modality MRI 
       if ($mods_in_study == 'MR' || $mods_in_study == 'PR\\MR' || $mods_in_study == 'SC\\PR\\MR') {
-        $viewer = DICOMFIRST . $study_iuid . DICOMLAST;
+        // $viewer = DICOMFIRST . $study_iuid . DICOMLAST;
       } else {
-        $viewer = OHIFOLDFIRST . $study_iuid . OHIFOLDLAST . HTMLFIRST . $study_iuid . HTMLLAST;
+        $viewer = DICOMFIRST . $study_iuid . DICOMLAST . OHIFOLDFIRST . $study_iuid . OHIFOLDLAST . HTMLFIRST . $study_iuid . HTMLLAST;
       }
       $level = $viewer . SENDDICOMFIRST . $study_iuid . SENDDICOMLAST . EDITPASIENFIRST . $study_iuid . EDITPASIENLAST .
         CHANGEDOCTORFIRST . "'$study_iuid', '$dokradid', '$workload_status'" . CHANGEDOCTORLAST . $icon_change_doctor . CHANGEDOCTORVERYLAST .
