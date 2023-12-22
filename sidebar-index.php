@@ -328,8 +328,8 @@
     <div class="logo-details">
         <div class="home-content">
 
-            <div style="width: 45px; margin-left: 12px; cursor: pointer;" class="logo-side-bar">
-                <img style="width:75%;" src="../image/new/medxa-logo-only.png">
+            <div style="width: 45px; margin-left: 10px; cursor: pointer;" class="logo-side-bar">
+                <img style="width:85%;" src="../image/new/medxa-logo-only.png">
             </div>
             <!-- <i class="fa-solid fa-bars-staggered"></i> -->
             <!-- <span class="text">Drop Down Sidebarnew</span> -->
