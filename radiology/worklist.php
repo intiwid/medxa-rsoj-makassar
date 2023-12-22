@@ -397,6 +397,7 @@ if ($_SESSION['level'] == "radiology") {
 																<div class="row">
 																	<?= RADIANTWORKLISTFIRST . $uid . RADIANTWORKLISTLAST .
 																		// INOBITECWORKLISTFIRST . "'$uid'" . INOBITECWORKLISTLAST .
+																		DICOMWORKLISTFIRST . $uid . DICOMWORKLISTLAST.
 																		OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST.
 																		HTMLWORKLISTFIRST . $uid . HTMLWORKLISTLAST ;
 																		;
