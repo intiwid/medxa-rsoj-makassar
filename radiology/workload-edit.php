@@ -316,8 +316,9 @@ if ($_SESSION['level'] == "radiology") {
 													<div class="buttons1">
 														<?= HOROSWORKLISTFIRST . $uid . HOROSWORKLISTLAST .
 															RADIANTWORKLISTFIRST . $uid . RADIANTWORKLISTLAST .
-															HTMLWORKLISTFIRST . $uid . HTMLWORKLISTLAST .
-															OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST;
+															// HTMLWORKLISTFIRST . $uid . HTMLWORKLISTLAST .
+															OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST.
+															RENDERWORKLISTFIRST . $uid . RENDERWORKLISTLAST;
 														?>
 													</div>
 												</div>
