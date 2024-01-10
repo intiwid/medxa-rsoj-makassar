@@ -11,7 +11,7 @@
  Target Server Version : 50649 (5.6.49-log)
  File Encoding         : 65001
 
- Date: 18/07/2023 09:31:46
+ Date: 09/01/2024 16:20:46
 */
 
 SET NAMES utf8mb4;
@@ -102,7 +102,7 @@ CREATE TABLE `kop_surat`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of kop_surat
@@ -357,11 +357,12 @@ CREATE TABLE `xray_department`  (
   PRIMARY KEY (`pk`, `dep_id`) USING BTREE,
   INDEX `dep_id`(`dep_id`) USING BTREE,
   INDEX `name_dep`(`name_dep`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_department
 -- ----------------------------
+INSERT INTO `xray_department` VALUES (1, '1', 'POLI');
 
 -- ----------------------------
 -- Table structure for xray_dokter
@@ -383,11 +384,12 @@ CREATE TABLE `xray_dokter`  (
   INDEX `named`(`named`) USING BTREE,
   INDEX `lastnamed`(`lastnamed`) USING BTREE,
   INDEX `username`(`username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_dokter
 -- ----------------------------
+INSERT INTO `xray_dokter` VALUES (1, '1', 'dokter pengirim', ' ', NULL, '0', NULL, 'a@gmail.com', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for xray_dokter_radiology
@@ -412,11 +414,12 @@ CREATE TABLE `xray_dokter_radiology`  (
   INDEX `dokrad_name`(`dokrad_name`) USING BTREE,
   INDEX `dokrad_lastname`(`dokrad_lastname`) USING BTREE,
   INDEX `nip`(`nip`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_dokter_radiology
 -- ----------------------------
+INSERT INTO `xray_dokter_radiology` VALUES (1, '1', 'dokter radiologi', NULL, NULL, NULL, NULL, NULL, NULL, 'sarah', NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for xray_expertise
@@ -429,7 +432,7 @@ CREATE TABLE `xray_expertise`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`pk`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_expertise
@@ -465,10 +468,33 @@ CREATE TABLE `xray_login`  (
   INDEX `username`(`username`) USING BTREE,
   INDEX `password`(`password`) USING BTREE,
   INDEX `level`(`level`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_login
+-- ----------------------------
+INSERT INTO `xray_login` VALUES (1, 'bella', '$2y$12$anQt7glmTA9HDBcv4R/fGuRT8Mtj/Ipa9fGdHTIBdIfhApH3mEze6', 'refferal', NULL, NULL);
+INSERT INTO `xray_login` VALUES (2, 'rafdi', '$2y$12$LH0MUp3xMh036SVIGUrAOOsVJIlru5LHCmGfTkxSbHRsKypTGWN9a', 'radiographer', NULL, NULL);
+INSERT INTO `xray_login` VALUES (4, 'admin', '$2y$12$KF9bjufvOUasAfIQOAw.r./A7flSnpnkWVd1jX7aGFlrtwywvZvfO', 'admin', NULL, NULL);
+INSERT INTO `xray_login` VALUES (5, 'superadmin', '$2y$12$3j1STCXbcRdnSHQ9W6FWHOocfLgtXGf4J3FZLxHyK5/un8kWFxh3q', 'superadmin', NULL, NULL);
+INSERT INTO `xray_login` VALUES (14, 'sarah', '$2y$12$C1RIavm4zmI8/Ti.XH0JFeiDKstjH0HJtyTw.X3J7Wma6MYu84qkG', 'radiology', '2022-11-29 07:09:05', NULL);
+
+-- ----------------------------
+-- Table structure for xray_login_history
+-- ----------------------------
+DROP TABLE IF EXISTS `xray_login_history`;
+CREATE TABLE `xray_login_history`  (
+  `id_table` int(255) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `level` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id_table`) USING BTREE,
+  INDEX `username`(`username`) USING BTREE,
+  INDEX `level`(`level`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of xray_login_history
 -- ----------------------------
 
 -- ----------------------------
@@ -500,11 +526,18 @@ CREATE TABLE `xray_modalitas`  (
   UNIQUE INDEX `xray_type_code`(`xray_type_code`) USING BTREE,
   INDEX `id_modality`(`id_modality`) USING BTREE,
   INDEX `xray_type_code_normal`(`xray_type_code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_modalitas
 -- ----------------------------
+INSERT INTO `xray_modalitas` VALUES (1, 'CR', 'CR');
+INSERT INTO `xray_modalitas` VALUES (5, 'CT', 'CT');
+INSERT INTO `xray_modalitas` VALUES (2, 'DX', 'DX');
+INSERT INTO `xray_modalitas` VALUES (4, 'MR', 'MR');
+INSERT INTO `xray_modalitas` VALUES (7, 'PX', 'PX');
+INSERT INTO `xray_modalitas` VALUES (3, 'US', 'US');
+INSERT INTO `xray_modalitas` VALUES (6, 'XA', 'XA');
 
 -- ----------------------------
 -- Table structure for xray_order
@@ -719,11 +752,12 @@ CREATE TABLE `xray_patient`  (
   INDEX `weight`(`weight`) USING BTREE,
   INDEX `address`(`address`) USING BTREE,
   INDEX `phone`(`phone`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_patient
 -- ----------------------------
+INSERT INTO `xray_patient` VALUES (1, NULL, '1', 'CONTOH', NULL, 'M', '2000-01-02', NULL, NULL, NULL, NULL, NULL, '2024-01-08 15:16:17', '2024-01-08 15:16:17', NULL);
 
 -- ----------------------------
 -- Table structure for xray_payment_insurance
@@ -738,11 +772,12 @@ CREATE TABLE `xray_payment_insurance`  (
   PRIMARY KEY (`pk`, `id_payment`) USING BTREE,
   INDEX `id_payment`(`id_payment`) USING BTREE,
   INDEX `payment`(`payment`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_payment_insurance
 -- ----------------------------
+INSERT INTO `xray_payment_insurance` VALUES (1, '1', 'PEMBAYARAN', '2024-01-09 14:56:24', NULL);
 
 -- ----------------------------
 -- Table structure for xray_radiographer
@@ -763,11 +798,12 @@ CREATE TABLE `xray_radiographer`  (
   INDEX `radiographer_sex`(`radiographer_sex`) USING BTREE,
   INDEX `radiographer_tlp`(`radiographer_tlp`) USING BTREE,
   INDEX `radiographer_email`(`radiographer_email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_radiographer
 -- ----------------------------
+INSERT INTO `xray_radiographer` VALUES (1, '1', 'radiografer', '', 'Laki-Laki', '0', 'a@gmail.com');
 
 -- ----------------------------
 -- Table structure for xray_recyclebin
@@ -863,11 +899,18 @@ CREATE TABLE `xray_study`  (
   INDEX `id_study`(`id_study`) USING BTREE,
   INDEX `study`(`study`) USING BTREE,
   INDEX `harga`(`harga`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_study
 -- ----------------------------
+INSERT INTO `xray_study` VALUES (1, 'CR', '1', 'CR THORAX TEST', '100000');
+INSERT INTO `xray_study` VALUES (2, 'CT', '2', 'CT HEAD TEST', '10000');
+INSERT INTO `xray_study` VALUES (3, 'DX', '3', 'DX THORAX TEST', '100000');
+INSERT INTO `xray_study` VALUES (4, 'MR', '4', 'KNEE MR TEST', '10000');
+INSERT INTO `xray_study` VALUES (5, 'PX', '5', 'DENTAL TEST', '100000');
+INSERT INTO `xray_study` VALUES (6, 'US', '6', 'US ABDOMEN TESST', '100000');
+INSERT INTO `xray_study` VALUES (7, 'XA', '7', 'CATHLAB TEST', '100000');
 
 -- ----------------------------
 -- Table structure for xray_take_envelope
@@ -1032,7 +1075,7 @@ CREATE TABLE `xray_workload_fill`  (
   `updated_at` datetime NULL DEFAULT NULL,
   `deleted_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`pk`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_workload_fill

@@ -163,8 +163,7 @@ while ($row = mysqli_fetch_array($query)) {
             $aksi = $pdf . DICOMFIRST . $study_iuid . DICOMLAST;
         } else {
             $aksi = $pdf .
-                DICOMFIRST . $study_iuid . DICOMLAST .
-                RENDERFIRST . $study_iuid . RENDERLAST.
+                RENDERFIRST . $study_iuid . RENDERLAST .
                 OHIFOLDFIRST . $study_iuid . OHIFOLDLAST .
                 HTMLFIRST . $study_iuid . HTMLLAST;
         }
