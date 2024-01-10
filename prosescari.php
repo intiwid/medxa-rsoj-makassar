@@ -238,9 +238,9 @@ while ($row = mysqli_fetch_array($result)) {
       if ($mods_in_study == 'MR' || $mods_in_study == 'PR\\MR' || $mods_in_study == 'SC\\PR\\MR') {
         $viewer = DICOMFIRST . $study_iuid . DICOMLAST;
       } else {
-        $viewer = RENDERFIRST . $study_iuid . RENDERLAST . OHIFOLDFIRST . $study_iuid . OHIFOLDLAST . HTMLFIRST . $study_iuid . HTMLLAST;
+        $viewer = OHIFOLDFIRST . $study_iuid . OHIFOLDLAST . HTMLFIRST . $study_iuid . HTMLLAST;
       }
-      $level = $viewer .  EDITPASIENFIRST . $study_iuid . EDITPASIENLAST .
+      $level = $viewer . RENDERFIRST . $study_iuid . RENDERLAST . EDITPASIENFIRST . $study_iuid . EDITPASIENLAST .
         CHANGEDOCTORFIRST . "'$study_iuid', '$dokradid', '$workload_status'" . CHANGEDOCTORLAST . $icon_change_doctor . CHANGEDOCTORVERYLAST;
       // GETEXPERTISEFIRST . $name_envelope . ' ' . defaultValueDateTime($created_at_envelope) . $href_get_expertise . GETEXPERTISELAST . $icon_get_expertise . GETEXPERTISEVERYLAST;
       // TELEDOKTERPENGIRIMFIRST . $study_iuid . TELEDOKTERPENGIRIMLAST;
@@ -253,7 +253,7 @@ while ($row = mysqli_fetch_array($result)) {
   } else if ($level == 'refferal') {
     // ketika modality MRI
     if ($mods_in_study == 'MR' || $mods_in_study == 'PR\\MR' || $mods_in_study == 'SC\\PR\\MR') {
-      $level = DICOMFIRST . $study_iuid . DICOMLAST . RENDERFIRST . $study_iuid . RENDERLAST;
+      $level = RENDERFIRST . $study_iuid . RENDERLAST . DICOMFIRST . $study_iuid . DICOMLAST . RENDERFIRST . $study_iuid . RENDERLAST;
     } else {
       $level = RENDERFIRST . $study_iuid . RENDERLAST . OHIFOLDFIRST . $study_iuid . OHIFOLDLAST . HTMLFIRST . $study_iuid . HTMLLAST;
     }
