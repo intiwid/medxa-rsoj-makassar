@@ -399,8 +399,8 @@ if ($_SESSION['level'] == "radiology") {
 																		// INOBITECWORKLISTFIRST . "'$uid'" . INOBITECWORKLISTLAST .
 																		DICOMWORKLISTFIRST . $uid . DICOMWORKLISTLAST.
 																		OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST.
-																		// HTMLWORKLISTFIRST . $uid . HTMLWORKLISTLAST . 
-																		RENDERWORKLISTFIRST . $uid . RENDERWORKLISTLAST;
+																		 HTMLWORKLISTFIRST . $uid . HTMLWORKLISTLAST ; 
+																		#RENDERWORKLISTFIRST . $uid . RENDERWORKLISTLAST;
 																		;
 																	?>
 

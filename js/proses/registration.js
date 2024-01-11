@@ -7,11 +7,11 @@ $(document).ready(function () {
       mrn: "required",
       name: "required",
       birth_date: "required",
-      sex: { required: true },
+      sex: "required",
     },
     errorPlacement: function (error, element) {
       if (element.is(":radio")) {
-        error.appendTo(element.parents("td"));
+        error.appendTo(element.parents("div"));
       } else {
         error.insertAfter(element);
       }
