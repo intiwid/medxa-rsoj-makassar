@@ -45,7 +45,14 @@ if ($_SESSION['level'] == "radiographer") {
 									</div>
 									<div class="col-half">
 										<h4>Gender</h4>
-										<div class="input-group input-group-regist input-regist input-regist-gender"><input id="gender-male" type="radio" name="sex" value="M" required /><label for="gender-male"><?= $lang['male'] ?></label><input id="gender-female" type="radio" name="sex" value="F" required /><label for="gender-female"><?= $lang['female'] ?></label><input id="gender-other" type="radio" name="sex" value="O" required /><label for="gender-other"><?= $lang['other'] ?></label></div>
+										<div class="input-group input-group-regist input-regist input-regist-gender">
+											<input id="sex" class="gender-male" type="radio" name="gender-male" value="M" required />
+											<label for="gender-male"><?= $lang['male'] ?></label>
+											<input id="sex" class="gender-female" type="radio" name="gender-female" value="F" required />
+											<label for="gender-female"><?= $lang['female'] ?></label>
+											<input id="sex" class="gender-other" type="radio" name="gender-other" value="O" required />
+											<label for="gender-other"><?= $lang['other'] ?></label>
+										</div>
 									</div>
 								</div>
 								<hr>

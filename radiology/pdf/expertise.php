@@ -65,7 +65,7 @@ $dokrad_img =  $row_dokrad['dokrad_img'] == null ? 'scan-ttd-default.PNG' : (@fi
 $kopSurat = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM kop_surat LIMIT 1"));
 $link_surat_image = "http://" . $_SERVER['SERVER_NAME'] . ":8000/storage/" . $kopSurat['image'];
 // kondisi ketika gambar kop surat null & ketika server laravel error
-$kop_surat_image = $kopSurat['image'] == null ? 'header-rs.jpg' : (@file_get_contents($link_surat_image) === false ? 'header-rs.jpg' : $link_surat_image);
+$kop_surat_image = $kopSurat['image'] == null ? 'kop-rsoj.jpg' : (@file_get_contents($link_surat_image) === false ? 'kop-rsoj.jpg' : $link_surat_image);
 
 // qr code ttd dokter radiologi
 $link_qr_code_ttd = '../phpqrcode/ttddokter/' . $signature;
@@ -116,8 +116,8 @@ $pdf->SetFont('Arial', '', 10);
 
 $pdf->SetTitle('Hasil expertise');
 
-$pdf->image($kop_surat_image, 14, 10, 185);
-$pdf->MultiCell(0, 25, '', 0, "J", false);
+$pdf->image($kop_surat_image, 8, 3, 195);
+$pdf->MultiCell(0, 5, '', 0, "J", false);
 
 
 // ------------------------------------------------------------

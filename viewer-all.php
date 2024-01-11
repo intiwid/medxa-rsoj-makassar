@@ -12,7 +12,7 @@ define('DICOMLAST', '"><span class="btn btn-inti2" style="box-shadow: none;"><im
 
 // HTML
 define('HTMLFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':19898/medxa/viewer.html?studyUID=');
-define('HTMLLAST', '"target="_blank"><span class="btn btn-inti2" style="box-shadow: none;"><img src="../image/eyeyellow.svg" data-toggle="tooltip" title="HTML Viewer" style="width: 100%;"></span></a>');
+define('HTMLLAST', '"target="_blank"><span class="btn btn-inti2" style="box-shadow: none;"><img src="../image/eyeyellow.svg" data-toggle="tooltip" title="HTML Web Viewer" style="width: 100%;"></span></a>');
 
 // Mobile
 define('MOBILEFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':19898/dwv-viewer/index.html?type=manifest&input=%2Fweasis-pacs-connector%2Fmanifest%3FseriesUID%3D');
@@ -101,7 +101,7 @@ define('HOROSLAST', '"class="ahref-edit" style="text-decoration:none;" target="_
 // untuk icon OHIF LARGE DI WORKLIST
 $ohif_large = '"class="btn btn-viewer-worklist" target="_blank"><img src="../image/web.svg">&nbsp; Web Viewer</a></div>';
 // untuk icon OHIF small DI WORKLIST
-$ohif_small = '"style="text-decoration:none;" class="ahref-edit" target="_blank"><span class="btn btn-inti2" style="box-shadow: none;"><img src="../image/eyegreen.svg" data-toggle="tooltip" title="Tab Viewer" style="width: 100%;"></span></a>';
+$ohif_small = '"style="text-decoration:none;" class="ahref-edit" target="_blank"><span class="btn btn-inti2" style="box-shadow: none;"><img src="../image/eyegreen.svg" data-toggle="tooltip" title="Web Viewer" style="width: 100%;"></span></a>';
 
 // OHIF TERBARU
 if ($_SERVER['SERVER_NAME'] == $hostname['ip_publik']) {
