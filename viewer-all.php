@@ -148,7 +148,7 @@ if ($_SERVER['SERVER_NAME'] == $hostname['ip_publik']) {
 
 // RENDER
 define('RENDERFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':93/?dicomweb=http://' . $_SERVER['SERVER_NAME'] . ':9090/dcm4chee-arc/aets/DCM4CHEE/rs/studies/');
-define('RENDERLAST', '"target="_blank"><span class="btn rgba-stylish-slight btn-inti2" style="box-shadow: none;"><img src="../image/eyepink.svg" data-toggle="tooltip" title="Intiwid Render Viewer" style="width: 100%;"></span></a>');
+define('RENDERLAST', '"target="_blank"><span class="btn rgba-stylish-slight btn-inti2" style="box-shadow: none;"><img src="../image/eyepink.svg" data-toggle="tooltip" title="Render Viewer" style="width: 100%;"></span></a>');
 
 
 // VIEWER DI WORKLIST ICON LARGE

@@ -160,11 +160,10 @@ while ($row = mysqli_fetch_array($query)) {
         $pdf = PDFFIRST . $study_iuid . PDFLAST;
         // ketika modality MRI
         if ($mods_in_study == 'MR' || $mods_in_study == 'PR\\MR' || $mods_in_study == 'SC\\PR\\MR') {
-            $aksi = $pdf . DICOMFIRST . $study_iuid . DICOMLAST;
+            $aksi = $pdf . RENDERFIRST . $study_iuid . RENDERLAST . DICOMFIRST . $study_iuid . DICOMLAST;
         } else {
             $aksi = $pdf .
-                DICOMFIRST . $study_iuid . DICOMLAST .
-                RENDERFIRST . $study_iuid . RENDERLAST.
+                RENDERFIRST . $study_iuid . RENDERLAST .
                 OHIFOLDFIRST . $study_iuid . OHIFOLDLAST .
                 HTMLFIRST . $study_iuid . HTMLLAST;
         }
