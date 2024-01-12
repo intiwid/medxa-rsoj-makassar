@@ -164,6 +164,7 @@ while ($row = mysqli_fetch_array($query)) {
         } else {
             $aksi = $pdf .
                 #RENDERFIRST . $study_iuid . RENDERLAST .
+                DICOMFIRST . $study_iuid . DICOMLAST.
                 OHIFOLDFIRST . $study_iuid . OHIFOLDLAST .
                 HTMLFIRST . $study_iuid . HTMLLAST;
         }
