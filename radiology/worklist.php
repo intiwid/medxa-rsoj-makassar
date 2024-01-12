@@ -210,8 +210,6 @@ if ($_SESSION['level'] == "radiology") {
 										</ol>
 									</nav>
 								</div>
-
-
 								<div class="col-lg-9">
 									<div class="row div-left">
 										<div class="col-lg-4" style="padding-top: 11px;">
@@ -397,16 +395,24 @@ if ($_SESSION['level'] == "radiology") {
 																<div class="row">
 																	<?= RADIANTWORKLISTFIRST . $uid . RADIANTWORKLISTLAST .
 																		// INOBITECWORKLISTFIRST . "'$uid'" . INOBITECWORKLISTLAST .
-																		DICOMWORKLISTFIRST . $uid . DICOMWORKLISTLAST.
-																		OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST.
-																		 HTMLWORKLISTFIRST . $uid . HTMLWORKLISTLAST ; 
+																		DICOMWORKLISTFIRST . $uid . DICOMWORKLISTLAST .
+																		OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST .
+																		HTMLWORKLISTFIRST . $uid . HTMLWORKLISTLAST;
 																		#RENDERWORKLISTFIRST . $uid . RENDERWORKLISTLAST;
-																		;
+																	;
 																	?>
 
 																</div>
 															</div>
 
+														</div>
+													</div>
+													<div class="col-lg-12" style="overflow-x: auto;"><br><br>
+														<div style="margin-left: -14px; min-width: 697px;">
+															<!-- menampilkan OHIF 1 halaman -->
+															<!-- <div class="collapse div-left" id="ohif"> -->
+															<iframe src="<?= "$url$uid" ?>" frameborder="0" marginheight="0" marginwidth="0" width="100%" height="600px"></iframe>
+															<!-- </div> -->
 														</div>
 													</div>
 
@@ -513,17 +519,6 @@ if ($_SESSION['level'] == "radiology") {
 										</div>
 									</div>
 								</div>
-
-								<div class="col-lg-12" style="overflow-x: auto;"><br><br>
-									<div style="margin-left: -14px; min-width: 697px;">
-										<!-- menampilkan OHIF 1 halaman -->
-										<div class="collapse div-left" id="ohif">
-											<iframe src="<?= "$url$uid" ?>" frameborder="0" marginheight="0" marginwidth="0" width="100%" height="600px"></iframe>
-										</div>
-									</div>
-								</div>
-
-
 							</div>
 						</div>
 					</div>
