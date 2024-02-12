@@ -337,7 +337,8 @@ if ($_SESSION['level'] == "radiology") {
 																</tr>
 																<tr>
 																	<td>
-																		<?= PDFFIRST . $study_iuid . PDFLAST .
+																		<?= RADIANTFIRST . $study_iuid . RADIANTLAST .
+																			PDFFIRST . $study_iuid . PDFLAST .
 																			HOROSFIRST . $study_iuid . HOROSLAST .
 																			OHIFOLDFIRST . $study_iuid . OHIFOLDLAST;
 																		?>
