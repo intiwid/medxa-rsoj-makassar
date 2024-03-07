@@ -11,7 +11,7 @@
  Target Server Version : 50649 (5.6.49-log)
  File Encoding         : 65001
 
- Date: 07/03/2024 11:26:08
+ Date: 07/03/2024 13:02:07
 */
 
 SET NAMES utf8mb4;
@@ -33,7 +33,7 @@ CREATE TABLE `active_notification_send_pacs`  (
 -- ----------------------------
 -- Records of active_notification_send_pacs
 -- ----------------------------
-INSERT INTO `active_notification_send_pacs` VALUES (1, 0, 0, '2024-03-07 10:13:21', '2024-03-07 10:13:21');
+INSERT INTO `active_notification_send_pacs` VALUES (1, 1, 1, '2024-03-07 11:50:57', '2024-03-07 11:50:57');
 
 -- ----------------------------
 -- Table structure for active_notification_unread
@@ -51,7 +51,7 @@ CREATE TABLE `active_notification_unread`  (
 -- ----------------------------
 -- Records of active_notification_unread
 -- ----------------------------
-INSERT INTO `active_notification_unread` VALUES (1, 0, 0, '2024-03-07 10:55:06', '2024-03-07 10:55:06');
+INSERT INTO `active_notification_unread` VALUES (1, 1, 1, '2024-03-07 11:51:01', '2024-03-07 11:51:01');
 
 -- ----------------------------
 -- Table structure for active_update_simrs
@@ -380,6 +380,25 @@ CREATE TABLE `mppsio_patient_mwl_item_backup`  (
 
 -- ----------------------------
 -- Records of mppsio_patient_mwl_item_backup
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for notification_send_pacs
+-- ----------------------------
+DROP TABLE IF EXISTS `notification_send_pacs`;
+CREATE TABLE `notification_send_pacs`  (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `uid` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `to` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `count` int(11) NOT NULL,
+  `response` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 75 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of notification_send_pacs
 -- ----------------------------
 
 -- ----------------------------
@@ -728,11 +747,12 @@ CREATE TABLE `xray_login_history`  (
   PRIMARY KEY (`id_table`) USING BTREE,
   INDEX `username`(`username`) USING BTREE,
   INDEX `level`(`level`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_login_history
 -- ----------------------------
+INSERT INTO `xray_login_history` VALUES (1, 'superadmin', 'superadmin', '2024-03-07 11:36:11');
 
 -- ----------------------------
 -- Table structure for xray_maintenance

@@ -11,7 +11,7 @@
  Target Server Version : 50649 (5.6.49-log)
  File Encoding         : 65001
 
- Date: 07/03/2024 11:26:16
+ Date: 07/03/2024 13:02:22
 */
 
 SET NAMES utf8mb4;
@@ -203,6 +203,25 @@ CREATE TABLE `mppsio_patient_mwl_item_backup`  (
 
 -- ----------------------------
 -- Records of mppsio_patient_mwl_item_backup
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for notification_send_pacs
+-- ----------------------------
+DROP TABLE IF EXISTS `notification_send_pacs`;
+CREATE TABLE `notification_send_pacs`  (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `uid` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `to` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `count` int(11) NOT NULL,
+  `response` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 75 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of notification_send_pacs
 -- ----------------------------
 
 -- ----------------------------
