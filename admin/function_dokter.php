@@ -803,19 +803,36 @@ function update_hostname_publik($value)
 	return mysqli_affected_rows($conn);
 }
 
-function update_notification_radiologist($value)
+function update_notification_unread_radiologist($value)
 {
 	global $conn;
-	$is_active = $value['is_active'];
+	$is_active_telegram = $value['is_active_telegram'];
+	$is_active_mail = $value['is_active_mail'];
 
 	mysqli_query(
 		$conn,
-		"INSERT INTO active_notification_unread (pk, is_active, created_at, updated_at) VALUES(1, '$is_active', NOW(), NOW())
-		ON DUPLICATE KEY UPDATE is_active = '$is_active', created_at = NOW(), updated_at = NOW()"
+		"INSERT INTO active_notification_unread (pk, is_active_telegram, is_active_mail, created_at, updated_at) VALUES(1, '$is_active_telegram', '$is_active_mail', NOW(), NOW())
+		ON DUPLICATE KEY UPDATE is_active_telegram = '$is_active_telegram', is_active_mail = '$is_active_mail', created_at = NOW(), updated_at = NOW()"
 	);
 
 	return mysqli_affected_rows($conn);
 }
+
+function update_notification_send_pacs_radiologist($value)
+{
+	global $conn;
+	$is_active_telegram = $value['is_active_telegram'];
+	$is_active_mail = $value['is_active_mail'];
+
+	mysqli_query(
+		$conn,
+		"INSERT INTO active_notification_send_pacs (pk, is_active_telegram, is_active_mail, created_at, updated_at) VALUES(1, '$is_active_telegram', '$is_active_mail', NOW(), NOW())
+		ON DUPLICATE KEY UPDATE is_active_telegram = '$is_active_telegram', is_active_mail = '$is_active_mail', created_at = NOW(), updated_at = NOW()"
+	);
+
+	return mysqli_affected_rows($conn);
+}
+
 
 function update_expertise($value)
 {

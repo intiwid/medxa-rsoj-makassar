@@ -2,10 +2,16 @@
 require 'function_dokter.php';
 session_start();
 
-$notification_radiologist = mysqli_query(
+$active_notification_unread = mysqli_query(
 	$conn,
 	"SELECT *
 	FROM active_notification_unread"
+);
+
+$active_notification_send_pacs = mysqli_query(
+	$conn,
+	"SELECT *
+	FROM active_notification_send_pacs"
 );
 if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 ?>
@@ -41,23 +47,51 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 						<div class="">
 							<div class="col-md-12 table-box" style="overflow-x:auto;">
 								<br><br>
+								<h4 class="text-center">Notifikasi pasien selesai diperiksa dan diterima pacs</h4>
 								<table class="table-paginate table-dicom" border="1" cellpadding="8" cellspacing="0">
 									<thead>
 										<tr>
 											<th>No</th>
-											<th>Active ? </th>
+											<th>Active Telegram ? </th>
+											<th>Active Mail ? </th>
 											<th>Waktu</th>
 											<th><?= $lang['action'] ?></th>
 										</tr>
 									</thead>
 									<?php $i = 1; ?>
-									<?php foreach ($notification_radiologist as $row) : ?>
+									<?php foreach ($active_notification_send_pacs as $row) : ?>
 										<tr>
 											<td><?= $i ?></td>
-											<td><?= $row["is_active"] == 0 ? 'Tidak Aktif' : 'Aktif'; ?></td>
+											<td><?= $row["is_active_telegram"] == 0 ? 'Tidak Aktif' : 'Aktif'; ?></td>
+											<td><?= $row["is_active_mail"] == 0 ? 'Tidak Aktif' : 'Aktif'; ?></td>
 											<td><?= $row["created_at"]; ?></td>
 											<td>
-												<a href="new_notification_radiologist.php?pk=<?= $row["pk"]; ?>"><img data-toggle="tooltip" title="Edit" class="iconbutton" src="../image/edit.png"></a>
+												<a href="new_notification_send_pacs_radiologist.php?pk=<?= $row["pk"]; ?>"><img data-toggle="tooltip" title="Edit" class="iconbutton" src="../image/edit.png"></a>
+											</td>
+										</tr>
+										<?php $i++; ?>
+									<?php endforeach; ?>
+								</table>
+								<h4 class="text-center">Notifikasi pasien belum dilakukan expertise kurang dari 3 jam</h4>
+								<table class="table-paginate table-dicom" border="1" cellpadding="8" cellspacing="0">
+									<thead>
+										<tr>
+											<th>No</th>
+											<th>Active Telegram ? </th>
+											<th>Active Mail ? </th>
+											<th>Waktu</th>
+											<th><?= $lang['action'] ?></th>
+										</tr>
+									</thead>
+									<?php $i = 1; ?>
+									<?php foreach ($active_notification_unread as $row) : ?>
+										<tr>
+											<td><?= $i ?></td>
+											<td><?= $row["is_active_telegram"] == 0 ? 'Tidak Aktif' : 'Aktif'; ?></td>
+											<td><?= $row["is_active_mail"] == 0 ? 'Tidak Aktif' : 'Aktif'; ?></td>
+											<td><?= $row["created_at"]; ?></td>
+											<td>
+												<a href="new_notification_unread_radiologist.php?pk=<?= $row["pk"]; ?>"><img data-toggle="tooltip" title="Edit" class="iconbutton" src="../image/edit.png"></a>
 											</td>
 										</tr>
 										<?php $i++; ?>
@@ -72,7 +106,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 				<div class="">
 					<div class="footer-login col-sm-12"><br>
 						<center>
-							<p>&copy; Powered by Medxa IT Solution 2022</a>.</p>
+							<p>&copy; Powered by IT Solution 2022</a>.</p>
 						</center>
 					</div>
 				</div>

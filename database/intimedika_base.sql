@@ -11,11 +11,29 @@
  Target Server Version : 50649 (5.6.49-log)
  File Encoding         : 65001
 
- Date: 09/01/2024 16:20:46
+ Date: 07/03/2024 11:26:16
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for active_notification_send_pacs
+-- ----------------------------
+DROP TABLE IF EXISTS `active_notification_send_pacs`;
+CREATE TABLE `active_notification_send_pacs`  (
+  `pk` bigint(20) NOT NULL AUTO_INCREMENT,
+  `is_active_telegram` tinyint(4) NULL DEFAULT NULL,
+  `is_active_mail` tinyint(4) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`pk`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of active_notification_send_pacs
+-- ----------------------------
+INSERT INTO `active_notification_send_pacs` VALUES (1, 0, 0, '2024-03-07 10:13:21', '2024-03-07 10:13:21');
 
 -- ----------------------------
 -- Table structure for active_notification_unread
@@ -23,7 +41,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `active_notification_unread`;
 CREATE TABLE `active_notification_unread`  (
   `pk` bigint(20) NOT NULL AUTO_INCREMENT,
-  `is_active` tinyint(4) NULL DEFAULT NULL,
+  `is_active_telegram` tinyint(4) NULL DEFAULT NULL,
+  `is_active_mail` tinyint(4) NULL DEFAULT NULL,
   `created_at` datetime NULL DEFAULT NULL,
   `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`pk`) USING BTREE
@@ -32,7 +51,7 @@ CREATE TABLE `active_notification_unread`  (
 -- ----------------------------
 -- Records of active_notification_unread
 -- ----------------------------
-INSERT INTO `active_notification_unread` VALUES (1, 0, '2022-12-26 07:46:45', '2022-12-26 07:46:45');
+INSERT INTO `active_notification_unread` VALUES (1, 0, 0, '2024-03-07 10:55:06', '2024-03-07 10:55:06');
 
 -- ----------------------------
 -- Table structure for active_update_simrs
@@ -491,7 +510,7 @@ CREATE TABLE `xray_login_history`  (
   PRIMARY KEY (`id_table`) USING BTREE,
   INDEX `username`(`username`) USING BTREE,
   INDEX `level`(`level`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of xray_login_history
