@@ -63,7 +63,7 @@ $date2 = date('d-m-Y 23:59');
                             <?php
                             $sql = mysqli_query(
                                 $conn_pacsio,
-                                "SELECT mods_in_study FROM study GROUP BY mods_in_study LIMIT 30"
+                                "SELECT mods_in_study FROM study GROUP BY mods_in_study"
                             );
                             while ($row = mysqli_fetch_assoc($sql)) { ?>
                                 <li><label><input class="common_selector cbox checkbox4" type="checkbox" id="checkbox" name="mods_in_study[]" value="<?= $row['mods_in_study']; ?>" checked><span><?= $row['mods_in_study']; ?></span></label></li>
@@ -78,7 +78,7 @@ $date2 = date('d-m-Y 23:59');
             <div style="padding: 0px;" s class="col-lg-5 input-name">
                 <div class="card rounded border-0 position-relative">
                     <div class="card-body">
-                        <div class="d-flex align-items-center"><!-- <i class="fas fa-user-plus fa-4x mr-2"></i>--><img style="width: 55px;" src="../image/new/patient-repo.svg" alt=""> 
+                        <div class="d-flex align-items-center"><!-- <i class="fas fa-user-plus fa-4x mr-2"></i>--><img style="width: 55px;" src="../image/new/patient-repo.svg" alt="">
                             <div class="ms-3">
                                 <h4 class="text-uppercase fw-weight-bold mb-0"><?= $lang['search_patient'] ?></h4>
                                 <p class="mb-0" style="font-style: italic; color: grey;">Name, MRN or No foto</p>

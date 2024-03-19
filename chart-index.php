@@ -20,7 +20,7 @@
                                         <?php
                                         $study = mysqli_query(
                                             $conn_pacsio,
-                                            "SELECT mods_in_study FROM study GROUP BY mods_in_study LIMIT 15"
+                                            "SELECT mods_in_study FROM study GROUP BY mods_in_study"
                                         );
                                         while ($row = mysqli_fetch_assoc($study)) { ?>
                                             <tr>

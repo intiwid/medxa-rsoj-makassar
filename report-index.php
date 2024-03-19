@@ -45,7 +45,7 @@
 									<?php
 									$study = mysqli_query(
 										$conn_pacsio,
-										"SELECT mods_in_study FROM study GROUP BY mods_in_study LIMIT 15"
+										"SELECT mods_in_study FROM study GROUP BY mods_in_study"
 									);
 									while ($row = mysqli_fetch_assoc($study)) { ?>
 										<li><label><input class="common_selector check-modality checkbox4 search-input-workload" type="checkbox" id="mods_in_study" name="mods_in_study[]" value="<?= $row['mods_in_study']; ?>" checked><span><?= $row['mods_in_study']; ?></span></label></li>
