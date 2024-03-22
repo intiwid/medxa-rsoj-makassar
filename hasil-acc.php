@@ -99,7 +99,7 @@ $row_study = mysqli_fetch_assoc(mysqli_query(
                         ON study.study_iuid = xray_order.uid
                         WHERE fromorder IN('SIMRS')
                         AND mrn = '$pat_id'
-                        AND schedule_date > DATE_SUB(NOW(), INTERVAL 8 DAY)
+                        AND schedule_date > DATE_SUB(NOW(), INTERVAL 60 DAY)
                         ORDER BY xray_order.schedule_date DESC, xray_order.schedule_time DESC"
                     );
                     if (mysqli_num_rows($query) > 0) {
