@@ -124,16 +124,16 @@ if ($_SESSION['level'] == "radiology") {
 							"data": "no"
 						},
 						{
-							"data": "report"
+							"data": "pat_name"
+						},
+						{
+							"data": "mrn"
 						},
 						{
 							"data": "status"
 						},
 						{
-							"data": "pat_name"
-						},
-						{
-							"data": "mrn"
+							"data": "report"
 						},
 						{
 							"data": "no_foto"
