@@ -8,7 +8,7 @@ require 'default-value.php';
 
 $uid = $_GET['uid'];
 
-$study_query = mysqli_query($conn, "SELECT 
+$stmt = mysqli_prepare($conn, "SELECT 
                                     pat_name,
                                     pat_birthdate,
                                     study_desc,
@@ -19,10 +19,13 @@ $study_query = mysqli_query($conn, "SELECT
                                     ON patient.pk = study.patient_fk
                                     JOIN $table_workload
                                     ON study.study_iuid = xray_workload.uid
-                                    WHERE study_iuid = '$uid'
+                                    WHERE study_iuid = ?
                                     AND approved_at > DATE_SUB(NOW(), INTERVAL 92 DAY)");
-$study_count = mysqli_num_rows($study_query);
-$study = mysqli_fetch_assoc($study_query);
+mysqli_stmt_bind_param($stmt, "s", $uid);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$study_count = mysqli_num_rows($result);
+$study = mysqli_fetch_assoc($result);
 $hostname = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM xray_hostname_publik"));
 ?>
 <!DOCTYPE html>
