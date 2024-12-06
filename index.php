@@ -4,65 +4,34 @@ require 'koneksi/koneksi.php';
 
 session_start();
 
-echo "<script>
-            function play(){
-            var audio = document.getElementById('audio');
-            audio.play();
-                 }
-      </script>";
-
 if (isset($_POST["login"])) {
 
   $username = $_POST["username"];
   $password = $_POST["password"];
 
   if (empty($username)) {
-    echo "<script>alert('Username belum diisi!'); </script>
-         <script>
-            function play(){
-            var audio1 = document.getElementById('audio1');
-            audio1.play();
-                 }
-        </script>";
+    echo "<script>alert('Username belum diisi!'); </script>";
   } elseif (empty($password)) {
-    echo "<script>alert('Password belum diisi!'); </script>
-          <script>
-            function play(){
-            var audio1 = document.getElementById('audio1');
-            audio1.play();
-                 }
-        </script>";
+    echo "<script>alert('Password belum diisi!'); </script>";
   } else {
-    //---------------------------- query untuk mendapatkan username --------------------------------
-
-    $query = "SELECT * FROM xray_login WHERE username = '$username' ";
-    $hasil = mysqli_query($conn, $query);
-    $data = mysqli_fetch_array($hasil);
+    // query untuk mendapatkan username
+    $stmt = mysqli_prepare($conn, "SELECT * FROM xray_login WHERE username = ?");
+    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_execute($stmt);
+    $data = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 
     //---------------------------- cek kesesuaian password -------------------------------
     if (password_verify($password, $data['password'])) {
       $_SESSION['last_login_timestamp'] = time();
 
-      echo "<script>document.location.href='menu.php';</script>
-          <script>
-            function play(){
-            var audio = document.getElementById('audio');
-            audio.play();
-                 }
-          </script>";
+      echo "<script>document.location.href='menu.php';</script>";
 
       //----------------------------- menyimpan username dan level ke dalam session ----------------------------------------
       $_SESSION['level'] = $data['level'];
       $_SESSION['username'] = $data['username'];
       $_SESSION['fill'] = $data_temp['fill'];
     }
-    echo "<script>alert('username atau password salah silahkan ulangi kembali'); </script>
-        <script>
-            function play(){
-            var audio1 = document.getElementById('audio1');
-            audio1.play();
-                 }
-        </script>";
+    echo "<script>alert('username atau password salah silahkan ulangi kembali'); </script>";
   }
 }
 
@@ -123,7 +92,7 @@ if (!($_SESSION['username'] = $data['username'])) {
     <div class="container-fluid">
       <div class="row">
 
-        <div class="main-login" style="">
+        <div class="main-login">
           <div class="">
 
             <div class="form_login">
@@ -212,4 +181,6 @@ if (!($_SESSION['username'] = $data['username'])) {
   } else if ($_SESSION['level'] == "radiographer") {
     header("location:radiographer/workload.php");
   }
+  mysqli_stmt_close($stmt);
+  mysqli_close($conn);
 } ?>

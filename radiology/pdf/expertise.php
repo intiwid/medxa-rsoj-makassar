@@ -11,7 +11,7 @@ session_start();
 
 @$uid = $_GET["uid"];
 
-$row = mysqli_fetch_assoc(mysqli_query(
+$stmt = mysqli_prepare(
     $conn_pacsio,
     "SELECT 
     $select_patient,
@@ -25,8 +25,12 @@ $row = mysqli_fetch_assoc(mysqli_query(
     ON xray_order.uid = study.study_iuid
     LEFT JOIN $table_workload
     ON study.study_iuid = xray_workload.uid
-    WHERE study.study_iuid = '$uid'"
-));
+    WHERE study.study_iuid = ?"
+);
+
+mysqli_stmt_bind_param($stmt, "s", $uid);
+mysqli_stmt_execute($stmt);
+$row = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 
 $pat_name = substr(removeCharacter(ucwords(strtolower(defaultValue($row['pat_name'])))), 0, 23);
 $pat_sex = $row['pat_sex'];
