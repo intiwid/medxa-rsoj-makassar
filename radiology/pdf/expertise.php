@@ -9,7 +9,7 @@ require '../../model/query-base-dokter-radiology.php';
 
 session_start();
 
-$uid = $_GET["uid"];
+@$uid = $_GET["uid"];
 
 $row = mysqli_fetch_assoc(mysqli_query(
     $conn_pacsio,
