@@ -295,7 +295,7 @@ if ($_SESSION['level'] == "radiology") {
 																	<td>
 																		<?= PDFFIRST . $study_iuid . PDFLAST .
 																			HOROSFIRST . $study_iuid . HOROSLAST .
-																			OHIFOLDFIRST . $study_iuid . OHIFOLDLAST;
+																			OHIFNEWFIRST . $study_iuid . OHIFNEWLAST;
 																		?>
 																		<a href="#" class="view-history-expertise" data-id="<?= $study_iuid;  ?>">
 																			<i data-toggle="tooltip" title="View History Expertise" class="fa fa-file-archive-o fa-lg"></i>
@@ -317,7 +317,7 @@ if ($_SESSION['level'] == "radiology") {
 														<?= HOROSWORKLISTFIRST . $uid . HOROSWORKLISTLAST .
 															RADIANTWORKLISTFIRST . $uid . RADIANTWORKLISTLAST .
 															// HTMLWORKLISTFIRST . $uid . HTMLWORKLISTLAST .
-															OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST.
+															OHIFNEWWORKLISTFIRST . $uid . OHIFNEWWORKLISTLAST.
 															RENDERWORKLISTFIRST . $uid . RENDERWORKLISTLAST;
 														?>
 													</div>
@@ -354,7 +354,7 @@ if ($_SESSION['level'] == "radiology") {
 																		INOBITECWORKLISTFIRST . "'$uid'" . INOBITECWORKLISTLAST .
 																		// HTMLWORKLISTFIRST . $uid . HTMLWORKLISTLAST .
 																		RENDERWORKLISTFIRST . $uid . RENDERWORKLISTLAST.
-																		OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST;
+																		OHIFNEWWORKLISTFIRST . $uid . OHIFNEWWORKLISTLAST;
 																	?>
 
 																</div>
@@ -381,9 +381,9 @@ if ($_SESSION['level'] == "radiology") {
 													?>
 													<br>
 													<!-- menampilkan OHIF 1 halaman -->
-													<div class="collapse" id="ohif">
-														<iframe src="<?= "$url$uid" ?>" frameborder="0" marginheight="0" marginwidth="0" width="100%" height="600px"></iframe>
-													</div>
+													<!-- <div class="collapse" id="ohif"> -->
+														<iframe src="<?= "http://$_SERVER[SERVER_NAME]:92/viewer?StudyInstanceUIDs=$uid" ?>" frameborder="0" marginheight="0" marginwidth="0" width="100%" height="600px"></iframe>
+													<!-- </div> -->
 
 													<div class="textarea-ckeditor">
 														<textarea class="ckeditor" name="fill" id="ckeditor">

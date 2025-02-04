@@ -225,7 +225,7 @@ while ($row = mysqli_fetch_array($result)) {
       RADIANTFIRST . $study_iuid . RADIANTLAST .
       DICOMFIRST . $study_iuid . DICOMLAST .
       #RENDERFIRST . $study_iuid . RENDERLAST .
-      OHIFOLDFIRST . $study_iuid . OHIFOLDLAST .
+      OHIFNEWFIRST . $study_iuid . OHIFNEWLAST .
       CHANGEDOCTORFIRST . "'$study_iuid', '$dokradid', '$workload_status'" . CHANGEDOCTORLAST . $icon_change_doctor . CHANGEDOCTORVERYLAST .
       EDITWORKLOADFIRST . $study_iuid . EDITWORKLOADLAST;
     // TELEDOKTERPENGIRIMFIRST . $study_iuid . TELEDOKTERPENGIRIMLAST .
@@ -236,9 +236,9 @@ while ($row = mysqli_fetch_array($result)) {
     if ($status != '-') {
       // ketika modality MRI 
       if ($mods_in_study == 'MR' || $mods_in_study == 'PR\\MR' || $mods_in_study == 'SC\\PR\\MR') {
-        $viewer = DICOMFIRST . $study_iuid . DICOMLAST;
+        $viewer = DICOMFIRST . $study_iuid . DICOMLAST. OHIFNEWFIRST . $study_iuid . OHIFNEWLAST;
       } else {
-        $viewer = DICOMFIRST . $study_iuid . DICOMLAST . OHIFOLDFIRST . $study_iuid . OHIFOLDLAST . OHIFNEWFIRST . $study_iuid . OHIFNEWLAST . HTMLFIRST . $study_iuid . HTMLLAST;
+        $viewer = DICOMFIRST . $study_iuid . DICOMLAST . OHIFNEWFIRST . $study_iuid . OHIFNEWLAST . HTMLFIRST . $study_iuid . HTMLLAST;
       }
       $level = $viewer . RADIANTFIRST . $study_iuid . RADIANTLAST . /*RENDERFIRST . $study_iuid . RENDERLAST .*/ EDITPASIENFIRST . $study_iuid . EDITPASIENLAST .
         CHANGEDOCTORFIRST . "'$study_iuid', '$dokradid', '$workload_status'" . CHANGEDOCTORLAST . $icon_change_doctor . CHANGEDOCTORVERYLAST . 
@@ -256,7 +256,7 @@ while ($row = mysqli_fetch_array($result)) {
     if ($mods_in_study == 'MR' || $mods_in_study == 'PR\\MR' || $mods_in_study == 'SC\\PR\\MR') {
       $level = /*RENDERFIRST . $study_iuid . RENDERLAST .*/ DICOMFIRST . $study_iuid . DICOMLAST /*. RENDERFIRST . $study_iuid . RENDERLAST*/;
     } else {
-      $level = /*RENDERFIRST . $study_iuid . RENDERLAST .*/ OHIFOLDFIRST . $study_iuid . OHIFOLDLAST . HTMLFIRST . $study_iuid . HTMLLAST;
+      $level = /*RENDERFIRST . $study_iuid . RENDERLAST .*/ OHIFNEWFIRST . $study_iuid . OHIFNEWLAST . HTMLFIRST . $study_iuid . HTMLLAST;
     }
   } else {
     $level = '-';

@@ -340,7 +340,7 @@ if ($_SESSION['level'] == "radiology") {
 																		<?= RADIANTFIRST . $study_iuid . RADIANTLAST .
 																			PDFFIRST . $study_iuid . PDFLAST .
 																			HOROSFIRST . $study_iuid . HOROSLAST .
-																			OHIFOLDFIRST . $study_iuid . OHIFOLDLAST;
+																			OHIFNEWFIRST . $study_iuid . OHIFNEWLAST;
 																		?>
 																		<a href="#" class="view-history-expertise" data-id="<?= $study_iuid;  ?>">
 																			<i data-toggle="tooltip" title="View History Expertise" class="fa fa-file-archive-o fa-lg"></i>
@@ -362,7 +362,7 @@ if ($_SESSION['level'] == "radiology") {
 														<?= HOROSWORKLISTFIRST . $uid . HOROSWORKLISTLAST .
 															RADIANTWORKLISTFIRST . $uid . RADIANTWORKLISTLAST .
 															HTMLWORKLISTFIRST . $uid . HTMLWORKLISTLAST .
-															OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST;
+															OHIFNEWWORKLISTFIRST . $uid . OHIFNEWWORKLISTLAST;
 														?>
 													</div>
 												</div>
@@ -397,7 +397,7 @@ if ($_SESSION['level'] == "radiology") {
 																	<?= RADIANTWORKLISTFIRST . $uid . RADIANTWORKLISTLAST .
 																		// INOBITECWORKLISTFIRST . "'$uid'" . INOBITECWORKLISTLAST .
 																		DICOMWORKLISTFIRST . $uid . DICOMWORKLISTLAST .
-																		OHIFOLDWORKLISTFIRST . $uid . OHIFOLDWORKLISTLAST .
+																		OHIFNEWWORKLISTFIRST . $uid . OHIFNEWWORKLISTLAST .
 																		HTMLWORKLISTFIRST . $uid . HTMLWORKLISTLAST;
 																		#RENDERWORKLISTFIRST . $uid . RENDERWORKLISTLAST;
 																	;
@@ -412,7 +412,7 @@ if ($_SESSION['level'] == "radiology") {
 														<div style="margin-left: -14px; min-width: 697px;">
 															<!-- menampilkan OHIF 1 halaman -->
 															<!-- <div class="collapse div-left" id="ohif"> -->
-															<iframe src="<?= "$url$uid" ?>" frameborder="0" marginheight="0" marginwidth="0" width="100%" height="600px"></iframe>
+															<iframe src="<?= "http://$_SERVER[SERVER_NAME]:92/viewer?StudyInstanceUIDs=$uid" ?>" frameborder="0" marginheight="0" marginwidth="0" width="100%" height="600px"></iframe>
 															<!-- </div> -->
 														</div>
 													</div>
