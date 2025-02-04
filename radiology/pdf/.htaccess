@@ -1,0 +1,16 @@
+RewriteEngine on
+RewriteRule font/ index.php
+RewriteRule makefont/ index.php
+RewriteRule test/ index.php
+RewriteRule ^(.*).jpg$ index.php
+RewriteRule ^(.*).txt$ index.php
+RewriteRule ^(.*).png$ index.php
+RewriteRule ^(.*).PNG$ index.php
+RewriteRule ^(.*).htm$ index.php
+RewriteRule ^(.*).css$ index.php
+RewriteRule fpdf.php index.php
+RewriteRule hex.php index.php
+RewriteRule html_table.php index.php
+RewriteRule html-parser.php index.php
+RewriteRule html2pdf.php index.php
+RewriteRule WriteHTML.php index.php

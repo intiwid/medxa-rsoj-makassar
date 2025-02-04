@@ -1,5 +1,19 @@
-# Run Php without filename extension
-RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^(.*)$ $1.php
+#reference https://www.searchenginepeople.com/blog/htaccess-redirect-rewrite-rules.html
+#Run Php without filename extension
+#RewriteEngine on
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME}.php -f
+#RewriteRule ^(.*)$ $1.php
+#turn on RewriteRule
+#RewriteEngine on
+#url_pattern: A Regular Expression pattern that will trigger the Rewrite
+#file_reference: The file that will be displayed
+#FLAGS: Optional enhancements such as redirection or case insensitive matching
+#ReWriteRule url_pattern file_reference
+#jika akses ke subfolder radiology/pdf/ maka akan redirect ke /andika
+#Redirect 301 / /andika
+#jika tidak ada file/folder maka page not found
+#ErrorDocument 404 "<h1>Page not found</h1>"
+#jika tidak ada file/folder maka redirect ke file /index.php
+#ErrorDocument 404 /index.php
+ErrorDocument 404 "<h1>Page not found</h1>"
