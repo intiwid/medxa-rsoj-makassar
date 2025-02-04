@@ -112,10 +112,10 @@ if ($_SERVER['SERVER_NAME'] == $hostname['ip_publik']) {
     define('OHIFNEWWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $_SERVER['SERVER_NAME'] . ':82/viewer?StudyInstanceUIDs=');
     define('OHIFNEWWORKLISTLAST', "$ohif_large");
 } else {
-    define('OHIFNEWFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':81/viewer?StudyInstanceUIDs=');
+    define('OHIFNEWFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':92/viewer?StudyInstanceUIDs=');
     define('OHIFNEWLAST', "$ohif_small");
     // jika menggunakan ohif baru icon(large)
-    define('OHIFNEWWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $_SERVER['SERVER_NAME'] . ':81/viewer?StudyInstanceUIDs=');
+    define('OHIFNEWWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $_SERVER['SERVER_NAME'] . ':92/viewer?StudyInstanceUIDs=');
     define('OHIFNEWWORKLISTLAST', "$ohif_large");
 }
 
