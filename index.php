@@ -181,6 +181,5 @@ if (!($_SESSION['username'] = $data['username'])) {
   } else if ($_SESSION['level'] == "radiographer") {
     header("location:radiographer/workload.php");
   }
-  mysqli_stmt_close($stmt);
   mysqli_close($conn);
 } ?>
