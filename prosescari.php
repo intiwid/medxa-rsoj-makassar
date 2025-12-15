@@ -75,6 +75,11 @@ if ($_POST["is_date_search"] == "yes") {
   $to_study_datetime = date_format($to, "Y-m-d H:i");
 
   $query .= 'study.study_datetime BETWEEN "' . $from_study_datetime . '" AND "' . $to_study_datetime . '" AND ';
+} else {
+  $date = date('Y-m-d 23:59', strtotime("-30 days"));
+  $date2 = date('Y-m-d 23:59');
+
+  $query .= 'study.study_datetime BETWEEN "' . $date . '" AND "' . $date2 . '" AND ';
 }
 
 // kolom untuk mencari LIKE masing2 kolom (SEARCHING)
@@ -236,12 +241,12 @@ while ($row = mysqli_fetch_array($result)) {
     if ($status != '-') {
       // ketika modality MRI 
       if ($mods_in_study == 'MR' || $mods_in_study == 'PR\\MR' || $mods_in_study == 'SC\\PR\\MR') {
-        $viewer = DICOMFIRST . $study_iuid . DICOMLAST. OHIFNEWFIRST . $study_iuid . OHIFNEWLAST;
+        $viewer = DICOMFIRST . $study_iuid . DICOMLAST . OHIFNEWFIRST . $study_iuid . OHIFNEWLAST;
       } else {
         $viewer = DICOMFIRST . $study_iuid . DICOMLAST . OHIFNEWFIRST . $study_iuid . OHIFNEWLAST . HTMLFIRST . $study_iuid . HTMLLAST;
       }
       $level = $viewer . RADIANTFIRST . $study_iuid . RADIANTLAST . /*RENDERFIRST . $study_iuid . RENDERLAST .*/ EDITPASIENFIRST . $study_iuid . EDITPASIENLAST .
-        CHANGEDOCTORFIRST . "'$study_iuid', '$dokradid', '$workload_status'" . CHANGEDOCTORLAST . $icon_change_doctor . CHANGEDOCTORVERYLAST . 
+        CHANGEDOCTORFIRST . "'$study_iuid', '$dokradid', '$workload_status'" . CHANGEDOCTORLAST . $icon_change_doctor . CHANGEDOCTORVERYLAST .
         SENDDICOMFIRST . $study_iuid . SENDDICOMLAST;
       // GETEXPERTISEFIRST . $name_envelope . ' ' . defaultValueDateTime($created_at_envelope) . $href_get_expertise . GETEXPERTISELAST . $icon_get_expertise . GETEXPERTISEVERYLAST;
       // TELEDOKTERPENGIRIMFIRST . $study_iuid . TELEDOKTERPENGIRIMLAST;
