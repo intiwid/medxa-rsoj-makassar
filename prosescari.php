@@ -326,13 +326,13 @@ while ($row = mysqli_fetch_array($result)) {
 
 function get_all_data($val_con, $val_query)
 {
-  $result = mysqli_query($val_con, $val_query);
-  return mysqli_num_rows($result);
+  $row = mysqli_fetch_assoc(mysqli_query($val_con, $val_query));
+  return $row['total_row'];
 }
 
 $output = array(
   "draw"    => intval($_POST["draw"]),
-  "recordsTotal"  =>  get_all_data($conn_pacsio, $query_base . $kondisi),
+  "recordsTotal"  =>  get_all_data($conn_pacsio, "SELECT count(*) AS total_row FROM $table_patient JOIN $table_study ON patient.pk = study.patient_fk"),
   "recordsFiltered" => $number_filter_row,
   "data"    => $data
 );
