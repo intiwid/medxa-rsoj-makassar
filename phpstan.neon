@@ -1,0 +1,30 @@
+parameters:
+    level: 0
+    paths:
+        - .
+    excludePaths:
+        - .git
+        - database (?)
+        - log (?)
+        - read-more (?)
+        - css (?)
+        - js (?)
+        - image (?)
+        - gambar (?)
+        - fontawesome (?)
+        - fontawesome6 (?)
+        - icon-menubar (?)
+        - maintenance_image (?)
+        - radiographer/files (?)
+        - radiographer/dcm_temp (?)
+        - radiographer/phpqrcode (?)
+        - radiographer/vendor (?)
+        - radiology/ckeditor (?)
+        - radiology/fontawesome (?)
+        - radiology/phpmailer (?)
+        - radiology/phpqrcode (?)
+        - radiology/pdf (?)
+        - radiology/sign_src (?)
+        - contract (?)
+        - rector.php
+        - phpstan.phar
