@@ -38,5 +38,8 @@ return RectorConfig::configure()
         __DIR__ . '/radiographer/dcm_temp',
         __DIR__ . '/phpstan.phar',
         __DIR__ . '/rector.php',
+
+        // Cegah Rector menghapus argumen fungsi prosedural
+        \Rector\Php71\Rector\FuncCall\RemoveExtraParametersRector::class,
     ])
     ->withPhpSets(php83: true);
