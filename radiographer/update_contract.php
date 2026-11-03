@@ -1,9 +1,12 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require 'function_radiographer.php';
-session_start();
+
 //ambil data di url
 $contract_query = mysqli_query($conn, 'SELECT * FROM xray_contract');
-$row_query = mysqli_fetch_assoc($contract_query);
+$row_query = $contract_query ? (mysqli_fetch_assoc($contract_query) ?: []) : [];
 if (isset($_POST["submit"])) {
     if (ubah($_POST) > 0) {
         echo "
@@ -20,7 +23,7 @@ if (isset($_POST["submit"])) {
 </script>";
     }
 }
-if ($_SESSION['level'] == "radiographer") {
+if (($_SESSION['level'] ?? '') == "radiographer") {
 ?>
     <!DOCTYPE html>
     <html>
@@ -40,15 +43,15 @@ if ($_SESSION['level'] == "radiographer") {
                     <div class="container-fluid">
                         <div class="row form-dokter">
                             <form action="" method="post">
-                                <input type="hidden" name="dokterid" value="<?= $row_query['id']; ?>">
+                                <input type="hidden" name="dokterid" value="<?= ($row_query['id'] ?? ''); ?>">
                                 <ul>
                                     <li>
-                                        <input type="text" name="contract_date" id="contract_date" class="form-control" placeholder="Contract Date" value="<?= $row_query['contract_date']; ?>" autocomplete="off" /><br>
+                                        <input type="text" name="contract_date" id="contract_date" class="form-control" placeholder="Contract Date" value="<?= ($row_query['contract_date'] ?? ''); ?>" autocomplete="off" /><br>
                                         <label for="named"><b>Tanggal Mulai Contract</b></label><br>
-                                        <input type="datetime" name="named" id="named" required value="<?= $row_query['contract_date']; ?>">
+                                        <input type="datetime" name="named" id="named" required value="<?= ($row_query['contract_date'] ?? ''); ?>">
                                     </li>
                                     <li>
-                                        <input type="datetime-local" value="<?php echo date('Y-m-d H:i:s', $row_query['contract_date ']); ?>" class="date" name="start" REQUIRED>
+                                        <input type="datetime-local" value="<?php echo date('Y-m-d H:i:s', ($row_query['contract_date'] ?? '')); ?>" class="date" name="start" REQUIRED>
                                         <?php echo date("Y-m-d\TH:i:s");
                                         $timestamp = date("Y-m-d\TH:i:s");
                                         ?><br>
@@ -58,7 +61,7 @@ if ($_SESSION['level'] == "radiographer") {
                                     </li>
                                     <li>
                                         <label for="lastnamed"><b>EXP</b></label><br>
-                                        <input type="datetime" name="lastnamed" id="lastnamed" value="<?= $row_query['contract_duedate']; ?>">
+                                        <input type="datetime" name="lastnamed" id="lastnamed" value="<?= ($row_query['contract_duedate'] ?? ''); ?>">
                                     </li>
                                     <li>
                                         <button class="button1" type="submit" name="submit">Ubah Data</button>
@@ -132,4 +135,5 @@ if ($_SESSION['level'] == "radiographer") {
     </html>
 <?php } else {
     header("location:../index.php");
+  exit();
 } ?>

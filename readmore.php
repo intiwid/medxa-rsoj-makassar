@@ -34,7 +34,7 @@ session_start();
 
 <body>
 
-  <!-- <marquee class="marquee1"><?= $lang['welcome_intiwid'] ?> V.1.12</marquee> -->
+  <!-- <marquee class="marquee1"><?= ($lang['welcome_intiwid'] ?? '') ?> V.1.12</marquee> -->
 
   <div class="sdsd container">
     <div class="row">

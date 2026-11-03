@@ -1,10 +1,11 @@
-<?php 
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require 'function_radiographer.php';
 
-session_start();
-
-$uid = $_GET["uid"];
-$username = $_SESSION['username'];
+$uid = $_GET["uid"] ?? '';
+$username = $_SESSION['username'] ?? '';
 
 if ( hapus_workload($uid, $username) > 0 ) {
 	echo "	

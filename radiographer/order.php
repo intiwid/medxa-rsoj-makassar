@@ -1,6 +1,9 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../koneksi/koneksi.php';
-session_start();
+
 $result6 = mysqli_query($conn, "SELECT * FROM xray_radiographer_order ORDER BY radiographer_id DESC LIMIT 0,99");
 ($row6 = mysqli_fetch_array($result6));
 $result5 = mysqli_query($conn, "SELECT * FROM xray_price_order ORDER BY priceorderid DESC LIMIT 0,99");
@@ -38,7 +41,7 @@ $radiographer_sex = $row6['radiographer_sex'];
 $radiographer_tlp = $row6['radiographer_tlp'];
 $radiographer_email = $row6['radiographer_email'];
 
-if ($_SESSION['level'] == "radiographer") {
+if (($_SESSION['level'] ?? '') == "radiographer") {
 ?>
 
   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -286,4 +289,5 @@ if ($_SESSION['level'] == "radiographer") {
   </html>
 <?php } else {
   header("location:../index.php");
+  exit();
 } ?>

@@ -1,11 +1,11 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require 'koneksi/koneksi.php';
 
-session_start();
-
-$username = $_SESSION['username'];
-$level = $_SESSION['level'];
+$username = $_SESSION['username'] ?? '';
+$level = $_SESSION['level'] ?? '';
 
 // jika login radiology
 if ($level == 'radiology') {

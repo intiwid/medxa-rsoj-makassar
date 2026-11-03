@@ -3,9 +3,9 @@
 <?php
 require 'function_radiology.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
 
-$template_id = $_GET["template_id"];
+$template_id = $_GET["template_id"] ?? '';
 
 if (delete_template($template_id) > 0) {
 	echo "<script type='text/javascript'>

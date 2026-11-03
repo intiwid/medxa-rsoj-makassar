@@ -1,20 +1,22 @@
-
 <?php
-session_start();
-require 'koneksi/koneksi.php';
-require 'viewer-all.php';
-require 'default-value.php';
-require 'model/query-base-workload.php';
-require 'model/query-base-order.php';
-require 'model/query-base-study.php';
-require 'model/query-base-patient.php';
-require 'model/query-base-workload-fill.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-$username = $_SESSION['username'];
-$level = $_SESSION['level'];
+require_once __DIR__ . '/koneksi/koneksi.php';
+require_once __DIR__ . '/viewer-all.php';
+require_once __DIR__ . '/default-value.php';
+require_once __DIR__ . '/model/query-base-workload.php';
+require_once __DIR__ . '/model/query-base-order.php';
+require_once __DIR__ . '/model/query-base-study.php';
+require_once __DIR__ . '/model/query-base-patient.php';
+require_once __DIR__ . '/model/query-base-workload-fill.php';
+
+$username = $_SESSION['username'] ?? '';
+$level = $_SESSION['level'] ?? '';
 
 // kolom untuk order by 
-$columns = array('pk', 'pk', 'pat_name', 'pat_id', 'study_desc_pacsio', 'study_datetime');
+$columns = ['pk', 'pk', 'pat_name', 'pat_id', 'study_desc_pacsio', 'study_datetime'];
 
 $query_base = "SELECT 
               pat_id,
@@ -37,149 +39,148 @@ $query_base = "SELECT
               LEFT JOIN $table_order
               ON xray_order.uid = xray_workload.uid";
 
-$query = $query_base . ' WHERE ';
+$where = [];
 
-if ($_POST["is_date_search"] == "yes") {
-    $from = date_create($_POST["from_study_datetime"]);
-    $from_study_datetime = date_format($from, "Y-m-d H:i");
+if (($_POST["is_date_search"] ?? "") == "yes") {
+    $from = !empty($_POST["from_study_datetime"]) ? date_create($_POST["from_study_datetime"]) : false;
+    $from_study_datetime = $from ? date_format($from, "Y-m-d H:i") : date("Y-m-d 00:00");
 
-    $to = date_create($_POST["to_study_datetime"]);
-    $to_study_datetime = date_format($to, "Y-m-d H:i");
+    $to = !empty($_POST["to_study_datetime"]) ? date_create($_POST["to_study_datetime"]) : false;
+    $to_study_datetime = $to ? date_format($to, "Y-m-d H:i") : date("Y-m-d 23:59");
 
-    $query .= 'study.study_datetime BETWEEN "' . $from_study_datetime . '" AND "' . $to_study_datetime . '" AND ';
+    $where[] = 'study.study_datetime BETWEEN "' . $from_study_datetime . '" AND "' . $to_study_datetime . '"';
 }
 
 // kolom untuk mencari LIKE masing2 kolom (SEARCHING)
-if (isset($_POST["search"]["value"])) {
-    $query .= '
-  (pat_id LIKE "%' . $_POST["search"]["value"] . '%" 
-  OR pat_name LIKE "%' . $_POST["search"]["value"] . '%"
-  OR study_desc_pacsio LIKE "%' . $_POST["search"]["value"] . '%"
-  OR study.study_datetime LIKE "%' . $_POST["search"]["value"] . '%"
-  )';
+if (isset($_POST["search"]["value"]) && $_POST["search"]["value"] !== "") {
+    $s = mysqli_real_escape_string($conn_pacsio, $_POST["search"]["value"]);
+    $where[] = '(pat_id LIKE "%' . $s . '%" 
+  OR pat_name LIKE "%' . $s . '%"
+  OR study_desc_pacsio LIKE "%' . $s . '%"
+  OR study.study_datetime LIKE "%' . $s . '%")';
 }
 
 // jika modality disearch
-if (isset($_POST['mods_in_study']) && $_POST['mods_in_study'] != "") {
-    $mods_in_study = implode("','", $_POST['mods_in_study']);
-    $mods_in_study = str_replace('\\', '\\\\', strtoupper($mods_in_study));
-    $query .= "AND UPPER(mods_in_study) IN('" . $mods_in_study . "')
- ";
+if (isset($_POST['mods_in_study']) && is_array($_POST['mods_in_study']) && !empty($_POST['mods_in_study'])) {
+    $escaped_mods = array_map(function($m) use ($conn_pacsio) {
+        return mysqli_real_escape_string($conn_pacsio, strtoupper(str_replace('\\', '\\\\', $m)));
+    }, $_POST['mods_in_study']);
+    $mods_in_study = implode("','", $escaped_mods);
+    $where[] = "UPPER(mods_in_study) IN('" . $mods_in_study . "')";
 }
 
 // jika keyword nama diketik
 if (isset($_POST['pat_name']) && $_POST['pat_name'] != "") {
-    $pat_name = strtoupper($_POST['pat_name']);
-    $query .= 'AND UPPER(pat_name) LIKE "%' . $pat_name . '%"
- ';
+    $pat_name = mysqli_real_escape_string($conn_pacsio, strtoupper($_POST['pat_name']));
+    $where[] = 'UPPER(pat_name) LIKE "%' . $pat_name . '%"';
 }
 
 // jika mrn diketik
 if (isset($_POST['mrn']) && $_POST['mrn'] != "") {
-    $mrn = strtoupper($_POST['mrn']);
-    $query .= 'AND UPPER(pat_id) LIKE "%' . $mrn . '%"
- ';
+    $mrn = mysqli_real_escape_string($conn_pacsio, strtoupper($_POST['mrn']));
+    $where[] = 'UPPER(pat_id) LIKE "%' . $mrn . '%"';
 }
 
 // jika login radiology mencari berdasarkan fill, else mencari berdasarkan no foto
 if ($level == 'radiology') {
-    // jika fill
     if (isset($_POST['fill']) && $_POST['fill'] != "") {
-        $fill = strtoupper($_POST['fill']);
-        $query .= 'AND UPPER(xray_workload_fill.fill) LIKE "%' . $fill . '%"
-  ';
+        $fill = mysqli_real_escape_string($conn_pacsio, strtoupper($_POST['fill']));
+        $where[] = 'UPPER(xray_workload_fill.fill) LIKE "%' . $fill . '%"';
     }
 } else {
-    // jika patientid / nofoto diketik
     if (isset($_POST['patientid']) && $_POST['patientid'] != "") {
-        $patientid = strtoupper($_POST['patientid']);
-        $query .= 'AND UPPER(patientid) LIKE "%' . $patientid . '%"
-  ';
+        $patientid = mysqli_real_escape_string($conn_pacsio, strtoupper($_POST['patientid']));
+        $where[] = 'UPPER(patientid) LIKE "%' . $patientid . '%"';
     }
 }
 
+$query = $query_base;
+if (!empty($where)) {
+    $query .= ' WHERE ' . implode(' AND ', $where) . ' ';
+}
+
 // order by
-if (isset($_POST["order"])) {
-    $query .= 'GROUP BY xray_workload_fill.uid ORDER BY ' . $columns[$_POST['order']['0']['column']] . ' ' . $_POST['order']['0']['dir'] . ' 
- ';
+if (isset($_POST["order"][0]["column"]) && isset($columns[$_POST['order'][0]['column']])) {
+    $col_index = $_POST['order'][0]['column'];
+    $col_dir = (isset($_POST['order'][0]['dir']) && strtolower($_POST['order'][0]['dir']) === 'asc') ? 'ASC' : 'DESC';
+    $query .= 'GROUP BY xray_workload_fill.uid ORDER BY ' . $columns[$col_index] . ' ' . $col_dir . ' ';
 } else {
     $query .= 'GROUP BY xray_workload_fill.uid ORDER BY study.study_datetime DESC ';
 }
 
 $query1 = '';
-
-if ($_POST["length"] != -1) {
-    $query1 = 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
+if (isset($_POST["length"]) && $_POST["length"] != -1) {
+    $start = intval($_POST['start'] ?? 0);
+    $length = intval($_POST['length']);
+    $query1 = 'LIMIT ' . $start . ', ' . $length;
 }
 
-// echo $query . $query1;
-
-$number_filter_row = mysqli_num_rows(mysqli_query($conn_pacsio, $query));
+$filter_res = mysqli_query($conn_pacsio, $query);
+$number_filter_row = $filter_res ? mysqli_num_rows($filter_res) : 0;
 
 $result = mysqli_query($conn_pacsio, $query . $query1);
 
-
-$data = array();
+$data = [];
 $i = 1;
-while ($row = mysqli_fetch_array($result)) {
-    $pat_name = defaultValue($row['pat_name']);
+if ($result) {
+    while ($row = mysqli_fetch_array($result)) {
+        $pat_name = defaultValue($row['pat_name'] ?? '');
+        $study_iuid = defaultValue($row['study_iuid'] ?? '');
+        $mods_in_study = defaultValue($row['mods_in_study'] ?? '');
+        $study_datetime = defaultValueDateTime($row['study_datetime'] ?? '');
+        $study_desc_pacsio = defaultValue($row['study_desc_pacsio'] ?? '');
+        $pat_id = defaultValue($row['pat_id'] ?? '');
+        $status = styleStatus('approved', $study_iuid);
+        $priority = defaultValue($row['priority'] ?? '');
+        $fromorder = $row['fromorder'] ?? '';
 
-    $study_iuid = defaultValue($row['study_iuid']);
-    $mods_in_study = defaultValue($row['mods_in_study']);
-    $study_datetime = defaultValueDateTime($row['study_datetime']);
-    $study_desc_pacsio = defaultValue($row['study_desc_pacsio']);
-    $pat_id = defaultValue($row['pat_id']);
-    $status = styleStatus('approved', $study_iuid);
-    $priority = defaultValue($row['priority']);
-    $fromorder = $row['fromorder'];
+        // kondisi ketika data dari simrs
+        if ($fromorder == 'SIMRS' || $fromorder == 'simrs') {
+            $badge = SIMRS;
+        } else {
+            $badge = '';
+        }
 
-    // kondisi ketika data dari simrs
-    if ($fromorder == 'SIMRS' || $fromorder == 'simrs') {
-        $badge = SIMRS;
-    } else {
-        $badge = '';
+        // kondisi ketika detail nama lihat detail query (radiographer, referral)
+        $detail = '<a href="#" class="hasil-all penawaran-a" data-id="' . $study_iuid . '">' . removeCharacter($pat_name) . '</a>';
+
+        // kondisi jika prioriry normal dan CITO
+        if ($priority == 'Normal' || $priority == 'NORMAL' || $priority == 'normal') {
+            $priority_style = PRIORITYNORMAL;
+        } else if ($priority == 'Cito' || $priority == 'CITO' || $priority == 'cito') {
+            $priority_style = PRIORITYCITO;
+        } else {
+            $priority_style = '';
+        }
+
+        $sub_array = [];
+        $sub_array[] = $i;
+        $sub_array[] = $status . '&nbsp;' . $badge;
+        $sub_array[] = $detail . '&nbsp;' . $priority_style;
+        $sub_array[] = $pat_id;
+        $sub_array[] = $study_desc_pacsio;
+        $sub_array[] = $mods_in_study;
+        $sub_array[] = $study_datetime;
+        $sub_array[]  = $i++;
+        $data[] = $sub_array;
     }
-
-    // kondisi ketika detail nama lihat detail query (radiographer, referral)
-    $detail = '<a href="#" class="hasil-all penawaran-a" data-id="' . $row['study_iuid'] . '">' . removeCharacter($pat_name) . '</a>';
-
-    // kondisi jika prioriry normal dan CITO
-    if ($priority == 'Normal' || $priority == 'NORMAL' || $priority == 'normal') {
-        $priority_style = PRIORITYNORMAL;
-    } else if ($priority == 'Cito' || $priority == 'CITO' || $priority == 'cito') {
-        $priority_style = PRIORITYCITO;
-    } else {
-        $priority_style = '';
-    }
-
-    $level =
-        INOBITECFIRST . $study_iuid . INOBITECLAST;
-
-    $sub_array = array();
-    $sub_array[] = $i;
-    $sub_array[] = $status . '&nbsp;' . $badge;
-    $sub_array[] = $detail . '&nbsp;' . $priority_style;
-    $sub_array[] = $pat_id;
-    $sub_array[] = $study_desc_pacsio;
-    $sub_array[] = $mods_in_study;
-    $sub_array[] = $study_datetime;
-    $sub_array[]  = $i++;
-    $data[] = $sub_array;
 }
 
-function get_all_data($val_con, $val_query)
-{
-    $result = mysqli_query($val_con, $val_query);
-    return mysqli_num_rows($result);
+if (!function_exists('get_all_data_fill')) {
+    function get_all_data_fill($val_con, $val_query)
+    {
+        $result = mysqli_query($val_con, $val_query);
+        return $result ? mysqli_num_rows($result) : 0;
+    }
 }
 
-$output = array(
-    "draw"    => intval($_POST["draw"]),
-    "recordsTotal"  =>  get_all_data($conn_pacsio, $query_base),
+$output = [
+    "draw"    => intval($_POST["draw"] ?? 0),
+    "recordsTotal"  =>  get_all_data_fill($conn_pacsio, $query_base),
     "recordsFiltered" => $number_filter_row,
     "data"    => $data
-);
+];
 
 echo json_encode($output);
 
-mysqli_close($conn);
+// // mysqli_close($conn);

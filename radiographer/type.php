@@ -1,26 +1,29 @@
 <?php
-$depid = $_POST['depid'];
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$depid = $_POST['depid'] ?? $_GET['depid'] ?? '';
 require '../koneksi/koneksi.php';
-session_start();
-$username = $_SESSION['username'];
+
+$username = $_SESSION['username'] ?? '';
 $result3 = mysqli_query($conn, "SELECT * FROM xray_department WHERE depid = '$depid'");
-($row3 = mysqli_fetch_array($result3));
+$row3 = $result3 ? (mysqli_fetch_array($result3) ?: []) : [];
 $result2 = mysqli_query($conn, "SELECT * FROM xray_dokter_order ORDER BY dokterorderid DESC LIMIT 0,99");
-($row2 = mysqli_fetch_array($result2));
+$row2 = $result2 ? (mysqli_fetch_array($result2) ?: []) : [];
 $result = mysqli_query($conn, "SELECT * FROM xray_patient_order ORDER BY patientorderid DESC LIMIT 0,99");
-($row = mysqli_fetch_array($result));
-$patientid = $row['patientid'];
-$mrn = $row['mrn'];
-$name = $row['name'];
-$lastname = $row['lastname'];
-$sex = $row['sex'];
-$birth_date = $row['birth_date'];
-$weight = $row['weight'];
-$dokterid = $row2['dokterid'];
-$named = $row2['named'];
-$lastnamed = $row2['lastnamed'];
-$email = $row2['email'];
-$name_dep = $row3['name_dep'];
+$row = $result ? (mysqli_fetch_array($result) ?: []) : [];
+$patientid = $row['patientid'] ?? '';
+$mrn = $row['mrn'] ?? '';
+$name = $row['name'] ?? '';
+$lastname = $row['lastname'] ?? '';
+$sex = $row['sex'] ?? '';
+$birth_date = $row['birth_date'] ?? '';
+$weight = $row['weight'] ?? '';
+$dokterid = $row2['dokterid'] ?? '';
+$named = $row2['named'] ?? '';
+$lastnamed = $row2['lastnamed'] ?? '';
+$email = $row2['email'] ?? '';
+$name_dep = $row3['name_dep'] ?? '';
 $q3 = mysqli_query($conn, 'SELECT MAX(deporderid) as user_id3 from xray_department_order');
 $w3 = mysqli_fetch_array($q3);
 $ai3 = $w3['user_id3'] + 1;
@@ -28,7 +31,7 @@ $query = "INSERT INTO xray_department_order
 VALUES
 ('$ai3', '$depid', '$name_dep' )";
 mysqli_query($conn, $query);
-if ($_SESSION['level'] == "radiographer") {
+if (($_SESSION['level'] ?? '') == "radiographer") {
 ?>
   <!DOCTYPE html>
   <html>
@@ -162,4 +165,5 @@ if ($_SESSION['level'] == "radiographer") {
   </html>
 <?php } else {
   header("location:../index.php");
+  exit();
 } ?>

@@ -1,9 +1,9 @@
 <?php
 require 'function_dokter.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
 
-$id = $_GET["id"];
+$id = $_GET["id"] ?? '';
 
 if (delete_dokter($id) > 0) {
 	echo "<script type='text/javascript'>

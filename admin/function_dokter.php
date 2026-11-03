@@ -19,7 +19,7 @@ function view_login($value)
 	global $conn;
 	$id_table = $_SESSION['id_table'];
 	$password = $value["password"];
-	$password_hash = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+	$password_hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 
 	mysqli_query($conn, "UPDATE xray_login SET 
 				password = '$password_hash'
@@ -31,7 +31,7 @@ function new_login($value)
 	global $conn;
 	$username = $value["username"];
 	$password = $value["password"];
-	$password_hash = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+	$password_hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 	$level = $value["level"];
 
 	mysqli_query(
@@ -68,7 +68,7 @@ function update_login_password($value)
 
 	$id_table = $value["id_table"];
 	$password = $value["password"];
-	$password_hash = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+	$password_hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 
 	mysqli_query(
 		$conn,
@@ -179,7 +179,7 @@ function new_dokter_radiology($value)
 	$dokrad_email = $value["dokrad_email"];
 	$username = $value["username"];
 	$password = $value["password"];
-	$password_hash = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+	$password_hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 
 	mysqli_query(
 		$conn,
@@ -509,7 +509,7 @@ function admin_tambah($post_admin)
 	$ad_lastname = $post_admin["ad_lastname"];
 	$username = $post_admin["username"];
 	$password = $post_admin["password"];
-	$password_hash = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+	$password_hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 
 	$q = mysqli_query($conn, 'SELECT MAX(admin_id) as user_id from xray_admin');
 	$row = mysqli_fetch_assoc($q);
@@ -578,9 +578,9 @@ function superadmin_tambah($post_superadmin)
 	$sa_lastname = $post_superadmin["sa_lastname"];
 	$username = $post_superadmin["username"];
 	$contract_password = $post_superadmin["contract_password"];
-	$password_hash_contract = password_hash($contract_password, PASSWORD_BCRYPT, array('cost' => 12));
+	$password_hash_contract = password_hash($contract_password, PASSWORD_BCRYPT, ['cost' => 12]);
 	$password = $post_superadmin["password"];
-	$password_hash = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+	$password_hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 
 	$q = mysqli_query($conn, 'SELECT MAX(said) as user_id from xray_superadmin');
 	$row = mysqli_fetch_assoc($q);

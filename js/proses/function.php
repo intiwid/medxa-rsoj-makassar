@@ -1,5 +1,5 @@
 <?php
-require '../koneksi/koneksi.php';
+require_once __DIR__ . '/../../koneksi/koneksi.php';
 
 function ubahdokterworklist($post)
 {

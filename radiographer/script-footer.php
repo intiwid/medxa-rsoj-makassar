@@ -1,3 +1,4 @@
+<?php $random = $random ?? time(); ?>
 </section>
 <!--  <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
 <script src="js/jquery.easing.1.3.js"></script>

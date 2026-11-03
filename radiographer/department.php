@@ -1,22 +1,25 @@
 <?php
-$dokterid = $_POST['dokterid'];
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$dokterid = $_POST['dokterid'] ?? $_GET['dokterid'] ?? '';
 require '../koneksi/koneksi.php';
-session_start();
-$username = $_SESSION['username'];
+
+$username = $_SESSION['username'] ?? '';
 $result2 = mysqli_query($conn, "SELECT * FROM xray_dokter WHERE dokterid = '$dokterid'");
-($row2 = mysqli_fetch_array($result2));
+$row2 = $result2 ? (mysqli_fetch_array($result2) ?: []) : [];
 $result = mysqli_query($conn, "SELECT * FROM xray_patient_order ORDER BY patientorderid DESC");
-($row = mysqli_fetch_array($result));
-$patientid = $row['patientid'];
-$mrn = $row['mrn'];
-$name = $row['name'];
-$lastname = $row['lastname'];
-$sex = $row['sex'];
-$birth_date = $row['birth_date'];
-$weight = $row['weight'];
-$named = $row2['named'];
-$lastnamed = $row2['lastnamed'];
-$email = $row2['email'];
+$row = $result ? (mysqli_fetch_array($result) ?: []) : [];
+$patientid = $row['patientid'] ?? '';
+$mrn = $row['mrn'] ?? '';
+$name = $row['name'] ?? '';
+$lastname = $row['lastname'] ?? '';
+$sex = $row['sex'] ?? '';
+$birth_date = $row['birth_date'] ?? '';
+$weight = $row['weight'] ?? '';
+$named = $row2['named'] ?? '';
+$lastnamed = $row2['lastnamed'] ?? '';
+$email = $row2['email'] ?? '';
 $q2 = mysqli_query($conn, 'SELECT MAX(dokterorderid) as user_id2 from xray_dokter_order');
 $w2 = mysqli_fetch_array($q2);
 $ai2 = $w2['user_id2'] + 1;
@@ -24,7 +27,7 @@ $query = "INSERT INTO xray_dokter_order
 VALUES
 ('$ai2', '$dokterid', '$named', '$lastnamed','$email')";
 mysqli_query($conn, $query);
-if ($_SESSION['level'] == "radiographer") {
+if (($_SESSION['level'] ?? '') == "radiographer") {
 ?>
   <!DOCTYPE html>
   <html>
@@ -139,4 +142,5 @@ if ($_SESSION['level'] == "radiographer") {
   </html>
 <?php } else {
   header("location:../index.php");
+  exit();
 } ?>

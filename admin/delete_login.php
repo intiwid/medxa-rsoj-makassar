@@ -1,9 +1,9 @@
 <?php
 require 'function_dokter.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
 
-$id_table = $_GET["id_table"];
+$id_table = $_GET["id_table"] ?? '';
 
 if (delete_login($id_table) > 0) {
 	echo "<script type='text/javascript'>

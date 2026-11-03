@@ -2,12 +2,12 @@
 require '../radiographer/function_radiographer.php';
 
 $contract_query = mysqli_query($conn, 'SELECT * FROM xray_contract ORDER BY id DESC');
-$row_query = mysqli_fetch_assoc($contract_query);
-$id = $row_query['id'];
-$maintenance_query = mysqli_query($conn, "SELECT * FROM xray_maintenance WHERE contract_id = '$id' AND status = 0 ORDER BY id ASC");
-$row_maintenance = mysqli_fetch_assoc($maintenance_query);
-$id_maintenance = $row_maintenance['id'];
-$date_maintenance = $row_maintenance['maintenance_date'];
+$row_query = $contract_query ? mysqli_fetch_assoc($contract_query) : null;
+$id = $row_query['id'] ?? '';
+$maintenance_query = !empty($id) ? mysqli_query($conn, "SELECT * FROM xray_maintenance WHERE contract_id = '$id' AND status = 0 ORDER BY id ASC") : false;
+$row_maintenance = $maintenance_query ? mysqli_fetch_assoc($maintenance_query) : null;
+$id_maintenance = $row_maintenance['id'] ?? '';
+$date_maintenance = $row_maintenance['maintenance_date'] ?? '';
 
 if (isset($_POST["submit"])) {
     if (maintenancepost($_POST) > 0) {

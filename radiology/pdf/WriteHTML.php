@@ -1,6 +1,7 @@
 <?php
 require('fpdf.php');
 
+#[\AllowDynamicProperties]
 class PDF_HTML extends FPDF
 {
 	var $B=0;

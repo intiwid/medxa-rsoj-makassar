@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require 'function_radiographer.php';
 require '../default-value.php';
 require '../model/query-base-workload.php';
@@ -7,72 +10,54 @@ require '../model/query-base-order.php';
 require '../model/query-base-study.php';
 require '../model/query-base-patient.php';
 require '../viewer-all.php';
-session_start();
 
-$uid = $_GET["uid"];
-$username = $_SESSION['username'];
+$uid = $_GET["uid"] ?? '';
+$username = $_SESSION['username'] ?? '';
 
-$row = mysqli_fetch_assoc(mysqli_query(
-	$conn_pacsio,
-	"SELECT 
-    $select_patient,
-    $select_study,
-    $select_order,
-    $select_workload,
-	$select_workload_bhp
-    FROM $table_patient
-    JOIN $table_study
-    ON patient.pk = study.patient_fk
-    LEFT JOIN $table_order
-    ON xray_order.uid = study.study_iuid
-    LEFT JOIN $table_workload
-    ON study.study_iuid = xray_workload.uid
-	LEFT JOIN $table_workload_bhp
-	ON xray_workload_bhp.uid = xray_workload.uid
-    WHERE study.study_iuid = '$uid'"
-));
+$res = !empty($uid) ? mysqli_query($conn_pacsio, "SELECT $select_patient, $select_study, $select_order, $select_workload, $select_workload_bhp FROM $table_patient JOIN $table_study ON patient.pk = study.patient_fk LEFT JOIN $table_order ON xray_order.uid = study.study_iuid LEFT JOIN $table_workload ON study.study_iuid = xray_workload.uid LEFT JOIN $table_workload_bhp ON xray_workload_bhp.uid = xray_workload.uid WHERE study.study_iuid = '$uid'") : false;
+$row = $res ? (mysqli_fetch_assoc($res) ?: []) : [];
 
-$pat_name = $row['pat_name'];
-$pat_sex = $row['pat_sex'];
-$pat_birthdate = $row['pat_birthdate'] == null ? '' : date('d-m-Y', strtotime($row['pat_birthdate']));
-$study_iuid = $row['study_iuid'];
-$accession_no = $row['accession_no'];
-$ref_physician = $row['ref_physician'];
-$study_desc_pacsio = $row['study_desc_pacsio'];
-$harga_prosedur = defaultValueNumber($row['harga_prosedur']);
-$mods_in_study = $row['mods_in_study'];
-$num_series = $row['num_series'];
-$num_instances = $row['num_instances'];
-$pat_id = $row['pat_id'];
-$no_foto = $row['no_foto'];
-$acc = $row['acc'];
-$address = $row['address'];
-$dep_id = $row['dep_id'];
-$name_dep = $row['name_dep'];
-$dokterid = $row['dokterid'];
-$named = $row['named'];
-$weight = $row['weight'];
-$contrast = $row['contrast'];
-$contrast_allergies = $row['contrast_allergies'];
-$radiographer_id = $row['radiographer_id'];
-$radiographer_name = $row['radiographer_name'];
-$dokradid = $row['dokradid'];
-$dokrad_name = $row['dokrad_name'];
-$pat_state = $row['pat_state'];
-$priority = $row['priority'];
-$spc_needs = $row['spc_needs'];
-$id_payment = $row['id_payment'];
-$payment = $row['payment'];
-$fromorder = $row['fromorder'];
-$film_small = $row['film_small'];
-$film_medium = $row['film_medium'];
-$film_large = $row['film_large'];
-$film_reject_small = $row['film_reject_small'];
-$film_reject_medium = $row['film_reject_medium'];
-$film_reject_large = $row['film_reject_large'];
-$re_photo = $row['re_photo'];
-$kv = $row['kv'];
-$mas = $row['mas'];
+$pat_name = $row['pat_name'] ?? '';
+$pat_sex = $row['pat_sex'] ?? '';
+$pat_birthdate = !empty($row['pat_birthdate']) ? date('d-m-Y', strtotime($row['pat_birthdate'])) : '';
+$study_iuid = $row['study_iuid'] ?? '';
+$accession_no = $row['accession_no'] ?? '';
+$ref_physician = $row['ref_physician'] ?? '';
+$study_desc_pacsio = $row['study_desc_pacsio'] ?? '';
+$harga_prosedur = defaultValueNumber($row['harga_prosedur'] ?? null);
+$mods_in_study = $row['mods_in_study'] ?? '';
+$num_series = $row['num_series'] ?? '';
+$num_instances = $row['num_instances'] ?? '';
+$pat_id = $row['pat_id'] ?? '';
+$no_foto = $row['no_foto'] ?? '';
+$acc = $row['acc'] ?? '';
+$address = $row['address'] ?? '';
+$dep_id = $row['dep_id'] ?? '';
+$name_dep = $row['name_dep'] ?? '';
+$dokterid = $row['dokterid'] ?? '';
+$named = $row['named'] ?? '';
+$weight = $row['weight'] ?? '';
+$contrast = $row['contrast'] ?? '';
+$contrast_allergies = $row['contrast_allergies'] ?? '';
+$radiographer_id = $row['radiographer_id'] ?? '';
+$radiographer_name = $row['radiographer_name'] ?? '';
+$dokradid = $row['dokradid'] ?? '';
+$dokrad_name = $row['dokrad_name'] ?? '';
+$pat_state = $row['pat_state'] ?? '';
+$priority = $row['priority'] ?? '';
+$spc_needs = $row['spc_needs'] ?? '';
+$id_payment = $row['id_payment'] ?? '';
+$payment = ($row['payment'] ?? '') ?? '';
+$fromorder = $row['fromorder'] ?? '';
+$film_small = $row['film_small'] ?? '';
+$film_medium = $row['film_medium'] ?? '';
+$film_large = $row['film_large'] ?? '';
+$film_reject_small = $row['film_reject_small'] ?? '';
+$film_reject_medium = $row['film_reject_medium'] ?? '';
+$film_reject_large = $row['film_reject_large'] ?? '';
+$re_photo = $row['re_photo'] ?? '';
+$kv = $row['kv'] ?? '';
+$mas = $row['mas'] ?? '';
 
 if ($fromorder == 'SIMRS' && $accession_no == $acc || $fromorder == 'simrs' && $accession_no == $acc) {
 	$simrs = SIMRS;
@@ -80,7 +65,7 @@ if ($fromorder == 'SIMRS' && $accession_no == $acc || $fromorder == 'simrs' && $
 	$simrs = '';
 }
 
-if ($_SESSION['level'] == "radiographer") {
+if (($_SESSION['level'] ?? '') == "radiographer") {
 ?>
 	<!DOCTYPE html>
 	<html>
@@ -267,7 +252,7 @@ if ($_SESSION['level'] == "radiographer") {
 													<?php
 													$dokter_radiology  = mysqli_query($conn, "SELECT dokradid, dokrad_name FROM xray_dokter_radiology");
 													while ($row_dokter_radiology = mysqli_fetch_array($dokter_radiology)) { ?>
-														<option value="<?= $row_dokter_radiology['dokradid']; ?>" <?= $row_dokter_radiology['dokradid'] == $dokradid ? 'selected' : "";  ?>><?= $row_dokter_radiology['payment']; ?></option>
+														<option value="<?= $row_dokter_radiology['dokradid']; ?>" <?= $row_dokter_radiology['dokradid'] == $dokradid ? 'selected' : "";  ?>><?= ($row_dokter_radiology['payment'] ?? ''); ?></option>
 													<?php } ?>
 												</select> -->
 												<input class="not-allowed" type="text" id="dokrad_name" value="<?= $dokrad_name; ?>" readonly>
@@ -390,4 +375,5 @@ if ($_SESSION['level'] == "radiographer") {
 	</html>
 <?php } else {
 	header("location:../index.php");
+  exit();
 } ?>

@@ -1,4 +1,5 @@
 <?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; }
 require 'koneksi/koneksi.php';
 $workload = mysqli_query($conn, "SELECT * FROM xray_recyclebin ORDER BY pk DESC");
 ?>
@@ -36,6 +37,7 @@ $workload = mysqli_query($conn, "SELECT * FROM xray_recyclebin ORDER BY pk DESC"
         </tr>
       </thead>
       <?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; }
       $i = 1;
       while ($row1 = mysqli_fetch_assoc($workload)) :
         $birth_date = $row1['birth_date'];
@@ -71,24 +73,34 @@ $workload = mysqli_query($conn, "SELECT * FROM xray_recyclebin ORDER BY pk DESC"
         $menit = $diff1 - $jam * (60 * 60);
       ?>
         <tr>
-          <td><?php echo $i; ?></td>
-          <td><?php echo $row1['mrn']; ?></td>
-          <td><?php echo $name1 . ' ' . $row1['lastname']; ?></td>
-          <td><?php echo $diff->y . 'Y' . ' ' . $diff->m . 'M' . ' ' . $diff->d . 'D'; ?></td>
+          <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } echo $i; ?></td>
+          <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } echo $row1['mrn']; ?></td>
+          <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } echo $name1 . ' ' . $row1['lastname']; ?></td>
+          <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } echo $diff->y . 'Y' . ' ' . $diff->m . 'M' . ' ' . $diff->d . 'D'; ?></td>
           <td>
-            <?php if ($row1['sex'] == 'M') { ?>
+            <?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } if ($row1['sex'] == 'M') { ?>
 
               <i style="color: blue;" class="fas fa-mars"></i> M
-            <?php } else if ($row1['sex'] == 'F') { ?>
+            <?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } } else if ($row1['sex'] == 'F') { ?>
 
               <i style="color: #ff637e;" class="fas fa-venus"></i> F
-            <?php } else if ($row1['sex'] == 'O') { ?>
+            <?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } } else if ($row1['sex'] == 'O') { ?>
 
               <i class="fas fa-genderless"></i> O
-            <?php } ?>
+            <?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } } ?>
           </td>
-          <td><?php echo $row1['prosedur']; ?></td>
           <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } echo $row1['prosedur']; ?></td>
+          <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; }
               $hasil = "";
               $series_desc = $row1['series_desc'];
               $series_desc1 = substr($series_desc, 0, 10);
@@ -102,16 +114,26 @@ $workload = mysqli_query($conn, "SELECT * FROM xray_recyclebin ORDER BY pk DESC"
               }
 
               echo $series_desc1 . '<br /> ' . $hasil; ?></td>
-          <td><?php echo $row1['num_series']; ?></td>
-          <td><?php echo $row1['num_instances']; ?></td>
-          <td><?php echo $row1['xray_type_code']; ?></td>
-          <td><?php echo $named1 . ' ' . $lastnamed1; ?></td>
-          <td><?php echo $row1['name_dep']; ?></td>
-          <td><?php echo $row1['dokrad_name'] . ' ' . $row1['dokrad_lastname']; ?></td>
-          <td><?php echo $radiographer_fullname; ?></td>
-          <td><?php echo $updated_time1; ?></td>
-          <td><?php echo $approve1; ?></td>
           <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } echo $row1['num_series']; ?></td>
+          <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } echo $row1['num_instances']; ?></td>
+          <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } echo $row1['xray_type_code']; ?></td>
+          <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } echo $named1 . ' ' . $lastnamed1; ?></td>
+          <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } echo $row1['name_dep']; ?></td>
+          <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } echo $row1['dokrad_name'] . ' ' . $row1['dokrad_lastname']; ?></td>
+          <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } echo $radiographer_fullname; ?></td>
+          <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } echo $updated_time1; ?></td>
+          <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } echo $approve1; ?></td>
+          <td><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; }
               if (!empty($approve == 0) or !empty($complete == 0)) {
                 echo '';
               } else {
@@ -119,14 +141,17 @@ $workload = mysqli_query($conn, "SELECT * FROM xray_recyclebin ORDER BY pk DESC"
               }
               ?></td>
           <td>
-            <?php if ($row1['status'] == 'ready to approve') { ?>
+            <?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } if ($row1['status'] == 'ready to approve') { ?>
 
               <i style="color: #3DA83D;" class="fas fa-sync"> Ready to Approve</i>
 
-            <?php } else if ($row1['status'] == 'APPROVED') { ?>
+            <?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } } else if ($row1['status'] == 'APPROVED') { ?>
 
               <i style="color: #329ECF" class="fas fa-check-square"> Approved</i>
-            <?php } ?>
+            <?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } } ?>
           </td>
           <td>
             <a style="text-decoration:none;" class="" href="../radiology/pdf/testpdf5.php?uid=<?= $row1['uid']; ?>" target="_blank">
@@ -136,14 +161,19 @@ $workload = mysqli_query($conn, "SELECT * FROM xray_recyclebin ORDER BY pk DESC"
             <!-- <a style="font-size: 10px;" class="" type="button" data-toggle="modal" data-target="#myModal"> -->
             <!-- <img data-toggle="tooltip" title="XML Upgrade to Enterprise" src="../image/xml.png" style="width: 25px;"> -->
             <!-- </a> -->
-            <?php include '../viewer-dicom.php'; ?>
-            <?php include '../viewer-ohif.php'; ?>
-            <?php include '../viewer-html.php'; ?>
+            <?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } if (file_exists(__DIR__ . '/viewer-dicom.php')) include __DIR__ . '/viewer-dicom.php'; ?>
+            <?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } if (file_exists(__DIR__ . '/viewer-ohif.php')) include __DIR__ . '/viewer-ohif.php'; ?>
+            <?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } if (file_exists(__DIR__ . '/viewer-html.php')) include __DIR__ . '/viewer-html.php'; ?>
           </td>
           <td><?= $del; ?></td>
         </tr>
-        <?php $i++; ?>
-      <?php endwhile; ?>
+        <?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } $i++; ?>
+      <?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } endwhile; ?>
 
     </table>
     <!-- The Modal -->
@@ -160,7 +190,8 @@ $workload = mysqli_query($conn, "SELECT * FROM xray_recyclebin ORDER BY pk DESC"
           <!-- Modal body -->
           <div class="modal-body">
             <h3>Specification</h3>
-            <p><?php echo $row1['uid']; ?></p>
+            <p><?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } echo $row1['uid'] ?? ''; ?></p>
           </div>
 
           <!-- Modal footer -->

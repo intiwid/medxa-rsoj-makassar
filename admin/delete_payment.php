@@ -1,9 +1,9 @@
 <?php
 require 'function_dokter.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
 
-$pk = $_GET["pk"];
+$pk = $_GET["pk"] ?? '';
 
 if (delete_payment($pk) > 0) {
 	echo "<script type='text/javascript'>

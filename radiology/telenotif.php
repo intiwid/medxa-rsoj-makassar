@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../koneksi/koneksi.php';
 require '../viewer-all.php';
 require '../default-value.php';
@@ -9,9 +12,8 @@ require '../model/query-base-patient.php';
 require '../model/query-base-dokter-radiology.php';
 require '../model/query-base-dokter-refferal.php';
 
-session_start();
-$username = $_SESSION['username'];
-$uid = $_GET['uid'];
+$username = $_SESSION['username'] ?? '';
+$uid = $_GET['uid'] ?? '';
 
 $query_base = "SELECT 
               $select_patient,
@@ -28,14 +30,14 @@ $query_base = "SELECT
             ";
 $kondisi = "WHERE study.study_iuid = '$uid'";
 $result = mysqli_query($conn_pacsio, $query_base . $kondisi);
-$row = mysqli_fetch_array($result);
-$dokterid = $row['dokterid'];
+$row = $result ? (mysqli_fetch_array($result) ?: []) : [];
+$dokterid = $row['dokterid'] ?? '';
 if ($dokterid) {
     $query_refferal = "SELECT $select_dokter_refferal FROM $table_dokter_refferal WHERE dokterid = '$dokterid'";
     $result3 = mysqli_query($conn, $query_refferal);
-    $row3 = mysqli_fetch_assoc($result3);
-    $dokter_fullname = $row3['dokter_fullname'];
-    if ($row3['idtele']) {
+    $row3 = ($result3 && mysqli_num_rows($result3) > 0) ? (mysqli_fetch_assoc($result3) ?: []) : [];
+    $dokter_fullname = $row3['dokter_fullname'] ?? '';
+    if (($row3['idtele'] ?? '')) {
         $token = "5414794545:AAGl8kEfUPyF-32OG3niUvWpRcJ5SSyrZ8c"; // token bot
         $pat_name = defaultValue($row['pat_name']);
         $pat_name = removeCharacter($pat_name);
@@ -50,7 +52,7 @@ Jenis Pemeriksaan : $study_desc
             Sudah Selesai, berikut hasil pemeriksaannya:
 1. Link Expertise : http://$ip:8089/intiwid2022/radiology/pdf/expertise.php?uid=" . $uid . "
 2. Link Foto : http://$ip:91/viewer/" . $uid,
-            'chat_id' => $row3['idtele']  //contoh bot, group id -442697126
+            'chat_id' => ($row3['idtele'] ?? '')  //contoh bot, group id -442697126
         ];
         file_get_contents("https://api.telegram.org/bot$token/sendMessage?" . http_build_query($data));
         echo "<script>

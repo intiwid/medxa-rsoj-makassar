@@ -1,0 +1,77 @@
+================================================================================
+SOP & RENCANA KERJA MIGRASI WEB RIS MEDXA KE PHP 8.3.36
+METODE RESMI: NATIVE PHP REFACTORING + ISOLASI THIRD-PARTY + RUNTIME CRAWLER
+================================================================================
+
+1. RINGKASAN & PRINSIP UNIVERSAL MULTI-PROYEK RUMAH SAKIT:
+- Prinsip Fleksibilitas Multi-RS:
+  1. Deteksi Workspace Dinamis: AI Agent selalu mengikuti folder proyek yang sedang aktif dibuka di workspace (misal: medxa-rs-salamun, medxa-rs-djuansih, medxa-rsmm-samarinda, dll.). Tidak di-hardcode ke medxa-rsoj-makassar.
+  2. Pemindaian Berkas & Library Pihak Ketiga Dinamis: Mengingat file yang diubah serta library pihak ketiga (third-party) tiap RS berbeda, AI Agent wajib memindai ulang seluruh berkas aplikasi, modul third-party (pdf, phpqrcode, ckeditor, vendor, dsb.), dan menyesuaikan daftar skip di rector.php & phpstan.neon per proyek terkait sebelum refactoring.
+  3. Konfigurasi Database Dinamis via koneksi/koneksi.php: Parameter database (nama skema $database_ris, $database_pacsio, $database_mppsio, user, password, host, port) dibaca dan disesuaikan secara dinamis mengikuti file koneksi/koneksi.php dari proyek RS tersebut.
+- Proyek Acuan (Studi Kasus RSOJ Makassar):
+  * Folder Proyek: medxa-rsoj-makassar
+  * Total File PHP: 251 File PHP aplikasi (di luar library pihak ketiga yang di-skip)
+  * Target PHP: PHP 8.3.36 (D:\xampp83\php\php.exe & Apache Port 80)
+  * Database: MySQL 5.6 Port 3306 (medxa_rsoj_makasar, pacsio_medxa_rsoj_makasar, mppsio)
+- Tipe Arsitektur: PHP Prosedural Klasik bercampur HTML/JavaScript (Native, Non-Framework).
+- Batasan Mutlak (Strict Constraints):
+  1. Tampilan HTML & CSS 100% utuh tidak boleh diubah/disentuh.
+  2. Repositori proyek tetap bersih tanpa Composer (tanpa composer.json & folder vendor baru).
+  3. Library pihak ketiga (pdf/fpdf, phpqrcode, ckeditor, vendor legacy) di-skip di Rector agar fungsionalitas aslinya tidak rusak.
+- Checklist Wajib php.ini Server RS (Hapus tanda ; di php.ini):
+  1. extension=gd         -> WAJIB untuk generator QR Code (phpqrcode) cetak hasil expertise radiologi.
+  2. extension=zip        -> WAJIB untuk membaca/ekstrak arsip DICOM atau file pasien.
+  3. extension=mysqli     -> WAJIB untuk koneksi database MySQL portal web RIS native PHP.
+  4. extension=pdo_mysql  -> Driver PDO MySQL untuk modul pendukung.
+  5. extension=mbstring   -> WAJIB untuk manipulasi string UTF-8 multibyte.
+  6. extension=fileinfo   -> WAJIB untuk validasi tipe MIME upload file citra radiologi/dokumen.
+
+2. TAHAPAN EKSEKUSI STANDAR (SOP DINAMIS PER WORKSPACE):
+   Langkah 1: Setup koneksi database di koneksi/koneksi.php:
+              - Tambahkan mysqli_report(MYSQLI_REPORT_OFF); di baris awal koneksi/koneksi.php untuk mencegah fatal exception mode default PHP 8.1+ terhadap MySQL 5.6.
+              - Pastikan variabel koneksi ($database_ris, $database_pacsio, $database_mppsio) terbaca dinamis.
+   Langkah 2: Pemindaian dinamis berkas & konfigurasi isolasi tools (rector.php & phpstan.neon):
+              - Pindai struktur folder proyek RS aktif.
+              - Daftarkan folder assets statis (css, js, image, fontawesome, maintenance_image, log) ke daftar skip.
+              - Daftarkan modul pihak ketiga ke daftar skip (radiology/pdf, phpqrcode, ckeditor, vendor, phpmailer, contract, sign_src).
+              - Siapkan rector.php dan phpstan.neon mandiri tanpa dependensi composer.
+   Langkah 3: Perbaikan breaking changes PHP 8.3 pada kode aplikasi:
+              - Null-Safety Query Relasi: amankan setiap pemanggilan query per-row ($res ? mysqli_fetch_assoc($res) : null) dan null coalescing ($row['field'] ?? '') pada tabel xray_take_envelope, xray_dokter_radiology, kop_surat, dan xray_expertise agar tidak melempar "Trying to access array offset on null".
+              - Halaman Riwayat Expertise (workload-fill-detail-index.php): amankan query dokter radiologi terhadap username sesi login agar aman saat diakses akun radiographer atau refferal.
+              - Patch Modul PDF (radiology/pdf/fpdf.php): hapus pemanggilan fungsi usang get_magic_quotes_runtime() di method _dochecks(), tambahkan atribut #[\AllowDynamicProperties] pada class FPDF & PDF_HTML, serta sediakan fallback default image untuk kop surat dan tanda tangan.
+              - Isolasi Helper DataTables: lindungi fungsi get_all_data() dengan guard if (!function_exists('get_all_data')) pada semua script proses DataTables agar tidak fatal redeclare.
+              - Helper Global: tambahkan fallback $server_name = $_SERVER['SERVER_NAME'] ?? 'localhost' di viewer-all.php.
+              - Standarisasi Include: ubah seluruh include/require file helper ke path berbasis __DIR__ (require_once __DIR__ . '/../head.php').
+              - Pembersihan Komentar HTML: bersihkan tag komentar <!-- ... --> yang berisi blok PHP <?php ... ?> dari variabel tak terdefinisi.
+              - Direct Routing Session di index.php: hapus kode perantara menu.php dan langsung redirect ke modul sesuai session level pengguna.
+   Langkah 4: Jalankan otomatisasi Rector & PHPStan:
+              - Eksekusi refactoring aman: .\rector.bat process
+              - Analisis statis: .\phpstan.bat analyse (Target: [OK] No errors di seluruh file aplikasi).
+   Langkah 5: Audit Runtime Menyeluruh dengan Crawler (Simulasi Login 4 Role):
+              - Jalankan script crawler pengujian untuk mensimulasikan login:
+                1. Radiographer (akun staf radiografer)
+                2. Radiology (akun dokter spesialis radiologi)
+                3. Admin (akun administrator sistem)
+                4. Refferal (akun dokter perujuk)
+              - Pastikan seluruh endpoint DataTables, riwayat keahlian, viewer citra, dan cetak PDF mengembalikan HTTP 200 OK bebas dari Warning maupun Error.
+
+3. TEMPLATE PROMPT 1X PROMPT UNTUK REPOSITORI / PROJEK KEMBAR LAINNYA:
+Tolong migrasikan dan selesaikan seluruh error PHP 8.3 pada proyek Medxa RIS yang sedang aktif di workspace ini sesuai SOP di planning.md:
+1. Deteksi nama folder proyek aktif di workspace saat ini (misal [nama-folder-workspace]) dan baca konfigurasi koneksi database dari file koneksi/koneksi.php.
+2. Pindai seluruh file aplikasi dan library pihak ketiga secara dinamis, pastikan file rector.php dan phpstan.neon telah mengabaikan (skip) aset statis dan library eksternal (fpdf, phpqrcode, ckeditor, vendor, dsb.).
+3. Pastikan koneksi/koneksi.php telah disetel mysqli_report(MYSQLI_REPORT_OFF); untuk kompatibilitas MySQL 5.6.
+4. Terapkan null-safety pada seluruh query relasi (khususnya tabel xray_take_envelope, xray_dokter_radiology, kop_surat, xray_expertise, riwayat workload-fill-detail, dan array post/get DataTables) agar tidak memicu 'Trying to access array offset on null' saat data kosong atau saat diakses beda role.
+5. Patch library PDF fpdf.php dari fungsi usang get_magic_quotes_runtime(), tambahkan #[\AllowDynamicProperties], dan sediakan fallback default image kop surat / ttd.
+6. Bungkus atau pisahkan nama fungsi helper get_all_data() pada semua script proses/fetch agar tidak fatal redeclare.
+7. Pastikan path include menggunakan __DIR__ dan helper viewer-all aman dari Undefined SERVER_NAME.
+8. Hapus kode menu.php dan terapkan direct routing session pada index.php.
+9. Jalankan rector.bat dan phpstan.bat (level 0) untuk memastikan 0 error di seluruh berkas aplikasi.
+10. Jalankan audit runtime crawler simulasi login semua role (radiographer, radiology, admin, refferal) dan pastikan seluruh endpoint DataTables, riwayat keahlian, dan cetak PDF return HTTP 200 bersih bebas warning/error.
+11. Jaga 100% tampilan HTML/CSS tetap utuh.
+
+4. PERINTAH OPERASIONAL CEPAT:
+- Cek PHPStan Seluruh Proyek : .\phpstan.bat analyse
+- Cek PHPStan File Tertentu   : .\phpstan.bat analyse index.php
+- Simulasi Rector (Dry Run)   : .\rector.bat process --dry-run
+- Eksekusi Rector             : .\rector.bat process
+- Cek Versi PHP Engine       : "D:\xampp83\php\php.exe" -v

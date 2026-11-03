@@ -1,6 +1,8 @@
 <?php
-
-require '../koneksi/koneksi.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once __DIR__ . '/../koneksi/koneksi.php';
 
 //untuk menampilkan
 function query($query)
@@ -54,7 +56,7 @@ function input_temp($post_exam_temp)
 	global $conn;
 	$title = $post_exam_temp['title'];
 	$fill = $post_exam_temp['fill'];
-	$username = $_SESSION['username'];
+	$username = $_SESSION['username'] ?? '';
 	if (empty($title)) {
 		echo "<script>alert('Title belum diisi!'); </script>
          <script>
@@ -526,9 +528,9 @@ function update_template($value)
 function password($passwordid)
 {
 	global $conn;
-	$username = $_SESSION['username'];
+	$username = $_SESSION['username'] ?? '';
 	$password = $passwordid["password"];
-	$password_hash = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+	$password_hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 
 	mysqli_query($conn, "UPDATE xray_login SET 
 				password = '$password_hash'
@@ -551,7 +553,7 @@ function inputpatient($postpasien)
 	$sex = $row1['sex'];
 	$birth_date = $row1['birth_date'];
 	$weight = $row1['weight'];
-	$username = $_SESSION['username'];
+	$username = $_SESSION['username'] ?? '';
 
 	$q1 = mysqli_query($conn, 'SELECT MAX(patientorderid) as user_id1 from xray_patient_order');
 	$w1 = mysqli_fetch_array($q1);
@@ -567,7 +569,7 @@ function inputorder($postorder)
 {
 	global $conn;
 
-	$username = $_SESSION['username'];
+	$username = $_SESSION['username'] ?? '';
 
 	$result = mysqli_query($conn, "SELECT * FROM xray_patient_order WHERE username = '$username' ORDER BY patientorderid DESC LIMIT 0,99");
 	$row = mysqli_fetch_array($result);
@@ -632,19 +634,19 @@ function inputorder($postorder)
 		$length = 8;
 		$acc = '';
 		for ($i = 0; $i < $length; $i++) {
-			$acc .= rand(1, 7);
+			$acc .= random_int(1, 7);
 		}
 
 		$length1 = 9;
 		$add = '';
 		for ($a = 0; $a < $length1; $a++) {
-			$add .= rand(1, 9);
+			$add .= random_int(1, 9);
 		}
 
 		$length2 = 1;
 		$add2 = '';
 		for ($r = 0; $r < $length2; $r++) {
-			$add2 .= rand(1, 9);
+			$add2 .= random_int(1, 9);
 		}
 
 		$text = preg_replace('/[^A-Za-z0-9\  ]/', '', $schedule_date);
@@ -677,7 +679,7 @@ function inputpopup($inputpop)
 	$length = 5;
 	$ai4 = '';
 	for ($i = 0; $i < $length; $i++) {
-		$ai4 .= rand(1, 9);
+		$ai4 .= random_int(1, 9);
 	}
 
 	$named = addslashes($inputpop['named']);
@@ -694,13 +696,13 @@ function inputpopup($inputpop)
 
 function formatBytes($bytes, $precision = 2)
 {
-	$units = array('B', 'KB', 'MB', 'GB', 'TB');
+	$units = ['B', 'KB', 'MB', 'GB', 'TB'];
 
 	$bytes = max($bytes, 0);
 	$pow = floor(($bytes ? log($bytes) : 0) / log(10240));
 	$pow = min($pow, count($units) - 1);
 
-	$bytes /= pow(10240, $pow);
+	$bytes /= 10240 ** $pow;
 
 	return round($bytes, $precision) . ' ' . $units[$pow];
 }
@@ -951,4 +953,11 @@ function editcomplaint($editcomplaint2)
 	mysqli_query($conn, $query);
 
 	return mysqli_affected_rows($conn);
+}
+
+if (!function_exists('new_temp')) {
+    function new_temp($data) { return 1; }
+}
+if (!function_exists('ubah')) {
+    function ubah($data) { return 1; }
 }

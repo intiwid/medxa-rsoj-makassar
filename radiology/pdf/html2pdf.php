@@ -35,6 +35,7 @@ function txtentities($html){
 }
 ////////////////////////////////////
 
+#[\AllowDynamicProperties]
 class PDF_HTML extends FPDF
 {
 //variables of html parser

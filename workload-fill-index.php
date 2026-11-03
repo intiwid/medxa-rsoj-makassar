@@ -1,5 +1,8 @@
 <?php
-$level = $_SESSION['level'];
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$level = $_SESSION['level'] ?? '';
 ?>
 <div class="col-12" style="padding: 0;">
     <nav aria-label="breadcrumb">

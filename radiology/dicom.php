@@ -1,5 +1,11 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (($_SESSION['level'] ?? '') !== 'radiology') {
+    header('location:../index.php');
+    exit();
+}
 require '../koneksi/koneksi.php';
 require '../default-value.php';
 require '../model/query-base-workload.php';
@@ -7,7 +13,7 @@ require '../model/query-base-order.php';
 require '../model/query-base-study.php';
 require '../model/query-base-patient.php';
 require '../model/query-base-dokter-radiology.php';
-$username = $_SESSION['username'];
+$username = $_SESSION['username'] ?? '';
 // -----------------xray_exam2--------------
 
 // kondisi jika ada di dicom.php
@@ -40,7 +46,7 @@ $row = mysqli_fetch_assoc(mysqli_query(
 
 $jumlah_cito = $row['jumlah_cito'];
 
-if ($_SESSION['level'] == "radiology") {
+if (($_SESSION['level'] ?? '') == "radiology") {
 ?>
 	<!DOCTYPE html>
 	<html>
@@ -195,4 +201,5 @@ if ($_SESSION['level'] == "radiology") {
 	</html>
 <?php } else {
 	header("location:../index.php");
+  exit();
 } ?>

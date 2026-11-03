@@ -1,12 +1,13 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../js/proses/function.php';
 require '../model/query-base-dokter-radiology.php';
 
-session_start();
-$uid = $_GET['uid'];
-$dokradid = $_GET['dokradid'];
-$status = $_GET['status'];
+$uid = $_GET['uid'] ?? '';
+$dokradid = $_GET['dokradid'] ?? '';
+$status = $_GET['status'] ?? '';
 
 $query = mysqli_query(
 	$conn,
@@ -83,7 +84,7 @@ if (isset($_POST["submit"])) {
 	}
 }
 
-if ($_SESSION['level'] == "radiology" || $_SESSION['level'] == "radiographer") {
+if (($_SESSION['level'] ?? '') == "radiology" ||($_SESSION['level'] ?? '') == "radiographer") {
 ?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -266,4 +267,5 @@ if ($_SESSION['level'] == "radiology" || $_SESSION['level'] == "radiographer") {
 	</html>
 <?php } else {
 	header("location:../index.php");
+  exit();
 } ?>

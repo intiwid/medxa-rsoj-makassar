@@ -2,8 +2,8 @@
 
 require '../koneksi/koneksi.php';
 
-$study_iuid = $_GET["study_iuid"];
-$pat_name = $_GET["pat_name"];
+$study_iuid = $_GET["study_iuid"] ?? '';
+$pat_name = $_GET["pat_name"] ?? '';
 
 $query = mysqli_query(
 	$conn_mppsio,
@@ -23,4 +23,4 @@ if (!$query) {
 		</script>";
 }
 
-mysqli_close($conn);
+// // mysqli_close($conn);

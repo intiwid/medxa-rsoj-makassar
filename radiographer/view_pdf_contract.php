@@ -13,12 +13,12 @@
     // Store the file name into variable
     require 'function_radiographer.php';
     $contract_query = mysqli_query($conn, 'SELECT * FROM xray_contract ORDER BY id DESC');
-    $row_query = mysqli_fetch_assoc($contract_query);
-    $id = $row_query['id'];
-    $no_contract = $row_query['no_contract'];
-    $pdf_query = mysqli_query($conn, "SELECT * FROM xray_upload_pdf WHERE contract_id = '$no_contract'");
-    $row_pdf = mysqli_fetch_assoc($pdf_query);
-    $nama_pdf = $row_pdf['nama_file'];
+    $row_query = $contract_query ? mysqli_fetch_assoc($contract_query) : null;
+    $id = $row_query['id'] ?? '';
+    $no_contract = $row_query['no_contract'] ?? '';
+    $pdf_query = !empty($no_contract) ? mysqli_query($conn, "SELECT * FROM xray_upload_pdf WHERE contract_id = '$no_contract'") : false;
+    $row_pdf = $pdf_query ? mysqli_fetch_assoc($pdf_query) : null;
+    $nama_pdf = $row_pdf['nama_file'] ?? '';
     if ($nama_pdf) {
         $file = $nama_pdf . '.pdf';
         $host = $_SERVER['SERVER_NAME'];
@@ -26,6 +26,7 @@
         // Header content type
         header("Content-type: application/pdf");
         header("Location: $filepath");
+  exit();
         // header('Content-Disposition: attachment; filename="downloaded.pdf"');
         // echo '<head><title>test</title></head>';
         // Send the file to the browser.

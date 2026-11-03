@@ -1,6 +1,8 @@
 <?php
-
-	if (!isset($_SESSION['lang']))
+if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
+    session_start();
+}
+if (!isset($_SESSION['lang']))
 		$_SESSION['lang'] = "en";
 	else if (isset($_GET['lang']) && $_SESSION['lang'] != $_GET['lang'] && !empty($_GET['lang'])) {
 		if ($_GET['lang'] == "en")
@@ -9,5 +11,5 @@
 			$_SESSION['lang'] = "id";
 	}
 
-	require_once $_SESSION['lang'] . ".php";
+	require_once __DIR__ . '/' . $_SESSION['lang'] . ".php";
 ?>

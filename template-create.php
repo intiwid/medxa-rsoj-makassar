@@ -1,9 +1,12 @@
+<?php if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } ?>
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require 'js/proses/function.php';
 
 $result = mysqli_query($conn, "SELECT * FROM xray_dokter_radiology");
-$level = $_SESSION['level'];
+$level = $_SESSION['level'] ?? '';
 if (isset($_POST["submit"])) {
     if (new_template($_POST) > 0) {
         echo "<script type='text/javascript'>

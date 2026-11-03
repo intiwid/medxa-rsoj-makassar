@@ -1,8 +1,10 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+}
 require 'function_dokter.php';
-session_start();
 
-$id_table = $_GET["id_table"];
+$id_table = $_GET["id_table"] ?? '';
 $row =  mysqli_fetch_assoc(mysqli_query(
     $conn,
     "SELECT * FROM xray_login WHERE id_table = '$id_table' "
@@ -59,7 +61,7 @@ if (isset($_POST["submit"])) {
     }
 }
 
-if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
+if (($_SESSION['level'] ?? '') == "admin" ||($_SESSION['level'] ?? '') == "superadmin") {
 ?>
     <!DOCTYPE html>
     <html>
@@ -91,7 +93,7 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
                         <div class="form-template col-md-8 col-md-offset-2">
                             <h1>EDIT PASSWORD LOGIN</h1>
                             <form action="" method="post">
-                                <input type="hidden" name="id_table" value="<?= $row['id_table']; ?>">
+                                <input type="hidden" name="id_table" value="<?= ($row['id_table'] ?? ''); ?>">
                                 <label for="password"><b><?= $lang['input_pw'] ?></b></label><br>
                                 <input class="form-control" type="password" name="password" id="password" placeholder="<?= $lang['input_pw'] ?>.." required>
                                 <label for="passwordulang"><b><?= $lang['input_pw2'] ?></b></label><br>
@@ -119,4 +121,5 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
     </html>
 <?php } else {
     header("location:../index.php");
+  exit();
 } ?>

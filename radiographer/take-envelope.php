@@ -1,33 +1,21 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../js/proses/function.php';
 require '../default-value.php';
 require '../model/query-base-take-envelope.php';
 require '../model/query-base-study.php';
 require '../model/query-base-patient.php';
 require '../model/query-base-workload.php';
-session_start();
-$uid = $_GET['uid'];
 
-$row_take_envelope = mysqli_fetch_assoc(mysqli_query(
-	$conn,
-	"SELECT $select_take_envelope,
-	pat_name,
-	study_desc_pacsio,
-	mods_in_study
-	FROM $table_take_envelope 
-	RIGHT JOIN $table_study
-	ON study.study_iuid = xray_take_envelope.uid
-	JOIN $table_patient
-	ON patient.pk = study.patient_fk
-	JOIN $table_workload
-	ON study.study_iuid = xray_workload.uid
-	WHERE study_iuid = '$uid'
-	"
-));
-$is_taken = $row_take_envelope['is_taken'];
+$uid = $_GET['uid'] ?? '';
 
-if ($_SESSION['level'] == "radiographer") {
+$res_te = !empty($uid) ? mysqli_query($conn, "SELECT $select_take_envelope, pat_name, study_desc_pacsio, mods_in_study FROM $table_take_envelope RIGHT JOIN $table_study ON study.study_iuid = xray_take_envelope.uid JOIN $table_patient ON patient.pk = study.patient_fk JOIN $table_workload ON study.study_iuid = xray_workload.uid WHERE study_iuid = '$uid'") : false;
+$row_take_envelope = $res_te ? (mysqli_fetch_assoc($res_te) ?: []) : [];
+$is_taken = $row_take_envelope['is_taken'] ?? 0;
+
+if (($_SESSION['level'] ?? '') == "radiographer") {
 ?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -51,14 +39,14 @@ if ($_SESSION['level'] == "radiographer") {
 						<div class="col-md-6 box-change-dokter table-box">
 							<form method="post" id="take-envelope">
 								<div class="radiobtn1">
-									<div class='alert alert-info' role='alert'>Hasil Expertise Pasien <?= removeCharacter(defaultValue($row_take_envelope['pat_name'])); ?>, modalitas <?= defaultValue($row_take_envelope['mods_in_study']); ?>, Pemeriksaan <?= defaultValue($row_take_envelope['study_desc_pacsio']); ?></div>
+									<div class='alert alert-info' role='alert'>Hasil Expertise Pasien <?= removeCharacter(defaultValue($row_take_envelope['pat_name'] ?? null)); ?>, modalitas <?= defaultValue($row_take_envelope['mods_in_study'] ?? null); ?>, Pemeriksaan <?= defaultValue($row_take_envelope['study_desc_pacsio'] ?? null); ?></div>
 									<input type="hidden" id="study_iuid" name="study_iuid" value="<?= $uid; ?>">
 									<label for="name">Nama</label><br>
 									<input type="text" class="form-control" name="name" id="name" value="<?= $row_take_envelope['name'] ?? '' ?>">
 									<br>
 									<br>
 									<label for="created_at">Waktu Ambil</label><br>
-									<input type="text" class="form-control" name="created_at" id="created_at" value="<?= $row_take_envelope['created_at'] ? defaultValueDateTime($row_take_envelope['created_at']) : date('d-m-Y H:i'); ?>">
+									<input type="text" class="form-control" name="created_at" id="created_at" value="<?= !empty($row_take_envelope['created_at']) ? defaultValueDateTime($row_take_envelope['created_at']) : date('d-m-Y H:i'); ?>">
 									<br>
 									<br>
 									<?php
@@ -109,4 +97,5 @@ if ($_SESSION['level'] == "radiographer") {
 	</html>
 <?php } else {
 	header("location:../index.php");
+  exit();
 } ?>

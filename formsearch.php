@@ -1,4 +1,7 @@
 <?php
+$level = $_SESSION['level'] ?? '';
+if (!isset($conn_pacsio)) { include_once __DIR__ . '/koneksi/koneksi.php'; }
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; }
 $date = date('d-m-Y 23:59', strtotime("-30 days"));
 $date2 = date('d-m-Y 23:59');
 ?>
@@ -61,13 +64,19 @@ $date2 = date('d-m-Y 23:59');
                         <ul class="ks-cboxtags">
                             <!-- <div class="note5"><label>Search by Modality</label></div> -->
                             <?php
+$level = $_SESSION['level'] ?? '';
+if (!isset($conn_pacsio)) { include_once __DIR__ . '/koneksi/koneksi.php'; }
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; }
                             $sql = mysqli_query(
                                 $conn_pacsio,
                                 "SELECT mods_in_study FROM study GROUP BY mods_in_study"
                             );
                             while ($row = mysqli_fetch_assoc($sql)) { ?>
                                 <li><label><input class="common_selector cbox checkbox4" type="checkbox" id="checkbox" name="mods_in_study[]" value="<?= $row['mods_in_study']; ?>" checked><span><?= $row['mods_in_study']; ?></span></label></li>
-                            <?php } ?>
+                            <?php
+$level = $_SESSION['level'] ?? '';
+if (!isset($conn_pacsio)) { include_once __DIR__ . '/koneksi/koneksi.php'; }
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } } ?>
                         </ul>
                     </div>
 
@@ -103,7 +112,10 @@ $date2 = date('d-m-Y 23:59');
                         </div>
                     </div>
                     <!-- jika login radiology mencari berdasarkan fill, else mencari berdasarkan no foto -->
-                    <?php if ($level == 'radiology') { ?>
+                    <?php
+$level = $_SESSION['level'] ?? '';
+if (!isset($conn_pacsio)) { include_once __DIR__ . '/koneksi/koneksi.php'; }
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } if ($level == 'radiology') { ?>
                         <div class="col" style="padding: 5px;">
                             <div class="input-group input-group-regist input-regist input-group-icon">
                                 <input type="text" name="fill" id="fill" placeholder="Search Expertise" />
@@ -111,7 +123,10 @@ $date2 = date('d-m-Y 23:59');
                                 </div>
                             </div>
                         </div>
-                    <?php } else if ($level == 'radiographer' || $level == 'refferal') { ?>
+                    <?php
+$level = $_SESSION['level'] ?? '';
+if (!isset($conn_pacsio)) { include_once __DIR__ . '/koneksi/koneksi.php'; }
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } } else if ($level == 'radiographer' || $level == 'refferal') { ?>
                         <div class="col" style="padding: 5px;">
                             <div class="input-group input-group-regist input-regist input-group-icon">
                                 <input type="text" name="patientid" id="patientid" placeholder="Search No Foto" />
@@ -119,7 +134,10 @@ $date2 = date('d-m-Y 23:59');
                                 </div>
                             </div>
                         </div>
-                    <?php } else { ?>
+                    <?php
+$level = $_SESSION['level'] ?? '';
+if (!isset($conn_pacsio)) { include_once __DIR__ . '/koneksi/koneksi.php'; }
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } } else { ?>
                         <div class="col" style="padding: 5px;">
                             <div class="input-group input-group-regist input-regist input-group-icon">
                                 <input type="text" name="patientid" id="patientid" placeholder="Search No Foto" />
@@ -127,7 +145,10 @@ $date2 = date('d-m-Y 23:59');
                                 </div>
                             </div>
                         </div>
-                    <?php } ?>
+                    <?php
+$level = $_SESSION['level'] ?? '';
+if (!isset($conn_pacsio)) { include_once __DIR__ . '/koneksi/koneksi.php'; }
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } } ?>
                 </div>
 
             </div>

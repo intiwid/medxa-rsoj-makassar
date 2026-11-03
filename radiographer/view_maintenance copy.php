@@ -1,12 +1,15 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../koneksi/koneksi.php';
-session_start();
+
 $date = date('d-m-Y', strtotime("-30 days"));
 $date2 = date('d-m-Y');
 
 // --------------------------------
 
-if ($_SESSION['level'] == "radiographer") {
+if (($_SESSION['level'] ?? '') == "radiographer") {
 ?>
     <!DOCTYPE html>
 
@@ -206,4 +209,5 @@ if ($_SESSION['level'] == "radiographer") {
     </html>
 <?php } else {
     header("location:../index.php");
+  exit();
 } ?>

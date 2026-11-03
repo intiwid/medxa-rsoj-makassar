@@ -1,3 +1,4 @@
+<?php if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } ?>
 <tr>
     <th>No</th>
     <th><?= $lang['patient_name'] ?></th>

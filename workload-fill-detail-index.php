@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require 'viewer-all.php';
 require 'default-value.php';
 require 'model/query-base-workload.php';
@@ -10,74 +13,81 @@ require 'model/query-base-workload-fill.php';
 require 'js/proses/function.php';
 include "bahasa.php";
 
-$uid = $_GET['study_iuid'];
-$username = $_SESSION['username'];
+$uid = $_GET['study_iuid'] ?? '';
+$username = $_SESSION['username'] ?? '';
 
-$row = mysqli_fetch_assoc(mysqli_query(
-    $conn_pacsio,
-    "SELECT 
-    $select_patient,
-    $select_study,
-    $select_order,
-    $select_workload
-    FROM $table_patient
-    JOIN $table_study
-    ON patient.pk = study.patient_fk
-    LEFT JOIN $table_order
-    ON xray_order.uid = study.study_iuid
-    LEFT JOIN $table_workload
-    ON study.study_iuid = xray_workload.uid
-    WHERE study.study_iuid = '$uid'
-    ORDER BY study.study_datetime DESC"
-));
-$pat_name = defaultValue($row['pat_name']);
-$pat_sex = styleSex($row['pat_sex']);
-$pat_birthdate = defaultValueDate($row['pat_birthdate']);
-$age = diffDate($row['pat_birthdate']);
-$study_iuid = defaultValue($row['study_iuid']);
-$study_datetime = defaultValueDateTime($row['study_datetime']);
-$accession_no = defaultValue($row['accession_no']);
-$ref_physician = defaultValue($row['ref_physician']);
-$study_desc_pacsio = defaultValue($row['study_desc_pacsio']);
-$mods_in_study = defaultValue($row['mods_in_study']);
-$num_series = defaultValue($row['num_series']);
-$num_instances = defaultValue($row['num_instances']);
-$created_time = defaultValueDateTime($row['created_time']);
-$updated_time = defaultValueDateTime($row['updated_time']);
-$pat_id = defaultValue($row['pat_id']);
-$weight = defaultValue($row['weight']);
-$no_foto = defaultValue($row['no_foto']);
-$address = defaultValue($row['address']);
-$name_dep = defaultValue($row['name_dep']);
-$named = defaultValue($row['named']);
-$contrast = defaultValue($row['contrast']);
-$priority = defaultValue($row['priority']);
-$priority_doctor = defaultValue($row['priority_doctor']);
-$radiographer_name = defaultValue($row['radiographer_name']);
-$create_time = defaultValueDateTime($row['create_time']);
-$examed_at = defaultValueDateTime($row['examed_at']);
-$pat_state = defaultValue($row['pat_state']);
-$spc_needs = defaultValue($row['spc_needs']);
-$payment = defaultValue($row['payment']);
-$status = styleStatus($row['status'], $study_iuid);
-$approved_at = defaultValueDateTime($row['approved_at']);
-$spendtime = spendTime($study_datetime, $approved_at, $row['status']);
-$fromorder = $row['fromorder'];
-$pk_dokter_radiology = $row['pk_dokter_radiology'];
+$row = [];
+if (!empty($uid)) {
+    $res_study = mysqli_query(
+        $conn_pacsio,
+        "SELECT 
+        $select_patient,
+        $select_study,
+        $select_order,
+        $select_workload
+        FROM $table_patient
+        JOIN $table_study
+        ON patient.pk = study.patient_fk
+        LEFT JOIN $table_order
+        ON xray_order.uid = study.study_iuid
+        LEFT JOIN $table_workload
+        ON study.study_iuid = xray_workload.uid
+        WHERE study.study_iuid = '$uid'
+        ORDER BY study.study_datetime DESC"
+    );
+    $row = $res_study ? (mysqli_fetch_assoc($res_study) ?: []) : [];
+}
+$pat_name = defaultValue($row['pat_name'] ?? null);
+$pat_sex = styleSex($row['pat_sex'] ?? null);
+$pat_birthdate = defaultValueDate($row['pat_birthdate'] ?? null);
+$age = diffDate($row['pat_birthdate'] ?? null);
+$study_iuid = defaultValue($row['study_iuid'] ?? null);
+$study_datetime = defaultValueDateTime($row['study_datetime'] ?? null);
+$accession_no = defaultValue($row['accession_no'] ?? null);
+$ref_physician = defaultValue($row['ref_physician'] ?? null);
+$study_desc_pacsio = defaultValue($row['study_desc_pacsio'] ?? null);
+$mods_in_study = defaultValue($row['mods_in_study'] ?? null);
+$num_series = defaultValue($row['num_series'] ?? null);
+$num_instances = defaultValue($row['num_instances'] ?? null);
+$created_time = defaultValueDateTime($row['created_time'] ?? null);
+$updated_time = defaultValueDateTime($row['updated_time'] ?? null);
+$pat_id = defaultValue($row['pat_id'] ?? null);
+$weight = defaultValue($row['weight'] ?? null);
+$no_foto = defaultValue($row['no_foto'] ?? null);
+$address = defaultValue($row['address'] ?? null);
+$name_dep = defaultValue($row['name_dep'] ?? null);
+$named = defaultValue($row['named'] ?? null);
+$contrast = defaultValue($row['contrast'] ?? null);
+$priority = defaultValue($row['priority'] ?? null);
+$priority_doctor = defaultValue($row['priority_doctor'] ?? null);
+$radiographer_name = defaultValue($row['radiographer_name'] ?? null);
+$create_time = defaultValueDateTime($row['create_time'] ?? null);
+$examed_at = defaultValueDateTime($row['examed_at'] ?? null);
+$pat_state = defaultValue($row['pat_state'] ?? null);
+$spc_needs = defaultValue($row['spc_needs'] ?? null);
+$payment = defaultValue($row['payment'] ?? null);
+$status = styleStatus($row['status'] ?? null, $study_iuid);
+$approved_at = defaultValueDateTime($row['approved_at'] ?? null);
+$spendtime = spendTime($study_datetime, $approved_at, $row['status'] ?? null);
+$fromorder = $row['fromorder'] ?? null;
+$pk_dokter_radiology = $row['pk_dokter_radiology'] ?? null;
 
-// kondisi mencari ditabel dokter radiology berdasarkan pk dokter radiology
-$row_dokrad = mysqli_fetch_assoc(mysqli_query(
-    $conn,
-    "SELECT $select_dokter_radiology 
-    FROM $table_dokter_radiology 
-    WHERE pk = '$pk_dokter_radiology'"
-));
-if ($row['status'] == 'waiting' || $row['status'] == '') {
-    // jika status waiting kalo ada dokradid di xray_order tampilkan di xray_order
-    $dokrad_name = defaultValue($row['dokrad_name']);
-} else if ($row['status'] == 'approved') {
-    // jika status approved ambil data dari pk_dokter_radiology tabel xray_dokter_radiology
-    $dokrad_name = defaultValue($row_dokrad['dokrad_fullname']);
+$row_dokrad = [];
+if (!empty($pk_dokter_radiology)) {
+    $res_dokrad = mysqli_query(
+        $conn,
+        "SELECT $select_dokter_radiology 
+        FROM $table_dokter_radiology 
+        WHERE pk = '$pk_dokter_radiology'"
+    );
+    $row_dokrad = $res_dokrad ? (mysqli_fetch_assoc($res_dokrad) ?: []) : [];
+}
+$dokrad_name = '';
+$status_val = $row['status'] ?? '';
+if ($status_val == 'waiting' || $status_val == '') {
+    $dokrad_name = defaultValue($row['dokrad_name'] ?? null);
+} else if ($status_val == 'approved') {
+    $dokrad_name = defaultValue($row_dokrad['dokrad_fullname'] ?? null);
 }
 ?>
 <style>
@@ -302,13 +312,14 @@ if ($row['status'] == 'waiting' || $row['status'] == '') {
                     $pk_dokter_radiology_fill = $row['pk_dokter_radiology'];
 
                     // kondisi mencari ditabel dokter radiology berdasarkan username / login
-                    $row_dokrad_username = mysqli_fetch_assoc(mysqli_query(
+                    $res_dokrad_user = !empty($username) ? mysqli_query(
                         $conn,
                         "SELECT $select_dokter_radiology 
                         FROM $table_dokter_radiology 
                         WHERE username = '$username'"
-                    ));
-                    $pk_dokter_radiology_username = $row_dokrad_username['pk'];
+                    ) : false;
+                    $row_dokrad_username = $res_dokrad_user ? mysqli_fetch_assoc($res_dokrad_user) : null;
+                    $pk_dokter_radiology_username = $row_dokrad_username['pk'] ?? '';
             ?>
                     <tr>
                         <td><?= $i; ?></td>
@@ -351,4 +362,4 @@ if ($row['status'] == 'waiting' || $row['status'] == '') {
     </table>
 </div>
 <script src="js/3.1.1/jquery.min.js"></script>
-<script src="../js/proses/workload-fill-detail.js?v=<?= $random; ?>"></script>
+<script src="../js/proses/workload-fill-detail.js?v=<?= $random ?? time(); ?>"></script>

@@ -8,7 +8,7 @@ require 'model/query-base-patient.php';
 require 'model/query-base-workload-bhp.php';
 require 'date-time-zone.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
 
 // Fungsi header dengan mengirimkan raw data excel
 header("Content-type: application/vnd-ms-excel");
@@ -19,17 +19,17 @@ header("Content-Disposition: attachment; filename=DataPatient.xls");
 header('Cache-Control: max-age=0');
 
 // post dari form
-$fromUpdatedTime = $_POST['from_workload'];
+$fromUpdatedTime = $_POST['from_workload'] ?? null;
 $fromUpdatedTime = $fromUpdatedTime != null ? date("Y-m-d H:i", strtotime($fromUpdatedTime)) : null;
-$toUpdatedTime = $_POST['to_workload'];
+$toUpdatedTime = $_POST['to_workload'] ?? null;
 $toUpdatedTime = $toUpdatedTime != null ? date("Y-m-d H:i", strtotime($toUpdatedTime)) : null;
-$modsInStudy = implode("','", $_POST['mods_in_study']);
+$modsInStudy = (isset($_POST['mods_in_study']) && is_array($_POST['mods_in_study'])) ? implode("','", $_POST['mods_in_study']) : "";
 $modsInStudy = str_replace('\\', '\\\\', $modsInStudy);
-$priorityDoctor = implode("','", $_POST['priority_doctor']);
-$radiographerId = implode("','", $_POST['radiographer']);
-$depId = implode("','", $_POST['dep_id']);
-$dokradId = implode("','", $_POST['dokradid']);
-$statusOne = implode("','", $_POST['status']);
+$priorityDoctor = (isset($_POST['priority_doctor']) && is_array($_POST['priority_doctor'])) ? implode("','", $_POST['priority_doctor']) : "";
+$radiographerId = (isset($_POST['radiographer']) && is_array($_POST['radiographer'])) ? implode("','", $_POST['radiographer']) : "";
+$depId = (isset($_POST['dep_id']) && is_array($_POST['dep_id'])) ? implode("','", $_POST['dep_id']) : "";
+$dokradId = (isset($_POST['dokradid']) && is_array($_POST['dokradid'])) ? implode("','", $_POST['dokradid']) : "";
+$statusOne = (isset($_POST['status']) && is_array($_POST['status'])) ? implode("','", $_POST['status']) : "";
 
 // radiografer
 $radiographerIdArray = [];
@@ -602,4 +602,4 @@ while ($status = mysqli_fetch_array($statuses)) {
 
 <?php
 
-mysqli_close($conn);
+// // mysqli_close($conn);

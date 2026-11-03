@@ -1,8 +1,10 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../koneksi/koneksi.php';
 
-session_start();
-$username = $_SESSION['username'];
+$username = $_SESSION['username'] ?? '';
 $otpp = mt_rand(100000, 999999);
 
 $query = "UPDATE xray_dokter_radiology SET 

@@ -1,24 +1,26 @@
-<?php 
-require 'function_radiology.php';
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once __DIR__ . '/function_radiology.php';
 
-session_start();
-@$uid = $_GET['uid'];
-include('head.php');
-$username = $_SESSION['username'];
-@$keyword = $_GET["keyword"];
+$uid = $_GET['uid'] ?? '';
+include_once __DIR__ . '/head.php';
+$username = $_SESSION['username'] ?? '';
+$keyword = $_GET["keyword"] ?? '';
 
+$safe_keyword = mysqli_real_escape_string($conn, $keyword);
+$safe_username = mysqli_real_escape_string($conn, $username);
 
-$query = "SELECT * FROM xray_template WHERE  title LIKE '%$keyword%' AND username = '$username'";
-$result = mysqli_query($conn,$query);
+$query = "SELECT * FROM xray_template WHERE title LIKE '%$safe_keyword%' AND username = '$safe_username'";
+$result = mysqli_query($conn, $query);
 echo "<table border='1' id='mytemplate' class='type-choice mytemplate'>";
-if(mysqli_num_rows($result) > 0){ ?>
-
-	<?php while($row = mysqli_fetch_assoc($result)) :?>
+if ($result && mysqli_num_rows($result) > 0) { ?>
+	<?php while ($row = mysqli_fetch_assoc($result)) : ?>
 		<thead> 
 		<td class="td1">
-			<?php echo $uid; ?>
-		<a class="href_template" href="#" onclick="return confirm('Apakah yakin ingin ditiban?');"><?= $row['title']; ?></a>
-		</a>
+			<?php echo htmlspecialchars($uid); ?>
+		<a class="href_template" href="#" onclick="return confirm('Apakah yakin ingin ditiban?');"><?= htmlspecialchars($row['title'] ?? ''); ?></a>
 	<?php endwhile; ?>
 	</td>
 	</thead>

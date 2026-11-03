@@ -1,12 +1,13 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../js/proses/function.php';
 require '../model/query-base-dokter-radiology.php';
 
-session_start();
-$uid = $_GET['uid'];
-$dokradid = $_GET['dokradid'];
-$status = $_GET['status'];
+$uid = $_GET['uid'] ?? '';
+$dokradid = $_GET['dokradid'] ?? '';
+$status = $_GET['status'] ?? '';
 
 $query_changedoctor = mysqli_query(
 	$conn,
@@ -85,7 +86,7 @@ if (isset($_POST["submit"])) {
 	}
 }
 
-if ($_SESSION['level'] == "radiology" || $_SESSION['level'] == "radiographer") {
+if (($_SESSION['level'] ?? '') == "radiology" ||($_SESSION['level'] ?? '') == "radiographer") {
 ?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -240,7 +241,7 @@ if ($_SESSION['level'] == "radiology" || $_SESSION['level'] == "radiographer") {
 					<!-- <div class="">
 						<div class="about-inti col-md-6 col-md-offset-3" style="background-color: #f2f2f2;padding: 10px 85px;">
 							<form action="" method="post">
-								<?php while ($row = mysqli_fetch_assoc($query)) { ?>
+								<?php while (isset($query) && $row = mysqli_fetch_assoc($query)) { ?>
 									<input type="hidden" name="uid" value="<?= $uid ?>">
 									<div class="custom-control custom-radio">
 										<input type="radio" class="custom-control-input" id="<?php echo $row['dokradid'] ?>" name="dokradid" value="<?= $row['dokradid'] ?>" required>
@@ -268,4 +269,5 @@ if ($_SESSION['level'] == "radiology" || $_SESSION['level'] == "radiographer") {
 	</html>
 <?php } else {
 	header("location:../index.php");
+  exit();
 } ?>

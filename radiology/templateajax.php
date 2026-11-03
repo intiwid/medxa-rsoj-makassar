@@ -1,10 +1,11 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require 'function_radiology.php';
 
-session_start();
-
-$username = $_SESSION['username'];
-$keyword = $_GET["keyword"];
+$username = $_SESSION['username'] ?? '';
+$keyword = $_GET["keyword"] ?? '';
 
 $query = "SELECT * FROM xray_template
             WHERE
@@ -16,7 +17,7 @@ $mahasiswa = query($query);
 <table border="1" id="mytemplate" class="type-choice mytemplate">
     <?php foreach ($mahasiswa as $row) : ?>
         <thead>
-            <td class="td1" name="title" value="<?php echo $row_lvl['title']; ?>">
+            <td class="td1" name="title" value="<?php echo $row['title'] ?? ''; ?>">
                 <div id="content"></div>
             </td>
             <!-- <td class="td2"><a id="search-template" href="#<?= $row['template_id']; ?> "><i class="fas fa-search"></i></a></td> -->

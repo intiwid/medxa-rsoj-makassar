@@ -1,6 +1,8 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+}
 require 'function_dokter.php';
-session_start();
 
 $active_notification_unread = mysqli_query(
 	$conn,
@@ -13,7 +15,7 @@ $active_notification_send_pacs = mysqli_query(
 	"SELECT *
 	FROM active_notification_send_pacs"
 );
-if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
+if (($_SESSION['level'] ?? '') == "admin" ||($_SESSION['level'] ?? '') == "superadmin") {
 ?>
 	<!DOCTYPE html>
 	<html>
@@ -144,4 +146,5 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 	</html>
 <?php } else {
 	header("location:../index.php");
+  exit();
 } ?>

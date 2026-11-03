@@ -1,8 +1,8 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require 'function_radiographer.php';
-
-session_start();
 
 if (isset($_POST["submit"])) {
   if (new_complaint($_POST) > 0) {
@@ -23,7 +23,7 @@ if (isset($_POST["submit"])) {
 
 $result = mysqli_query($conn, "SELECT * FROM xray_dokter_radiology");
 
-if ($_SESSION['username'] == 'rafdi') {
+if (($_SESSION['username'] ?? '') == 'rafdi') {
 ?>
   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml">
@@ -172,4 +172,5 @@ if ($_SESSION['username'] == 'rafdi') {
   </html>
 <?php } else {
   header("location:../index.php");
+  exit();
 } ?>

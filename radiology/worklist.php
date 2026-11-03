@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require 'function_radiology.php';
 require '../viewer-all.php';
 require '../default-value.php';
@@ -9,17 +12,14 @@ require '../model/query-base-workload.php';
 require '../model/query-base-template.php';
 require '../model/query-base-selected-dokter-radiology.php';
 
-session_start();
+$uid = $_GET['uid'] ?? '';
+$username = $_SESSION['username'] ?? '';
 
-$uid = $_GET['uid'];
-$username = $_SESSION['username'];
+$res_sel_dok = mysqli_query($conn, "SELECT $select_selected_dokter_radiology FROM $table_selected_dokter_radiology");
+$selected_dokter_radiology = $res_sel_dok ? (mysqli_fetch_assoc($res_sel_dok) ?: []) : [];
 
-// kondisi jika mapping dokter diaktifkan
-$selected_dokter_radiology = mysqli_fetch_assoc(mysqli_query(
-	$conn,
-	"SELECT $select_selected_dokter_radiology 
-    FROM $table_selected_dokter_radiology"
-));
+$res_study = !empty($uid) ? mysqli_query($conn, "SELECT $select_patient, $select_study, $select_order, $select_workload FROM $table_patient JOIN $table_study ON patient.pk = study.patient_fk LEFT JOIN $table_order ON xray_order.uid = study.study_iuid LEFT JOIN $table_workload ON study.study_iuid = xray_workload.uid WHERE study_iuid = '$uid'") : false;
+$row = $res_study ? (mysqli_fetch_assoc($res_study) ?: []) : [];
 
 $row = mysqli_fetch_assoc(mysqli_query(
 	$conn,
@@ -36,38 +36,38 @@ $row = mysqli_fetch_assoc(mysqli_query(
     ON study.study_iuid = xray_workload.uid
 	WHERE study_iuid = '$uid'"
 ));
-$pat_name = defaultValue($row['pat_name']);
-$pat_sex = styleSex($row['pat_sex']);
-$pat_birthdate = diffDate($row['pat_birthdate']);
-$study_iuid = defaultValue($row['study_iuid']);
-$study_datetime = defaultValueDateTime($row['study_datetime']);
-$accession_no = defaultValue($row['accession_no']);
-$ref_physician = defaultValue($row['ref_physician']);
-$study_desc = defaultValue($row['study_desc']);
-$mods_in_study = defaultValue($row['mods_in_study']);
-$num_series = defaultValue($row['num_series']);
-$num_instances = defaultValue($row['num_instances']);
-$updated_time = defaultValueDateTime($row['updated_time']);
-$pat_id = defaultValue($row['pat_id']);
-$no_foto = defaultValue($row['no_foto']);
-$address = defaultValue($row['address']);
-$name_dep = defaultValue($row['name_dep']);
-$named = defaultValue($row['named']);
-$radiographer_name = defaultValue($row['radiographer_name']);
-$dokraid_order = $row['dokradid'];
-$dokrad_name = defaultValue($row['dokrad_name']);
-$create_time = defaultValueDateTime($row['create_time']);
-$pat_state = defaultValue($row['pat_state']);
-$priority = defaultValue($row['priority']);
-$spc_needs = defaultValue($row['spc_needs']);
-$payment = defaultValue($row['payment']);
-$fromorder = $row['fromorder'];
-$status = styleStatus($row['status'], $study_iuid);
-$fill = $row['fill'];
-$approved_at = defaultValueDateTime($row['approved_at']);
-$spendtime = spendTime($study_datetime, $approved_at, $row['status']);
-$pk_dokter_radiology = $row['pk_dokter_radiology'];
-$pk_study = $row['pk_study'];
+$pat_name = defaultValue($row['pat_name'] ?? null);
+$pat_sex = styleSex($row['pat_sex'] ?? null);
+$pat_birthdate = diffDate($row['pat_birthdate'] ?? null);
+$study_iuid = defaultValue($row['study_iuid'] ?? null);
+$study_datetime = defaultValueDateTime($row['study_datetime'] ?? null);
+$accession_no = defaultValue($row['accession_no'] ?? null);
+$ref_physician = defaultValue($row['ref_physician'] ?? null);
+$study_desc = defaultValue($row['study_desc'] ?? null);
+$mods_in_study = defaultValue($row['mods_in_study'] ?? null);
+$num_series = defaultValue($row['num_series'] ?? null);
+$num_instances = defaultValue($row['num_instances'] ?? null);
+$updated_time = defaultValueDateTime($row['updated_time'] ?? null);
+$pat_id = defaultValue($row['pat_id'] ?? null);
+$no_foto = defaultValue($row['no_foto'] ?? null);
+$address = defaultValue($row['address'] ?? null);
+$name_dep = defaultValue($row['name_dep'] ?? null);
+$named = defaultValue($row['named'] ?? null);
+$radiographer_name = defaultValue($row['radiographer_name'] ?? null);
+$dokraid_order = $row['dokradid'] ?? '';
+$dokrad_name = defaultValue($row['dokrad_name'] ?? null);
+$create_time = defaultValueDateTime($row['create_time'] ?? null);
+$pat_state = defaultValue($row['pat_state'] ?? null);
+$priority = defaultValue($row['priority'] ?? null);
+$spc_needs = defaultValue($row['spc_needs'] ?? null);
+$payment = defaultValue($row['payment'] ?? null);
+$fromorder = $row['fromorder'] ?? '';
+$status = styleStatus($row['status'] ?? null, $study_iuid);
+$fill = $row['fill'] ?? '';
+$approved_at = defaultValueDateTime($row['approved_at'] ?? null);
+$spendtime = spendTime($study_datetime, $approved_at, $row['status'] ?? null);
+$pk_dokter_radiology = $row['pk_dokter_radiology'] ?? '';
+$pk_study = $row['pk_study'] ?? '';
 $detail_uid = '<a href="#" class="hasil-all penawaran-a" data-id="' . $uid . '">' . removeCharacter($pat_name) . '</a>';
 
 // query mencari berdasarkan pat_id (mrn)
@@ -81,7 +81,7 @@ $query_mrn = mysqli_query(
 	ON patient.pk = study.patient_fk 
 	JOIN $table_workload
     ON study.study_iuid = xray_workload.uid
-	WHERE pat_id = '$row[pat_id]'
+	WHERE pat_id = '" . ($row['pat_id'] ?? '') . "'
 	AND study.study_iuid != '$uid'
 	ORDER BY study.study_datetime DESC"
 );
@@ -172,10 +172,10 @@ if (isset($_POST["save_approve"])) {
 		}
 	}
 }
-if ($_SESSION['level'] == "radiology") {
-	if (($dokraid_order == $dokradid && $selected_dokter_radiology['is_active'] == 1) or
-		($dokraid_order == $dokradid && $selected_dokter_radiology['is_active'] == 0) or
-		($dokraid_order == null && $selected_dokter_radiology['is_active'] == 0)
+if (($_SESSION['level'] ?? '') == "radiology") {
+	if (($dokraid_order == $dokradid && ($selected_dokter_radiology['is_active'] ?? 0) == 1) or
+		($dokraid_order == $dokradid && ($selected_dokter_radiology['is_active'] ?? 0) == 0) or
+		($dokraid_order == null && ($selected_dokter_radiology['is_active'] ?? 0) == 0)
 	) { ?>
 		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<html xmlns="http://www.w3.org/1999/xhtml">
@@ -428,7 +428,7 @@ if ($_SESSION['level'] == "radiology") {
 													WHERE template_id = '$template_id'"
 													));
 													if ($template_id == "") {
-														$fill = $row['fill'];
+														$fill = $row['fill'] ?? '';
 													} else {
 														$fill = $template['fill'];
 													}
@@ -505,12 +505,12 @@ if ($_SESSION['level'] == "radiology") {
 															<a href="worklist.php?uid=<?= $uid; ?>&template_id=<?= $template['template_id']; ?>"><?= $template['title']; ?></a>
 														</td>
 														<td style="text-align: center;">
-															<a href="#" class="view-template" data-id="<?= $template['template_id'];  ?>">
+															<a href="#" class="view-template" data-id="<?= $template['template_id'] ?? ''; ?>">
 																<i data-toggle="tooltip" title="View Template" class="fas fa-eye fa-lg"></i>
 															</a>
 														</td>
 														<td style="text-align: center;">
-															<a href="hapustemplate.php?uid=<?= $uid; ?>&template_id=<?= $template['template_id']; ?>&halaman=worklist" data-id="<?= $template['template_id'];  ?>" onclick="return confirm('Teruskan Menghapus Data?');">
+															<a href="hapustemplate.php?uid=<?= $uid; ?>&template_id=<?= $template['template_id']; ?>&halaman=worklist" data-id="<?= $template['template_id'] ?? ''; ?>" onclick="return confirm('Teruskan Menghapus Data?');">
 																<i data-toggle="tooltip" title="Delete Template" class="fas fa-trash fa-lg"></i>
 															</a>
 														</td>
@@ -629,5 +629,6 @@ if ($_SESSION['level'] == "radiology") {
 	}
 } else {
 	header("location:../index.php");
-	mysqli_close($conn);
+  exit();
+	// // mysqli_close($conn);
 } ?>

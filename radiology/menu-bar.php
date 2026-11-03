@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../koneksi/koneksi.php';
 include '../contract-service.php';
 
@@ -7,18 +10,21 @@ if (isset($_SESSION["username"])) {
   if ((time() - $_SESSION['last_login_timestamp']) > 3600) // 3600 = 60 * 60
   {
     header("location:logout.php");
+  exit();
   } else {
     $_SESSION['last_login_timestamp'] = time();
   }
 } else {
   header('location:../index.php');
+  exit();
 }
 
 
-$username = $_SESSION['username'];
+$username = $_SESSION['username'] ?? '';
 $result10 = mysqli_query($conn, "SELECT * FROM xray_dokter_radiology WHERE username = '$username'");
-$row10 = mysqli_fetch_assoc($result10);
-$name = $row10['dokrad_name'] . ' ' . $row10['dokrad_lastname'];
+$row10 = $result10 ? mysqli_fetch_assoc($result10) : null;
+$name = trim(($row10['dokrad_name'] ?? '') . ' ' . ($row10['dokrad_lastname'] ?? ''));
+if (empty($name)) { $name = $username; }
 ?>
 <?php include "../bahasa.php"; ?>
 

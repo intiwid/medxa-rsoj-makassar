@@ -1,3 +1,4 @@
+<?php if (!isset($database_ris) || !isset($database_pacsio)) { require_once __DIR__ . '/../koneksi/koneksi.php'; } ?>
 <?php
 
 $select_study = "study.pk AS pk_study,

@@ -1,8 +1,8 @@
 <?php
 require 'log.php';
 
-$aet = $_POST['aet'];
-$uid = $_POST['uid'];
+$aet = $_POST['aet'] ?? $_GET['aet'] ?? '';
+$uid = $_POST['uid'] ?? $_GET['uid'] ?? '';
 $inputcd = 'cd C:\dcmsyst\tool-2.0.26\bin &&';
 $inputdcm = ' dcmqr dcmPACS@' . $_SERVER['SERVER_NAME'] . ':11118 -qStudyInstanceUID=' . $uid . ' -cmove ' . $aet;
 $input = $inputcd . $inputdcm;

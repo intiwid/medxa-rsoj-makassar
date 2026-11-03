@@ -1,8 +1,11 @@
 <?php
-$uid = $_GET['uid'];
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$uid = $_GET['uid'] ?? '';
 require '../koneksi/koneksi.php';
-session_start();
-$username = $_SESSION['username'];
+
+$username = $_SESSION['username'] ?? '';
 
 if (isset($_POST["login"])) {
 

@@ -1,3 +1,5 @@
+<?php if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; } ?>
+<?php if (!isset($conn_pacsio)) { include_once __DIR__ . '/koneksi/koneksi.php'; } ?>
 <?php
 require 'model/query-base-workload.php';
 require 'model/query-base-study.php';

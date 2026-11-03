@@ -1,13 +1,14 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    ini_set('session.cookie_path', '/');
+    session_start();
+}
 require 'koneksi/koneksi.php';
-
-session_start();
 
 if (isset($_POST["login"])) {
 
-  $username = $_POST["username"];
-  $password = $_POST["password"];
+  $username = $_POST["username"] ?? '';
+  $password = $_POST["password"] ?? '';
 
   if (empty($username)) {
     echo "<script>alert('Username belum diisi!'); </script>";
@@ -21,15 +22,28 @@ if (isset($_POST["login"])) {
     $data = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 
     //---------------------------- cek kesesuaian password -------------------------------
-    if (password_verify($password, $data['password'])) {
+    if ($data && !empty($data['password']) && password_verify($password, $data['password'])) {
       $_SESSION['last_login_timestamp'] = time();
 
-      echo "<script>document.location.href='menu.php';</script>";
-
       //----------------------------- menyimpan username dan level ke dalam session ----------------------------------------
-      $_SESSION['level'] = $data['level'];
-      $_SESSION['username'] = $data['username'];
-      $_SESSION['fill'] = $data_temp['fill'];
+      $_SESSION['level'] = $data['level'] ?? '';
+      $_SESSION['username'] = $data['username'] ?? '';
+      $_SESSION['fill'] = $data['fill'] ?? null;
+
+            session_write_close();
+
+      if ($data['level'] === "admin" || $data['level'] === "superadmin") {
+        header("Location: admin/administrator.php");
+      } elseif ($data['level'] === "radiology") {
+        header("Location: radiology/dicom.php");
+      } elseif ($data['level'] === "radiographer") {
+        header("Location: radiographer/workload.php");
+      } elseif ($data['level'] === "refferal") {
+        header("Location: refferal/index.php");
+      } else {
+        header("Location: index.php");
+      }
+      exit();
     }
     echo "<script>alert('username atau password salah silahkan ulangi kembali'); </script>";
   }
@@ -38,12 +52,18 @@ if (isset($_POST["login"])) {
 ?>
 
 <?php
-@$username = $_SESSION['username'];
-$query = "SELECT * FROM xray_login WHERE username = '$username' ";
-$hasil = mysqli_query($conn, $query);
-$data = mysqli_fetch_array($hasil);
+$session_user = $_SESSION['username'] ?? '';
+$is_logged_in = false;
+if (!empty($session_user)) {
+  $query = "SELECT * FROM xray_login WHERE username = '" . mysqli_real_escape_string($conn, $session_user) . "' ";
+  $hasil = mysqli_query($conn, $query);
+  $data = $hasil ? mysqli_fetch_array($hasil) : null;
+  if ($data && !empty($data['username'])) {
+    $is_logged_in = true;
+  }
+}
 
-if (!($_SESSION['username'] = $data['username'])) {
+if (!$is_logged_in) {
 ?>
   <?php include "bahasa.php"; ?>
   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -172,14 +192,18 @@ if (!($_SESSION['username'] = $data['username'])) {
 
   </html>
 <?php } else {
-  if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
+  if (($_SESSION['level'] ?? '') == "admin" ||($_SESSION['level'] ?? '') == "superadmin") {
     header("location:admin/administrator.php");
-  } else if ($_SESSION['level'] == "superadmin") {
+  exit();
+  } else if (($_SESSION['level'] ?? '') == "superadmin") {
     header("location:admin/administrator.php");
-  } else if ($_SESSION['level'] == "radiology") {
+  exit();
+  } else if (($_SESSION['level'] ?? '') == "radiology") {
     header("location:radiology/dicom.php");
-  } else if ($_SESSION['level'] == "radiographer") {
+  exit();
+  } else if (($_SESSION['level'] ?? '') == "radiographer") {
     header("location:radiographer/workload.php");
+  exit();
   }
-  mysqli_close($conn);
+  // // mysqli_close($conn);
 } ?>

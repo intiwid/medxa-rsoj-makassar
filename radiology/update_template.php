@@ -1,8 +1,10 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require 'function_radiology.php';
-session_start();
 
-if ($_SESSION['level'] == "radiology") {
+if (($_SESSION['level'] ?? '') == "radiology") {
 ?>
 	<!DOCTYPE html>
 	<html>
@@ -53,4 +55,5 @@ if ($_SESSION['level'] == "radiology") {
 	</html>
 <?php } else {
 	header("location:../index.php");
+  exit();
 } ?>

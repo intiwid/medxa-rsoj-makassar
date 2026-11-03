@@ -1,7 +1,8 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+}
 require 'function_dokter.php';
-
-session_start();
 
 if (isset($_POST["submit"])) {
     if ($_POST['passwordconfirm'] == "27102108") {
@@ -54,7 +55,7 @@ if (isset($_POST["submit"])) {
     }
 }
 
-if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
+if (($_SESSION['level'] ?? '') == "admin" ||($_SESSION['level'] ?? '') == "superadmin") {
 ?>
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml">
@@ -123,4 +124,5 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
     </html>
 <?php } else {
     header("location:../index.php");
+  exit();
 } ?>

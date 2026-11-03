@@ -1,8 +1,11 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+}
 require 'function_dokter.php';
-session_start();
 
-$row = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM xray_expertise"));
+$res_exp = mysqli_query($conn, "SELECT * FROM xray_expertise");
+$row = $res_exp ? (mysqli_fetch_assoc($res_exp) ?: []) : [];
 
 if (isset($_POST["submit"])) {
     if (update_expertise($_POST) > 0) {
@@ -37,7 +40,7 @@ if (isset($_POST["submit"])) {
 					</script>";
     };
 }
-if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
+if (($_SESSION['level'] ?? '') == "admin" ||($_SESSION['level'] ?? '') == "superadmin") {
 ?>
     <!DOCTYPE html>
     <html>
@@ -73,26 +76,26 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
                                     <input type="hidden" name="pk" value="1">
                                     <label for="dokradid"><b>- Qr Code Hasil Pasien ? </b></label><br>
                                     <label class="radio-admin">
-                                        <input type="radio" <?= $row['qr_code_pasien'] == '1' ? 'checked' : ''; ?> name="qr_code_pasien" value="1"> Aktif
+                                        <input type="radio" <?= ($row['qr_code_pasien'] ?? '') == '1' ? 'checked' : ''; ?> name="qr_code_pasien" value="1"> Aktif
                                         <span class="checkmark"></span>
                                     </label>
                                     <label class="radio-admin">
-                                        <input type="radio" <?= $row['qr_code_pasien'] == '0' ? 'checked' : ''; ?> name="qr_code_pasien" value="0"> Tidak Aktif
+                                        <input type="radio" <?= ($row['qr_code_pasien'] ?? '') == '0' ? 'checked' : ''; ?> name="qr_code_pasien" value="0"> Tidak Aktif
                                         <span class="checkmark"></span>
                                     </label>
                                     <br>
                                     <!--  -->
                                     <label for="dokradid"><b>- Signature Dokter Radiologi ? </b></label><br>
                                     <label class="radio-admin">
-                                        <input type="radio" <?= $row['signature_dokter_radiologi'] == 'qr_code' ? 'checked' : ''; ?> name="signature_dokter_radiologi" value="qr_code"> Qr Code
+                                        <input type="radio" <?= ($row['signature_dokter_radiologi'] ?? '') == 'qr_code' ? 'checked' : ''; ?> name="signature_dokter_radiologi" value="qr_code"> Qr Code
                                         <span class="checkmark"></span>
                                     </label>
                                     <label class="radio-admin">
-                                        <input type="radio" <?= $row['signature_dokter_radiologi'] == 'signature_scan' ? 'checked' : ''; ?> name="signature_dokter_radiologi" value="signature_scan"> Signature Scan
+                                        <input type="radio" <?= ($row['signature_dokter_radiologi'] ?? '') == 'signature_scan' ? 'checked' : ''; ?> name="signature_dokter_radiologi" value="signature_scan"> Signature Scan
                                         <span class="checkmark"></span>
                                     </label>
                                     <label class="radio-admin">
-                                        <input type="radio" <?= $row['signature_dokter_radiologi'] == 'signature_empty' ? 'checked' : ''; ?> name="signature_dokter_radiologi" value="signature_empty"> Signature Empty
+                                        <input type="radio" <?= ($row['signature_dokter_radiologi'] ?? '') == 'signature_empty' ? 'checked' : ''; ?> name="signature_dokter_radiologi" value="signature_empty"> Signature Empty
                                         <span class="checkmark"></span>
                                     </label>
                                     <button class="button1" type="submit" name="submit"><?= $lang['add_data'] ?></button>
@@ -118,4 +121,5 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
     </html>
 <?php } else {
     header("location:../index.php");
+  exit();
 } ?>

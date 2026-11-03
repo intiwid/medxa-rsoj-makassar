@@ -1,8 +1,10 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+}
 require 'function_dokter.php';
-session_start();
 
-$id_table = $_GET["id_table"];
+$id_table = $_GET["id_table"] ?? '';
 $row =  mysqli_fetch_assoc(mysqli_query(
     $conn,
     "SELECT * FROM xray_login WHERE id_table = '$id_table' "
@@ -42,7 +44,7 @@ if (isset($_POST["submit"])) {
     }
 }
 
-if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
+if (($_SESSION['level'] ?? '') == "admin" ||($_SESSION['level'] ?? '') == "superadmin") {
 ?>
     <!DOCTYPE html>
     <html>
@@ -109,4 +111,5 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
     </html>
 <?php } else {
     header("location:../index.php");
+  exit();
 } ?>

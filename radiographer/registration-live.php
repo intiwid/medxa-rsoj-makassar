@@ -1,14 +1,14 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require 'function_radiographer.php';
-session_start();
 
-$pk = $_GET['pk'];
-$patient_get = mysqli_fetch_assoc(mysqli_query(
-  $conn,
-  "SELECT * FROM xray_patient WHERE pk = '$pk'"
-));
+$pk = $_GET['pk'] ?? '';
+$res_pat = !empty($pk) ? mysqli_query($conn, "SELECT * FROM xray_patient WHERE pk = '$pk'") : false;
+$patient_get = $res_pat ? (mysqli_fetch_assoc($res_pat) ?: []) : [];
 
-if ($_SESSION['level'] == "radiographer") {
+if (($_SESSION['level'] ?? '') == "radiographer") {
 ?>
   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49,7 +49,7 @@ if ($_SESSION['level'] == "radiographer") {
                           <?php
                           $query_patient = mysqli_query($conn, "SELECT * FROM xray_patient");
                           while ($patient = mysqli_fetch_array($query_patient)) { ?>
-                            <option value="<?= $patient['mrn'] . '|' . $patient['name'] . '|' . $patient['sex'] . '|' . $patient['birth_date'] . '|' . $patient['address'] . '|' . $patient['weight']; ?>" <?= $patient_get['mrn'] == $patient['mrn'] ? 'selected' : ""; ?>><?= $patient['name']; ?></option>
+                            <option value="<?= $patient['mrn'] . '|' . $patient['name'] . '|' . $patient['sex'] . '|' . $patient['birth_date'] . '|' . $patient['address'] . '|' . $patient['weight']; ?>" <?= ($patient_get['mrn'] ?? '') == $patient['mrn'] ? 'selected' : ""; ?>><?= $patient['name']; ?></option>
                           <?php } ?>
                         </select><br>
                       </div>
@@ -408,4 +408,5 @@ if ($_SESSION['level'] == "radiographer") {
   </html>
 <?php } else {
   header("location:../index.php");
+  exit();
 } ?>
