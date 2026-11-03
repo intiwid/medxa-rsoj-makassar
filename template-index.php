@@ -1,3 +1,7 @@
+<?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; }
+if (!isset($conn)) { include_once __DIR__ . '/koneksi/koneksi.php'; }
+?>
 <div class="row">
     <div id="content1">
         
@@ -17,5 +21,5 @@
             </div>
         </div>
     </div>
-    <?php require '../modal.php'; ?>
+    <?php require __DIR__ . '/modal.php'; ?>
 </div>

@@ -1,16 +1,16 @@
 <?php 
 require '../koneksi/koneksi.php';
 session_start();
-$schedule_date = $_POST['schedule_date'];
-$schedule_time = $_POST['schedule_time'];
-$contrast = $_POST['contrast'];
-$priority = $_POST['priority'];
-$pat_state = $_POST['pat_state'];
-$contrast_allergies = $_POST['contrast_allergies'];
-$spc_needs = $_POST['spc_needs'];
+$schedule_date = $_POST['schedule_date'] ?? '';
+$schedule_time = $_POST['schedule_time'] ?? '';
+$contrast = $_POST['contrast'] ?? '';
+$priority = $_POST['priority'] ?? '';
+$pat_state = $_POST['pat_state'] ?? '';
+$contrast_allergies = $_POST['contrast_allergies'] ?? '';
+$spc_needs = $_POST['spc_needs'] ?? '';
 
-$payment = $_POST['payment'];
-$other_payment = $_POST['other_payment'];
+$payment = $_POST['payment'] ?? '';
+$other_payment = $_POST['other_payment'] ?? '';
 if ($other_payment) {
       $payment = $_POST['other_payment'];
     }
@@ -29,31 +29,31 @@ $result2 = mysqli_query($conn, "SELECT * FROM xray_dokter_order ORDER BY doktero
 ($row2 = mysqli_fetch_array($result2));
 $result = mysqli_query($conn, "SELECT * FROM xray_patient_order ORDER BY patientorderid DESC LIMIT 0,99");
 ($row = mysqli_fetch_array($result));
-$patientid = $row['patientid'];
-$mrn = $row['mrn'];
-$name = $row['name'];
-$lastname = $row['lastname'];
-$sex = $row['sex'];
-$birth_date = $row['birth_date'];
-$weight = $row['weight'];
-$dokterid = $row2['dokterid'];
-$named = $row2['named'];
-$lastnamed = $row2['lastnamed'];
-$email = $row2['email'];
-$name_dep = $row3['name_dep'];
-$type_dep = $row3['type_dep'];
-$depid = $row3['depid'];
-$typemod = $row4['typemod'];
-$xray_type_code = $row4['xray_type_code'];
-$code_xray = $row5['code_xray'];
-$prosedur = $row5['prosedur'];
-$price = $row5['price'];
-$radiographer_id = $row6['radiographer_id'];
-$radiographer_name = $row6['radiographer_name'];
-$radiographer_lastname = $row6['radiographer_lastname'];
-$radiographer_sex = $row6['radiographer_sex'];
-$radiographer_tlp = $row6['radiographer_tlp'];
-$radiographer_email = $row6['radiographer_email'];
+$patientid = $row['patientid'] ?? '';
+$mrn = $row['mrn'] ?? '';
+$name = $row['name'] ?? '';
+$lastname = $row['lastname'] ?? '';
+$sex = $row['sex'] ?? '';
+$birth_date = $row['birth_date'] ?? '';
+$weight = $row['weight'] ?? '';
+$dokterid = $row2['dokterid'] ?? '';
+$named = $row2['named'] ?? '';
+$lastnamed = $row2['lastnamed'] ?? '';
+$email = $row2['email'] ?? '';
+$name_dep = $row3['name_dep'] ?? '';
+$type_dep = $row3['type_dep'] ?? '';
+$depid = $row3['depid'] ?? '';
+$typemod = $row4['typemod'] ?? '';
+$xray_type_code = $row4['xray_type_code'] ?? '';
+$code_xray = $row5['code_xray'] ?? '';
+$prosedur = $row5['prosedur'] ?? '';
+$price = $row5['price'] ?? '';
+$radiographer_id = $row6['radiographer_id'] ?? '';
+$radiographer_name = $row6['radiographer_name'] ?? '';
+$radiographer_lastname = $row6['radiographer_lastname'] ?? '';
+$radiographer_sex = $row6['radiographer_sex'] ?? '';
+$radiographer_tlp = $row6['radiographer_tlp'] ?? '';
+$radiographer_email = $row6['radiographer_email'] ?? '';
 $dokradid = $row7['dokradid'];
 $dokrad_name = $row7['dokrad_name'];
 $dokrad_lastname = $row7['dokrad_lastname'];
@@ -64,12 +64,12 @@ $dokrad_email = $row7['dokrad_email'];
 $length = 10;
   $acc = '';
   for ($i=0;$i<$length;$i++){
-  $acc .= rand (1, 9);}
+  $acc .= random_int (1, 9);}
 
 $length1 = 17;
   $add = '';
   for ($a=0;$a<$length1;$a++){
-  $add .= rand (1, 9);}
+  $add .= random_int (1, 9);}
 
 $text = preg_replace('/[^A-Za-z0-9\  ]/', '', $schedule_date);
 
@@ -83,3 +83,4 @@ $query = "INSERT INTO xray_order
         mysqli_query($conn, $query);
   
         header("location:order2.php");
+  exit();

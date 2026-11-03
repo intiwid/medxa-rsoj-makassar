@@ -113,7 +113,7 @@ while ($row = mysqli_fetch_array($query)) {
         $aksi = "-";
     }
 
-    $detail = '<a href="#" class="order2 penawaran-a" data-id="' . $uid . '">' . defaultValue($row['name']) . '</a>';
+    $detail = '<a href="#" class="order2 penawaran-a" data-id="' . $uid . '">' . defaultValue(mb_convert_encoding($row['name'], 'UTF-8', 'ISO-8859-1')) . '</a>';
 
     // kondisi ketika data dari simrs
     if ($fromorder == 'SIMRS' || $fromorder == 'simrs') {
@@ -140,7 +140,7 @@ while ($row = mysqli_fetch_array($query)) {
         "birth_date" => defaultValueDate($row['birth_date']),
         "sex" => $sex_icons,
         "xray_type_code" => defaultValue($row['xray_type_code']),
-        "prosedur" => defaultValue($row['prosedur']),
+        "prosedur" => defaultValue(mb_convert_encoding($row['prosedur'], 'UTF-8', 'ISO-8859-1')),
         "create_time" => defaultValueDateTime($row['create_time']),
         "schedule_date" => defaultValueDateTime($row['schedule_date'] . ' ' . $row['schedule_time']),
         "label" => $label,
@@ -150,4 +150,4 @@ while ($row = mysqli_fetch_array($query)) {
 
 echo json_encode($data);
 
-mysqli_close($conn);
+// // mysqli_close($conn);

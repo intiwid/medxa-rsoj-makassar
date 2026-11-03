@@ -1,6 +1,9 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../koneksi/koneksi.php';
-session_start();
+
 ini_set("upload_max_filesize", "1000000M");
 if (isset($_POST['upload'])) {
   if (!is_dir('dcm_temp')) mkdir('dcm_temp');
@@ -11,8 +14,9 @@ if (isset($_POST['upload'])) {
   }
   echo "Folder is successfully uploaded";
   header('location:dcmsend.php');
+  exit();
 }
-if ($_SESSION['level'] == "radiographer") {
+if (($_SESSION['level'] ?? '') == "radiographer") {
 ?>
   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml">
@@ -154,4 +158,5 @@ if ($_SESSION['level'] == "radiographer") {
   </html>
 <?php } else {
   header("location:../index.php");
+  exit();
 } ?>

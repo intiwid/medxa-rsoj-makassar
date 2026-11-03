@@ -1,9 +1,12 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require "phpqrcode/qrlib.php";
 require 'function_radiology.php';
-session_start();
-$username = $_SESSION['username'];
-@$uid = $_GET['uid'];
+
+$username = $_SESSION['username'] ?? '';
+$uid = $_GET['uid'] ?? '';
 // $query1 = "SELECT * FROM xray_workload_radiographer WHERE uid = '$uid' ";
 
 // $result1 = mysqli_query($conn, $query1);
@@ -27,8 +30,8 @@ if (isset($_POST["approvesign"])) {
     }
 }
 
-if ($_SESSION['level'] == "radiology") {
-    if ($_GET['verify'] == "verified") {
+if (($_SESSION['level'] ?? '') == "radiology") {
+    if (($_GET['verify'] ?? '') == "verified") {
 
 ?>
         <!DOCTYPE html>
@@ -171,6 +174,7 @@ if ($_SESSION['level'] == "radiology") {
 <?php
     } else {
         header('location:otp.php');
+  exit();
     }
 }
 ?>

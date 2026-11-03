@@ -323,7 +323,7 @@
 
 
 
-<?php include "../bahasa.php"; ?>
+<?php include __DIR__ . "/bahasa.php"; ?>
 <div class="sidebarnew closenew">
     <div class="logo-details">
         <div class="home-content">
@@ -350,7 +350,7 @@
         </li>
 
         <!-- =================SIDEBAR RADIOGRAPHER====================== -->
-        <?php if ($_SESSION['level'] == 'radiographer') { ?>
+        <?php if (($_SESSION['level'] ?? '') == 'radiographer') { ?>
             <li data-target="#products1">
                 
                     <div class="">
@@ -403,7 +403,7 @@
         <!-- =================END OF SIDEBAR RADIOGRAPHER====================== -->
 
         <!-- =================SIDEBAR DOKTER RADIOLOGI====================== -->
-        <?php if ($_SESSION['level'] == 'radiology') { ?>
+        <?php if (($_SESSION['level'] ?? '') == 'radiology') { ?>
             <li id="worklist1">
                 <a href="dicom.php">
                     <i class="fa-solid fa-book-medical"></i>
@@ -448,7 +448,7 @@
         <!-- =================End of SIDEBAR DOKTER RADIOLOGI====================== -->
 
         <!-- =================END OF SIDEBAR POLI====================== -->
-        <?php if ($_SESSION['level'] == 'refferal') { ?>
+        <?php if (($_SESSION['level'] ?? '') == 'refferal') { ?>
             <li data-target="#expertise-history">
                 <a href="workload-fill.php">
                     <i class="fa fa-history fa-lg"></i>
@@ -502,8 +502,8 @@
                     <i class="fas fa-user"></i>
                 </div>
                 <div class="name-job" style="margin-left: -90px;">
-                    <div class="profile_name"><label style="margin: 0;"><?= $_SESSION['username']; ?></label></div>
-                    <div class="job"><?= $_SESSION['level'] ?></div>
+                    <div class="profile_name"><label style="margin: 0;"><?= $_SESSION['username'] ?? ''; ?></label></div>
+                    <div class="job"><?= $_SESSION['level'] ?? '' ?></div>
                 </div>
                 <a href="logout.php">
                     <i class="fa-solid fa-right-from-bracket"></i>

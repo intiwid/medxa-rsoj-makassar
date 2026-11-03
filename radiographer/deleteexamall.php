@@ -2,8 +2,10 @@
 
 require '../koneksi/koneksi.php';
 
-$from = date('Y-m-d H:i', strtotime($_POST["from"]));
-$to = date('Y-m-d H:i', strtotime($_POST["to"]));
+$from_raw = $_POST["from"] ?? $_GET["from"] ?? date("d-m-Y 00:00");
+$from = date('Y-m-d H:i', strtotime($from_raw));
+$to_raw = $_POST["to"] ?? $_GET["to"] ?? date("d-m-Y 23:59");
+$to = date('Y-m-d H:i', strtotime($to_raw));
 
 $query = mysqli_query(
 	$conn_mppsio,
@@ -18,9 +20,9 @@ if (!$query) {
 	    </script>";
 } else {
 	echo "<script>
-    		alert('dari $_POST[from] sampai $_POST[to] berhasil dihapus');
+    		alert('dari {$from_raw} sampai {$to_raw} berhasil dihapus');
     		document.location.href= 'exam2.php';
     	</script>";
 }
 
-mysqli_close($conn);
+// // mysqli_close($conn);

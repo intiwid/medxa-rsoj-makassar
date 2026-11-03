@@ -1,21 +1,27 @@
 <?php
+if (!isset($conn)) {
+    require_once __DIR__ . '/koneksi/koneksi.php';
+}
 
-$hostname = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM xray_hostname_publik"));
+$res_hostname = mysqli_query($conn, "SELECT * FROM xray_hostname_publik");
+$hostname = $res_hostname ? mysqli_fetch_assoc($res_hostname) : null;
+$ip_publik = $hostname['ip_publik'] ?? '';
+$server_name = $_SERVER['SERVER_NAME'] ?? 'localhost';
 
 // PDF
 define('PDFFIRST', '<a style="text-decoration:none;" class="" href="../radiology/pdf/expertise.php?uid=');
 define('PDFLAST', '"target="_blank"><span class="btn btn-inti2" style="box-shadow: none;"><img src="../image/new/pdf-new.svg" data-toggle="tooltip" title="PDF" style="width: 100%;"></span></a>');
 
 // DICOM
-define('DICOMFIRST', '<a style="text-decoration:none;" href="jnlp://' . $_SERVER['SERVER_NAME'] . ':19898/weasis-pacs-connector/DCM_viewer.jnlp?studyUID=');
+define('DICOMFIRST', '<a style="text-decoration:none;" href="jnlp://' . $server_name . ':19898/weasis-pacs-connector/DCM_viewer.jnlp?studyUID=');
 define('DICOMLAST', '"><span class="btn btn-inti2" style="box-shadow: none;"><img src="../image/eyered.svg" data-toggle="tooltip" title="Dicom Viewer" style="width: 100%;"></span></a>');
 
 // HTML
-define('HTMLFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':19898/medxa/viewer.html?studyUID=');
+define('HTMLFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $server_name . ':19898/medxa/viewer.html?studyUID=');
 define('HTMLLAST', '"target="_blank"><span class="btn btn-inti2" style="box-shadow: none;"><img src="../image/eyeyellow.svg" data-toggle="tooltip" title="HTML Web Viewer" style="width: 100%;"></span></a>');
 
 // Mobile
-define('MOBILEFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':19898/dwv-viewer/index.html?type=manifest&input=%2Fweasis-pacs-connector%2Fmanifest%3FseriesUID%3D');
+define('MOBILEFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $server_name . ':19898/dwv-viewer/index.html?type=manifest&input=%2Fweasis-pacs-connector%2Fmanifest%3FseriesUID%3D');
 define('MOBILELAST', '"target="_blank"><span class="btn btn-warning btn-inti"><i class="fas fa-eye" data-toggle="tooltip" title="Web Viewer"></i></span></a>');
 
 // Change doctor
@@ -90,7 +96,7 @@ define('SENDDICOMLAST', '"><span class="btn btn-inti2" style="box-shadow: none;"
 
 // inobitec
 define('INOBITECFIRST', '<a href="#" class="ahref-edit" onclick="inobitec(');
-define('INOBITECLAST', ')"id="inobitec" data-ip="' . $_SERVER['SERVER_NAME'] . '"><span class="btn btn-warning btn-inti"><i class="fas fa-eye" data-toggle="tooltip" title="Web Viewer"></i></span></a>');
+define('INOBITECLAST', ')"id="inobitec" data-ip="' . $server_name . '"><span class="btn btn-warning btn-inti"><i class="fas fa-eye" data-toggle="tooltip" title="Web Viewer"></i></span></a>');
 
 // HOROS
 $horos = '<a href="Horos://?methodName=displayStudy&StudyInstanceUID=';
@@ -104,27 +110,29 @@ $ohif_large = '"class="btn btn-viewer-worklist" target="_blank"><img src="../ima
 $ohif_small = '"style="text-decoration:none;" class="ahref-edit" target="_blank"><span class="btn btn-inti2" style="box-shadow: none;"><img src="../image/eyegreen.svg" data-toggle="tooltip" title="Web Viewer" style="width: 100%;"></span></a>';
 
 // OHIF TERBARU
-if ($_SERVER['SERVER_NAME'] == $hostname['ip_publik']) {
+if (!empty($ip_publik) && $server_name == $ip_publik) {
     // jika menggunakan ip publik
-    define('OHIFNEWFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':82/viewer?StudyInstanceUIDs=');
+    define('OHIFNEWFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $server_name . ':82/viewer?StudyInstanceUIDs=');
     define('OHIFNEWLAST', "$ohif_small");
     // jika menggunakan ohif baru icon(large)
-    define('OHIFNEWWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $_SERVER['SERVER_NAME'] . ':82/viewer?StudyInstanceUIDs=');
+    define('OHIFNEWWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $server_name . ':82/viewer?StudyInstanceUIDs=');
     define('OHIFNEWWORKLISTLAST', "$ohif_large");
 } else {
-    define('OHIFNEWFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':92/viewer?StudyInstanceUIDs=');
+    define('OHIFNEWFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $server_name . ':92/viewer?StudyInstanceUIDs=');
     define('OHIFNEWLAST', "$ohif_small");
     // jika menggunakan ohif baru icon(large)
-    define('OHIFNEWWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $_SERVER['SERVER_NAME'] . ':92/viewer?StudyInstanceUIDs=');
+    define('OHIFNEWWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $server_name . ':92/viewer?StudyInstanceUIDs=');
     define('OHIFNEWWORKLISTLAST', "$ohif_large");
 }
 
 // OHIF LAMA
 function ohifurl($port)
 {
-    return "http://$_SERVER[SERVER_NAME]:$port/viewer/";
+    global $server_name;
+    $srv = $server_name ?? ($_SERVER['SERVER_NAME'] ?? 'localhost');
+    return "http://$srv:$port/viewer/";
 }
-if ($_SERVER['SERVER_NAME'] == $hostname['ip_publik']) {
+if (!empty($ip_publik) && $server_name == $ip_publik) {
     $url = ohifurl(92);
     // jika menggunakan ip publik
     // jika menggunakan ohif lama icon (small)
@@ -147,15 +155,15 @@ if ($_SERVER['SERVER_NAME'] == $hostname['ip_publik']) {
 }
 
 // RENDER
-define('RENDERFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $_SERVER['SERVER_NAME'] . ':93/?dicomweb=http://' . $_SERVER['SERVER_NAME'] . ':9090/dcm4chee-arc/aets/DCM4CHEE/rs/studies/');
+define('RENDERFIRST', '<a style="text-decoration:none;" class="ahref-edit" href="http://' . $server_name . ':93/?dicomweb=http://' . $server_name . ':9090/dcm4chee-arc/aets/DCM4CHEE/rs/studies/');
 define('RENDERLAST', '"target="_blank"><span class="btn rgba-stylish-slight btn-inti2" style="box-shadow: none;"><img src="../image/eyepink.svg" data-toggle="tooltip" title="Render Viewer" style="width: 100%;"></span></a>');
 
 
 // VIEWER DI WORKLIST ICON LARGE
-define('DICOMWORKLISTFIRST', '<div class="col-lg"><a href="jnlp://' . $_SERVER['SERVER_NAME'] . ':19898/weasis-pacs-connector/DCM_viewer.jnlp?studyUID=');
+define('DICOMWORKLISTFIRST', '<div class="col-lg"><a href="jnlp://' . $server_name . ':19898/weasis-pacs-connector/DCM_viewer.jnlp?studyUID=');
 define('DICOMWORKLISTLAST', '"class="btn btn-viewer-worklist"><img src="../image/desktop.svg">&nbsp; Dicom Viewer</a></div>');
 
-define('HTMLWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $_SERVER['SERVER_NAME'] . ':19898/medxa/viewer.html?studyUID=');
+define('HTMLWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $server_name . ':19898/medxa/viewer.html?studyUID=');
 define('HTMLWORKLISTLAST', '" class="btn btn-viewer-worklist" target="_blank"><img src="../image/html.svg">&nbsp; HTML Viewer</a></div>');
 
 define('RADIANTWORKLISTFIRST', '<div class="col-lg"><a href="radiant://?n=paet&v=dcmPACS&n=pstv&v=0020000D&v=%22');
@@ -166,7 +174,7 @@ define('HOROSWORKLISTFIRST', '<div class="col-lg"><a href="Horos://?methodName=d
 define('HOROSWORKLISTLAST', '"class="btn btn-viewer-worklist"><img src="../image/horos.png">&nbsp; Horos</a></div>');
 
 define('INOBITECWORKLISTFIRST', '<div class="col-lg"><a onclick="inobitec(');
-define('INOBITECWORKLISTLAST', ')" id="inobitec" data-ip="' . $_SERVER['SERVER_NAME'] . '" class="btn btn-viewer-worklist"><img src="../image/inobitec.png">&nbsp; Inobitec</a></div>');
+define('INOBITECWORKLISTLAST', ')" id="inobitec" data-ip="' . $server_name . '" class="btn btn-viewer-worklist"><img src="../image/inobitec.png">&nbsp; Inobitec</a></div>');
 
-define('RENDERWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $_SERVER['SERVER_NAME'] . ':93/?dicomweb=http://' . $_SERVER['SERVER_NAME'] . ':9090/dcm4chee-arc/aets/DCM4CHEE/rs/studies/');
+define('RENDERWORKLISTFIRST', '<div class="col-lg"><a href="http://' . $server_name . ':93/?dicomweb=http://' . $server_name . ':9090/dcm4chee-arc/aets/DCM4CHEE/rs/studies/');
 define('RENDERWORKLISTLAST', '" class="btn btn-viewer-worklist" target="_blank"><img src="../image/render-viewer.svg">&nbsp; Render Viewer</a></div>');

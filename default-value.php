@@ -12,22 +12,22 @@ function defaultValueNumber($value)
 
 function defaultValueDate($value)
 {
-    return isset($value) ? date('d-m-Y', strtotime($value)) : '-';
+    return !empty($value) ? date('d-m-Y', strtotime($value)) : '-';
 }
 
 function defaultValueDateTime($value)
 {
-    return isset($value) ? date('d-m-Y H:i', strtotime($value)) : '-';
+    return !empty($value) ? date('d-m-Y H:i', strtotime($value)) : '-';
 }
 
 function removeCharacter($value)
 {
-    return str_replace('^', '', $value);
+    return str_replace('^', '', $value ?? '');
 }
 
 function diffDate($value)
 {
-    if (isset($value)) {
+    if (!empty($value)) {
         $bday = new DateTime(date('Y-m-d', strtotime($value)));
         $today = new DateTime(date('Y-m-d'));
         $diff = $today->diff($bday);
@@ -41,9 +41,9 @@ function diffDate($value)
 
 function spendTime($value_study_datetime, $value_approved_at, $value_status)
 {
-    $study_datetime = date("Y-m-d H:i", strtotime($value_study_datetime));
-    $approved_at = date("Y-m-d H:i", strtotime($value_approved_at));
-    if ($value_status == 'APPROVED' || $value_status == 'approved') {
+    if (($value_status == 'APPROVED' || $value_status == 'approved') && !empty($value_study_datetime) && !empty($value_approved_at)) {
+        $study_datetime = date("Y-m-d H:i", strtotime($value_study_datetime));
+        $approved_at = date("Y-m-d H:i", strtotime($value_approved_at));
         $interval = strtotime($approved_at) - strtotime($study_datetime);
         $hour = floor($interval / (60 * 60));
         $minute = $interval - $hour * (60 * 60);

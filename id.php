@@ -1,5 +1,5 @@
 <?php
-$lang = array(
+$lang = [
 	"title" => "Judul",
 	"about_us" => "Tentang Perusahaan",
 	"about" => "Tentang",
@@ -20,7 +20,6 @@ Hubungi kami di (Kantor) + 62-21-4532648 </p>",
 	"examroom" => "Ruang Exam",
 	"worklist" => "Worklist",
 	"workload" => "Workload",
-	"about" => "Tentang",
 	"search" => "Cari",
 	"logout" => "Keluar",
 	"language" => "Bahasa",
@@ -98,7 +97,6 @@ Hubungi kami di (Kantor) + 62-21-4532648 </p>",
 	"table_doc" => "Tabel Dokter",
 	"list_doc" => "Daftar Dokter",
 	"add_data_doc" => "Tambah data Dokter",
-	"admin" => "Admin",
 	"id_doc" => "ID Dokter",
 	"doc_name" => "Nama Dokter",
 	"action" => "Aksi",
@@ -135,16 +133,13 @@ Hubungi kami di (Kantor) + 62-21-4532648 </p>",
 	"new_price" => "Harga",
 	"new_procedure" => "Prosedur",
 	"add_price" => "Tambah Daftar Harga",
-	"add_procedure" => "Tambah Daftar Prosedur",
 	"xray_code" => "Kode X-ray",
 	"input_xray_code" => "masukan kode x-ray..",
-	"procedure" => "Prosedur",
 	"input_procedure" => "Masukan prosedur..",
 	"pro_type" => "Tipe Prosedure",
 	"input_pro_type" => "Masukan tipe prosedur..",
 	"price" => "Harga",
 	"input_price" => "Masukan harga..",
-	"input_procedure" => "Masukan Prosedur..",
 	"table_price" => "Tabel Harga",
 	"table_procedure" => "Tabel Prosedur",
 	"list_price" => "Daftar Harga",
@@ -168,7 +163,6 @@ Hubungi kami di (Kantor) + 62-21-4532648 </p>",
 	// end of REPORT
 
 	// Report News
-	"report_news" => "Laporan Berita",
 	// end of REPORT News
 
 	//all order
@@ -225,11 +219,9 @@ Hubungi kami di (Kantor) + 62-21-4532648 </p>",
 
 	// Dokter RADIOLOGY
 	"radiology_report" => "Radiologi Report",
-	"modality_worklist" => "Modaliti Worklist",
 	"expertise" => "Expertise",
 	"physician_worklist" => "Physician Worklist",
 	"information" => "Keterangan",
-	"critical" => "Kritis",
 	// END OF Dokter RADIOLOGY
 
 	// REFERRAL
@@ -257,7 +249,6 @@ Hubungi kami di (Kantor) + 62-21-4532648 </p>",
 	"select_mod" => "Pilih Modaliti",
 	"select_procedure" => "Pilih Procedure",
 	"additional_form" => "Form Tambahan",
-	"exam_date" => "Tanggal Pemeriksaan",
 	"exam_time" => "Waktu Pemeriksaan",
 	"using_contrast" => "Perlu Contrast",
 	"not_using_contrast" => "Tidak Perlu Contrast",
@@ -302,4 +293,4 @@ Hubungi kami di (Kantor) + 62-21-4532648 </p>",
 
 
 
-);
+];

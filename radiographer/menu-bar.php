@@ -1,22 +1,28 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../koneksi/koneksi.php';
-include '../contract-service';
+if (file_exists('../contract-service.php')) include '../contract-service.php';
 
 if (isset($_SESSION["username"])) {
-  if ((time() - $_SESSION['last_login_timestamp']) > 3600) //  3600 = 60 menit * 60 
+  if ((time() - ($_SESSION['last_login_timestamp'] ?? time())) > 3600) //  3600 = 60 menit * 60 
   {
-    header("location:logout");
+    header("location:logout.php");
+  exit();
   } else {
     $_SESSION['last_login_timestamp'] = time();
   }
 } else {
-  header('location:../index');
+  header('location:../index.php');
+  exit();
 }
 
-$username = $_SESSION['username'];
+$username = $_SESSION['username'] ?? '';
 $result10 = mysqli_query($conn, "SELECT * FROM xray_radiographer WHERE username = '$username'");
-$row10 = mysqli_fetch_assoc($result10);
-$radiographer_name = $row10['radiographer_name'] . ' ' . $row10['radiographer_lastname'];
+$row10 = $result10 ? mysqli_fetch_assoc($result10) : null;
+$radiographer_name = trim(($row10['radiographer_name'] ?? '') . ' ' . ($row10['radiographer_lastname'] ?? ''));
+if (empty($radiographer_name)) { $radiographer_name = $username; }
 ?>
 
 <link rel="stylesheet" href="fontawesome/css/all.css">
@@ -34,7 +40,7 @@ $radiographer_name = $row10['radiographer_name'] . ' ' . $row10['radiographer_la
   </div>
 </div>
 <!-- ------loader------ -->
-<?php include "../bahasa"; ?>
+<?php include "../bahasa.php"; ?>
 <div class="mainheader">
   <div class="container-fluid">
     <div class="row">
@@ -193,7 +199,7 @@ $radiographer_name = $row10['radiographer_name'] . ' ' . $row10['radiographer_la
 
 
 
-<?php include('../chat_index'); ?>
+<?php if (file_exists(__DIR__ . '/../chat_index.php')) include(__DIR__ . '/../chat_index.php'); ?>
 
 
 

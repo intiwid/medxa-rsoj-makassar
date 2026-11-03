@@ -1,14 +1,16 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../koneksi/koneksi.php';
 
 @session_start();
 
-$username = $_SESSION['username'];
+$username = $_SESSION['username'] ?? '';
 
 $result = mysqli_query($conn, "SELECT * FROM xray_template");
 
-if ($_SESSION['level'] == "radiographer") {
+if (($_SESSION['level'] ?? '') == "radiographer") {
 ?>
   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml">
@@ -66,4 +68,5 @@ if ($_SESSION['level'] == "radiographer") {
   </script>
 <?php } else {
   header("location:../index.php");
+  exit();
 } ?>

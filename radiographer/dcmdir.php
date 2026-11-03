@@ -6,6 +6,7 @@
 //     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 //     move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
 //     header('location:testdcmsend.php');
+  exit();
 // }
 ini_set('MAX_EXECUTION_TIME', '600');
 
@@ -19,6 +20,7 @@ if (isset($_POST['upload'])) {
     }
     echo "Folder is successfully uploaded";
     header('location:dcmsend.php');
+  exit();
 }
 
 ?>

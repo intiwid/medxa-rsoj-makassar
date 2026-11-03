@@ -1,18 +1,23 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+}
 require '../koneksi/koneksi.php';
 
 if (isset($_SESSION["username"])) {
   if ((time() - $_SESSION['last_login_timestamp']) > 600) // 600 = 10 * 60
   {
     header("location:logout.php");
+  exit();
   } else {
     $_SESSION['last_login_timestamp'] = time();
   }
 } else {
   header('location:../index.php');
+  exit();
 }
 
-$username = $_SESSION['username'];
+$username = $_SESSION['username'] ?? '';
 $result10 = mysqli_query($conn, "SELECT * FROM xray_admin WHERE username = '$username'");
 $row10 = mysqli_fetch_assoc($result10);
 $name = $row10['ad_name'] . ' ' . $row10['ad_lastname'];

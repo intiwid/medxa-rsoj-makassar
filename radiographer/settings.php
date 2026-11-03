@@ -1,9 +1,9 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require 'function_radiographer.php';
 include '../contract-service.php';
-
-session_start();
 
 ini_set("upload_max_filesize", "1000000M");
 if (isset($_POST['upload'])) {
@@ -15,6 +15,7 @@ if (isset($_POST['upload'])) {
   }
   echo "Folder is successfully uploaded";
   header('location:dcmsend.php');
+  exit();
 }
 
 if (isset($_POST["submit2"])) {
@@ -37,7 +38,7 @@ if (isset($_POST["submit2"])) {
 $result = mysqli_query($conn, "SELECT * FROM xray_dokter_radiology");
 
 
-$username = $_SESSION['username'];
+$username = $_SESSION['username'] ?? '';
 
 if (isset($_POST['submit'])) {
   $password = $_POST['password'];
@@ -53,7 +54,7 @@ document.location.href='settings.php';
   }
 }
 
-if ($_SESSION['level'] == "radiographer") {
+if (($_SESSION['level'] ?? '') == "radiographer") {
 ?>
   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html xmlns="http://www.w3.org/1999/xhtml">
@@ -565,4 +566,5 @@ if ($_SESSION['level'] == "radiographer") {
   </html>
 <?php } else {
   header("location:../index.php");
+  exit();
 } ?>

@@ -1,5 +1,5 @@
 <?php
-include "phpqrcode/qrlib.php";
+require_once __DIR__ . '/phpqrcode/qrlib.php';
 require "../koneksi/koneksi.php";
 require '../viewer-all.php';
 require '../default-value.php';
@@ -8,7 +8,7 @@ require '../model/query-base-order.php';
 require '../model/query-base-study.php';
 require '../model/query-base-patient.php';
 require '../model/query-base-dokter-radiology.php';
-$uid = $_GET['uid'];
+$uid = $_GET['uid'] ?? '';
 $kondisi = "WHERE uid = '$uid'";
 $query = mysqli_query(
 	$conn_pacsio,
@@ -26,9 +26,9 @@ $query = mysqli_query(
     ON study.study_iuid = xray_workload.uid
     WHERE study.study_iuid = '$uid'"
 );
-$row = mysqli_fetch_assoc($query);
-$dokradid = defaultValue($row['dokradid']);
-$pk_dokter_radiology = defaultValue($row['pk_dokter_radiology']);
+$row = $query ? (mysqli_fetch_assoc($query) ?: []) : [];
+$dokradid = defaultValue($row['dokradid'] ?? null);
+$pk_dokter_radiology = defaultValue($row['pk_dokter_radiology'] ?? null);
 // $query = "SELECT * FROM xray_workload_radiographer WHERE uid = '$uid'";
 // $result = mysqli_query($conn, $query);
 // $row = mysqli_fetch_assoc($result);

@@ -5,3 +5,4 @@ $directory = escapeshellarg('C://xampp/htdocs/intiwid/radiographer/dcm_temp');
 exec("rmdir /s /q $directory");
 sleep(2);
 header('location:dcm_send.php');
+  exit();

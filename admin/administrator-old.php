@@ -1,12 +1,13 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+}
 require '../koneksi/koneksi.php';
 
-session_start();
-$username = $_SESSION['username'];
-$level = $_SESSION['level'];
+$username = $_SESSION['username'] ?? '';
+$level = $_SESSION['level'] ?? '';
 
-if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
+if (($_SESSION['level'] ?? '') == "admin" ||($_SESSION['level'] ?? '') == "superadmin") {
 
 ?>
 	<!DOCTYPE html>
@@ -484,4 +485,5 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 	</html>
 <?php } else {
 	header("location:../index.php");
+  exit();
 } ?>

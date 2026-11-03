@@ -1,103 +1,100 @@
 <?php
-session_start();
-//fetch.php
-require '../koneksi/koneksi.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once __DIR__ . '/../koneksi/koneksi.php';
+require_once __DIR__ . '/../viewer-all.php';
 
-require '../viewer-all.php';
+$columns = ['id', 'contract_id', 'maintenance_date', 'status', 'do_maintenance_date'];
 
+$where = [];
 
-$username = $_SESSION['username'];
+if (($_POST["is_date_search"] ?? "") == "yes") {
+    $From = !empty($_POST["From"]) ? date_create($_POST["From"]) : false;
+    $dateFrom = $From ? date_format($From, "Y-m-d") : date("Y-m-d");
 
-// $dokter = "SELECT * FROM xray_radiographer WHERE username = '$username'";
-
-// $data_dicom = mysqli_query($conn, $dokter);
-// $row_dok = mysqli_fetch_assoc($data_dicom);
-// $radiographer_id = $row_dok['radiographer_id'];
-
-$columns = array('id', 'contract_id', 'maintenance_date', 'status', 'do_maintenance_date');
-
-$query = "SELECT * FROM xray_maintenance WHERE ";
-
-if ($_POST["is_date_search"] == "yes") {
-    $From = date_create($_POST["From"]);
-    $dateFrom = date_format($From, "Y-m-d");
-
-    $to = date_create($_POST["to"]);
-    $dateto = date_format($to, "Y-m-d");
-    $dateto2 = $date = date('Y-m-d', strtotime("+1 day", strtotime($dateto)));
-    $query .= 'maintenance_date BETWEEN "' . $dateFrom . '" AND "' . $dateto2 . '" AND ';
+    $to = !empty($_POST["to"]) ? date_create($_POST["to"]) : false;
+    $dateto = $to ? date_format($to, "Y-m-d") : date("Y-m-d");
+    $dateto2 = date('Y-m-d', strtotime("+1 day", strtotime($dateto)));
+    $where[] = 'maintenance_date BETWEEN "' . $dateFrom . '" AND "' . $dateto2 . '"';
 }
 
-if (isset($_POST["search"]["value"])) {
-    $query .= '
-  (maintenance_date LIKE "%' . $_POST["search"]["value"] . '%")
- ';
+if (isset($_POST["search"]["value"]) && $_POST["search"]["value"] !== "") {
+    $s = mysqli_real_escape_string($conn, $_POST["search"]["value"]);
+    $where[] = '(maintenance_date LIKE "%' . $s . '%")';
 }
 
-if (isset($_POST["order"])) {
-    $query .= 'ORDER BY ' . $columns[$_POST['order']['0']['column']] . ' ' . $_POST['order']['0']['dir'] . ' 
- ';
+$query = "SELECT * FROM xray_maintenance";
+if (!empty($where)) {
+    $query .= " WHERE " . implode(" AND ", $where);
+}
+
+if (isset($_POST["order"][0]["column"]) && isset($columns[$_POST['order'][0]['column']])) {
+    $col_index = $_POST['order'][0]['column'];
+    $col_dir = (isset($_POST['order'][0]['dir']) && strtolower($_POST['order'][0]['dir']) === 'asc') ? 'ASC' : 'DESC';
+    $query .= ' ORDER BY ' . $columns[$col_index] . ' ' . $col_dir . ' ';
 } else {
-    $query .= 'ORDER BY id DESC ';
+    $query .= ' ORDER BY id DESC ';
 }
 
 $query1 = '';
-
-if ($_POST["length"] != -1) {
-    $query1 = 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
+if (isset($_POST["length"]) && $_POST["length"] != -1) {
+    $start = intval($_POST['start'] ?? 0);
+    $length = intval($_POST['length']);
+    $query1 = 'LIMIT ' . $start . ', ' . $length;
 }
 
-$number_filter_row = mysqli_num_rows(mysqli_query($conn, $query));
+$filter_res = mysqli_query($conn, $query);
+$number_filter_row = $filter_res ? mysqli_num_rows($filter_res) : 0;
 
 $result = mysqli_query($conn, $query . $query1);
 
-
-$data = array();
+$data = [];
 $i = 1;
-while ($row = mysqli_fetch_array($result)) {
-    $id = $row['id'];
-    $contract_id = $row['contract_id'];
-    $contract_id2 = '<a href="view_pdf_contractmaint.php?contract_id=' . $contract_id . '" target="_blank">' . $contract_id . '</a>';
-    $maintenance_date = $row['maintenance_date'];
-    $maintenance_date = date("d M Y", strtotime($maintenance_date));
-    $status = $row['status'];
-    if ($status == 1) {
-        $status1 = '<i style="color: #329ECF" class="fas fa-check-square"> SUDAH DIKERJAKAN</i>';
-    } else {
-        $status1 = '<i style="color: #3DA83D;" class="fas fa-sync"> BELUM DIKERJAKAN</i>';
-    }
-    $do_maintenance_date = $row['do_maintenance_date'];
-    if ($do_maintenance_date == NULL) {
-        $do_maintenance_date = '-';
-        // $do_maintenance_date = date("d M Y H:i:s", strtotime($do_maintenance_date));
-    } else {
-        $do_maintenance_date = date("d M Y H:i:s", strtotime($do_maintenance_date));
-    }
-    // 
-    $edit = '<a href="update_complaint.php?id=' . $id . '">EDIT</a>';
+if ($result) {
+    while ($row = mysqli_fetch_array($result)) {
+        $id = $row['id'] ?? '';
+        $contract_id = $row['contract_id'] ?? '';
+        $contract_id2 = '<a href="view_pdf_contractmaint.php?contract_id=' . $contract_id . '" target="_blank">' . $contract_id . '</a>';
+        $maintenance_date = !empty($row['maintenance_date']) ? date("d M Y", strtotime($row['maintenance_date'])) : '-';
+        $status = $row['status'] ?? 0;
+        if ($status == 1) {
+            $status1 = '<i style="color: #329ECF" class="fas fa-check-square"> SUDAH DIKERJAKAN</i>';
+        } else {
+            $status1 = '<i style="color: #3DA83D;" class="fas fa-sync"> BELUM DIKERJAKAN</i>';
+        }
+        $do_maint = $row['do_maintenance_date'] ?? null;
+        if ($do_maint === null || $do_maint === '') {
+            $do_maintenance_date = '-';
+        } else {
+            $do_maintenance_date = date("d M Y H:i:s", strtotime($do_maint));
+        }
 
-    $sub_array = array();
-    $sub_array[] = $i;
-    $sub_array[] = $contract_id2;
-    $sub_array[] = $maintenance_date;
-    $sub_array[] = $status1;
-    $sub_array[] = $do_maintenance_date;
-    $sub_array[]  = $i++;
-    $data[] = $sub_array;
+        $sub_array = [];
+        $sub_array[] = $i;
+        $sub_array[] = $contract_id2;
+        $sub_array[] = $maintenance_date;
+        $sub_array[] = $status1;
+        $sub_array[] = $do_maintenance_date;
+        $sub_array[]  = $i++;
+        $data[] = $sub_array;
+    }
 }
 
-function get_all_data($conn)
-{
-    $query = "SELECT * FROM xray_maintenance";
-    $result = mysqli_query($conn, $query);
-    return mysqli_num_rows($result);
+if (!function_exists('get_all_data_maintenance')) {
+    function get_all_data_maintenance($conn)
+    {
+        $query = "SELECT * FROM xray_maintenance";
+        $result = mysqli_query($conn, $query);
+        return $result ? mysqli_num_rows($result) : 0;
+    }
 }
 
-$output = array(
-    "draw"    => intval($_POST["draw"]),
-    "recordsTotal"  =>  get_all_data($conn),
+$output = [
+    "draw"    => intval($_POST["draw"] ?? 0),
+    "recordsTotal"  =>  get_all_data_maintenance($conn),
     "recordsFiltered" => $number_filter_row,
     "data"    => $data
-);
+];
 
 echo json_encode($output);

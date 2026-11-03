@@ -8,16 +8,9 @@ require 'model/query-base-series.php';
 require 'model/query-base-series-req.php';
 require 'bahasa.php';
 
-$uid = $_POST['uid'];
-$row = mysqli_fetch_assoc(mysqli_query(
-	$conn_pacsio,
-	"SELECT $select_patient,
-	$select_study
-	FROM $table_patient
-	JOIN $table_study
-	ON patient.pk = study.patient_fk 
-	WHERE study_iuid = '$uid'"
-));
+$uid = $_POST['uid'] ?? $_GET['uid'] ?? '';
+$res = !empty($uid) ? mysqli_query($conn_pacsio, "SELECT $select_patient, $select_study FROM $table_patient JOIN $table_study ON patient.pk = study.patient_fk WHERE study_iuid = '$uid'") : false;
+$row = $res ? (mysqli_fetch_assoc($res) ?: []) : [];
 ?>
 <style>
 	.fill {
@@ -33,22 +26,22 @@ $row = mysqli_fetch_assoc(mysqli_query(
 				<tr>
 					<td><?= $lang['patient_name'] ?></td>
 					<td>&nbsp;: </td>
-					<td align="left">&nbsp; <?= removeCharacter($row['pat_name']); ?></td>
+					<td align="left">&nbsp; <?= removeCharacter(($row['pat_name'] ?? '')); ?></td>
 				</tr>
 				<tr>
 					<td>MRN</td>
 					<td>&nbsp;: </td>
-					<td align="left">&nbsp; <?= defaultValue($row['pat_id']); ?></td>
+					<td align="left">&nbsp; <?= defaultValue(($row['pat_id'] ?? '')); ?></td>
 				</tr>
 				<tr>
 					<td><?= $lang['sex'] ?></td>
 					<td>&nbsp;: </td>
-					<td align="left">&nbsp; <?= defaultValue($row['pat_sex']); ?></td>
+					<td align="left">&nbsp; <?= defaultValue(($row['pat_sex'] ?? '')); ?></td>
 				</tr>
 				<tr>
 					<td><?= $lang['study'] ?></td>
 					<td>&nbsp;: </td>
-					<td align="left" class="font-weight-bold">&nbsp; <?= defaultValue($row['study_desc']); ?></td>
+					<td align="left" class="font-weight-bold">&nbsp; <?= defaultValue(($row['study_desc'] ?? '')); ?></td>
 				</tr>
 			</thead>
 		</table>
@@ -72,7 +65,7 @@ $row = mysqli_fetch_assoc(mysqli_query(
 						<th>Updated Date</th>
 					</tr>
 					<?php
-					$pk_study = $row['pk_study'];
+					$pk_study = ($row['pk_study'] ?? '');
 					$query = mysqli_query(
 						$conn_pacsio,
 						"SELECT
@@ -110,4 +103,4 @@ $row = mysqli_fetch_assoc(mysqli_query(
 
 <?php
 
-mysqli_close($conn);
+// // mysqli_close($conn);

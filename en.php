@@ -1,5 +1,5 @@
 <?php
-$lang = array(
+$lang = [
 	"title" => "Title",
 	"pricing" => "Pricing",
 	"about_us" => "About Us",
@@ -22,7 +22,6 @@ Contact us at (Office) +62-21-4532648</p>",
 	"examroom" => "Exam Room",
 	"worklist" => "Worklist",
 	"workload" => "Workload",
-	"about" => "About",
 	"search" => "Search",
 	"logout" => "Logout",
 	"language" => "Language",
@@ -98,7 +97,6 @@ Contact us at (Office) +62-21-4532648</p>",
 	"table_doc" => "Table Doctor",
 	"list_doc" => "List Referral Physician",
 	"add_data_doc" => "Add new Doctor",
-	"admin" => "Admin",
 	"id_doc" => "Doctor ID",
 	"doc_name" => "Doctor Name",
 	"action" => "Action",
@@ -135,10 +133,8 @@ Contact us at (Office) +62-21-4532648</p>",
 	"new_price" => "New Price",
 	"new_procedure" => "New Procedure",
 	"add_price" => "Add Price",
-	"add_procedure" => "Add Procedure",
 	"xray_code" => "X-ray Code",
 	"input_xray_code" => "Input x-ray code..",
-	"procedure" => "Procedure",
 	"input_procedure" => "Input procedure..",
 	"pro_type" => "Study Type",
 	"input_pro_type" => "Input study type..",
@@ -159,7 +155,6 @@ Contact us at (Office) +62-21-4532648</p>",
 	"data_aetitle" => "List Data AE-Title",
 	"input_aetitle" => "New AE-Title",
 	"view_aetitle" => "View AE-Title",
-	"input_aetitle" => "Input AE-Title",
 	"add_aetitle" => "Add New AE-Title",
 	// end of administrator
 
@@ -170,7 +165,6 @@ Contact us at (Office) +62-21-4532648</p>",
 	// end of REPORT
 
 	// Report News
-	"report_news" => "Report News",
 	// end of REPORT News
 
 	//all order
@@ -227,11 +221,9 @@ Contact us at (Office) +62-21-4532648</p>",
 
 	// Dokter RADIOLOGY
 	"radiology_report" => "Radiology Report",
-	"modality_worklist" => "Modality Worklist",
 	"expertise" => "Expertise",
 	"physician_worklist" => "Physician Worklist",
 	"information" => "Information",
-	"critical" => "Critical",
 	// END OF Dokter RADIOLOGY
 
 	// REFERRAL
@@ -259,7 +251,6 @@ Contact us at (Office) +62-21-4532648</p>",
 	"select_mod" => "Select Modality",
 	"select_procedure" => "Select Procedure",
 	"additional_form" => "Additional Form",
-	"exam_date" => "Exam Date",
 	"exam_time" => "Exam Time",
 	"using_contrast" => "Using Contrast",
 	"not_using_contrast" => "Not Using Contrast",
@@ -302,4 +293,4 @@ Contact us at (Office) +62-21-4532648</p>",
 
 
 
-);
+];

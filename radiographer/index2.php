@@ -1,10 +1,10 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../koneksi/koneksi.php';
 
-session_start();
-
-if ($_SESSION['level'] == "radiographer") {
+if (($_SESSION['level'] ?? '') == "radiographer") {
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,7 +21,7 @@ if ($_SESSION['level'] == "radiographer") {
     
 
     <!-- //////content home/////////////// -->
-  <?php include('../home-index2.php'); ?>
+  <?php include('../home-index.php'); ?>
     <!-- //////end content home/////////////// -->
         <?php include('script-footer.php'); ?>
         <script>
@@ -34,4 +34,5 @@ if ($_SESSION['level'] == "radiographer") {
   </body>
   </html>
    
-   <?php } else {header("location:../index.php");} ?>
+   <?php } else {header("location:../index.php");
+  exit();} ?>

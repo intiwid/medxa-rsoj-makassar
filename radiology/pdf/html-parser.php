@@ -1,5 +1,6 @@
 <?php
 
+#[\AllowDynamicProperties]
 class PDF extends FPDF
 {
     //variables of html parser

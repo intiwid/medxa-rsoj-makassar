@@ -1,11 +1,12 @@
 <?php
-require 'function_radiology.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require __DIR__ . '/radiology/function_radiology.php';
 
-session_start();
+$uid = $_GET["uid"] ?? '';
 
-$uid = $_GET["uid"];
-
-if (ubahdokter($uid) > 0) {
+if (!empty($uid) && ubahdokter($uid) > 0) {
 	echo "<script type='text/javascript'>
 				setTimeout(function () { 
 				swal({

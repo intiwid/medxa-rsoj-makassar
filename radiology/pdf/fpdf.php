@@ -10,6 +10,7 @@
 
 define('FPDF_VERSION', '1.81');
 
+#[\AllowDynamicProperties]
 class FPDF
 {
 	protected $page;               // current page number
@@ -984,8 +985,10 @@ class FPDF
 		if (ini_get('mbstring.func_overload') & 2)
 			$this->Error('mbstring overloading must be disabled');
 		// Ensure runtime magic quotes are disabled
-		if (get_magic_quotes_runtime())
+		// Ensure runtime magic quotes are disabled (removed in PHP 8.0)
+		if (function_exists('get_magic_quotes_runtime') && @get_magic_quotes_runtime()) {
 			@set_magic_quotes_runtime(0);
+		}
 	}
 
 	protected function _checkoutput()

@@ -1,14 +1,14 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+}
 require 'function_dokter.php';
-session_start();
 
 //ambil data di url
-$pk = $_GET["pk"];
+$pk = $_GET["pk"] ?? '';
 
-$row = mysqli_fetch_assoc(mysqli_query(
-	$conn,
-	"SELECT * FROM xray_study WHERE pk = '$pk'"
-));
+$res = !empty($pk) ? mysqli_query($conn, "SELECT * FROM xray_study WHERE pk = '$pk'") : false;
+$row = $res ? (mysqli_fetch_assoc($res) ?: []) : [];
 
 if (isset($_POST["submit"])) {
 	if (update_study($_POST) > 0) {
@@ -43,7 +43,7 @@ if (isset($_POST["submit"])) {
         </script>";
 	}
 }
-if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
+if (($_SESSION['level'] ?? '') == "admin" ||($_SESSION['level'] ?? '') == "superadmin") {
 ?>
 	<!DOCTYPE html>
 	<html>
@@ -89,11 +89,11 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 										<?php } ?>
 									</select>
 									<label for="id_study"><b>ID Study</b></label><br>
-									<input type="text" id="id_study" name="id_study" value="<?= $row['id_study']; ?>" placeholder="Input ID Study Desc" required><br>
+									<input type="text" id="id_study" name="id_study" value="<?= ($row['id_study'] ?? ''); ?>" placeholder="Input ID Study Desc" required><br>
 									<label for="study"><b>Study Desc</b></label><br>
-									<input type="text" id="study" name="study" value="<?= $row['study']; ?>" placeholder="Input Study Desc" required><br>
+									<input type="text" id="study" name="study" value="<?= ($row['study'] ?? ''); ?>" placeholder="Input Study Desc" required><br>
 									<label for="harga"><b><?= $lang['price'] ?></b></label><br>
-									<input type="text" id="harga" name="harga" value="<?= $row['harga']; ?>" placeholder="<?= $lang['input_price'] ?>">
+									<input type="text" id="harga" name="harga" value="<?= ($row['harga'] ?? ''); ?>" placeholder="<?= $lang['input_price'] ?>">
 									<button class="button button1" type="submit" name="submit"><?= $lang['add_data'] ?> </button>
 								</div>
 							</form>
@@ -118,4 +118,5 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 	</html>
 <?php } else {
 	header("location:../index.php");
+  exit();
 } ?>

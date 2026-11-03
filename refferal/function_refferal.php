@@ -1,5 +1,7 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../koneksi/koneksi.php';
 //untuk menampilkan
 function query($query)
@@ -16,9 +18,9 @@ function query($query)
 function password($passwordid)
 {
 	global $conn;
-	$username = $_SESSION['username'];
+	$username = $_SESSION['username'] ?? '';
 	$password = $passwordid["password"];
-	$password_hash = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+	$password_hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 
 	mysqli_query($conn, "UPDATE xray_login SET 
 				password = '$password_hash'

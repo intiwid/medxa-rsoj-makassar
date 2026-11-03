@@ -8,22 +8,10 @@ require 'model/query-base-study.php';
 require 'model/query-base-mwl-item.php';
 require 'bahasa.php';
 
-$uid = $_POST['uid'];
-$pat_id = $_POST['pat_id'];
-
-$row_study = mysqli_fetch_assoc(mysqli_query(
-    $conn_pacsio,
-    "SELECT 
-    $select_patient,
-    $select_study,
-    $select_order
-    FROM $table_patient
-    JOIN $table_study
-    ON patient.pk = study.patient_fk
-    LEFT JOIN $table_order
-    ON xray_order.uid = study.study_iuid
-    WHERE study.study_iuid = '$uid'"
-));
+$uid = $_POST['uid'] ?? $_GET['uid'] ?? '';
+$pat_id = $_POST['pat_id'] ?? $_GET['pat_id'] ?? '';
+$res = !empty($uid) ? mysqli_query($conn_pacsio, "SELECT $select_patient, $select_study, $select_order FROM $table_patient JOIN $table_study ON patient.pk = study.patient_fk LEFT JOIN $table_order ON xray_order.uid = study.study_iuid WHERE study.study_iuid = '$uid'") : false;
+$row_study = $res ? (mysqli_fetch_assoc($res) ?: []) : [];
 ?>
 <style>
     .fill {
@@ -32,7 +20,7 @@ $row_study = mysqli_fetch_assoc(mysqli_query(
 </style>
 <div class="fill">
     <h5 class="text-center font-weight-bold">Bridging Simrs</h5>
-    <p>Catatan : <br> - Pastikan order dari simrs pasien <?= removeCharacter($row_study['pat_name']); ?> pemeriksaan <?= defaultValue($row_study['study_desc']); ?> sudah terkirim ke rispacs <br> - Pastikan modality dan pemeriksaan sesuai - klik kolom acc <br> - Menampilkan pasien berdasarkan norekam medis selama exam date 7 hari periode <?= date('d-m-Y', strtotime('-7 day')) ?> - <?= date('d-m-Y') ?> <br> - Tidak tampil data pasien ? silahkan edit norekam medis (MRN) pada form</p>
+    <p>Catatan : <br> - Pastikan order dari simrs pasien <?= removeCharacter(($row_study['pat_name'] ?? '')); ?> pemeriksaan <?= defaultValue(($row_study['study_desc'] ?? '')); ?> sudah terkirim ke rispacs <br> - Pastikan modality dan pemeriksaan sesuai - klik kolom acc <br> - Menampilkan pasien berdasarkan norekam medis selama exam date 7 hari periode <?= date('d-m-Y', strtotime('-7 day')) ?> - <?= date('d-m-Y') ?> <br> - Tidak tampil data pasien ? silahkan edit norekam medis (MRN) pada form</p>
     <div class="table-responsive-sm">
         <h6 class="font-weight-bold">Pasien Modality</h6>
         <table class="" id="example" style="margin-top: 3px;" cellpadding="8" cellspacing="0">
@@ -40,27 +28,27 @@ $row_study = mysqli_fetch_assoc(mysqli_query(
                 <tr>
                     <td><?= $lang['patient_name'] ?></td>
                     <td>&nbsp;: </td>
-                    <td align="left">&nbsp; <?= removeCharacter($row_study['pat_name']); ?></td>
+                    <td align="left">&nbsp; <?= removeCharacter(($row_study['pat_name'] ?? '')); ?></td>
                 </tr>
                 <tr>
                     <td>MRN</td>
                     <td>&nbsp;: </td>
-                    <td align="left">&nbsp; <?= defaultValue($row_study['pat_id']); ?></td>
+                    <td align="left">&nbsp; <?= defaultValue(($row_study['pat_id'] ?? '')); ?></td>
                 </tr>
                 <tr>
                     <td>Acc</td>
                     <td>&nbsp;: </td>
-                    <td align="left" class="font-weight-bold">&nbsp; <?= defaultValue($row_study['acc']); ?></td>
+                    <td align="left" class="font-weight-bold">&nbsp; <?= defaultValue(($row_study['acc'] ?? '')); ?></td>
                 </tr>
                 <tr>
                     <td>Modality</td>
                     <td>&nbsp;: </td>
-                    <td align="left" class="font-weight-bold">&nbsp; <?= defaultValue($row_study['mods_in_study']); ?></td>
+                    <td align="left" class="font-weight-bold">&nbsp; <?= defaultValue(($row_study['mods_in_study'] ?? '')); ?></td>
                 </tr>
                 <tr>
                     <td><?= $lang['study'] ?></td>
                     <td>&nbsp;: </td>
-                    <td align="left" class="font-weight-bold">&nbsp; <?= defaultValue($row_study['study_desc']); ?></td>
+                    <td align="left" class="font-weight-bold">&nbsp; <?= defaultValue(($row_study['study_desc'] ?? '')); ?></td>
                 </tr>
             </thead>
         </table>
@@ -226,4 +214,4 @@ $row_study = mysqli_fetch_assoc(mysqli_query(
 
 <?php
 
-mysqli_close($conn);
+// // mysqli_close($conn);

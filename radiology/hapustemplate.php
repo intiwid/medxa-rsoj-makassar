@@ -1,11 +1,11 @@
 <?php
 require 'function_radiology.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
 
-$uid = $_GET["uid"];
-$template_id = $_GET["template_id"];
-$halaman = $_GET["halaman"];
+$uid = $_GET["uid"] ?? '';
+$template_id = $_GET["template_id"] ?? '';
+$halaman = $_GET["halaman"] ?? '';
 
 if (delete_template($template_id) > 0) {
 	echo "	

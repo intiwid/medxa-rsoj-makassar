@@ -1,12 +1,13 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+}
 require 'function_dokter.php';
-session_start();
+
 //ambil data di url
-$pk = $_GET["pk"];
-$row = mysqli_fetch_assoc(mysqli_query(
-	$conn,
-	"SELECT * FROM xray_department WHERE pk = '$pk'"
-));
+$pk = $_GET["pk"] ?? '';
+$res = !empty($pk) ? mysqli_query($conn, "SELECT * FROM xray_department WHERE pk = '$pk'") : false;
+$row = $res ? (mysqli_fetch_assoc($res) ?: []) : [];
 if (isset($_POST["submit"])) {
 	if (update_department($_POST) > 0) {
 		echo "<script type='text/javascript'>
@@ -40,7 +41,7 @@ if (isset($_POST["submit"])) {
         </script>";
 	}
 }
-if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
+if (($_SESSION['level'] ?? '') == "admin" ||($_SESSION['level'] ?? '') == "superadmin") {
 ?>
 	<!DOCTYPE html>
 	<html>
@@ -109,4 +110,5 @@ if ($_SESSION['level'] == "admin" || $_SESSION['level'] == "superadmin") {
 	</html>
 <?php } else {
 	header("location:../index.php");
+  exit();
 } ?>

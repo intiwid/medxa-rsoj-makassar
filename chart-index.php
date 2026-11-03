@@ -1,3 +1,7 @@
+<?php
+if (!isset($lang)) { include_once __DIR__ . '/bahasa.php'; }
+if (!isset($conn)) { include_once __DIR__ . '/koneksi/koneksi.php'; }
+?>
 <div class="row">
     <div class="col-12" style="padding: 0;">
         <nav aria-label="breadcrumb">

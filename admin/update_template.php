@@ -1,8 +1,10 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
+}
 require 'function_dokter.php';
-session_start();
 
-if ($_SESSION['level'] == "superadmin") {
+if (($_SESSION['level'] ?? '') == "superadmin") {
 ?>
 	<!DOCTYPE html>
 	<html>
@@ -36,4 +38,5 @@ if ($_SESSION['level'] == "superadmin") {
 	</html>
 <?php } else {
 	header("location:../index.php");
+  exit();
 } ?>

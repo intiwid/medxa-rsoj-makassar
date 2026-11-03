@@ -1,33 +1,24 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../koneksi/koneksi.php';
 require '../default-value.php';
 require '../model/query-base-study.php';
 require '../model/query-base-patient.php';
 
-session_start();
-$uid = $_GET['uid'];
+$uid = ($uid ?? '') ?? '';
 
-$row = mysqli_fetch_assoc(mysqli_query(
-    $conn_pacsio,
-    "SELECT 
-	pat_id,
-	pat_name,
-	pat_sex,
-	study_desc,
-	mods_in_study
-	FROM $table_patient
-	JOIN $table_study
-	ON patient.pk = study.patient_fk
-	WHERE study_iuid = '$uid'"
-));
+$res = !empty($uid) ? mysqli_query($conn_pacsio, "SELECT pat_id, pat_name, pat_sex, study_desc, mods_in_study FROM $table_patient JOIN $table_study ON patient.pk = study.patient_fk WHERE study_iuid = '$uid'") : false;
+$row = $res ? (mysqli_fetch_assoc($res) ?: []) : [];
 
-$pat_name = defaultValue($row['pat_name']);
-$pat_id = defaultValue($row['pat_id']);
-$pat_sex = styleSex($row['pat_sex']);
-$mods_in_study = defaultValue($row['mods_in_study']);
-$study_desc = defaultValue($row['study_desc']);
+$pat_name = defaultValue($row['pat_name'] ?? null);
+$pat_id = defaultValue($row['pat_id'] ?? null);
+$pat_sex = styleSex($row['pat_sex'] ?? null);
+$mods_in_study = defaultValue($row['mods_in_study'] ?? null);
+$study_desc = defaultValue($row['study_desc'] ?? null);
 
-if ($_SESSION['level'] == "radiographer") {
+if (($_SESSION['level'] ?? '') == "radiographer") {
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -74,7 +65,7 @@ if ($_SESSION['level'] == "radiographer") {
                                                 <td>Modality : <?= $mods_in_study ?></td>
                                             </tr>
                                         </table>
-                                        <span>UID : <?= $_GET['uid']; ?></span>
+                                        <span>UID : <?= ($uid ?? ''); ?></span>
                                         <hr>
                                         <?php
                                         $sql = mysqli_query(
@@ -131,6 +122,7 @@ if ($_SESSION['level'] == "radiographer") {
     </html>
 <?php } else {
     header("location:../index.php");
+  exit();
 } ?>
 <script>
     $(document).ready(function() {

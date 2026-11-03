@@ -2,7 +2,7 @@
 
 require '../koneksi/koneksi.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
 
 // Fungsi header dengan mengirimkan raw data excel
 header("Content-type: application/vnd-ms-excel");
@@ -12,10 +12,12 @@ header("Content-Disposition: attachment; filename=DataMaintenance.xls");
 
 header('Cache-Control: max-age=0');
 
-$From = date_create($_POST["From"]);
+$fromRaw = $_POST["From"] ?? $_GET["From"] ?? date("d-m-Y");
+$From = date_create($fromRaw);
 $dateFrom = date_format($From, "Y-m-d");
 
-$to = date_create($_POST["to"]);
+$toRaw = $_POST["to"] ?? $_GET["to"] ?? date("d-m-Y");
+$to = date_create($toRaw);
 $dateto = date_format($to, "Y-m-d");
 
 $resultQuery = mysqli_query($conn, "SELECT * FROM xray_maintenance WHERE maintenance_date BETWEEN '$dateFrom' AND '$dateto' ORDER BY id DESC");
@@ -23,7 +25,7 @@ $num_rows = mysqli_num_rows($resultQuery);
 // $row = mysqli_fetch_assoc($resultQuery);
 $result = '';
 
-$result .= 'Tanggal Maintenance ' . $_POST["From"] . ' - ' . $_POST["to"];
+$result .= 'Tanggal Maintenance ' . ($fromRaw ?? "") . ' - ' . ($toRaw ?? "");
 // ------
 $i = 1;
 $result .= '

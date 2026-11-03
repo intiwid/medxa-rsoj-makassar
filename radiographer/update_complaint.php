@@ -1,19 +1,22 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require 'function_radiographer.php';
-session_start();
-$username = $_SESSION['username'];
-//ambil data di url
-$id = $_GET["id"];
-$result = mysqli_query($conn, "SELECT * FROM xray_complaint WHERE id = '$id' ");
-$row111 = mysqli_fetch_array($result);
 
-$complaint_date = $row111['complaint_date'];
-$complaint_time = $row111['complaint_time'];
-$person_call = $row111['person_call'];
-$problem = $row111['problem'];
-$solve_date = $row111['solve_date'];
-$solve_time = $row111['solve_time'];
-$explanation = $row111['explanation'];
+$username = $_SESSION['username'] ?? '';
+//ambil data di url
+$id = $_GET["id"] ?? '';
+$result = !empty($id) ? mysqli_query($conn, "SELECT * FROM xray_complaint WHERE id = '$id' ") : false;
+$row111 = $result ? (mysqli_fetch_array($result) ?: []) : [];
+
+$complaint_date = (($row111['complaint_date'] ?? '') ?? '');
+$complaint_time = ($row111['complaint_time'] ?? '');
+$person_call = ($row111['person_call'] ?? '');
+$problem = (($row111['problem'] ?? '') ?? '');
+$solve_date = (($row111['solve_date'] ?? '') ?? '');
+$solve_time = ($row111['solve_time'] ?? '');
+$explanation = (($row111['explanation'] ?? '') ?? '');
 
 if (isset($_POST["submit"])) {
 	if (editcomplaint($_POST) > 0) {
@@ -40,7 +43,7 @@ if (isset($_POST["submit"])) {
 // 	}
 // 	return $date;
 // }
-if ($_SESSION['username'] == 'rafdi') {
+if (($_SESSION['username'] ?? '') == 'rafdi') {
 ?>
 	<!DOCTYPE html>
 	<html>
@@ -77,39 +80,39 @@ if ($_SESSION['username'] == 'rafdi') {
 										<div class="col-md-6"><br>
 											<input type="hidden" name="id" id="id" value="<?= $id; ?>"></input>
 											<label><b>Complain Date</b></label>
-											<?php $d = date('Y-m-d', strtotime($row111["complaint_date"])); ?>
+											<?php $d = date('Y-m-d', strtotime($complaint_date)); ?>
 											<input type="text" class="form-control" name="complaint_date" id="complaint_date" autocomplete="off" value="<?= $d; ?>"></input>
 										</div>
 										<div class="col-md-6"><br>
 											<label><b>Complain Time</b></label><br>
-											<input type="text" class="form-control" name="complaint_time" id="complaint_time" autocomplete="off" value="<?= $row111['complaint_time']; ?>"></input>
+											<input type="text" class="form-control" name="complaint_time" id="complaint_time" autocomplete="off" value="<?= ($row111['complaint_time'] ?? ''); ?>"></input>
 										</div>
 									</div>
 									<div>
 										<br>
 										<label>Person Call:</label>
-										<input type="text" class="form-control" name="person_call" value="<?= $row111['person_call']; ?>">
+										<input type="text" class="form-control" name="person_call" value="<?= ($row111['person_call'] ?? ''); ?>">
 									</div>
 									<div>
 										<br>
 										<label>Problem:</label>
-										<textarea class="form-control" name="problem" value="<?= $row111['problem']; ?>"><?= $row111["problem"]; ?></textarea>
+										<textarea class="form-control" name="problem" value="<?= (($row111['problem'] ?? '') ?? ''); ?>"><?= $problem; ?></textarea>
 									</div>
 									<div class="row">
 										<div class="col-md-6"><br>
 											<label><b>Solve Date</b></label>
-											<?php $d = date('Y-m-d', strtotime($row111["solve_date"])); ?>
+											<?php $d = date('Y-m-d', strtotime($solve_date)); ?>
 											<input type="text" class="form-control" name="solve_date" id="solve_date" autocomplete="off" value="<?= $d; ?>"></input>
 										</div>
 										<div class="col-md-6"><br>
 											<label><b>Solve Time</b></label><br>
-											<input type="text" class="form-control" name="solve_time" id="solve_time" autocomplete="off" value="<?= $row111['solve_time']; ?>"></input>
+											<input type="text" class="form-control" name="solve_time" id="solve_time" autocomplete="off" value="<?= ($row111['solve_time'] ?? ''); ?>"></input>
 										</div>
 									</div>
 									<div>
 										<br>
 										<label>Explanation:</label>
-										<textarea class="form-control" name="explanation" value="<?= $row111['explanation']; ?>"><?= $row111["explanation"]; ?></textarea>
+										<textarea class="form-control" name="explanation" value="<?= (($row111['explanation'] ?? '') ?? ''); ?>"><?= $explanation; ?></textarea>
 									</div>
 								</div>
 							</div>
@@ -195,4 +198,5 @@ if ($_SESSION['username'] == 'rafdi') {
 	</html>
 <?php } else {
 	header("location:../index.php");
+  exit();
 } ?>

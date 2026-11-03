@@ -51,36 +51,43 @@ $signature = $row['signature'];
 $status = $row['status'];
 $pk_dokter_radiology = $row['pk_dokter_radiology'];
 
+$server_name = $_SERVER['SERVER_NAME'] ?? 'localhost';
+
 // kondisi mencari ditabel dokter radiology
-$row_dokrad = mysqli_fetch_assoc(mysqli_query(
+$res_dokrad = !empty($pk_dokter_radiology) ? mysqli_query(
     $conn,
     "SELECT $select_dokter_radiology 
     FROM $table_dokter_radiology 
     WHERE pk = '$pk_dokter_radiology'"
-));
+) : false;
+$row_dokrad = $res_dokrad ? mysqli_fetch_assoc($res_dokrad) : null;
 
-$dokrad_name = defaultValue($row_dokrad['dokrad_fullname']);
-$nip = $row_dokrad['nip'];
-$link_dokrad_img = "http://" . $_SERVER['SERVER_NAME'] . ":8000/storage/" . $row_dokrad['dokrad_img'];
+$dokrad_name = defaultValue($row_dokrad['dokrad_fullname'] ?? null);
+$nip = $row_dokrad['nip'] ?? '';
+$dokrad_img_val = $row_dokrad['dokrad_img'] ?? null;
+$link_dokrad_img = "http://" . $server_name . ":8000/storage/" . $dokrad_img_val;
 // kondisi ketika dokrad_img null & ketika server laravel error
-$dokrad_img =  $row_dokrad['dokrad_img'] == null ? 'scan-ttd-default.PNG' : (@file_get_contents($link_dokrad_img) === false ? 'scan-ttd-default.PNG' : $link_dokrad_img);
+$dokrad_img = empty($dokrad_img_val) ? 'scan-ttd-default.PNG' : (@file_get_contents($link_dokrad_img) === false ? 'scan-ttd-default.PNG' : $link_dokrad_img);
 
 // kop surat
-$kopSurat = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM kop_surat LIMIT 1"));
-$link_surat_image = "http://" . $_SERVER['SERVER_NAME'] . ":8000/storage/" . $kopSurat['image'];
+$res_kop = mysqli_query($conn, "SELECT * FROM kop_surat LIMIT 1");
+$kopSurat = $res_kop ? mysqli_fetch_assoc($res_kop) : null;
+$kop_image_val = $kopSurat['image'] ?? null;
+$link_surat_image = "http://" . $server_name . ":8000/storage/" . $kop_image_val;
 // kondisi ketika gambar kop surat null & ketika server laravel error
-$kop_surat_image = $kopSurat['image'] == null ? 'kop-rsoj.jpg' : (@file_get_contents($link_surat_image) === false ? 'kop-rsoj.jpg' : $link_surat_image);
+$kop_surat_image = empty($kop_image_val) ? 'kop-rsoj.jpg' : (@file_get_contents($link_surat_image) === false ? 'kop-rsoj.jpg' : $link_surat_image);
 
 // qr code ttd dokter radiologi
 $link_qr_code_ttd = '../phpqrcode/ttddokter/' . $signature;
-$qr_code_ttd = @file_get_contents($link_qr_code_ttd) === false ? 'barcode-default.PNG' : $link_qr_code_ttd;
+$qr_code_ttd = (!empty($signature) && @file_get_contents($link_qr_code_ttd) !== false) ? $link_qr_code_ttd : 'barcode-default.PNG';
 
 // qr code hasil pasien
 $link_qr_code_pasien = '../phpqrcode/hasil-pasien/' . $uid . '.png';
-$qr_code_pasien = @file_get_contents($link_qr_code_pasien) === false ? 'barcode-default.PNG' : $link_qr_code_pasien;
+$qr_code_pasien = (!empty($uid) && @file_get_contents($link_qr_code_pasien) !== false) ? $link_qr_code_pasien : 'barcode-default.PNG';
 
 // tabel expertise menampilkan qr code hasil pasien dan signature dokter
-$expertise = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM xray_expertise LIMIT 1"));
+$res_expertise = mysqli_query($conn, "SELECT * FROM xray_expertise LIMIT 1");
+$expertise = $res_expertise ? mysqli_fetch_assoc($res_expertise) : null;
 
 if ($status == "waiting" || $status == '') {
     echo "<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
@@ -220,21 +227,24 @@ $pdf->WriteHTML(
     <p align='right'>Salam sejawat</p>"
 );
 
-if ($expertise['signature_dokter_radiologi'] == 'qr_code') {
+$signature_dokter_radiologi = $expertise['signature_dokter_radiologi'] ?? '';
+$qr_code_pasien_enabled = $expertise['qr_code_pasien'] ?? 0;
+
+if ($signature_dokter_radiologi == 'qr_code') {
     // jika ttd menggunakan signature QR CODE
     $pdf->Ln(2);
     $sign = $pdf->image($qr_code_ttd, 170, $pdf->GetY(), 25);
-} else if ($expertise['signature_dokter_radiologi'] == 'signature_scan') {
+} else if ($signature_dokter_radiologi == 'signature_scan') {
     // jika ttd menggunakan signature scan image
     $pdf->Ln(2);
     $pdf->image($dokrad_img, 140, $pdf->GetY(), 55);
-} else if ($expertise['signature_dokter_radiologi'] == 'signature_empty') {
+} else if ($signature_dokter_radiologi == 'signature_empty') {
     // jika ttd signature empty
 } else {
     // jika ttd tidak menggunakan signature dan image
 }
 
-if ($expertise['qr_code_pasien'] == 1) {
+if ($qr_code_pasien_enabled == 1) {
     // jika menggunakan qr code hasil pasien
     $hasilPasien = $pdf->image($qr_code_pasien, $pdf->GetX(), $pdf->GetY(), 25);
     $pdf->Ln(27);
@@ -253,4 +263,4 @@ $pdf->AutoPrint();
 
 $pdf->Output('I', $pat_name . '.pdf');
 
-mysqli_close($conn);
+// // mysqli_close($conn);

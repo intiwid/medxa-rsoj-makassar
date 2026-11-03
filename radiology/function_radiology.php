@@ -1,11 +1,13 @@
 <?php
-
-require '../koneksi/koneksi.php';
-include "phpqrcode/qrlib.php";
-require '../model/query-base-workload.php';
-require '../model/query-base-order.php';
-require '../model/query-base-study.php';
-require '../model/query-base-patient.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once __DIR__ . '/../koneksi/koneksi.php';
+require_once __DIR__ . '/phpqrcode/qrlib.php';
+require_once __DIR__ . '/../model/query-base-workload.php';
+require_once __DIR__ . '/../model/query-base-order.php';
+require_once __DIR__ . '/../model/query-base-study.php';
+require_once __DIR__ . '/../model/query-base-patient.php';
 
 //untuk menampilkan
 function query($query)
@@ -40,7 +42,7 @@ function insert_template_workload($value)
 	global $conn;
 	$title = $value['title'];
 	$fill = $value['fill'];
-	$username = $_SESSION['username'];
+	$username = $_SESSION['username'] ?? '';
 	if (empty($title)) {
 		echo "<script>alert('Title belum diisi!');</script>";
 	} else {
@@ -136,7 +138,7 @@ Approved Sign in $signature_datetime",
 	);
 
 	// untuk hasil pasien (xampp)
-	$hasilPasien = $hostname['ip_publik'] == null ? 'Domain Tidak Ditemukan! Silahkan input domain RS pada aplikasi RIS' : "http://$hostname[ip_publik]:8089/$link[link_simrs_expertise]/pasien.php?uid=$uid";
+	$hasilPasien = empty($hostname['ip_publik']) ? 'Domain Tidak Ditemukan! Silahkan input domain RS pada aplikasi RIS' : "http://$hostname[ip_publik]:8089/$link[link_simrs_expertise]/pasien.php?uid=$uid";
 	QRcode::png($hasilPasien, "phpqrcode/hasil-pasien/$uid.png", "L", 4, 4);
 
 	// untuk hasil pasien (laravel)
@@ -307,7 +309,7 @@ Approved Sign in $signature_datetime",
 	);
 
 	// untuk hasil pasien (xampp)
-	$hasilPasien = $hostname['ip_publik'] == null ? 'Domain Tidak Ditemukan! Silahkan input domain RS pada aplikasi RIS' : "http://$hostname[ip_publik]:8089/$link[link_simrs_expertise]/pasien.php?uid=$uid";
+	$hasilPasien = empty($hostname['ip_publik']) ? 'Domain Tidak Ditemukan! Silahkan input domain RS pada aplikasi RIS' : "http://$hostname[ip_publik]:8089/$link[link_simrs_expertise]/pasien.php?uid=$uid";
 	QRcode::png($hasilPasien, "phpqrcode/hasil-pasien/$uid.png", "L", 4, 4);
 
 	// untuk hasil pasien (laravel)
@@ -336,7 +338,7 @@ function savetempworkload($post_exam_temp)
 	global $conn;
 	$title = $post_exam_temp['title'];
 	$fill = $post_exam_temp['fill'];
-	$username = $_SESSION['username'];
+	$username = $_SESSION['username'] ?? '';
 	if (empty($title)) {
 		echo "<script>alert('Title belum diisi!');</script>";
 	} else {
@@ -388,9 +390,9 @@ function update_template($value)
 function password($passwordid)
 {
 	global $conn;
-	$username = $_SESSION['username'];
+	$username = $_SESSION['username'] ?? '';
 	$password = $passwordid["password"];
-	$password_hash = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+	$password_hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 
 	mysqli_query($conn, "UPDATE xray_login SET 
 				password = '$password_hash'

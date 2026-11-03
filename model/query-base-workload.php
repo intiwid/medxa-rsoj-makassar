@@ -1,3 +1,4 @@
+<?php if (!isset($database_ris) || !isset($database_pacsio)) { require_once __DIR__ . '/../koneksi/koneksi.php'; } ?>
 <?php
 
 $select_workload = "xray_workload.pk_dokter_radiology,

@@ -1,6 +1,6 @@
 <?php
-require '../date-time-zone.php';
-require '../random.php';
+require_once __DIR__ . '/../date-time-zone.php';
+require_once __DIR__ . '/../random.php';
 ?>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

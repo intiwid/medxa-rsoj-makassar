@@ -1,9 +1,9 @@
 <?php 
 require 'function_radiographer.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
 
-$study_iuid = $_GET["study_iuid"];
+$study_iuid = $_GET["study_iuid"] ?? '';
 
 if ( hapus_mwl($study_iuid) > 0 ) {
 	echo "	

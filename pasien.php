@@ -6,7 +6,7 @@ require 'model/query-base-study.php';
 require 'model/query-base-patient.php';
 require 'default-value.php';
 
-$uid = $_GET['uid'];
+$uid = $_GET['uid'] ?? '';
 
 $stmt = mysqli_prepare($conn, "SELECT 
                                     pat_name,
@@ -64,7 +64,7 @@ $hostname = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM xray_hostname_
                 </tr>
             </table>
             <hr>
-            <iframe src="http://<?= $_SERVER['SERVER_NAME'] . ':' ?><?= $_SERVER['SERVER_NAME'] == $hostname['ip_publik'] ? '92' : '91'; ?>/viewer/<?= $study['study_iuid']; ?>" width="100%" height="700px" frameborder="0"></iframe>
+            <iframe src="http://<?= $_SERVER['SERVER_NAME'] . ':' ?><?= $_SERVER['SERVER_NAME'] == ($hostname['ip_publik'] ?? '') ? '92' : '91'; ?>/viewer/<?= $study['study_iuid']; ?>" width="100%" height="700px" frameborder="0"></iframe>
             <!-- <iframe src="http://202.150.157.78:92/viewer/1.2.40.0.13.1.286424.20230127.09161597301" width="100%" height="700px" frameborder="0"></iframe> -->
         <?php } else { ?>
             <p class="text-center">Pasien Tidak Ditemukan</p>
