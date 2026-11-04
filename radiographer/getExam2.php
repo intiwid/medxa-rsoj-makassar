@@ -40,10 +40,10 @@ while ($row = mysqli_fetch_array($query)) {
         $pat_sex = '-';
     }
 
-    $detail = '<a href="#" class="exam-room penawaran-a" data-id="' . $row['study_iuid_mppsio'] . '">' . $pat_name . '</a>';
+    $detail = '<a href="#" class="exam-room penawaran-a" data-id="' . $row['study_iuid_mppsio'] . '">' . mb_convert_encoding($pat_name, 'UTF-8', 'ISO-8859-1') . '</a>';
 
     $delete = '<a style="text-decoration:none;" 
-                    class="ahref-edit" href="deleteexam.php?study_iuid=' . $row['study_iuid_mppsio'] . '&pat_name=' . $pat_name . '" 
+                    class="ahref-edit" href="deleteexam.php?study_iuid=' . $row['study_iuid_mppsio'] . '&pat_name=' . mb_convert_encoding($pat_name, 'UTF-8', 'ISO-8859-1') . '" 
                     onclick=\'return confirm("Delete data?");\'>
                     <span class="btn red lighten-1 btn-intiwid1">
                         <i class="fas fa-trash-alt" data-toggle="tooltip" title="Delete"></i>
